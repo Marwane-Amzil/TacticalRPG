@@ -1,15 +1,24 @@
-# Tactical-RPG
 
-Repository du projet de TacticalRPG
-
-- Il y'a actuellement 2 branch:
-  - Un main avec une  version antérieur. 
-  - Un autre avec la version actuelle revisité et en cours de travail.
+# Tactical-RPG devellopement
 
 
-- Le but de ce Github est de suivre la création du TacticalRPG. 
-- Il y'a 4 participants. 
-- Dans ce git on aurat les différentes évolution du jeux et de son état. 
+Creating a game from 0 in C++. This project is educative. Wich means that the only goal is to learn the maximum of this project.
 
-- Un projet est créer dans lequel on aurat les tâches avec leurs priorité, leurs durée, etc. 
-- Le modèle qui est suivi par notre équipe est l'agilité. 
+We are 3 students in second year working on the project. 
+
+We are using C++ language because it is a low level language and if mastered it becomes easier to adapt to other languages, because of the performances that comes out of the language and because of the community wich is enormous. 
+
+The learnings that we want to get out of this project are :
+-   Devellopement
+-   Project management
+-   network 
+-   Database
+-   TeamWork
+-   Version Handeling
+
+
+We also use SFML to create the graphic side of the game. 
+
+# How to aboard the project as a extern 
+-   Clone the project and start working. If you have anything to add to the project
+-   Feel free to reach out to me and discuss it. 

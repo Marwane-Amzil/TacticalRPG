@@ -4,9 +4,10 @@
 #define __GRID_H__
 
 #include <Entity.hpp>
+#include <array>
 
-constexpr int ROWS = 25;
-constexpr int COLUMNS = 25;
+constexpr int ROWS = 20;
+constexpr int COLUMNS = 20;
 
 class Grid
 {
@@ -31,15 +32,15 @@ public:
 	/**
 	*
 	*/
-	const Entity* const* operator[](const int index) const;
+	const std::array<Entity*, COLUMNS>& operator[](const int index) const;
 	/**
 	*
 	*/
-	Entity** operator[](const int index);
+	std::array<Entity*, COLUMNS>& operator[](const int index);
 
 private:
 
-	Entity* _grid[25][25];
+	std::array<std::array<Entity*, ROWS>, COLUMNS> _grid;
 };
 
 #endif // !__GRID_H__

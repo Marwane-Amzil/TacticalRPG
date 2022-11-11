@@ -15,12 +15,12 @@ void Grid::move(const int from_x, const int from_y, const int to_x, const int to
 {
 }
 
-const Entity* const* Grid::operator[](const int index) const
+const std::array<Entity*, COLUMNS>& Grid::operator[](const int index) const
 {
 	return _grid[index];
 }
 
-Entity** Grid::operator[](const int index)
+std::array<Entity*, COLUMNS>& Grid::operator[](const int index)
 {
 	return _grid[index];
 }

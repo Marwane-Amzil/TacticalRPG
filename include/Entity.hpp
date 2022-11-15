@@ -5,6 +5,8 @@
 
 #include <Position.hpp>
 
+// Entity might be a Character or an Obsactle. 
+
 class Entity
 {
 public:

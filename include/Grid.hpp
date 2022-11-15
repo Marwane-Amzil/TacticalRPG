@@ -9,6 +9,8 @@
 constexpr int ROWS = 20;
 constexpr int COLUMNS = 20;
 
+// The grid is the Area where, Entities are going to be. 
+
 class Grid
 {
 public:

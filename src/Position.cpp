@@ -4,15 +4,13 @@ constexpr Position::Position()
 	: _x(0), _y(0) {}
 
 // Default constructor
-Position::Position(const int x, const int y) : _x(x), _y(y) 
+Position::Position(const int x, const int y)
+	: _x(x), _y(y) 
 // Double dot, is for the initialisation of _x and _y. When doing _x(x),_y(y). Those variables get the value of x , y
 {
 }
 
-// Copy constructor 
 constexpr Position::Position(const Position& other)
-//Same usage here as the top Constructor. 
-
 	: _x(other._x), _y(other._y) {}
 
 // ----------------------------------------------   Start  Getters / Setters    ------------------------------------------------------------

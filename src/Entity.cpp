@@ -1,11 +1,7 @@
 #include <Entity.hpp>
 
-
-
-// Constructor with parametrs
 Entity::Entity(const int x, const int y, const int hp)
 	: _position(x, y), _hp(hp) {}
-
 
 // ----------------------------------------------   Start  Getters / Setters    ------------------------------------------------------------
 
@@ -29,6 +25,8 @@ void Entity::setHp(const int hp)
 	_hp = hp;
 }
 
+// ----------------------------------------------   End  Getters / Setters    ------------------------------------------------------------
+
 bool Entity::operator==(const Entity& other) const
 {
 	return false;
@@ -37,9 +35,4 @@ bool Entity::operator==(const Entity& other) const
 bool Entity::operator!=(const Entity& other) const
 {
 	return false;
-}
-// ----------------------------------------------   End  Getters / Setters    ------------------------------------------------------------
-
-Entity::~Entity()
-{
 }

@@ -8,8 +8,8 @@
 constexpr int ROWS = 20;
 constexpr int COLUMNS = 20;
 
-/*
-* The Entity class. Forward declared to avoid recursive includes in some files when it's not needed.
+/**
+* @brief The Entity class. Forward declared to avoid recursive includes in some files when it's not needed.
 * Since our use of entities require polymorphism, we need to use pointers to entities instead of
 * actual entity objects. This allows the forward declaration since it is not required to know the implementation
 * of an object to use a pointer to this object. A pointer is still an integer no matter which type

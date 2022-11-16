@@ -5,7 +5,7 @@
 
 #include <Position.hpp> // Position class
 
-/*
+/**
 * @brief The Entity class represents any entity that might appear in the game. According to the rules,
 * the entities are either an obstacle or a character. Despite both being entities, they have different
 * behaviour depending on which derived class they are from.
@@ -50,7 +50,8 @@ public:
 	/**
 	* @brief Overloaded == operator for the Entity class (which applies to its derived class).
 	* Behaves the same as any == operator, it compares each member values of this instance of
-	* the class and the parameter instance.
+	* the class and the parameter instance. To do so, it performs a call to the equals() method
+	* marked as virtual so that every derived class may be compared.
 	* 
 	* @param other: entity to compare
 	* 
@@ -60,7 +61,8 @@ public:
 	/**
 	* @brief Overloaded != operator for the Entity class (which applies to its derived class).
 	* Behaves the same as any != operator, it compares each member values of this instance of
-	* the class and the parameter instance.
+	* the class and the parameter instance. To do so, it performs a call to the equals() method
+	* marked as virtual so that every derived class may be compared.
 	*
 	* @param other: entity to compare
 	*
@@ -77,7 +79,13 @@ public:
 protected:
 
 	/**
+	* @brief Method which performs equality checks between 2 entities.
+	* Marked as virtual to perform the same checks for every instance of
+	* the derived classes.
 	* 
+	* @param other: entity to compare
+	* 
+	* @return Returns the equality of the 2 entities
 	*/
 	virtual bool equals(const Entity& other) const = 0;
 

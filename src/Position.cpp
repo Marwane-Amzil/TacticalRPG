@@ -37,20 +37,15 @@ void Position::setY(const int y)
 // ----------------------------------------------   End  Getters / Setters    ------------------------------------------------------------
 
 bool Position::operator==(const Position& other) const
-{
-	// The other object refears to the other entity in right side of the equal. 
-	// Exemple pos1 == pos2. Other is pos2. 
+{ 
 	return other._x == _x && other._y == _y;
 }
 
 bool Position::operator!=(const Position& other) const
 {	
-	// Operator== gives the equality we want the inequality so it is the opposite. 
 	return !(*this == other);
 }
 
-
-// This prints out the Position, it is mainly for debugging
 std::ostream& operator<<(std::ostream& ostream, const Position& _this)
 {
 	ostream << '[' << _this._x << ',' << _this._y << ']';

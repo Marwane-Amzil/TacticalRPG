@@ -5,7 +5,7 @@
 
 #include <ostream> // std::ostream
 
-/*
+/**
 * @brief The position class represents the coordinates of an entity in the grid.
 */
 class Position
@@ -64,19 +64,34 @@ public:
 	*/
 	void setY(const int y);
 	/**
+	* @brief Overloaded == operator for the Position class.
+	* Behaves the same as any == operator, it compares each member values of this instance of
+	* the class and the parameter instance.
 	*
-	*/
-	Position& operator=(const Position& other) = default;
-	/**
+	* @param other: position to compare
 	*
+	* @return Returns the equality of the 2 positions
 	*/
 	bool operator==(const Position& other) const;
 	/**
+	* @brief Overloaded != operator for the Position class.
+	* Behaves the same as any != operator, it compares each member values of this instance of
+	* the class and the parameter instance.
 	*
+	* @param other: position to compare
+	*
+	* @return Returns the inequality of the 2 positions
 	*/
 	bool operator!=(const Position& other) const;
 	/**
-	*
+	* @brief Overloaded << operator for the Position class.
+	* Allows to print a variable of type Position using std::cout
+	* and such utilities.
+	* 
+	* @param ostream: stream storing the position
+	* @param _this: instance of the position to store in the stream
+	* 
+	* @return returns a printable stream containing the position
 	*/
 	friend std::ostream& operator<<(std::ostream& ostream, const Position& _this);
 

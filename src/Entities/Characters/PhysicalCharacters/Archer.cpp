@@ -1,22 +1,22 @@
-#include <Entities/Characters/MagicCharacters/Mage.hpp>
-#include <Grid.hpp>
+#include "Entities\Characters\PhysicalCharacters\Archer.hpp"
+#include "Grid.hpp"
 
-Mage::Mage(const int x, const int y, const char player)
-	: super(x, y, 60, player, 7, 25, 22, 48) {}
+Archer::Archer(const int x, const int y, const char player)
+	: super(x, y, 100, player, 80, 25, 20, 30) {}
 
-Mage::~Mage()
+Archer::~Archer()
 {
 }
 
-std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
+std::vector<Position> Archer::getPossibleMoves(const Grid& grid) const
 {
 	std::vector <Position> positions;
 
-	for (int x = -2; x < 3; x++)
+	for (int x = -3; x < 4; x++)
 	{
-		for (int y = -2; y < 3; y++)
+		for (int y = -3; y < 4; y++)
 		{
-			if (abs(x) + abs(y) < 3 && x != 0 || y != 0)
+			if (abs(x) + abs(y) <4 && x != 0 || y != 0)
 			{
 				if (getPosition().getX() + x < COLUMNS && getPosition().getY() + y < COLUMNS && getPosition().getX() + x >= 0 && getPosition().getY() + y >= 0)
 				{
@@ -32,7 +32,7 @@ std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
 	return positions;
 }
 
-std::vector<Position> Mage::getPossibleActions(const Grid& grid) const
+std::vector<Position> Archer::getPossibleActions(const Grid& grid) const
 {
 	std::vector <Position> positions;
 
@@ -52,9 +52,10 @@ std::vector<Position> Mage::getPossibleActions(const Grid& grid) const
 			}
 		}
 	}
+	return positions
 }
 
-bool Mage::equals(const Entity& other) const
+bool Archer::equals(const Entity& other) const
 {
 	return false;
 }

@@ -1,14 +1,14 @@
-#include <Entities/Characters/MagicCharacters/Mage.hpp>
+#include <Entities/Characters/MagicCharacters/Healer.hpp>
 #include <Grid.hpp>
 
-Mage::Mage(const int x, const int y, const char player)
+Healer::Healer(const int x, const int y, const char player)
 	: super(x, y, 60, player, 7, 25, 22, 48) {}
 
-Mage::~Mage()
+Healer::~Healer()
 {
 }
 
-std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
+std::vector<Position> Healer::getPossibleMoves(const Grid& grid) const
 {
 	std::vector <Position> positions;
 
@@ -32,7 +32,7 @@ std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
 	return positions;
 }
 
-std::vector<Position> Mage::getPossibleActions(const Grid& grid) const
+std::vector<Position> Healer::getPossibleActions(const Grid& grid) const
 {
 	std::vector <Position> positions;
 
@@ -54,7 +54,7 @@ std::vector<Position> Mage::getPossibleActions(const Grid& grid) const
 	}
 }
 
-bool Mage::equals(const Entity& other) const
+bool Healer::equals(const Entity& other) const
 {
 	return false;
 }

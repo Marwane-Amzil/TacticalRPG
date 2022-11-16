@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entities\Characters\MagicCharacters\Healer.cpp" />
     <ClCompile Include="src\Entities\Characters\MagicCharacters\Mage.cpp" />
     <ClCompile Include="src\Entities\Characters\PhysicalCharacter.cpp" />
     <ClCompile Include="src\Entities\Characters\MagicCharacter.cpp" />
     <ClCompile Include="src\Entities\Character.cpp" />
+    <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Archer.cpp" />
+    <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Knight.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Entities\Obstacle.cpp" />
     <ClCompile Include="src\Position.cpp" />
@@ -31,7 +34,10 @@
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Entities\Characters\MagicCharacters\Healer.hpp" />
     <ClInclude Include="include\Entities\Characters\MagicCharacters\Mage.hpp" />
+    <ClInclude Include="include\Entities\Characters\PhysicalCharacters\Archer.hpp" />
+    <ClInclude Include="include\Entities\Characters\PhysicalCharacters\Knight.hpp" />
     <ClInclude Include="include\Entities\Obstacle.hpp" />
     <ClInclude Include="include\Grid.hpp" />
     <ClInclude Include="include\Entities\Character.hpp" />

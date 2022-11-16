@@ -2,7 +2,7 @@
 #include <Grid.hpp>
 
 Warrior::Warrior(const int x, const int y, const char player)
-	: super(x, y, 80, player, 10, 30, 25, 45) {}
+	: super(x, y, 80, player, 100, 50, 25, 75) {}
 
 Warrior::~Warrior()
 {

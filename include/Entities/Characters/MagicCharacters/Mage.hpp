@@ -4,7 +4,7 @@
 #define __MAGE_H__
 
 #include <Entities/Characters/MagicCharacter.hpp>
-
+#include <Constants.hpp>
 class Mage : public MagicCharacter
 {
 public:

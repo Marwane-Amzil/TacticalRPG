@@ -4,7 +4,7 @@
 #define __KNIGHT_H__
 
 #include <Entities/Characters/PhysicalCharacter.hpp>
-
+#include <Constants.hpp>
 class Knight : public PhysicalCharacter
 {
 public:

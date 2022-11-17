@@ -4,7 +4,7 @@
 #define __ARCHER_H__
 
 #include <Entities/Characters/PhysicalCharacter.hpp>
-
+#include <Constants.hpp>
 class Archer : public PhysicalCharacter
 {
 public:

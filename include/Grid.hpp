@@ -4,7 +4,7 @@
 #define __GRID_H__
 
 #include <array> // std::array
-
+#include <Constants.hpp>
 constexpr int ROWS = 20;
 constexpr int COLUMNS = 20;
 

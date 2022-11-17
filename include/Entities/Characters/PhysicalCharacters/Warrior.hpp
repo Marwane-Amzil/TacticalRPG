@@ -4,7 +4,7 @@
 #define __WARRIOR_H__
 
 #include <Entities/Characters/PhysicalCharacter.hpp>
-
+#include <Constants.hpp>
 class Warrior : public PhysicalCharacter
 {
 public:

@@ -4,6 +4,7 @@
 #define __HEALER_H__
 
 #include <Entities/Characters/MagicCharacter.hpp>
+#include <Constants.hpp>
 
 class Healer : public MagicCharacter
 {

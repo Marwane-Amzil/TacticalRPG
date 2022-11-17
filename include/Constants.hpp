@@ -15,9 +15,13 @@ namespace constants_GRID {
 namespace constants_Mage {
     constexpr int HP = 0;
     constexpr int MAGIC_POWER = 0;
+    constexpr int STRENGHT_POWER = 0;
+    constexpr int MAGIC_RESISTANCE = 0;
+    constexpr int PHYSIC_RESISTANCE = 0;
+    constexpr int WILL = 0;
+    constexpr int MOVES = 0;
 }
 
-// ... other related constants
 
 
 

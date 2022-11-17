@@ -3,6 +3,7 @@
 #include <Entities/Characters/MagicCharacters/Mage.hpp>
 #include <Entities/Characters/PhysicalCharacters/Warrior.hpp>
 #include <Entities/Obstacle.hpp>
+#include <Constants.hpp>
 
 int main(int argc, char* argv[])
 {
@@ -15,6 +16,9 @@ int main(int argc, char* argv[])
     {
         std::cout << position << std::endl;
     }
+        
+    std::cout << constants_GRID::COLUMNS << std::endl;
+    std::cin.get();
 
     return 0;
 }

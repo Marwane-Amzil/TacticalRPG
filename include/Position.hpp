@@ -64,6 +64,15 @@ public:
 	*/
 	void setY(const int y);
 	/**
+	* @brief Overloaded = operator for the Position class.
+	* Needed since the Position class has a move constructor.
+	* 
+	* @param other: position to copy
+	* 
+	* @return returns a position with changed values
+	*/
+	Position& operator=(const Position& other);
+	/**
 	* @brief Overloaded == operator for the Position class.
 	* Behaves the same as any == operator, it compares each member values of this instance of
 	* the class and the parameter instance.

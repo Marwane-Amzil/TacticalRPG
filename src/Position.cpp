@@ -34,6 +34,13 @@ void Position::setY(const int y)
 {
 	_y = y;
 }
+Position& Position::operator=(const Position& other)
+{
+	_x = other._x;
+	_y = other._y;
+
+	return *this;
+}
 // ----------------------------------------------   End  Getters / Setters    ------------------------------------------------------------
 
 bool Position::operator==(const Position& other) const

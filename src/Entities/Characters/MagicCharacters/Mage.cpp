@@ -52,6 +52,8 @@ std::vector<Position> Mage::getPossibleActions(const Grid& grid) const
 			}
 		}
 	}
+
+	return positions;
 }
 
 bool Mage::equals(const Entity& other) const

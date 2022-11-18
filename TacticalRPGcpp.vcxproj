@@ -34,6 +34,7 @@
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\constants.hpp" />
     <ClInclude Include="include\Entities\Characters\MagicCharacters\Healer.hpp" />
     <ClInclude Include="include\Entities\Characters\MagicCharacters\Mage.hpp" />
     <ClInclude Include="include\Entities\Characters\PhysicalCharacters\Archer.hpp" />

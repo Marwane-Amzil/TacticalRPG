@@ -92,5 +92,8 @@
     <ClInclude Include="include\Entities\Characters\PhysicalCharacters\Knight.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

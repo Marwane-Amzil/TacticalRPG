@@ -1,6 +1,8 @@
 #include <Entities/Characters/MagicCharacters/Healer.hpp>
 #include <Grid.hpp>
 
+using namespace ::grid;
+
 Healer::Healer(const int x, const int y, const char player)
 	: super(x, y, 60, player, 7, 25, 22, 48) {}
 

@@ -1,6 +1,8 @@
 #include <Entities/Characters/MagicCharacters/Mage.hpp>
 #include <Grid.hpp>
 
+using namespace ::grid;
+
 Mage::Mage(const int x, const int y, const char player)
 	: super(x, y, 60, player, 7, 25, 22, 48) {}
 

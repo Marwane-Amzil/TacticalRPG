@@ -1,5 +1,8 @@
-#include "Entities\Characters\PhysicalCharacters\Knight.hpp"
-#include "Grid.hpp"
+#include <Entities\Characters\PhysicalCharacters\Knight.hpp>
+#include <Grid.hpp>
+
+using namespace grid;
+using namespace knight;
 
 Knight::Knight(const int x, const int y, const char player)
 	: super(x,y, 100, player, 80, 100, 0, 150) {}

@@ -4,9 +4,7 @@
 #define __GRID_H__
 
 #include <array> // std::array
-#include <Constants.hpp>
-constexpr int ROWS = 20;
-constexpr int COLUMNS = 20;
+#include <Constants.hpp> // Constant values
 
 /**
 * @brief The Entity class. Forward declared to avoid recursive includes in some files when it's not needed.
@@ -61,7 +59,7 @@ public:
 	* 
 	* @return returns the asked row
 	*/
-	const std::array<Entity*, COLUMNS>& operator[](const size_t& index) const;
+	const std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index) const;
 	/**
 	* @brief Overloaded [] operator for the Grid class. Behaves the same as any
 	* [] operator in a standard container such a C-style array of std::vector.
@@ -72,11 +70,11 @@ public:
 	*
 	* @return returns the asked row
 	*/
-	std::array<Entity*, COLUMNS>& operator[](const size_t& index);
+	std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index);
 
 private:
 
-	std::array<std::array<Entity*, ROWS>, COLUMNS> _grid;
+	std::array<std::array<Entity*, ::grid::ROWS>, ::grid::COLUMNS> _grid;
 };
 
 #endif // !__GRID_H__

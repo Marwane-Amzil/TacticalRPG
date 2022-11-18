@@ -1,6 +1,8 @@
 #include <Grid.hpp>
 #include <Entity.hpp>
 
+using namespace ::grid;
+
 Grid::Grid()
 	: _grid() {}
 

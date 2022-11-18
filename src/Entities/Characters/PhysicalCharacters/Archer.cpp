@@ -1,5 +1,7 @@
 #include "Entities\Characters\PhysicalCharacters\Archer.hpp"
-#include "Grid.hpp"
+#include <Grid.hpp>
+
+using namespace ::grid;
 
 Archer::Archer(const int x, const int y, const char player)
 	: super(x, y, 100, player, 80, 25, 20, 30) {}

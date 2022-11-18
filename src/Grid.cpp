@@ -1,5 +1,6 @@
 #include <Grid.hpp>
 #include <Entity.hpp>
+#include <iostream>
 
 using namespace ::grid;
 
@@ -26,6 +27,39 @@ void Grid::move(const int from_x, const int from_y, const int to_x, const int to
 	* is only allowed in an empty case.
 	*/
 	std::swap(_grid[from_x][from_y], _grid[to_x][to_y]);
+}
+
+void Grid::display() const
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		std::cout << "    " + std::string(-1 + (COLUMNS * 4), '-') << '\n';
+
+		if (i < 10)
+		{
+			std::cout << ' ' << i << " |";
+		}
+		else
+		{
+			std::cout << i << " |";
+		}
+
+		for (int j = 0; j < COLUMNS; j++)
+		{
+			if (_grid[i][j])
+			{
+				std::cout << ' ' << 'X' << " |";
+			}
+			else
+			{
+				std::cout << "  " << " |";
+			}
+		}
+
+		std::cout << '\n';
+	}
+
+	std::cout << "    " + std::string(-1 + (COLUMNS * 4), '-') << '\n';
 }
 
 const std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index) const

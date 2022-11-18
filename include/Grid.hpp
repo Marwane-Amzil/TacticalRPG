@@ -50,6 +50,11 @@ public:
 	*/
 	void move(const int from_x, const int from_y, const int to_x, const int to_y);
 	/**
+	* @brief Method which display the grid and its contents inside the console.
+	* It is mainly used for debugging process in case we would need a vision of what is going on.
+	*/
+	void display() const;
+	/**
 	* @brief Overloaded [] operator for the Grid class. Behaves the same as any
 	* [] operator in a standard container such a C-style array of std::vector.
 	* This one is the const version of the operator to be able to use it with Grid

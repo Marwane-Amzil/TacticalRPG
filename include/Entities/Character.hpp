@@ -65,6 +65,24 @@ public:
 	*/
 	int getResMag() const;
 	/**
+	* @brief Method which returns the possibility for a character to move
+	* 
+	* @return returns movement possibility
+	*/
+	bool getMove() const;
+	/**
+	* @brief Method which returns the possibility for a character to perform an action
+	*
+	* @return returns action possibility
+	*/
+	bool getAction() const;
+	/**
+	* @brief Method which returns the possibility for a character to perform an special action
+	*
+	* @return returns special action possibility
+	*/
+	bool getSpecialAction() const;
+	/**
 	* @brief Method which sets the current will value of the character.
 	*
 	* @param will: new will value to set
@@ -82,6 +100,24 @@ public:
 	* @param res_mag: new magical res value to set
 	*/
 	void setResMag(const int res_mag);
+	/**
+	* @brief Method which sets the possibility for a character to move
+	*
+	* @param can_move: movement possibility
+	*/
+	void setMove(const bool can_move);
+	/**
+	* @brief Method which sets the possibility for a character to perform an action
+	*
+	* @param can_act: action possibility
+	*/
+	void setAction(const bool can_act);
+	/**
+	* @brief Method which sets the possibility for a character to perform an special action
+	*
+	* @param can_sp_act: special action possibility
+	*/
+	void setSpecialAction(const bool can_sp_act);
 	/**
 	* @brief Character destructor. Explicitly defaulted (~Character() = default).
 	* Marked as virtual to perform proper destruction when the current Character is actually
@@ -117,6 +153,9 @@ protected:
 	int _will;
 	int _res_phy;
 	int _res_mag;
+	bool _can_move;
+	bool _can_act;
+	bool _can_sp_act;
 
 private:
 

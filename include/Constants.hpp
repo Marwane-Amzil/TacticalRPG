@@ -1,8 +1,10 @@
-#ifndef CONSTANTS_HPP
-#define CONSTANTS_HPP
+#pragma once
+
+#ifndef __CONSTANTS_H__
+#define __CONSTANTS_H__
 
 /**
-* @brief The Constants.hpp File has the role of stocking different Constants. 
+* The Constants.hpp file has the role of stocking different Constants. 
 * The Tactical-RPG Project is a game developement Project. This project involves having a lot of fixed values. 
 * Throughout coding having One place where all those different constants are stocked seems to be the best solution for us.
 * Using different namespaces gives the possibility to seperate the diffenrent variable by where they are needed, without having to add new variable names where they have the same function.
@@ -12,63 +14,39 @@
 */
 
 // -- GRID --
-namespace constants_GRID {
-    constexpr int ROWS = 20;
-    constexpr int COLUMNS = 20;
+namespace grid
+{
+    constexpr size_t ROWS = 20;
+    constexpr size_t COLUMNS = 20;
 }
 // -- Mage --
-namespace constants_Mage {
-    constexpr int HP = 0;
-    constexpr int MAGIC_POWER = 0;
-    constexpr int STRENGHT_POWER = 0;
-    constexpr int MAGIC_RESISTANCE = 0;
-    constexpr int PHYSIC_RESISTANCE = 0;
-    constexpr int WILL = 0;
+namespace mage
+{
     constexpr int MOVES = 0;
 }
 
 // -- Healer --
-namespace constants_Healer {
-    constexpr int HP = 0;
-    constexpr int MAGIC_POWER = 0;
-    constexpr int STRENGHT_POWER = 0;
-    constexpr int MAGIC_RESISTANCE = 0;
-    constexpr int PHYSIC_RESISTANCE = 0;
-    constexpr int WILL = 0;
+namespace healer
+{
     constexpr int MOVES = 0;
 }
 
 // -- Warior --
-namespace constants_Warrior {
-    constexpr int HP = 0;
-    constexpr int MAGIC_POWER = 0;
-    constexpr int STRENGHT_POWER = 0;
-    constexpr int MAGIC_RESISTANCE = 0;
-    constexpr int PHYSIC_RESISTANCE = 0;
-    constexpr int WILL = 0;
+namespace warrior
+{
     constexpr int MOVES = 0;
 }
 
 // -- Knight --
-namespace constants_Knight {
-    constexpr int HP = 0;
-    constexpr int MAGIC_POWER = 0;
-    constexpr int STRENGHT_POWER = 0;
-    constexpr int MAGIC_RESISTANCE = 0;
-    constexpr int PHYSIC_RESISTANCE = 0;
-    constexpr int WILL = 0;
+namespace knight
+{
     constexpr int MOVES = 0;
 }
 
-// -- Warrior --
-namespace constants_Warrior {
-    constexpr int HP = 0;
-    constexpr int MAGIC_POWER = 0;
-    constexpr int STRENGHT_POWER = 0;
-    constexpr int MAGIC_RESISTANCE = 0;
-    constexpr int PHYSIC_RESISTANCE = 0;
-    constexpr int WILL = 0;
+// -- archer --
+namespace archer
+{
     constexpr int MOVES = 0;
 }
 
-#endif
+#endif //!__CONSTANTS_H__

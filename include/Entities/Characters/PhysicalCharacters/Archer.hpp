@@ -16,7 +16,7 @@ public:
 	/**
 	*
 	*/
-	~Archer();
+	~Archer() = default;
 
 private:
 

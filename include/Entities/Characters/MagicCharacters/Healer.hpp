@@ -17,7 +17,7 @@ public:
 	/**
 	*
 	*/
-	~Healer();
+	~Healer() = default;
 
 private:
 

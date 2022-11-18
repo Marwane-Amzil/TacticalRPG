@@ -6,10 +6,6 @@ using namespace ::grid;
 Healer::Healer(const int x, const int y, const char player)
 	: super(x, y, 60, player, 7, 25, 22, 48) {}
 
-Healer::~Healer()
-{
-}
-
 std::vector<Position> Healer::getPossibleMoves(const Grid& grid) const
 {
 	std::vector <Position> positions;

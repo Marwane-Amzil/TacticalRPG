@@ -16,7 +16,7 @@ public:
 	/**
 	*
 	*/
-	~Warrior();
+	~Warrior() = default;
 
 private:
 

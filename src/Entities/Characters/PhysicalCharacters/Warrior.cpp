@@ -6,10 +6,6 @@ using namespace ::grid;
 Warrior::Warrior(const int x, const int y, const char player)
 	: super(x, y, 80, player, 100, 50, 25, 75) {}
 
-Warrior::~Warrior()
-{
-}
-
 std::vector<Position> Warrior::getPossibleMoves(const Grid& grid) const
 {
 	std::vector <Position> positions;

@@ -7,10 +7,6 @@ using namespace knight;
 Knight::Knight(const int x, const int y, const char player)
 	: super(x,y, 100, player, 80, 100, 0, 150) {}
 
-Knight::~Knight()
-{
-}
-
 std::vector<Position> Knight::getPossibleMoves(const Grid& grid) const
 {
 	std::vector <Position> positions;

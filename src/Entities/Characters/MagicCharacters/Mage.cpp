@@ -6,10 +6,6 @@ using namespace ::grid;
 Mage::Mage(const int x, const int y, const char player)
 	: super(x, y, 60, player, 7, 25, 22, 48) {}
 
-Mage::~Mage()
-{
-}
-
 std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
 {
 	std::vector <Position> positions;

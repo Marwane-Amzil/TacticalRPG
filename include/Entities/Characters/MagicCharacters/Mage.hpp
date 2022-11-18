@@ -16,7 +16,7 @@ public:
 	/**
 	*
 	*/
-	~Mage();
+	~Mage() = default;
 
 private:
 

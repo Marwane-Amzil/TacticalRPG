@@ -16,7 +16,7 @@ public:
 	/**
 	*
 	*/
-	~Knight();
+	~Knight() = default;
 
 private:
 

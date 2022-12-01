@@ -25,6 +25,7 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
+#include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/Shape.hpp>
 
 namespace sf
@@ -33,7 +34,7 @@ namespace sf
     /// \brief Specialized shape representing a rectangle
     /// with rounded corners
     ////////////////////////////////////////////////////////////
-    class RoundedRectangleShape : public sf::Shape
+    class SFML_GRAPHICS_API RoundedRectangleShape : public Shape
     {
     public:
         ////////////////////////////////////////////////////////////
@@ -114,7 +115,7 @@ namespace sf
         /// \return Index-th point of the shape
         ///
         ////////////////////////////////////////////////////////////
-        virtual sf::Vector2f getPoint(std::size_t index) const;
+        virtual Vector2f getPoint(std::size_t index) const;
 
     private:
         ////////////////////////////////////////////////////////////

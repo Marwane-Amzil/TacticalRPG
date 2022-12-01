@@ -49,4 +49,9 @@ namespace archer
     constexpr int MOVES = 0;
 }
 
+namespace window
+{
+    constexpr int xPixels = 800;
+    constexpr int yPixels = 600;
+}
 #endif //!__CONSTANTS_H__

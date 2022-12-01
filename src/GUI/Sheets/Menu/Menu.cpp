@@ -3,7 +3,11 @@
 
 using namespace ::gui;
 
+
+// Constructor
+// The constructor just creates the objects  
 Menu::Menu() {
+    // Creating the objects
     window = new sf::RenderWindow();
     winclose = new sf::RectangleShape();
     font = new sf::Font();
@@ -13,6 +17,7 @@ Menu::Menu() {
     set_values();
 }
 
+// Destructor
 Menu::~Menu() {
     delete window;
     delete winclose;
@@ -22,23 +27,25 @@ Menu::~Menu() {
 }
 
 void Menu::set_values() {
-
+    // Creating a window 1280 x 720 
     window->create(sf::VideoMode(1280, 720), "Menu SFML", sf::Style::Titlebar | sf::Style::Close);
+    // The mouse is at 0,0
     window->setPosition(sf::Vector2i(0, 0));
 
     pos = 0;
     pressed = theselect = false;
     font->loadFromFile("./src/GUI/Sheets/Menu/font/ethn.otf");
-    image->loadFromFile("./src/GUI/Sheets/Menu/img/menu-sci-fi-game.png");
+    image->loadFromFile("./src/GUI/Sheets/Menu/img/menu-play.png");
 
     bg->setTexture(*image);
 
     pos_mouse = { 0,0 };
     mouse_coord = { 0, 0 };
 
+    // The different containers are linked by the id. option[0] refeeres to coords[0] refeers to size[0]
     options = { "War Game", "Play", "Options", "About", "Quit" };
     texts.resize(5);
-    coords = { {590,40},{610,191},{590,282},{600,370},{623,457} };
+    coords = { {590,40},{610,179},{590,282},{600,370},{623,457} };
     sizes = { 20,28,24,24,24 };
 
     for (std::size_t i{}; i < texts.size(); ++i) {
@@ -57,7 +64,10 @@ void Menu::set_values() {
 
 }
 
+
+
 void Menu::loop_events() {
+    std::string path;
     sf::Event event;
     while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
@@ -67,6 +77,7 @@ void Menu::loop_events() {
         pos_mouse = sf::Mouse::getPosition(*window);
         mouse_coord = window->mapPixelToCoords(pos_mouse);
 
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressed) {
             if (pos < 4) {
                 ++pos;
@@ -75,6 +86,9 @@ void Menu::loop_events() {
                 texts[pos - 1].setOutlineThickness(0);
                 pressed = false;
                 theselect = false;
+                path = options[pos];
+                image->loadFromFile("./src/GUI/Sheets/Menu/img/menu-"+ path +".png");
+
             }
         }
 
@@ -86,6 +100,8 @@ void Menu::loop_events() {
                 texts[pos + 1].setOutlineThickness(0);
                 pressed = false;
                 theselect = false;
+                path = options[pos];
+                image->loadFromFile("./src/GUI/Sheets/Menu/img/menu-" + path + ".png");
             }
         }
 

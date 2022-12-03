@@ -13,7 +13,8 @@ int main(int argc, char* argv[])
     menu->run_menu();
     delete menu;
     menu = nullptr;
-    Grid plateau;
+    /*
+    * Grid plateau;
     plateau[0][0] = new Mage(0, 0, 'B');
     plateau[1][1] = new Warrior(1, 1, 'B');
     plateau[2][2] = new Obstacle(2, 2, 50);
@@ -24,6 +25,8 @@ int main(int argc, char* argv[])
     }
         
     std::cin.get();
+    */
+    
     return EXIT_SUCCESS;
     return 0;
 }

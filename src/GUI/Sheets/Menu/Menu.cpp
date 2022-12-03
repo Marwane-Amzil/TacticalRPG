@@ -45,8 +45,8 @@ void Menu::set_values() {
     // The different containers are linked by the id. option[0] refeeres to coords[0] refeers to size[0]
     options = { "War Game", "Play", "Options", "About", "Quit" };
     texts.resize(5);
-    coords = { {590,40},{610,179},{590,282},{600,370},{623,457} };
-    sizes = { 20,28,24,24,24 };
+    coords = { {460,100},{200,213},{188,295},{200,370},{220,447} };
+    sizes = { 50,28,24,24,24 };
 
     for (std::size_t i{}; i < texts.size(); ++i) {
         texts[i].setFont(*font);

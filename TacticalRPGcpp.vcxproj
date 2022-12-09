@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Effect\Burn.cpp" />
+    <ClCompile Include="src\Effect.cpp" />
     <ClCompile Include="src\Skills\MagicalSkill.cpp" />
     <ClCompile Include="src\Skills\PhysicalSkill.cpp" />
     <ClCompile Include="src\Skill.cpp" />
@@ -37,6 +39,8 @@
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Effect\Burn.hpp" />
+    <ClInclude Include="include\Effect.hpp" />
     <ClInclude Include="include\constants.hpp" />
     <ClInclude Include="include\Entities\Characters\MagicCharacters\Healer.hpp" />
     <ClInclude Include="include\Entities\Characters\MagicCharacters\Mage.hpp" />

@@ -8,6 +8,7 @@ class MagicalSkill : public Skill
 public:
 	MagicalSkill();
 	~MagicalSkill();
+	
 
 private:
 	typedef Skill super;

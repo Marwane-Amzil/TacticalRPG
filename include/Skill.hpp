@@ -8,6 +8,9 @@ class Skill
 	public:
 		Skill(int multiplier, int range, Effect *effect = nullptr);
 		~Skill();
+		int getMultiplier() const;
+		int getRange() const;
+		Effect* getEffect() const;
 
 	private:
 		int _multiplier;

@@ -9,3 +9,18 @@ Skill::Skill(int multiplier, int range , Effect *effect)
 Skill::~Skill()
 {
 }
+
+int Skill::getMultiplier() const
+{
+	return _multiplier;
+}
+
+int Skill::getRange() const
+{
+	return _range;
+}
+
+Effect* Skill::getEffect() const
+{
+	return _effect;
+}

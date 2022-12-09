@@ -7,6 +7,7 @@ class Burn
 public:
 	Burn();
 	~Burn() = default;
+	
 
 private:
 

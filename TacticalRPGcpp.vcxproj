@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Skills\MagicalSkill.cpp" />
+    <ClCompile Include="src\Skills\PhysicalSkill.cpp" />
+    <ClCompile Include="src\Skill.cpp" />
     <ClCompile Include="src\Entities\Characters\MagicCharacters\Healer.cpp" />
     <ClCompile Include="src\Entities\Characters\MagicCharacters\Mage.cpp" />
     <ClCompile Include="src\Entities\Characters\PhysicalCharacter.cpp" />
@@ -47,6 +50,9 @@
     <ClInclude Include="include\Entities\Characters\MagicCharacter.hpp" />
     <ClInclude Include="include\Entities\Characters\PhysicalCharacter.hpp" />
     <ClInclude Include="include\Entities\Characters\PhysicalCharacters\Warrior.hpp" />
+    <ClInclude Include="include\Skill.hpp" />
+    <ClInclude Include="include\Skills\MagicalSkill.hpp" />
+    <ClInclude Include="include\Skills\PhysicalSkill.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

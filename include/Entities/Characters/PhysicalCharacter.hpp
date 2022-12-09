@@ -22,7 +22,6 @@ public:
 	 * @brief 
 	 * 
 	 */
-	void attack(const Position pos) const override;
 
 
 

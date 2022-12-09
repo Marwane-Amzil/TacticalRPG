@@ -167,7 +167,6 @@ public:
 	*
 	* @param pos 
 	*/
-	virtual void attack(const Position pos) const = 0;
 
 protected:
 

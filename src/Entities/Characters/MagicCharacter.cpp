@@ -11,6 +11,3 @@ MagicCharacter::~MagicCharacter()
 }
 
 
-
-void Character::attack(const Position pos) const{
-}

@@ -33,7 +33,6 @@ private:
 	 * 
 	 *
 	*/
-	void attack(const Position pos) const override;
 	
 	/**
 	*

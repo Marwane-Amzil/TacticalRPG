@@ -69,6 +69,9 @@
     <ClCompile Include="src\Effect\Burn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Skills\PhysicalSkills\SwordSkill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Entities\Character.hpp">
@@ -123,6 +126,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Effect\Burn.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Skills\PhysicalSkills\SwordSkill.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -37,6 +37,7 @@
     <ClCompile Include="src\Grid.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Warrior.cpp" />
+    <ClCompile Include="src\Skills\PhysicalSkills\SwordSkill.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Effect\Burn.hpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="include\Skill.hpp" />
     <ClInclude Include="include\Skills\MagicalSkill.hpp" />
     <ClInclude Include="include\Skills\PhysicalSkill.hpp" />
+    <ClInclude Include="include\Skills\PhysicalSkills\SwordSkill.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

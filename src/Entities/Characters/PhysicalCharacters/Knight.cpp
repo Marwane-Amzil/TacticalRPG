@@ -76,3 +76,8 @@ bool Knight::equals(const Entity& other) const
 {
 	return false;
 }
+
+std::string Knight::getClass() const
+{
+	return "knight";
+}

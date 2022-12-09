@@ -75,6 +75,10 @@ public:
 	* an instance of one of the derived class.
 	*/
 	virtual ~Entity() = default;
+	/**
+	* @brief
+	*/
+	virtual std::string getClass() const = 0;
 
 protected:
 

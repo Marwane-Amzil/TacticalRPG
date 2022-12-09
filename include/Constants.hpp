@@ -13,7 +13,7 @@
 * in the header file.
 */
 
-// -- GRID --
+// -- Grid --
 namespace grid
 {
     constexpr size_t ROWS = 20;
@@ -31,7 +31,7 @@ namespace healer
     constexpr int MOVES = 0;
 }
 
-// -- Warior --
+// -- Warrior --
 namespace warrior
 {
     constexpr int MOVES = 0;
@@ -43,7 +43,7 @@ namespace knight
     constexpr int MOVES = 0;
 }
 
-// -- archer --
+// -- Archer --
 namespace archer
 {
     constexpr int MOVES = 0;

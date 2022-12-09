@@ -33,6 +33,10 @@ private:
 	*
 	*/
 	bool equals(const Entity& other) const override;
+	/**
+	*
+	*/
+	std::string getClass() const override;
 
 private:
 

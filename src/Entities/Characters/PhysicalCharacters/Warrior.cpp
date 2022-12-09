@@ -58,3 +58,8 @@ bool Warrior::equals(const Entity& other) const
 {
 	return false;
 }
+
+std::string Warrior::getClass() const
+{
+	return "warrior";
+}

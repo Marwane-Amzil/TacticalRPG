@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\EntitySprite.cpp" />
+    <ClCompile Include="src\utils\AnimationManager.cpp" />
+    <ClCompile Include="src\utils\SpriteFactory.cpp" />
+    <ClCompile Include="src\utils\TextureManager.cpp" />
     <ClCompile Include="src\Entities\Characters\MagicCharacters\Healer.cpp" />
     <ClCompile Include="src\Entities\Characters\MagicCharacters\Mage.cpp" />
     <ClCompile Include="src\Entities\Characters\PhysicalCharacter.cpp" />
@@ -28,13 +32,21 @@
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Knight.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Entities\Obstacle.cpp" />
+    <ClCompile Include="src\GUI\Button.cpp" />
     <ClCompile Include="src\Position.cpp" />
     <ClCompile Include="src\Grid.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Warrior.cpp" />
+    <ClCompile Include="src\GUI\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\GUI\Button.hpp" />
+    <ClInclude Include="include\GUI\EntitySprite.hpp" />
+    <ClInclude Include="include\schemas\animations.hpp" />
+    <ClInclude Include="include\utils\AnimationManager.hpp" />
+    <ClInclude Include="include\utils\SpriteFactory.hpp" />
     <ClInclude Include="include\constants.hpp" />
+    <ClInclude Include="include\Entities.hpp" />
     <ClInclude Include="include\Entities\Characters\MagicCharacters\Healer.hpp" />
     <ClInclude Include="include\Entities\Characters\MagicCharacters\Mage.hpp" />
     <ClInclude Include="include\Entities\Characters\PhysicalCharacters\Archer.hpp" />
@@ -47,6 +59,9 @@
     <ClInclude Include="include\Entities\Characters\MagicCharacter.hpp" />
     <ClInclude Include="include\Entities\Characters\PhysicalCharacter.hpp" />
     <ClInclude Include="include\Entities\Characters\PhysicalCharacters\Warrior.hpp" />
+    <ClInclude Include="include\schemas\textures.hpp" />
+    <ClInclude Include="include\utils\TextureManager.hpp" />
+    <ClInclude Include="include\GUI\World.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -176,7 +191,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -191,7 +206,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>false</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>

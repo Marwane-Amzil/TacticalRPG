@@ -58,3 +58,8 @@ bool Mage::equals(const Entity& other) const
 {
 	return false;
 }
+
+std::string Mage::getClass() const
+{
+	return "mage";
+}

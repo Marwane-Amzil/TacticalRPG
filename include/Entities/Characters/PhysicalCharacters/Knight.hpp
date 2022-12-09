@@ -5,6 +5,7 @@
 
 #include <Entities/Characters/PhysicalCharacter.hpp>
 #include <Constants.hpp>
+
 class Knight : public PhysicalCharacter
 {
 public:
@@ -32,6 +33,10 @@ private:
 	*
 	*/
 	bool equals(const Entity& other) const override;
+	/**
+	*
+	*/
+	std::string getClass() const override;
 
 private:
 

@@ -58,3 +58,8 @@ bool Healer::equals(const Entity& other) const
 {
 	return false;
 }
+
+std::string Healer::getClass() const
+{
+	return "healer";
+}

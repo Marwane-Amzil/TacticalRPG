@@ -1,0 +1,24 @@
+{
+  "textures": [
+    {
+      "type": "archer",
+      "path": "./assets/images/characters/archer.png"
+    },
+    {
+      "type": "knight",
+      "path": "./assets/images/characters/knight.png"
+    },
+    {
+      "type": "healer",
+      "path": "./assets/images/characters/healer.png"
+    },
+    {
+      "type": "mage",
+      "path": "./assets/images/characters/mage.png"
+    },
+    {
+      "type": "warrior",
+      "path": "./assets/images/characters/warrior.png"
+    }
+  ]
+}

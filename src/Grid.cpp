@@ -48,7 +48,7 @@ void Grid::display() const
 		{
 			if (_grid[i][j])
 			{
-				std::cout << ' ' << 'X' << " |";
+				std::cout << ' ' << _grid[i][j]->getClass() << " |";
 			}
 			else
 			{

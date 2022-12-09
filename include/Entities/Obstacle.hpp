@@ -28,6 +28,10 @@ public:
 	* @brief Obstacle destructor. Explicitly defaulted (~Obstacle() = default).
 	*/
 	~Obstacle() = default;
+	/**
+	*
+	*/
+	std::string getClass() const override;
 
 private:
 

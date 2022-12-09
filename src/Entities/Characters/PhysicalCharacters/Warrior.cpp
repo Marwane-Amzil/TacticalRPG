@@ -14,7 +14,7 @@ std::vector<Position> Warrior::getPossibleMoves(const Grid& grid) const
 	{
 		for (int y = -4; y < 5; y++)
 		{
-			if (abs(x) + abs(y) < 5 && x != 0 || y != 0)
+			if (abs(x) + abs(y) < 4 && (x != 0 || y != 0))
 			{
 				if (getPosition().getX() + x < COLUMNS && getPosition().getY() + y < COLUMNS && getPosition().getX() + x >= 0 && getPosition().getY() + y >= 0)
 				{

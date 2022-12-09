@@ -72,6 +72,8 @@ std::vector<Position> Knight::getPossibleActions(const Grid& grid) const
 	return positions;
 }
 
+
+
 bool Knight::equals(const Entity& other) const
 {
 	return false;

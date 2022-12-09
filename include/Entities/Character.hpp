@@ -38,8 +38,10 @@ public:
 	* @param will: will of the character
 	* @param res_phy: res_phy of the character
 	* @param res_mag: res_mag of the character
+	* @param magic: magic force of a character
+	* @param strength: pure strength of a character
 	*/
-	Character(const int x, const int y, const int hp, const char player, const int will, const int res_phy, const int res_mag);
+	Character(const int x, const int y, const int hp, const char player, const int will, const int res_phy, const int res_mag, const int magic, const int strength);
 	/**
 	* @brief Method which returns the player who owns the character
 	* 
@@ -82,6 +84,18 @@ public:
 	* @return returns special action possibility
 	*/
 	bool getSpecialAction() const;
+	/**
+	 * @brief Get the Magic object
+	 * 
+	 * @return int 
+	 */
+	int getMagic() const;
+	/**
+	 * @brief Get the Strength object
+	 * 
+	 * @return int 
+	 */
+	int getStrength() const;	
 	/**
 	* @brief Method which sets the current will value of the character.
 	*
@@ -147,6 +161,14 @@ public:
 	*/
 	virtual std::vector<Position> getPossibleActions(const Grid& grid) const = 0;
 
+	/** @brief Method which after verifying if there an enemy at the selected position will take his hp 
+	*	down depending on the strength or magic of the character attacking and the resistance of the one attacked
+	*
+	*
+	* @param pos 
+	*/
+	virtual void attack(const Position pos) const = 0;
+
 protected:
 
 	char _player;
@@ -156,6 +178,9 @@ protected:
 	bool _can_move;
 	bool _can_act;
 	bool _can_sp_act;
+	int _magic;
+	int _strength;
+	
 
 private:
 

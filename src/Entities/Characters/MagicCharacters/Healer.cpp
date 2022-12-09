@@ -54,6 +54,8 @@ std::vector<Position> Healer::getPossibleActions(const Grid& grid) const
 	return positions;
 }
 
+
+
 bool Healer::equals(const Entity& other) const
 {
 	return false;

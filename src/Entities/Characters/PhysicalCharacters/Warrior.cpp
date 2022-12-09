@@ -54,6 +54,8 @@ std::vector<Position> Warrior::getPossibleActions(const Grid& grid) const
 	return positions;
 }
 
+
+
 bool Warrior::equals(const Entity& other) const
 {
 	return false;

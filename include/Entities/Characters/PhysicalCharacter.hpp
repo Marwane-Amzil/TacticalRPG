@@ -18,9 +18,15 @@ public:
 	*/
 	virtual ~PhysicalCharacter();
 
-protected:
+	/**
+	 * @brief 
+	 * 
+	 */
+	void attack(const Position pos) const override;
 
-	int _strength;
+
+
+	
 
 private:
 

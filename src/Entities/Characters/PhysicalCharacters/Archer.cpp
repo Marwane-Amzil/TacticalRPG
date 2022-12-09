@@ -53,6 +53,8 @@ std::vector<Position> Archer::getPossibleActions(const Grid& grid) const
 	return positions;
 }
 
+
+
 bool Archer::equals(const Entity& other) const
 {
 	return false;

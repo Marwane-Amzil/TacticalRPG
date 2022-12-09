@@ -28,6 +28,13 @@ private:
 	*
 	*/
 	std::vector<Position> getPossibleActions(const Grid& grid) const override;
+	
+	/**
+	 * 
+	 *
+	*/
+	void attack(const Position pos) const override;
+	
 	/**
 	*
 	*/

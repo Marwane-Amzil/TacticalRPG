@@ -10,8 +10,8 @@ class AxeSkill : public PhysicalSkill
 public:
 	AxeSkill(int multiplier, int range, Effect* effect = nullptr);
 	~AxeSkill();
-	void activate(PhysicalCharacter* character) const override;
 
+	void activate(PhysicalCharacter* character) const;
 
 private:
 	typedef AxeSkill super;

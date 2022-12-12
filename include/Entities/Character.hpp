@@ -5,7 +5,8 @@
 
 #include <Entity.hpp> // Entity class
 #include <vector> // std::vector
-
+#include <array> // std::unordered_map
+#include <constants.hpp> 
 /**
 * @brief The Grid class. Forward declared to avoid recursive includes in some files when it's not needed.
 * The characters need to know what is in the grid that could block them, such as obstacle or even other
@@ -14,7 +15,7 @@
 * in the header file.
 */
 class Grid;
-
+class Skill;
 /**
 * @brief The Character class represents any entity that the user can play with. According to the rules,
 * this same entity is divided in several other classes (derived) to allow different play styles and strategies.
@@ -65,6 +66,13 @@ public:
 	*
 	* @return returns the magical resistance of a character
 	*/
+	
+	bool getAction() const;
+	
+	bool getSpecialAction() const;
+
+	
+	
 	int getResMag() const;
 	/**
 	* @brief Method which returns the possibility for a character to move
@@ -77,13 +85,16 @@ public:
 	*
 	* @return returns action possibility
 	*/
-	bool getAction() const;
+	Skill* getSkillOne() const;
 	/**
 	* @brief Method which returns the possibility for a character to perform an special action
 	*
 	* @return returns special action possibility
 	*/
-	bool getSpecialAction() const;
+	Skill* getSkillTwo() const;
+
+	Skill* getSpecialSkill() const;
+	
 	/**
 	 * @brief Get the Magic object
 	 *
@@ -95,6 +106,9 @@ public:
 	 *
 	 * @return int
 	 */
+
+	
+	
 	int getStrength() const;
 	/**
 	* @brief Method which sets the current will value of the character.
@@ -132,6 +146,16 @@ public:
 	* @param can_sp_act: special action possibility
 	*/
 	void setSpecialAction(const bool can_sp_act);
+
+
+	void setSkillOne(Skill* skill);
+	
+	void setSkillTwo(Skill* skill);
+	
+	void setSpecialSkill(Skill* skill);
+
+
+
 	/**
 	* @brief Character destructor. Explicitly defaulted (~Character() = default).
 	* Marked as virtual to perform proper destruction when the current Character is actually
@@ -179,6 +203,9 @@ protected:
 	bool _can_sp_act;
 	int _magic;
 	int _strength;
+	
+	std::array<Skill*, ::skill::NBSKILLS> _skills;
+
 
 
 private:

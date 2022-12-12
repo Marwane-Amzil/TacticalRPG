@@ -8,6 +8,8 @@ class MagicalSkill : public Skill
 public:
 	MagicalSkill();
 	~MagicalSkill();
+
+	virtual void activate(MagicCharacter* character) const = 0;
 	
 
 private:

@@ -3,13 +3,14 @@
 #define __PHYSICALSKILL__
 #include <Skill.hpp>
 
-class PhysicalCharacter;
 
 class PhysicalSkill : public Skill
 {
 public:
 	PhysicalSkill();
 	~PhysicalSkill();
+	
+	virtual void activate(Character* character) const = 0;
 
 private:
 	typedef Skill super;

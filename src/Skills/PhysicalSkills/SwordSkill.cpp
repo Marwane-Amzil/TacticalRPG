@@ -1,6 +1,6 @@
 #include <Effect.hpp>
 #include "./Skills/PhysicalSkills/SwordSkill.hpp"
-#include "./Entities/Characters/PhysicalCharacter.hpp"
+#include "Entities/Character.hpp"
 
 SwordSkill::SwordSkill(int multiplier, int range, Effect* effect)
 {
@@ -11,18 +11,12 @@ SwordSkill::~SwordSkill()
 {
 }
 
-int SwordSkill::attack(PhysicalCharacter* character) const
-{
-	return 0;
-}
 
-void SwordSkill::attack(PhysicalCharacter *character) const
+void SwordSkill::activate(Character *character) const
 {
 	int hp = character->getHp();
 	int strength = character->getStrength();
 	int res_strength = character->getResPhy();
 	
-	hp = hp - (strength * (1 - (res_strength / 200))
-	
-	return hp;
+	character->setHp(hp - (strength * (1 - (res_strength / 200))));
 }

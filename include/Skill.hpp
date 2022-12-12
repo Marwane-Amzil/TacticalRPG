@@ -13,6 +13,8 @@ class Skill
 		int getMultiplier() const;
 		int getRange() const;
 		Effect* getEffect() const;
+
+		void activate(Character* character) const;
 	private:
 		int _multiplier;
 		int _range;

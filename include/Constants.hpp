@@ -49,4 +49,9 @@ namespace archer
     constexpr int MOVES = 0;
 }
 
+namespace skill
+{
+	constexpr size_t NBSKILLS = 0;
+}
+
 #endif //!__CONSTANTS_H__

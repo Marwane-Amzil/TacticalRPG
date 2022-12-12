@@ -9,7 +9,8 @@ class SwordSkill : public PhysicalSkill
 public:
 	SwordSkill(int multiplier, int range, Effect* effect = nullptr);
 	~SwordSkill();
-	void activate(PhysicalCharacter *character) const;
+
+	void activate(Character* character) const;
 	
 
 private:

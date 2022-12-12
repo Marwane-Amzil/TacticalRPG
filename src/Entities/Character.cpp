@@ -29,6 +29,22 @@ bool Character::getMove() const
 	return _can_move;
 }
 
+
+Skill* Character::getSkillOne() const
+{
+	return _skills[0];
+}
+
+Skill* Character::getSkillTwo() const
+{
+	return _skills[1];
+}
+
+Skill* Character::getSpecialSkill() const
+{
+	return _skills[2];
+}
+
 bool Character::getAction() const
 {
 	return _can_act;

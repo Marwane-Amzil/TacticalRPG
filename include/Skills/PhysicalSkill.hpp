@@ -3,6 +3,8 @@
 #define __PHYSICALSKILL__
 #include <Skill.hpp>
 
+class PhysicalCharacter;
+
 class PhysicalSkill : public Skill
 {
 public:

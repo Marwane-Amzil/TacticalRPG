@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Skills\PhysicalSkills\AxeSkill.cpp" />
     <ClCompile Include="src\Effect\Burn.cpp" />
     <ClCompile Include="src\Effect.cpp" />
     <ClCompile Include="src\Skills\MagicalSkill.cpp" />
@@ -40,6 +41,7 @@
     <ClCompile Include="src\Skills\PhysicalSkills\SwordSkill.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Skills\PhysicalSkills\AxeSkill.hpp" />
     <ClInclude Include="include\Effect\Burn.hpp" />
     <ClInclude Include="include\Effect.hpp" />
     <ClInclude Include="include\constants.hpp" />

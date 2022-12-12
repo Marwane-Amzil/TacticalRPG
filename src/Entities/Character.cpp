@@ -1,7 +1,7 @@
 #include <Entities/Character.hpp>
 
-Character::Character(const int x, const int y, const int hp, const char player, const int will, const int res_phy, const int res_mag)
-	: super(x, y, hp), _player(player), _will(will), _res_phy(res_phy), _res_mag(res_mag), _can_move(true), _can_act(true), _can_sp_act(false) {}
+Character::Character(const int x, const int y, const int hp, const char player, const int will, const int res_phy, const int res_mag, const int magic, const int strength)
+	: super(x, y, hp), _player(player), _will(will), _res_phy(res_phy), _res_mag(res_mag), _can_move(true), _can_act(true), _can_sp_act(false), _magic(magic), _strength(strength) {}
 
 // ----------------------------------------------   Start  Getters / Setters    ------------------------------------------------------------
 char Character::getPlayer() const
@@ -39,6 +39,16 @@ bool Character::getSpecialAction() const
 	return _can_sp_act;
 }
 
+int Character::getMagic() const
+{
+	return _magic;
+}
+
+int Character::getStrength() const
+{
+	return _strength;
+}
+
 void Character::setWill(const int will)
 {
 	_will = will;
@@ -68,4 +78,6 @@ void Character::setSpecialAction(const bool can_sp_act)
 {
 	_can_sp_act = can_sp_act;
 }
+
+
 // ----------------------------------------------   End  Getters / Setters    ------------------------------------------------------------

@@ -18,9 +18,14 @@ public:
 	*/
 	virtual ~PhysicalCharacter();
 
-protected:
+	/**
+	 * @brief
+	 *
+	 */
 
-	int _strength;
+
+
+
 
 private:
 

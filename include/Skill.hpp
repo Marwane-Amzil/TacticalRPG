@@ -3,6 +3,8 @@
 #define __SKILL_H__
 
 class Effect;
+class Character;
+
 class Skill
 {
 	public:
@@ -11,7 +13,6 @@ class Skill
 		int getMultiplier() const;
 		int getRange() const;
 		Effect* getEffect() const;
-
 	private:
 		int _multiplier;
 		int _range;

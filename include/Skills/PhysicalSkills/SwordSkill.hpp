@@ -1,18 +1,20 @@
 #pragma once
 #ifndef __SWORDSKILL_H__
 #define __SWORDSKILL_H__
+#include <Skills/PhysicalSkill.hpp>
 
 class Effect;
-class SwordSkill
+class SwordSkill : public PhysicalSkill
 {
 public:
 	SwordSkill(int multiplier, int range, Effect* effect = nullptr);
 	~SwordSkill();
-	int attack(int strenght, int res_strengh) const;
+	void activate(PhysicalCharacter *character) const;
 	
 
 private:
 	typedef SwordSkill super;
+	const int baseDamage = 10;
 };
 
 #endif // !__SKILL_H__ 

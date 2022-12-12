@@ -18,9 +18,18 @@ public:
 	*/
 	virtual ~MagicCharacter();
 
-protected:
+	/**
+	 * @brief
+	 *
+	 *
+	*/
+	int getMagic();
 
-	int _magic;
+	/**
+	 * @brief
+	 *
+	 */
+
 
 private:
 

@@ -18,4 +18,3 @@ const Effect* Skill::getEffect() const
 {
 	return _effect;
 }
-

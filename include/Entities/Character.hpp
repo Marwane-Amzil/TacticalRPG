@@ -5,8 +5,9 @@
 
 #include <Entity.hpp> // Entity class
 #include <vector> // std::vector
-#include <array> // std::unordered_map
-#include <constants.hpp> 
+#include <array> // std::array
+#include <Constants.hpp> // constants::skill::MAX_SKILLS
+
 /**
 * @brief The Grid class. Forward declared to avoid recursive includes in some files when it's not needed.
 * The characters need to know what is in the grid that could block them, such as obstacle or even other
@@ -15,7 +16,12 @@
 * in the header file.
 */
 class Grid;
+
+/**
+* @brief
+*/
 class Skill;
+
 /**
 * @brief The Character class represents any entity that the user can play with. According to the rules,
 * this same entity is divided in several other classes (derived) to allow different play styles and strategies.
@@ -66,14 +72,15 @@ public:
 	*
 	* @return returns the magical resistance of a character
 	*/
-	
-	bool getAction() const;
-	
-	bool getSpecialAction() const;
-
-	
-	
 	int getResMag() const;
+	/**
+	* @brief
+	*/
+	bool getAction() const;
+	/**
+	* @brief
+	*/
+	bool getSpecialAction() const;
 	/**
 	* @brief Method which returns the possibility for a character to move
 	*
@@ -81,34 +88,24 @@ public:
 	*/
 	bool getMove() const;
 	/**
-	* @brief Method which returns the possibility for a character to perform an action
-	*
-	* @return returns action possibility
+	* @brief
 	*/
-	Skill* getSkillOne() const;
+	const Skill* getFirstSkill() const;
 	/**
-	* @brief Method which returns the possibility for a character to perform an special action
-	*
-	* @return returns special action possibility
+	* @brief
 	*/
-	Skill* getSkillTwo() const;
-
-	Skill* getSpecialSkill() const;
-	
+	const Skill* getSecondSkill() const;
 	/**
-	 * @brief Get the Magic object
-	 *
-	 * @return int
-	 */
+	* @brief
+	*/
+	const Skill* getSpecialSkill() const;
+	/**
+	* @brief
+	*/
 	int getMagic() const;
 	/**
-	 * @brief Get the Strength object
-	 *
-	 * @return int
-	 */
-
-	
-	
+	* @brief
+	*/
 	int getStrength() const;
 	/**
 	* @brief Method which sets the current will value of the character.
@@ -146,16 +143,18 @@ public:
 	* @param can_sp_act: special action possibility
 	*/
 	void setSpecialAction(const bool can_sp_act);
-
-
-	void setSkillOne(Skill* skill);
-	
-	void setSkillTwo(Skill* skill);
-	
+	/**
+	* @brief
+	*/
+	void setFirstSkill(Skill* skill);
+	/**
+	* @brief
+	*/
+	void setSecondSkill(Skill* skill);
+	/**
+	* @brief
+	*/
 	void setSpecialSkill(Skill* skill);
-
-
-
 	/**
 	* @brief Character destructor. Explicitly defaulted (~Character() = default).
 	* Marked as virtual to perform proper destruction when the current Character is actually
@@ -185,13 +184,6 @@ public:
 	*/
 	virtual std::vector<Position> getPossibleActions(const Grid& grid) const = 0;
 
-	/** @brief Method which after verifying if there an enemy at the selected position will take his hp
-	*	down depending on the strength or magic of the character attacking and the resistance of the one attacked
-	*
-	*
-	* @param pos
-	*/
-
 protected:
 
 	char _player;
@@ -203,10 +195,7 @@ protected:
 	bool _can_sp_act;
 	int _magic;
 	int _strength;
-	
-	std::array<Skill*, ::skill::NBSKILLS> _skills;
-
-
+	std::array<Skill*, ::skill::MAX_SKILLS> _skills;
 
 private:
 

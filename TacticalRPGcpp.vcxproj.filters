@@ -75,6 +75,9 @@
     <ClCompile Include="src\Skills\PhysicalSkills\AxeSkill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Skills\MagicalSkills\Fireball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Entities\Character.hpp">
@@ -135,6 +138,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Skills\PhysicalSkills\AxeSkill.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Skills\MagicalSkills\Fireball.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

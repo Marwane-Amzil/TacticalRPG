@@ -1,21 +1,30 @@
 #pragma once
-#ifndef __SWORDSKILL_H__
-#define __SWORDSKILL_H__
+
+#ifndef __SWORD_SKILL_H__
+#define __SWORD_SKILL_H__
+
 #include <Skills/PhysicalSkill.hpp>
 
-class Effect;
 class SwordSkill : public PhysicalSkill
 {
 public:
-	SwordSkill(int multiplier, int range, Effect* effect = nullptr);
-	~SwordSkill();
-
-	void activate(Character* character) const;
 	
+	/**
+	*
+	*/
+	explicit SwordSkill(int multiplier, int range, Effect* effect = nullptr);
+	/**
+	*
+	*/
+	inline ~SwordSkill() noexcept = default;
 
 private:
-	typedef SwordSkill super;
-	const int baseDamage = 10;
+	
+	typedef PhysicalSkill super;
+	
+private:
+	
+	const int base_damage = 10;
 };
 
-#endif // !__SKILL_H__ 
+#endif // !__SWORD_SKILL_H__ 

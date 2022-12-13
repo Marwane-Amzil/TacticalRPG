@@ -1,14 +1,8 @@
-#include "Skill.hpp"
+#include <Skill.hpp>
 #include <Effect.hpp>
 
 Skill::Skill(int multiplier, int range , Effect *effect) 
-	: _multiplier(multiplier), _range(range), _effect(effect)
-{
-}
-
-Skill::~Skill()
-{
-}
+	: _multiplier(multiplier), _range(range), _effect(effect) {}
 
 int Skill::getMultiplier() const
 {
@@ -20,7 +14,7 @@ int Skill::getRange() const
 	return _range;
 }
 
-Effect* Skill::getEffect() const
+const Effect* Skill::getEffect() const
 {
 	return _effect;
 }

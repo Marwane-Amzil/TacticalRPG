@@ -1,18 +1,28 @@
 #pragma once
-#ifndef __MAGICALSKILL_H__
-#define __MAGICALSKILL__
+
+#ifndef __MAGICAL_SKILL_H__
+#define __MAGICAL_SKILL_H__
+
 #include <Skill.hpp>
 
 class MagicalSkill : public Skill
 {
 public:
-	MagicalSkill();
-	~MagicalSkill();
-
-	virtual void activate(MagicCharacter* character) const = 0;
 	
+	/**
+	*
+	*/
+	explicit MagicalSkill(int multiplier, int range, Effect* effect = nullptr);
+	/**
+	*
+	*/
+	inline virtual ~MagicalSkill() noexcept = default;
 
 private:
+	
+	/**
+	*
+	*/
 	typedef Skill super;
 };
-#endif // !__MAGICALSKILL_H__
+#endif // !__MAGICAL_SKILL_H__

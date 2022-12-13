@@ -1,20 +1,34 @@
 #pragma once
-#ifndef __AXEKILL_H__
-#define __AXESKILL_H__
-#include <Skills/PhysicalSkill.hpp>
 
-class Effect;
+#ifndef __AXE_SKILL_H__
+#define __AXE_SKILL_H__
+
+#include <Skills/PhysicalSkill.hpp>
 
 class AxeSkill : public PhysicalSkill
 {
 public:
-	AxeSkill(int multiplier, int range, Effect* effect = nullptr);
-	~AxeSkill();
-
-	void activate(PhysicalCharacter* character) const;
+	
+	/**
+	*
+	*/
+	explicit AxeSkill(int multiplier, int range, Effect* effect = nullptr);
+	/**
+	*
+	*/
+	inline ~AxeSkill() noexcept = default;
+	/**
+	*
+	*/
+	void activate(Character* character) const override;
 
 private:
-	typedef AxeSkill super;
+
+	typedef PhysicalSkill super;
+
+private:
+	
+	const int base_damage = 15;
 };
 
-#endif // !__SKILL_H__ 
+#endif // !__AXE_SKILL_H__ 

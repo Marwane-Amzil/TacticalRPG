@@ -51,7 +51,7 @@ namespace archer
 
 namespace skill
 {
-	constexpr size_t NBSKILLS = 0;
+	constexpr size_t MAX_SKILLS = 3;
 }
 
 #endif //!__CONSTANTS_H__

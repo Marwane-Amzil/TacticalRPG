@@ -1,18 +1,29 @@
 #pragma once
-#ifndef __PHYSICALSKILL_H__
-#define __PHYSICALSKILL__
-#include <Skill.hpp>
 
+#ifndef __PHYSICAL_SKILL_H__
+#define __PHYSICAL_SKILL_H__
+
+#include <Skill.hpp>
 
 class PhysicalSkill : public Skill
 {
 public:
-	PhysicalSkill();
-	~PhysicalSkill();
-	
-	virtual void activate(Character* character) const = 0;
+
+	/**
+	*
+	*/
+	explicit PhysicalSkill(int multiplier, int range, Effect* effect = nullptr);
+	/**
+	*
+	*/
+	inline virtual ~PhysicalSkill() noexcept = default;
 
 private:
+	
+	/**
+	*
+	*/
 	typedef Skill super;
 };
-#endif // !__MAGICALSKILL_H__
+
+#endif // !__MAGICAL_SKILL_H__

@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
         std::cout << position << std::endl;
     }
         
-    std::cout << constants_GRID::COLUMNS << std::endl;
+    //std::cout << constants_GRID::COLUMNS << std::endl;
     std::cin.get();
 
     return 0;

@@ -22,7 +22,7 @@ namespace gui
         };
     }
 
-    class Button : public sf::Drawable
+    class Button : public sf::Drawable, public sf::Transformable
     {
     public:
 
@@ -58,11 +58,11 @@ namespace gui
 
         void update(const sf::Vector2i& mouse_position);
 
-        inline virtual ~Button() noexcept = default;
+        virtual ~Button() noexcept;
 
     private:
 
-        void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
     private:
 

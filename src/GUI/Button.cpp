@@ -102,3 +102,10 @@ void gui::Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(_shape, states);
 }
+
+gui::Button::~Button() noexcept
+{
+	delete _idle_texture;
+	delete _hover_texture;
+	delete _press_texture;
+}

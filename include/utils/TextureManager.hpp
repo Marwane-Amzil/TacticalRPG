@@ -23,7 +23,7 @@ namespace utils
 
 		void loadTextures();
 
-		const sf::Texture& get(const std::string& type) const;
+		const sf::Texture* get(const std::string& type) const;
 
 	private:
 

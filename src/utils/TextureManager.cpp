@@ -8,7 +8,7 @@ utils::TextureManager::TextureManager()
 
 void utils::TextureManager::loadTextures()
 {
-	std::ifstream infile("./assets/data/textures.bin", std::ios::binary | std::ios::in);
+	std::ifstream infile("assets/data/textures.bin", std::ios::binary | std::ios::in);
 	infile.seekg(0, std::ios::end);
 	std::streampos length = infile.tellg();
 	infile.seekg(0, std::ios::beg);
@@ -16,19 +16,19 @@ void utils::TextureManager::loadTextures()
 	infile.read(buffer, length);
 	infile.close();
 
-	textures_rootT* textures_r = Gettextures_root(buffer)->UnPack();
+	auto textures_list = GetTextureRoot(buffer)->textures();
 
-	for (const std::unique_ptr<textureT>& texture_pack : textures_r->textures)
+	for (size_t i = 0; i < textures_list->size(); i++)
 	{
 		sf::Texture* texture = new sf::Texture;
-		texture->loadFromFile(texture_pack->path);
-		_textures[texture_pack->type] = texture;
+		texture->loadFromFile(textures_list->Get(i)->path()->data());
+		_textures[textures_list->Get(i)->type()->data()] = texture;
 	}
-
+	
 	delete[] buffer;
 }
 
-const sf::Texture& utils::TextureManager::get(const std::string& type) const
+const sf::Texture* utils::TextureManager::get(const std::string& type) const
 {
-	return *_textures.at(type);
+	return _textures.at(type);
 }

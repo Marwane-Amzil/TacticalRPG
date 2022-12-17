@@ -6,12 +6,7 @@
 gui::EntitySprite::EntitySprite(Entity* entity)
 	: _vertices(), _texture(nullptr), _texture_rect(), _entity(entity), _animations() {}
 
-const Entity* gui::EntitySprite::getEntity() const
-{
-	return _entity;
-}
-
-Entity* gui::EntitySprite::getEntity()
+Entity* gui::EntitySprite::getEntity() const
 {
 	return _entity;
 }

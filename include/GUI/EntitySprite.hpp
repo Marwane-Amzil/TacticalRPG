@@ -26,9 +26,7 @@ namespace gui
 
 		explicit EntitySprite(Entity* entity = nullptr);
 
-		const Entity* getEntity() const;
-
-		Entity* getEntity();
+		Entity* getEntity() const;
 
 		const sf::Texture* getTexture() const;
 

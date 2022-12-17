@@ -37,7 +37,11 @@ public:
 	* 
 	* @param entity: entity to add
 	*/
-	void addEntity(Entity* const entity);
+	void addEntity(Entity* entity);
+	/**
+	*
+	*/
+	void removeEntity(Entity* entity);
 	/**
 	* @brief Method which moves an entity from its position to a given position. Since
 	* the movement of a character is restricted to cases where there's nothing (nullptr),
@@ -50,8 +54,7 @@ public:
 	*/
 	void move(const int from_x, const int from_y, const int to_x, const int to_y);
 	/**
-	* @brief Method which display the grid and its contents inside the console.
-	* It is mainly used for debugging process in case we would need a vision of what is going on.
+	*
 	*/
 	void display() const;
 	/**
@@ -64,7 +67,7 @@ public:
 	* 
 	* @return returns the asked row
 	*/
-	const std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index) const;
+	const std::array<Entity*, ::grid::COLUMNS>& operator[](size_t index) const;
 	/**
 	* @brief Overloaded [] operator for the Grid class. Behaves the same as any
 	* [] operator in a standard container such a C-style array of std::vector.
@@ -75,7 +78,7 @@ public:
 	*
 	* @return returns the asked row
 	*/
-	std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index);
+	std::array<Entity*, ::grid::COLUMNS>& operator[](size_t index);
 
 private:
 

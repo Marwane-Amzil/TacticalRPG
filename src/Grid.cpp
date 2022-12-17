@@ -17,6 +17,14 @@ void Grid::addEntity(Entity* const entity)
 	_grid[entity->getPosition().getX()][entity->getPosition().getY()] = entity;
 }
 
+void Grid::removeEntity(Entity* entity)
+{
+	int x = entity->getPosition().getX();
+	int y = entity->getPosition().getY();
+	
+	_grid[x][y] = nullptr;
+}
+
 void Grid::move(const int from_x, const int from_y, const int to_x, const int to_y)
 {
 	/*
@@ -62,12 +70,12 @@ void Grid::display() const
 	std::cout << "    " + std::string(-1 + (COLUMNS * 4), '-') << '\n';
 }
 
-const std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index) const
+const std::array<Entity*, COLUMNS>& Grid::operator[](size_t index) const
 {
 	return _grid[index];
 }
 
-std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index)
+std::array<Entity*, COLUMNS>& Grid::operator[](size_t index)
 {
 	return _grid[index];
 }

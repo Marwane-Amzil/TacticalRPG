@@ -1,7 +1,7 @@
 #include <utils/SpriteFactory.hpp>
 #include <utils/TextureManager.hpp>
-#include <GUI/World.hpp>
-#include <GUI/EntitySprite.hpp>
+#include <GUI/game/World.hpp>
+#include <GUI/game/EntitySprite.hpp>
 #include <Entity.hpp>
 
 utils::SpriteFactory::SpriteFactory(gui::World& world, TextureManager& texture_manager)

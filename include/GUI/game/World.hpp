@@ -4,13 +4,14 @@
 #define __WORLD_H__
 
 #include <SFML/Graphics/RectangleShape.hpp>
-#include <GUI/EntitySprite.hpp>
 #include <Grid.hpp>
 #include <array>
 #include <Constants.hpp>
 
 namespace gui
 {
+	class EntitySprite;
+	
 	class World : public sf::Drawable
 	{
 	public:

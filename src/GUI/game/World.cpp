@@ -1,4 +1,5 @@
-#include <GUI/World.hpp>
+#include <GUI/game/World.hpp>
+#include <GUI/game/EntitySprite.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <Entity.hpp>
 

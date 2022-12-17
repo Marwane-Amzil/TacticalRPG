@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
-#include <GUI/World.hpp>
-#include <GUI/EntitySprite.hpp>
+#include <GUI/game/World.hpp>
+#include <GUI/game/EntitySprite.hpp>
 #include <utils/SpriteFactory.hpp>
 #include <utils/TextureManager.hpp>
 #include <Grid.hpp>

@@ -54,7 +54,7 @@
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Knight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\Button.cpp">
+    <ClCompile Include="src\GUI\ui\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\TextureManager.cpp">
@@ -66,10 +66,13 @@
     <ClCompile Include="src\utils\SpriteFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\EntitySprite.cpp">
+    <ClCompile Include="src\GUI\game\EntitySprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\World.cpp">
+    <ClCompile Include="src\GUI\game\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\ui\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,13 +134,16 @@
     <ClInclude Include="include\schemas\animations.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\EntitySprite.hpp">
+    <ClInclude Include="include\GUI\game\EntitySprite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GUI\Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\World.hpp">
+    <ClInclude Include="include\GUI\game\World.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\ui\Menu.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

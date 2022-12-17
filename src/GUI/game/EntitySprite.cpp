@@ -1,4 +1,4 @@
-#include <GUI/EntitySprite.hpp>
+#include <GUI/game/EntitySprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <Entity.hpp>

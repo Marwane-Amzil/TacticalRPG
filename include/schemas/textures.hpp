@@ -6,31 +6,19 @@
 
 #include "flatbuffers/flatbuffers.h"
 
-struct textures_root;
-struct textures_rootBuilder;
-struct textures_rootT;
+struct TextureRoot;
+struct TextureRootBuilder;
 
-struct texture;
-struct textureBuilder;
-struct textureT;
+struct Texture;
+struct TextureBuilder;
 
-struct textures_rootT : public flatbuffers::NativeTable {
-  typedef textures_root TableType;
-  std::vector<std::unique_ptr<textureT>> textures{};
-  textures_rootT() = default;
-  textures_rootT(const textures_rootT &o);
-  textures_rootT(textures_rootT&&) FLATBUFFERS_NOEXCEPT = default;
-  textures_rootT &operator=(textures_rootT o) FLATBUFFERS_NOEXCEPT;
-};
-
-struct textures_root FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
-  typedef textures_rootT NativeTableType;
-  typedef textures_rootBuilder Builder;
+struct TextureRoot FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+  typedef TextureRootBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TEXTURES = 4
   };
-  const flatbuffers::Vector<flatbuffers::Offset<texture>> *textures() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<texture>> *>(VT_TEXTURES);
+  const flatbuffers::Vector<flatbuffers::Offset<Texture>> *textures() const {
+    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Texture>> *>(VT_TEXTURES);
   }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
@@ -39,57 +27,45 @@ struct textures_root FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
            verifier.VerifyVectorOfTables(textures()) &&
            verifier.EndTable();
   }
-  textures_rootT *UnPack(const flatbuffers::resolver_function_t *_resolver = nullptr) const;
-  void UnPackTo(textures_rootT *_o, const flatbuffers::resolver_function_t *_resolver = nullptr) const;
-  static flatbuffers::Offset<textures_root> Pack(flatbuffers::FlatBufferBuilder &_fbb, const textures_rootT* _o, const flatbuffers::rehasher_function_t *_rehasher = nullptr);
 };
 
-struct textures_rootBuilder {
-  typedef textures_root Table;
+struct TextureRootBuilder {
+  typedef TextureRoot Table;
   flatbuffers::FlatBufferBuilder &fbb_;
   flatbuffers::uoffset_t start_;
-  void add_textures(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<texture>>> textures) {
-    fbb_.AddOffset(textures_root::VT_TEXTURES, textures);
+  void add_textures(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Texture>>> textures) {
+    fbb_.AddOffset(TextureRoot::VT_TEXTURES, textures);
   }
-  explicit textures_rootBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit TextureRootBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<textures_root> Finish() {
+  flatbuffers::Offset<TextureRoot> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<textures_root>(end);
+    auto o = flatbuffers::Offset<TextureRoot>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<textures_root> Createtextures_root(
+inline flatbuffers::Offset<TextureRoot> CreateTextureRoot(
     flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<texture>>> textures = 0) {
-  textures_rootBuilder builder_(_fbb);
+    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Texture>>> textures = 0) {
+  TextureRootBuilder builder_(_fbb);
   builder_.add_textures(textures);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<textures_root> Createtextures_rootDirect(
+inline flatbuffers::Offset<TextureRoot> CreateTextureRootDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
-    std::vector<flatbuffers::Offset<texture>> *textures = nullptr) {
-  auto textures__ = textures ? _fbb.CreateVectorOfSortedTables<texture>(textures) : 0;
-  return Createtextures_root(
+    std::vector<flatbuffers::Offset<Texture>> *textures = nullptr) {
+  auto textures__ = textures ? _fbb.CreateVectorOfSortedTables<Texture>(textures) : 0;
+  return CreateTextureRoot(
       _fbb,
       textures__);
 }
 
-flatbuffers::Offset<textures_root> Createtextures_root(flatbuffers::FlatBufferBuilder &_fbb, const textures_rootT *_o, const flatbuffers::rehasher_function_t *_rehasher = nullptr);
-
-struct textureT : public flatbuffers::NativeTable {
-  typedef texture TableType;
-  std::string type{};
-  std::string path{};
-};
-
-struct texture FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
-  typedef textureT NativeTableType;
-  typedef textureBuilder Builder;
+struct Texture FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+  typedef TextureBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TYPE = 4,
     VT_PATH = 6
@@ -97,7 +73,7 @@ struct texture FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   const flatbuffers::String *type() const {
     return GetPointer<const flatbuffers::String *>(VT_TYPE);
   }
-  bool KeyCompareLessThan(const texture *o) const {
+  bool KeyCompareLessThan(const Texture *o) const {
     return *type() < *o->type();
   }
   int KeyCompareWithValue(const char *_type) const {
@@ -114,162 +90,80 @@ struct texture FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
            verifier.VerifyString(path()) &&
            verifier.EndTable();
   }
-  textureT *UnPack(const flatbuffers::resolver_function_t *_resolver = nullptr) const;
-  void UnPackTo(textureT *_o, const flatbuffers::resolver_function_t *_resolver = nullptr) const;
-  static flatbuffers::Offset<texture> Pack(flatbuffers::FlatBufferBuilder &_fbb, const textureT* _o, const flatbuffers::rehasher_function_t *_rehasher = nullptr);
 };
 
-struct textureBuilder {
-  typedef texture Table;
+struct TextureBuilder {
+  typedef Texture Table;
   flatbuffers::FlatBufferBuilder &fbb_;
   flatbuffers::uoffset_t start_;
   void add_type(flatbuffers::Offset<flatbuffers::String> type) {
-    fbb_.AddOffset(texture::VT_TYPE, type);
+    fbb_.AddOffset(Texture::VT_TYPE, type);
   }
   void add_path(flatbuffers::Offset<flatbuffers::String> path) {
-    fbb_.AddOffset(texture::VT_PATH, path);
+    fbb_.AddOffset(Texture::VT_PATH, path);
   }
-  explicit textureBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit TextureBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<texture> Finish() {
+  flatbuffers::Offset<Texture> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<texture>(end);
-    fbb_.Required(o, texture::VT_TYPE);
+    auto o = flatbuffers::Offset<Texture>(end);
+    fbb_.Required(o, Texture::VT_TYPE);
     return o;
   }
 };
 
-inline flatbuffers::Offset<texture> Createtexture(
+inline flatbuffers::Offset<Texture> CreateTexture(
     flatbuffers::FlatBufferBuilder &_fbb,
     flatbuffers::Offset<flatbuffers::String> type = 0,
     flatbuffers::Offset<flatbuffers::String> path = 0) {
-  textureBuilder builder_(_fbb);
+  TextureBuilder builder_(_fbb);
   builder_.add_path(path);
   builder_.add_type(type);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<texture> CreatetextureDirect(
+inline flatbuffers::Offset<Texture> CreateTextureDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
     const char *type = nullptr,
     const char *path = nullptr) {
   auto type__ = type ? _fbb.CreateString(type) : 0;
   auto path__ = path ? _fbb.CreateString(path) : 0;
-  return Createtexture(
+  return CreateTexture(
       _fbb,
       type__,
       path__);
 }
 
-flatbuffers::Offset<texture> Createtexture(flatbuffers::FlatBufferBuilder &_fbb, const textureT *_o, const flatbuffers::rehasher_function_t *_rehasher = nullptr);
-
-inline textures_rootT::textures_rootT(const textures_rootT &o) {
-  textures.reserve(o.textures.size());
-  for (const auto &v : o.textures) { textures.emplace_back((v) ? new textureT(*v) : nullptr); }
+inline const TextureRoot *GetTextureRoot(const void *buf) {
+  return flatbuffers::GetRoot<TextureRoot>(buf);
 }
 
-inline textures_rootT &textures_rootT::operator=(textures_rootT o) FLATBUFFERS_NOEXCEPT {
-  std::swap(textures, o.textures);
-  return *this;
+inline const TextureRoot *GetSizePrefixedTextureRoot(const void *buf) {
+  return flatbuffers::GetSizePrefixedRoot<TextureRoot>(buf);
 }
 
-inline textures_rootT *textures_root::UnPack(const flatbuffers::resolver_function_t *_resolver) const {
-  auto _o = std::unique_ptr<textures_rootT>(new textures_rootT());
-  UnPackTo(_o.get(), _resolver);
-  return _o.release();
-}
-
-inline void textures_root::UnPackTo(textures_rootT *_o, const flatbuffers::resolver_function_t *_resolver) const {
-  (void)_o;
-  (void)_resolver;
-  { auto _e = textures(); if (_e) { _o->textures.resize(_e->size()); for (flatbuffers::uoffset_t _i = 0; _i < _e->size(); _i++) { if(_o->textures[_i]) { _e->Get(_i)->UnPackTo(_o->textures[_i].get(), _resolver); } else { _o->textures[_i] = std::unique_ptr<textureT>(_e->Get(_i)->UnPack(_resolver)); }; } } }
-}
-
-inline flatbuffers::Offset<textures_root> textures_root::Pack(flatbuffers::FlatBufferBuilder &_fbb, const textures_rootT* _o, const flatbuffers::rehasher_function_t *_rehasher) {
-  return Createtextures_root(_fbb, _o, _rehasher);
-}
-
-inline flatbuffers::Offset<textures_root> Createtextures_root(flatbuffers::FlatBufferBuilder &_fbb, const textures_rootT *_o, const flatbuffers::rehasher_function_t *_rehasher) {
-  (void)_rehasher;
-  (void)_o;
-  struct _VectorArgs { flatbuffers::FlatBufferBuilder *__fbb; const textures_rootT* __o; const flatbuffers::rehasher_function_t *__rehasher; } _va = { &_fbb, _o, _rehasher}; (void)_va;
-  auto _textures = _o->textures.size() ? _fbb.CreateVector<flatbuffers::Offset<texture>> (_o->textures.size(), [](size_t i, _VectorArgs *__va) { return Createtexture(*__va->__fbb, __va->__o->textures[i].get(), __va->__rehasher); }, &_va ) : 0;
-  return Createtextures_root(
-      _fbb,
-      _textures);
-}
-
-inline textureT *texture::UnPack(const flatbuffers::resolver_function_t *_resolver) const {
-  auto _o = std::unique_ptr<textureT>(new textureT());
-  UnPackTo(_o.get(), _resolver);
-  return _o.release();
-}
-
-inline void texture::UnPackTo(textureT *_o, const flatbuffers::resolver_function_t *_resolver) const {
-  (void)_o;
-  (void)_resolver;
-  { auto _e = type(); if (_e) _o->type = _e->str(); }
-  { auto _e = path(); if (_e) _o->path = _e->str(); }
-}
-
-inline flatbuffers::Offset<texture> texture::Pack(flatbuffers::FlatBufferBuilder &_fbb, const textureT* _o, const flatbuffers::rehasher_function_t *_rehasher) {
-  return Createtexture(_fbb, _o, _rehasher);
-}
-
-inline flatbuffers::Offset<texture> Createtexture(flatbuffers::FlatBufferBuilder &_fbb, const textureT *_o, const flatbuffers::rehasher_function_t *_rehasher) {
-  (void)_rehasher;
-  (void)_o;
-  struct _VectorArgs { flatbuffers::FlatBufferBuilder *__fbb; const textureT* __o; const flatbuffers::rehasher_function_t *__rehasher; } _va = { &_fbb, _o, _rehasher}; (void)_va;
-  auto _type = _fbb.CreateString(_o->type);
-  auto _path = _o->path.empty() ? 0 : _fbb.CreateString(_o->path);
-  return Createtexture(
-      _fbb,
-      _type,
-      _path);
-}
-
-inline const textures_root *Gettextures_root(const void *buf) {
-  return flatbuffers::GetRoot<textures_root>(buf);
-}
-
-inline const textures_root *GetSizePrefixedtextures_root(const void *buf) {
-  return flatbuffers::GetSizePrefixedRoot<textures_root>(buf);
-}
-
-inline bool Verifytextures_rootBuffer(
+inline bool VerifyTextureRootBuffer(
     flatbuffers::Verifier &verifier) {
-  return verifier.VerifyBuffer<textures_root>(nullptr);
+  return verifier.VerifyBuffer<TextureRoot>(nullptr);
 }
 
-inline bool VerifySizePrefixedtextures_rootBuffer(
+inline bool VerifySizePrefixedTextureRootBuffer(
     flatbuffers::Verifier &verifier) {
-  return verifier.VerifySizePrefixedBuffer<textures_root>(nullptr);
+  return verifier.VerifySizePrefixedBuffer<TextureRoot>(nullptr);
 }
 
-inline void Finishtextures_rootBuffer(
+inline void FinishTextureRootBuffer(
     flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<textures_root> root) {
+    flatbuffers::Offset<TextureRoot> root) {
   fbb.Finish(root);
 }
 
-inline void FinishSizePrefixedtextures_rootBuffer(
+inline void FinishSizePrefixedTextureRootBuffer(
     flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<textures_root> root) {
+    flatbuffers::Offset<TextureRoot> root) {
   fbb.FinishSizePrefixed(root);
-}
-
-inline std::unique_ptr<textures_rootT> UnPacktextures_root(
-    const void *buf,
-    const flatbuffers::resolver_function_t *res = nullptr) {
-  return std::unique_ptr<textures_rootT>(Gettextures_root(buf)->UnPack(res));
-}
-
-inline std::unique_ptr<textures_rootT> UnPackSizePrefixedtextures_root(
-    const void *buf,
-    const flatbuffers::resolver_function_t *res = nullptr) {
-  return std::unique_ptr<textures_rootT>(GetSizePrefixedtextures_root(buf)->UnPack(res));
 }
 
 #endif  // FLATBUFFERS_GENERATED_TEXTURES_H_

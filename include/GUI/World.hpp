@@ -5,10 +5,9 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <GUI/EntitySprite.hpp>
+#include <Grid.hpp>
 #include <array>
 #include <Constants.hpp>
-
-class Grid;
 
 namespace gui
 {
@@ -18,17 +17,26 @@ namespace gui
 
 		explicit World();
 
-		void addCharacter(EntitySprite* sprite);
+		const Grid& getGrid() const;
 
-		virtual inline ~World() noexcept;
+		void addEntity(EntitySprite* sprite);
+
+		void removeEntity(EntitySprite* sprite);
+
+		virtual ~World() noexcept;
+
+		const std::array<EntitySprite*, ::grid::COLUMNS>& operator[](size_t index) const;
+		
+		std::array<EntitySprite*, ::grid::COLUMNS>& operator[](size_t index);
 
 	private:
 
-		void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	private:
 
 		sf::RectangleShape _shape;
+		Grid _grid;
 		std::array<std::array<EntitySprite*, ::grid::ROWS>, ::grid::COLUMNS> _sprites;
 	};
 }

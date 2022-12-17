@@ -1,35 +1,39 @@
-#include <utils/TextureManager.hpp>
-#include <utils/SpriteFactory.hpp>
-#include <GUI/World.hpp>
-#include <GUI/Button.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio/Music.hpp>
-#include <Entities.hpp>
+#include <GUI/World.hpp>
+#include <GUI/EntitySprite.hpp>
+#include <utils/SpriteFactory.hpp>
+#include <utils/TextureManager.hpp>
 #include <Grid.hpp>
+#include <Entities.hpp>
 #include <iostream>
 
-int main(int argc, char* argv[])
+int main()
 {
-	/*
 	sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "SFML Window", sf::Style::Fullscreen);
 	gui::World world;
-	utils::TextureManager texture_manager;
-	utils::SpriteFactory sprite_factory(&world, &texture_manager);
-	sf::Music music;
+	utils::TextureManager tm;
+	utils::SpriteFactory sf(world, tm);
 	sf::Vector2i mouse_position;
-
+	sf::Image icon;
+	
+	icon.loadFromFile("assets/ui/buttons/index.jpg");
+	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	window.setVerticalSyncEnabled(true);
-	music.openFromFile("./assets/sounds/rays_boss.ogg");
-	music.setLoop(true);
-	music.play();
 
-	for (size_t i = 0; i < ::grid::ROWS; i++)
-	{
-		for (size_t j = 0; j < ::grid::COLUMNS; j++)
-		{
-			sprite_factory.create(new Knight(i, j, 'B'));
-		}
-	}
+	// Cela ajoute à la fois un sprite dans le plateau graphique
+	// et une entité dans le plateau logique
+	sf.create(new Knight(1, 1, 'B'));
+	sf.create(new Knight(4, 4, 'B'));
+	sf.create(new Knight(17, 17, 'B'));
+	
+	std::cout << "BEFORE REMOVAL => memory location of knight at position [1,1]		   : " << world.getGrid()[1][1] << '\n';
+	std::cout << "BEFORE REMOVAL => memory location of knight SPRITE at position [1,1] : " << world[1][1] << '\n';
+	// Cela retire à la fois un sprite dans le plateau graphique
+	// et une entité dans le plateau logique
+	world.removeEntity(world[1][1]);
+
+	std::cout << "AFTER REMOVAL  => memory location of knight at position [1,1]		   : " << world.getGrid()[1][1] << '\n';
+	std::cout << "AFTER REMOVAL  => memory location of knight SPRITE at position [1,1] : " << world[1][1] << '\n';
 
 	while (window.isOpen())
 	{
@@ -43,21 +47,17 @@ int main(int argc, char* argv[])
 			}
 		}
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			window.close();
+		}
+
 		mouse_position = sf::Mouse::getPosition(window);
 
 		window.draw(world);
 		window.display();
 		window.clear();
 	}
-	*/
-
-	Grid grid;
-
-	grid.addEntity(new Knight(2, 4, 'B'));
-	grid.addEntity(new Knight(3, 7, 'R'));
-	grid.addEntity(new Knight(4, 8, 'B'));
-	grid.addEntity(new Knight(5, 1, 'B'));
-	grid.display();
 
 	return 0;
 }

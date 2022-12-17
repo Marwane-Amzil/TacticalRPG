@@ -1,14 +1,16 @@
 #pragma once
 
-#ifndef __ENTITY_FACTORY_H__
-#define __ENTITY_FACTORY_H__
+#ifndef __SPRITE_FACTORY_H__
+#define __SPRITE_FACTORY_H__
 
 namespace gui
 {
+	class EntitySprite;
 	class World;
 }
 
 class Entity;
+class Grid;
 
 namespace utils
 {
@@ -18,17 +20,17 @@ namespace utils
 	{
 	public:
 
-		explicit SpriteFactory(gui::World* world, TextureManager* texture_manager);
+		explicit SpriteFactory(gui::World& world, TextureManager& texture_manager);
 
 		inline ~SpriteFactory() noexcept = default;
 
-		void create(Entity* entity) const;
+		gui::EntitySprite* create(Entity* entity) const;
 
 	private:
 
-		gui::World* _world;
-		TextureManager* _texture_manager;
+		gui::World& _world;
+		TextureManager& _texture_manager;
 	};
 }
 
-#endif // !__ENTITY_FACTORY_H__
+#endif // !__SPRITE_FACTORY_H__

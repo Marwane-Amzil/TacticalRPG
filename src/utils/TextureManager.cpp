@@ -6,6 +6,14 @@
 utils::TextureManager::TextureManager()
 	: _textures() {}
 
+utils::TextureManager::~TextureManager() noexcept
+{
+	for (auto& [type, texture] : _textures)
+	{
+		delete texture;
+	}
+}
+
 void utils::TextureManager::loadTextures()
 {
 	std::ifstream infile("assets/data/textures.bin", std::ios::binary | std::ios::in);

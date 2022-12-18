@@ -3,8 +3,8 @@
 #ifndef __SPRITE_MANAGER_H__
 #define __SPRITE_MANAGER_H__
 
-#include <map>
-#include <string>
+#include <unordered_map> // std::unordered_map
+#include <string> // std::string
 
 namespace sf
 {
@@ -19,7 +19,7 @@ namespace utils
 
 		TextureManager();
 
-		inline ~TextureManager() noexcept = default;
+		~TextureManager() noexcept;
 
 		void loadTextures();
 
@@ -27,7 +27,7 @@ namespace utils
 
 	private:
 
-		std::map<std::string, sf::Texture*> _textures;
+		std::unordered_map<std::string, sf::Texture*> _textures;
 	};
 }
 

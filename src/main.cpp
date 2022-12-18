@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <GUI/game/World.hpp>
 #include <GUI/game/EntitySprite.hpp>
+#include <GUI/game/Game.hpp>
+#include <GUI/game/Animation.hpp>
 #include <utils/SpriteFactory.hpp>
 #include <utils/TextureManager.hpp>
 #include <Grid.hpp>
@@ -9,32 +11,30 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "SFML Window", sf::Style::Fullscreen);
+	sf::RenderWindow window(sf::VideoMode(1080, 780), "SFML Window", sf::Style::Titlebar | sf::Style::Close);
 	gui::World world;
 	utils::TextureManager tm;
 	utils::SpriteFactory sf(world, tm);
 	sf::Vector2i mouse_position;
 	sf::Image icon;
-	
+	gui::Animation animation;
+	sf::Clock clock;
+
 	icon.loadFromFile("assets/ui/buttons/index.jpg");
 	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	window.setVerticalSyncEnabled(true);
-
-	// Cela ajoute à la fois un sprite dans le plateau graphique
-	// et une entité dans le plateau logique
-	sf.create(new Knight(1, 1, 'B'));
-	sf.create(new Knight(4, 4, 'B'));
-	sf.create(new Knight(17, 17, 'B'));
+	animation.addFrame(0, 710, 50, 60);
+	animation.addFrame(62, 710, 50, 60);
+	auto k1 = sf.create(new Knight(1, 1, 'B'));
+	auto k2 = sf.create(new Knight(5, 8, 'B'));
+	auto k3 = sf.create(new Knight(8, 8, 'B'));
+	k1->addAnimation(0, animation);
+	k2->addAnimation(0, animation);
+	k3->addAnimation(0, animation);
+	k1->setCurrentAnimation(0);
+	k2->setCurrentAnimation(0);
+	k3->setCurrentAnimation(0);
 	
-	std::cout << "BEFORE REMOVAL => memory location of knight at position [1,1]		   : " << world.getGrid()[1][1] << '\n';
-	std::cout << "BEFORE REMOVAL => memory location of knight SPRITE at position [1,1] : " << world[1][1] << '\n';
-	// Cela retire à la fois un sprite dans le plateau graphique
-	// et une entité dans le plateau logique
-	world.removeEntity(world[1][1]);
-
-	std::cout << "AFTER REMOVAL  => memory location of knight at position [1,1]		   : " << world.getGrid()[1][1] << '\n';
-	std::cout << "AFTER REMOVAL  => memory location of knight SPRITE at position [1,1] : " << world[1][1] << '\n';
-
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -52,12 +52,23 @@ int main()
 			window.close();
 		}
 
+		sf::Time frame_time = clock.restart();
+
 		mouse_position = sf::Mouse::getPosition(window);
 
+		k1->playAnimation();
+		k1->update(frame_time);
+
+		k2->playAnimation();
+		k2->update(frame_time);
+
+		k3->playAnimation();
+		k3->update(frame_time);
+		
 		window.draw(world);
 		window.display();
 		window.clear();
 	}
-
+	
 	return 0;
 }

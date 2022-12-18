@@ -75,6 +75,9 @@
     <ClCompile Include="src\GUI\ui\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\game\Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Entities\Character.hpp">
@@ -137,13 +140,16 @@
     <ClInclude Include="include\GUI\game\EntitySprite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\Button.hpp">
+    <ClInclude Include="include\GUI\ui\Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GUI\game\World.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GUI\ui\Menu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\game\Animation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

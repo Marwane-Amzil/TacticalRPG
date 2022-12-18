@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\game\Animation.cpp" />
     <ClCompile Include="src\GUI\game\EntitySprite.cpp" />
     <ClCompile Include="src\GUI\ui\Menu.cpp" />
     <ClCompile Include="src\utils\AnimationManager.cpp" />
@@ -41,7 +42,8 @@
     <ClCompile Include="src\GUI\game\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\GUI\Button.hpp" />
+    <ClInclude Include="include\GUI\game\Animation.hpp" />
+    <ClInclude Include="include\GUI\ui\Button.hpp" />
     <ClInclude Include="include\GUI\game\EntitySprite.hpp" />
     <ClInclude Include="include\GUI\ui\Menu.hpp" />
     <ClInclude Include="include\schemas\animations.hpp" />

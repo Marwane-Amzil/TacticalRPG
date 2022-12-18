@@ -2,7 +2,7 @@
 #include <SFML/Graphics/Texture.hpp>
 
 gui::Animation::Animation(const sf::Texture* texture)
-	: _frames(), _texture(texture), _frame_time(sf::seconds(0.2f)), _current_time(), _current_frame(0), _is_playing(false), _is_looping(false) {}
+	: _frames(), _texture(texture), _frame_time(sf::seconds(0.1f)), _current_time(), _current_frame(0), _is_playing(false), _is_looping(false) {}
 
 const sf::Texture* gui::Animation::getTexture() const
 {
@@ -24,7 +24,7 @@ size_t gui::Animation::getCurrentFrameIndex() const
 	return _current_frame;
 }
 
-constexpr size_t gui::Animation::getFrameCount() const
+size_t gui::Animation::getFrameCount() const
 {
 	return _frames.size();
 }

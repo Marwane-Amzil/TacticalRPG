@@ -30,7 +30,7 @@ namespace gui
 
 		size_t getCurrentFrameIndex() const;
 
-		constexpr size_t getFrameCount() const;
+		size_t getFrameCount() const;
 		
 		bool isPlaying() const;
 

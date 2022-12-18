@@ -1,14 +1,24 @@
 #include <GUI/game/EntitySprite.hpp>
+#include <GUI/game/Animation.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
-#include <Entity.hpp>
 
 gui::EntitySprite::EntitySprite(Entity* entity)
-	: _vertices(), _texture(nullptr), _texture_rect(), _entity(entity), _animations() {}
+	: _vertices(), _texture(nullptr), _texture_rect(), _entity(entity), _animations(), _current_animation(_animations[0]) {}
 
 Entity* gui::EntitySprite::getEntity() const
 {
 	return _entity;
+}
+
+const gui::Animation& gui::EntitySprite::getAnimation(size_t index) const
+{
+	return _animations[index];
+}
+
+const gui::Animation& gui::EntitySprite::getCurrentAnimation() const
+{
+	return _current_animation;
 }
 
 const sf::Texture* gui::EntitySprite::getTexture() const
@@ -29,6 +39,17 @@ sf::FloatRect gui::EntitySprite::getLocalBounds() const
 sf::FloatRect gui::EntitySprite::getGlobalBounds() const
 {
 	return getTransform().transformRect(getLocalBounds());
+}
+
+void gui::EntitySprite::addAnimation(size_t index, Animation& animation)
+{
+	animation.setTexture(_texture);
+	_animations[index] = animation;
+}
+
+void gui::EntitySprite::setCurrentAnimation(size_t index)
+{
+	_current_animation = _animations[index];
 }
 
 void gui::EntitySprite::setTexture(const sf::Texture* texture)
@@ -53,6 +74,22 @@ void gui::EntitySprite::setTextureRect(const sf::IntRect& texture_rect)
 void gui::EntitySprite::setTextureRect(int x, int y, int width, int height)
 {
 	setTextureRect(sf::IntRect(x, y, width, height));
+}
+
+void gui::EntitySprite::playAnimation()
+{
+	_current_animation.play();
+}
+
+void gui::EntitySprite::stopAnimation()
+{
+	_current_animation.stop();
+}
+
+void gui::EntitySprite::update(sf::Time elapsed_time)
+{
+	_current_animation.update(elapsed_time);
+	setTextureRect(_current_animation.getCurrentFrame());
 }
 
 void gui::EntitySprite::updatePositions()

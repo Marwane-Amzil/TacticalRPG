@@ -1,4 +1,4 @@
-#include <GUI/Button.hpp>
+#include <GUI/ui/Button.hpp>
 #include <SFML/Graphics/RoundedRectangleShape.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Texture.hpp>

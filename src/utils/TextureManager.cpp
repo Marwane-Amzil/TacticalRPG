@@ -29,8 +29,15 @@ void utils::TextureManager::loadTextures()
 	for (size_t i = 0; i < textures_list->size(); i++)
 	{
 		sf::Texture* texture = new sf::Texture;
-		texture->loadFromFile(textures_list->Get(i)->path()->data());
-		_textures[textures_list->Get(i)->type()->data()] = texture;
+		
+		if (texture->loadFromFile(textures_list->Get(i)->path()->data()))
+		{
+			_textures[textures_list->Get(i)->type()->data()] = texture;
+		}
+		else
+		{
+			_textures[textures_list->Get(i)->type()->data()] = nullptr;
+		}
 	}
 	
 	delete[] buffer;

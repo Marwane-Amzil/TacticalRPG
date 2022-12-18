@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <GUI/game/World.hpp>
 #include <GUI/game/EntitySprite.hpp>
-#include <GUI/game/Game.hpp>
 #include <GUI/game/Animation.hpp>
 #include <utils/SpriteFactory.hpp>
 #include <utils/TextureManager.hpp>

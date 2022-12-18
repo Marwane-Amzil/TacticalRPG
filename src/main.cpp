@@ -4,6 +4,7 @@
 #include <GUI/game/Animation.hpp>
 #include <utils/SpriteFactory.hpp>
 #include <utils/TextureManager.hpp>
+#include <utils/AnimationManager.hpp>
 #include <Grid.hpp>
 #include <Entities.hpp>
 #include <iostream>
@@ -13,27 +14,21 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1080, 780), "SFML Window", sf::Style::Titlebar | sf::Style::Close);
 	gui::World world;
 	utils::TextureManager tm;
-	utils::SpriteFactory sf(world, tm);
+	utils::AnimationManager am;
+	utils::SpriteFactory sf(world, tm, am);
 	sf::Vector2i mouse_position;
 	sf::Image icon;
 	gui::Animation animation;
 	sf::Clock clock;
-
-	icon.loadFromFile("assets/ui/buttons/index.jpg");
-	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-	window.setVerticalSyncEnabled(true);
-	animation.addFrame(0, 710, 50, 60);
-	animation.addFrame(62, 710, 50, 60);
 	auto k1 = sf.create(new Knight(1, 1, 'B'));
 	auto k2 = sf.create(new Knight(5, 8, 'B'));
 	auto k3 = sf.create(new Knight(8, 8, 'B'));
-	k1->addAnimation(0, animation);
-	k2->addAnimation(0, animation);
-	k3->addAnimation(0, animation);
-	k1->setCurrentAnimation(0);
-	k2->setCurrentAnimation(0);
-	k3->setCurrentAnimation(0);
+	auto a1 = sf.create(new Archer(12, 8, 'B'));
 	
+	icon.loadFromFile("assets/ui/buttons/index.jpg");
+	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+	window.setVerticalSyncEnabled(true);
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -57,13 +52,20 @@ int main()
 
 		k1->playAnimation();
 		k1->update(frame_time);
+		k1->move(0.2f, 0.f);
 
 		k2->playAnimation();
 		k2->update(frame_time);
+		k2->move(0.2f, 0.f);
 
 		k3->playAnimation();
 		k3->update(frame_time);
-		
+		k3->move(0.2f, 0.f);
+
+		a1->playAnimation();
+		a1->update(frame_time);
+		a1->move(0.2f, 0.f);
+
 		window.draw(world);
 		window.display();
 		window.clear();

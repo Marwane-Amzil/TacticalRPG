@@ -18,13 +18,22 @@ int main()
 	utils::SpriteFactory sf(world, tm, am);
 	sf::Vector2i mouse_position;
 	sf::Image icon;
-	gui::Animation animation;
 	sf::Clock clock;
-	auto k1 = sf.create(new Knight(1, 1, 'B'));
-	auto k2 = sf.create(new Knight(5, 8, 'B'));
-	auto k3 = sf.create(new Knight(8, 8, 'B'));
-	auto a1 = sf.create(new Archer(12, 8, 'B'));
-	
+	std::vector<gui::EntitySprite*> sprites;
+
+	sprites.push_back(sf.create(new Knight(10, 10, 'B')));
+	sprites.push_back(sf.create(new Knight(4, 11, 'B')));
+	sprites.push_back(sf.create(new Knight(1, 7, 'B')));
+	sprites.push_back(sf.create(new Knight(2, 2, 'B')));
+	sprites.push_back(sf.create(new Knight(15, 15, 'B')));
+
+	sprites[0]->setCurrentAnimation(3);
+	sprites[1]->setCurrentAnimation(3);
+	sprites[2]->setCurrentAnimation(4);
+	sprites[3]->setCurrentAnimation(5);
+	sprites[4]->setCurrentAnimation(6);
+
+	//animation.setLoop(true);
 	icon.loadFromFile("assets/ui/buttons/index.jpg");
 	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	window.setVerticalSyncEnabled(true);
@@ -50,21 +59,11 @@ int main()
 
 		mouse_position = sf::Mouse::getPosition(window);
 
-		k1->playAnimation();
-		k1->update(frame_time);
-		k1->move(0.2f, 0.f);
-
-		k2->playAnimation();
-		k2->update(frame_time);
-		k2->move(0.2f, 0.f);
-
-		k3->playAnimation();
-		k3->update(frame_time);
-		k3->move(0.2f, 0.f);
-
-		a1->playAnimation();
-		a1->update(frame_time);
-		a1->move(0.2f, 0.f);
+		for (auto& sprite : sprites)
+		{
+			sprite->playAnimation();
+			sprite->update(frame_time);
+		}
 
 		window.draw(world);
 		window.display();

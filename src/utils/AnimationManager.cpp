@@ -49,17 +49,12 @@ void utils::AnimationManager::loadAnimations()
 	delete[] buffer;
 }
 
-const std::unordered_map<std::string, gui::Animation*>& utils::AnimationManager::get(const std::string& type) const
+const std::map<std::string, gui::Animation*>& utils::AnimationManager::get(const std::string& type) const
 {
 	return _animations.at(type);
 }
 
 const gui::Animation& utils::AnimationManager::get(const std::string& type, const std::string& name) const
-{
-	return *_animations.at(type).at(name);
-}
-
-gui::Animation& utils::AnimationManager::get(const std::string& type, const std::string& name)
 {
 	return *_animations.at(type).at(name);
 }

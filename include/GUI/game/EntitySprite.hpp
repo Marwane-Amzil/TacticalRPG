@@ -42,7 +42,7 @@ namespace gui
 
 		sf::FloatRect getGlobalBounds() const;
 
-		void addAnimation(size_t index, Animation& animation);
+		void addAnimation(size_t index, const Animation& animation);
 
 		void setCurrentAnimation(size_t index);
 

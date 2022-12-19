@@ -41,9 +41,8 @@ sf::FloatRect gui::EntitySprite::getGlobalBounds() const
 	return getTransform().transformRect(getLocalBounds());
 }
 
-void gui::EntitySprite::addAnimation(size_t index, Animation& animation)
+void gui::EntitySprite::addAnimation(size_t index, const Animation& animation)
 {
-	animation.setTexture(_texture);
 	_animations[index] = animation;
 }
 

@@ -52,6 +52,8 @@ namespace gui
 
 		void setTextureRect(int x, int y, int width, int height);
 
+		void setLoopAnimation(bool loop);
+
 		void playAnimation();
 
 		void stopAnimation();

@@ -2,6 +2,7 @@
 #include <GUI/game/Animation.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <Entity.hpp>
 
 gui::EntitySprite::EntitySprite(Entity* entity)
 	: _vertices(), _texture(nullptr), _texture_rect(), _entity(entity), _animations(), _current_animation(_animations[0]) {}
@@ -73,6 +74,11 @@ void gui::EntitySprite::setTextureRect(const sf::IntRect& texture_rect)
 void gui::EntitySprite::setTextureRect(int x, int y, int width, int height)
 {
 	setTextureRect(sf::IntRect(x, y, width, height));
+}
+
+void gui::EntitySprite::setLoopAnimation(bool loop)
+{
+	_current_animation.setLoop(loop);
 }
 
 void gui::EntitySprite::playAnimation()

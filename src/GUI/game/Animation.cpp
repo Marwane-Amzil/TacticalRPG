@@ -1,13 +1,8 @@
 #include <GUI/game/Animation.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-gui::Animation::Animation(const sf::Texture* texture)
-	: _frames(), _texture(texture), _frame_time(sf::seconds(0.1f)), _current_time(), _current_frame(0), _is_playing(false), _is_looping(false) {}
-
-const sf::Texture* gui::Animation::getTexture() const
-{
-	return _texture;
-}
+gui::Animation::Animation()
+	: _frames(), _frame_time(sf::seconds(0.15f)), _current_time(), _current_frame(0), _is_playing(false), _is_looping(false) {}
 
 const sf::IntRect& gui::Animation::getFrame(size_t index) const
 {
@@ -49,11 +44,6 @@ void gui::Animation::addFrame(int x, int y, int width, int height)
 	_frames.emplace_back(x, y, width, height);
 }
 
-void gui::Animation::setTexture(const sf::Texture* texture)
-{
-	_texture = texture;
-}
-
 void gui::Animation::setLoop(bool loop)
 {
 	_is_looping = loop;
@@ -92,7 +82,11 @@ void gui::Animation::update(sf::Time elapsed_time)
 
 				if (!_is_looping)
 				{
-					_is_playing = false;
+					stop();
+				}
+				else
+				{
+					std::reverse(_frames.begin(), _frames.end());
 				}
 			}
 		}

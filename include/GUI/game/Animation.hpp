@@ -18,11 +18,9 @@ namespace gui
 	{
 	public:
 
-		explicit Animation(const sf::Texture* texture = nullptr);
+		Animation();
 
 		inline ~Animation() noexcept = default;
-
-		const sf::Texture* getTexture() const;
 
 		const sf::IntRect& getFrame(size_t index) const;
 		
@@ -40,8 +38,6 @@ namespace gui
 
 		void addFrame(int x, int y, int width, int height);
 		
-		void setTexture(const sf::Texture* texture);
-
 		void setLoop(bool loop);
 
 		void pause();
@@ -55,7 +51,6 @@ namespace gui
 	private:
 
 		std::vector<sf::IntRect> _frames; // The frames of the animation
-		const sf::Texture* _texture;	  // The texture of the animation
 		sf::Time _frame_time;			  // The time between each frame
 		sf::Time _current_time;			  // The current time
 		size_t _current_frame;			  // The current frame of the animation

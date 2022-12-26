@@ -37,6 +37,8 @@ namespace gui
 		void addFrame(const sf::IntRect& frame);
 
 		void addFrame(int x, int y, int width, int height);
+
+		void setSpeed(float speed);
 		
 		void setLoop(bool loop);
 

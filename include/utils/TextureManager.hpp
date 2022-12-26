@@ -3,7 +3,7 @@
 #ifndef __SPRITE_MANAGER_H__
 #define __SPRITE_MANAGER_H__
 
-#include <unordered_map> // std::unordered_map
+#include <map> // std::map
 #include <string> // std::string
 
 namespace sf
@@ -27,7 +27,7 @@ namespace utils
 
 	private:
 
-		std::unordered_map<std::string, sf::Texture*> _textures;
+		std::map<std::string, sf::Texture*> _textures;
 	};
 }
 

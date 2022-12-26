@@ -52,7 +52,7 @@ namespace gui
 
 		void setTextureRect(int x, int y, int width, int height);
 
-		void setLoopAnimation(bool loop);
+		void loopCurrentAnimation(bool loop);
 
 		void playAnimation();
 
@@ -63,10 +63,6 @@ namespace gui
 		virtual ~EntitySprite() noexcept;
 
 	private:
-
-		void updatePositions();
-
-		void updateTexCoords();
 
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 

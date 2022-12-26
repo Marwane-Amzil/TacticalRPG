@@ -1,111 +1,135 @@
-#include <GUI/ui/Button.hpp>
-#include <SFML/Graphics/RoundedRectangleShape.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Window/Mouse.hpp>
+#include <GUI/ui/Button.hpp> // Button
+#include <SFML/Graphics/RoundedRectangleShape.hpp> // sf::RoundedRectangleShape
+#include <SFML/Graphics/RenderTarget.hpp> // sf::RenderTarget
+#include <SFML/Graphics/Texture.hpp> // sf::Texture
+#include <SFML/Window/Mouse.hpp> // sf::Mouse
 
-gui::Button::Button(const sf::Vector2f& size, const sf::Texture* idle_texture, const sf::Texture* hover_texture, const sf::Texture* const press_texture)
-	: sf::Drawable(), _shape(size, 5.0f, 4), _idle_texture(idle_texture), _hover_texture(hover_texture), _press_texture(press_texture), _state(Style::Idle)
+namespace gui
 {
-	_shape.setTexture(_idle_texture);
-}
-
-const sf::Texture* gui::Button::getIdleTexture() const
-{
-	return _idle_texture;
-}
-
-const sf::Texture* gui::Button::getHoverTexture() const
-{
-	return _hover_texture;
-}
-
-const sf::Texture* gui::Button::getPressTexture() const
-{
-	return _press_texture;
-}
-
-const sf::Vector2f& gui::Button::getPosition() const
-{
-	return _shape.getPosition();
-}
-
-const sf::Vector2f& gui::Button::getSize() const
-{
-	return _shape.getSize();
-}
-
-bool gui::Button::isHovered() const
-{
-	return _state == Style::Hovered;
-}
-
-bool gui::Button::isPressed() const
-{
-	return _state == Style::Pressed;
-}
-
-void gui::Button::setIdleTexture(const sf::Texture* idle_texture)
-{
-	_idle_texture = idle_texture;
-}
-
-void gui::Button::setHoverTexture(const sf::Texture* hover_texture)
-{
-	_hover_texture = hover_texture;
-}
-
-void gui::Button::setPressTexture(const sf::Texture* press_texture)
-{
-	_press_texture = press_texture;
-}
-
-void gui::Button::setSize(const sf::Vector2f& size)
-{
-	_shape.setSize(size);
-}
-
-void gui::Button::setSize(const int w, const int h)
-{
-	_shape.setSize(sf::Vector2f(w, h));
-}
-
-void gui::Button::setPosition(const sf::Vector2f& position)
-{
-	_shape.setPosition(position);
-}
-
-void gui::Button::setPosition(const int x, const int y)
-{
-	_shape.setPosition(x, y);
-}
-
-void gui::Button::update(const sf::Vector2i& mouse_position)
-{
-	_state = Style::Idle;
-	_shape.setTexture(_idle_texture);
-
-	if (_shape.getGlobalBounds().contains(mouse_position.x, mouse_position.y))
+	Button::Button(const sf::Vector2f& size, const sf::Texture* idle_texture, const sf::Texture* hover_texture, const sf::Texture* press_texture)
+		: _shape(size, 5.0f, 4), _textures(), _state(State::Idle)
 	{
-		_state = Style::Hovered;
-		_shape.setTexture(_hover_texture);
+		_textures[0] = idle_texture;
+		_textures[1] = hover_texture;
+		_textures[2] = press_texture;
+		_shape.setTexture(_textures[0]);
+	}
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	float Button::getCornersRadius() const
+	{
+		return _shape.getCornersRadius();
+	}
+
+	const sf::Texture* Button::getIdleTexture() const
+	{
+		return _textures[0];
+	}
+
+	const sf::Texture* Button::getHoverTexture() const
+	{
+		return _textures[1];
+	}
+
+	const sf::Texture* Button::getPressTexture() const
+	{
+		return _textures[2];
+	}
+
+	const sf::Vector2f& Button::getPosition() const
+	{
+		return _shape.getPosition();
+	}
+
+	const sf::Vector2f& Button::getSize() const
+	{
+		return _shape.getSize();
+	}
+
+	bool Button::isHovered() const
+	{
+		return _state == State::Hovered;
+	}
+
+	bool Button::isPressed() const
+	{
+		return _state == State::Pressed;
+	}
+
+	void Button::setCornerRadius(float radius)
+	{
+		_shape.setCornersRadius(radius);
+	}
+
+	void Button::setCornerPointCount(unsigned int count)
+	{
+		_shape.setCornerPointCount(count);
+	}
+
+	void Button::setIdleTexture(const sf::Texture* idle_texture)
+	{
+		_textures[0] = idle_texture;
+	}
+
+	void Button::setHoverTexture(const sf::Texture* hover_texture)
+	{
+		_textures[1] = hover_texture;
+	}
+
+	void Button::setPressTexture(const sf::Texture* press_texture)
+	{
+		_textures[2] = press_texture;
+	}
+
+	void Button::setPosition(const sf::Vector2f& position)
+	{
+		_shape.setPosition(position);
+	}
+
+	void Button::setPosition(float x, float y)
+	{
+		_shape.setPosition(x, y);
+	}
+
+	void Button::setSize(const sf::Vector2f& size)
+	{
+		_shape.setSize(size);
+	}
+
+	void Button::setSize(float width, float height)
+	{
+		_shape.setSize(sf::Vector2f(width, height));
+	}
+
+	void Button::setOutlineThickness(float thickness)
+	{
+		_shape.setOutlineThickness(thickness);
+	}
+
+	void Button::setOutlineColor(const sf::Color& color)
+	{
+		_shape.setOutlineColor(color);
+	}
+
+	void Button::update(const sf::Vector2i& mouse_position)
+	{
+		_state = State::Idle;
+		_shape.setTexture(_textures[0]);
+
+		if (_shape.getGlobalBounds().contains(mouse_position.x, mouse_position.y))
 		{
-			_state = Style::Pressed;
-			_shape.setTexture(_press_texture);
+			_state = State::Hovered;
+			_shape.setTexture(_textures[1]);
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				_state = State::Pressed;
+				_shape.setTexture(_textures[2]);
+			}
 		}
 	}
-}
 
-void gui::Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	target.draw(_shape, states);
-}
-
-gui::Button::~Button() noexcept
-{
-	delete _idle_texture;
-	delete _hover_texture;
-	delete _press_texture;
+	void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
+	{
+		target.draw(_shape, states);
+	}
 }

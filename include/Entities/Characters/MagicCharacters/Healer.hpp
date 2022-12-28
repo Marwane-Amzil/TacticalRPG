@@ -36,7 +36,7 @@ private:
 	/**
 	*
 	*/
-	std::string getClass() const override;
+	std::string_view getClass() const override;
 
 private:
 

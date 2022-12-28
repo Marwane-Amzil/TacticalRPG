@@ -3,7 +3,7 @@
 Obstacle::Obstacle(const int x, const int y, const int hp)
 	: super(x, y, hp) {}
 
-std::string Obstacle::getClass() const
+std::string_view Obstacle::getClass() const
 {
 	return "obstacle";
 }

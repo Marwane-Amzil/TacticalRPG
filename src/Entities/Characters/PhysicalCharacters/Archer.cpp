@@ -58,7 +58,7 @@ bool Archer::equals(const Entity& other) const
 	return false;
 }
 
-std::string Archer::getClass() const
+std::string_view Archer::getClass() const
 {
 	return "archer";
 }

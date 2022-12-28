@@ -78,7 +78,7 @@ public:
 	/**
 	* @brief
 	*/
-	virtual std::string getClass() const = 0;
+	virtual std::string_view getClass() const = 0;
 
 protected:
 

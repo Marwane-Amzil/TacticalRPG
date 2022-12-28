@@ -51,13 +51,13 @@ namespace utils
 		delete[] buffer;
 	}
 
-	const std::map<std::string, sf::Texture*>& TextureManager::get(char player) const
+	const std::map<std::string, sf::Texture*>& TextureManager::getTextures(char player) const
 	{
 		return _textures.at(player);
 	}
 
-	const sf::Texture* TextureManager::get(char player, const std::string& type) const
+	const sf::Texture* TextureManager::getTextureAt(char player, std::string_view type) const
 	{
-		return _textures.at(player).at(type);
+		return _textures.at(player).at(type.data());
 	}
 }

@@ -23,9 +23,9 @@ namespace utils
 
 		void loadTextures();
 
-		const std::map<std::string, sf::Texture*>& get(char player) const;
+		const std::map<std::string, sf::Texture*>& getTextures(char player) const;
 
-		const sf::Texture* get(char player, const std::string& type) const;
+		const sf::Texture* getTextureAt(char player, std::string_view type) const;
 
 	private:
 

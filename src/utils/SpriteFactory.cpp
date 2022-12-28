@@ -18,7 +18,7 @@ namespace utils
 	gui::EntitySprite* SpriteFactory::createCharacter(Character* character) const
 	{
 		gui::EntitySprite* sprite = new gui::EntitySprite(character);
-		sprite->setTexture(_texture_manager.get(character->getPlayer(), character->getClass()));
+		sprite->setTexture(_texture_manager.getTextureAt(character->getPlayer(), character->getClass()));
 		size_t index = 0;
 
 		for (const gui::Animation* animation : _animation_manager.getAnimations())
@@ -27,7 +27,11 @@ namespace utils
 			++index;
 		}
 
-		sprite->addAnimation(index, _animation_manager.getSpecialAnimation(character->getClass()));
+		for (const auto& [name, animation] : _animation_manager.getSpecialAnimations(character->getClass()))
+		{
+			sprite->addAnimation(index, *animation);
+			++index;
+		}
 
 		_world.addEntity(sprite);
 		

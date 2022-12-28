@@ -15,9 +15,12 @@ namespace utils
 			delete animation;
 		}
 
-		for (auto& [type, animation] : _specials)
+		for (auto& [type, animations] : _specials)
 		{
-			delete animation;
+			for (auto& [name, animation] : animations)
+			{
+				delete animation;
+			}
 		}
 	}
 
@@ -36,11 +39,11 @@ namespace utils
 
 		_animations.reserve(animations_list->size());
 
-		for (const Animation* animation : *animations_list)
+		for (const Animation* const& animation : *animations_list)
 		{
 			gui::Animation* new_animation = new gui::Animation;
 
-			for (const Frame* frame : *animation->frames())
+			for (const Frame* const& frame : *animation->frames())
 			{
 				new_animation->addFrame(frame->left(), frame->top(), frame->width(), frame->height());
 			}
@@ -48,16 +51,19 @@ namespace utils
 			_animations.push_back(new_animation);
 		}
 
-		for (const Set* animation_set : *special_animations_list)
+		for (const Set* const& set : *special_animations_list)
 		{
-			gui::Animation* new_animation = new gui::Animation;
-
-			for (const Frame* frame : *animation_set->animation()->frames())
+			for (const Animation* const& animation : *set->animations())
 			{
-				new_animation->addFrame(frame->left(), frame->top(), frame->width(), frame->height());				
-			}
+				gui::Animation* new_animation = new gui::Animation;
 
-			_specials[animation_set->type()->data()] = new_animation;
+				for (const Frame* const& frame : *animation->frames())
+				{
+					new_animation->addFrame(frame->left(), frame->top(), frame->width(), frame->height());
+				}
+				
+				_specials[set->type()->data()][animation->name()->data()] = new_animation;
+			}
 		}
 		
 		delete[] buffer;
@@ -68,8 +74,13 @@ namespace utils
 		return _animations;
 	}
 
-	const gui::Animation& AnimationManager::getSpecialAnimation(const std::string& type) const
+	const std::map<std::string, gui::Animation*>& AnimationManager::getSpecialAnimations(std::string_view type) const
 	{
-		return *_specials.at(type);
+		return _specials.at(type.data());
+	}
+
+	const gui::Animation* AnimationManager::getSpecialAnimation(std::string_view type, std::string_view name) const
+	{
+		return _specials.at(type.data()).at(name.data());
 	}
 }

@@ -72,7 +72,7 @@ namespace gui
 		const sf::Texture* _texture;				 // The texture of the sprite.
 		sf::IntRect _texture_rect;					 // The sub-rectangle of the texture to display.
 		Entity* _entity;					         // The entity that the sprite is representing.
-		std::array<Animation, 7> _animations;		 // The animations of the sprite.
+		std::array<Animation, 14> _animations;		 // The animations of the sprite.
 		Animation& _current_animation;				 // The current animation of the sprite.
 	};
 }

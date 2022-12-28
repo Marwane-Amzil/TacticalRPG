@@ -6,16 +6,18 @@
 namespace utils
 {
 	AnimationManager::AnimationManager()
-		: _animations() {}
+		: _animations(), _specials() {}
 
 	AnimationManager::~AnimationManager() noexcept
 	{
-		for (auto& [type, animations] : _animations)
+		for (auto& animation : _animations)
 		{
-			for (auto& [name, animation] : animations)
-			{
-				delete animation;
-			}
+			delete animation;
+		}
+
+		for (auto& [type, animation] : _specials)
+		{
+			delete animation;
 		}
 	}
 
@@ -29,40 +31,45 @@ namespace utils
 		infile.read(buffer, length);
 		infile.close();
 
-		auto animations_list = GetAnimationSetRoot(buffer)->set();
+		auto animations_list = GetAnimationRoot(buffer)->animations();
+		auto special_animations_list = GetAnimationRoot(buffer)->specials();
 
-		for (size_t i = 0; i < animations_list->size(); i++)
+		_animations.reserve(animations_list->size());
+
+		for (const Animation* animation : *animations_list)
 		{
-			auto animations = animations_list->Get(i)->animations();
+			gui::Animation* new_animation = new gui::Animation;
 
-			for (size_t j = 0; j < animations->size(); j++)
+			for (const Frame* frame : *animation->frames())
 			{
-				gui::Animation* animation = new gui::Animation;
-
-				for (size_t k = 0; k < animations->Get(j)->frames()->size(); k++)
-				{
-					animation->addFrame(
-						animations->Get(j)->frames()->Get(k)->left(),
-						animations->Get(j)->frames()->Get(k)->top(),
-						animations->Get(j)->frames()->Get(k)->width(),
-						animations->Get(j)->frames()->Get(k)->height()
-					);
-				}
-
-				_animations[animations_list->Get(i)->type()->data()][animations->Get(j)->name()->data()] = animation;
+				new_animation->addFrame(frame->left(), frame->top(), frame->width(), frame->height());
 			}
+
+			_animations.push_back(new_animation);
 		}
 
+		for (const Set* animation_set : *special_animations_list)
+		{
+			gui::Animation* new_animation = new gui::Animation;
+
+			for (const Frame* frame : *animation_set->animation()->frames())
+			{
+				new_animation->addFrame(frame->left(), frame->top(), frame->width(), frame->height());				
+			}
+
+			_specials[animation_set->type()->data()] = new_animation;
+		}
+		
 		delete[] buffer;
 	}
 
-	const std::map<std::string, gui::Animation*>& AnimationManager::get(const std::string& type) const
+	const std::vector<gui::Animation*>& AnimationManager::getAnimations() const
 	{
-		return _animations.at(type);
+		return _animations;
 	}
 
-	const gui::Animation& AnimationManager::get(const std::string& type, const std::string& name) const
+	const gui::Animation& AnimationManager::getSpecialAnimation(const std::string& type) const
 	{
-		return *_animations.at(type).at(name);
+		return *_specials.at(type);
 	}
 }

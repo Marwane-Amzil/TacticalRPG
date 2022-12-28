@@ -3,7 +3,8 @@
 #include <utils/AnimationManager.hpp> // utils::AnimationManager
 #include <GUI/game/World.hpp> // gui::World
 #include <GUI/game/EntitySprite.hpp> // gui::EntitySprite
-#include <Entity.hpp> // Entity
+#include <Entities/Character.hpp> // Character
+#include <Entities/Obstacle.hpp> // Obstacle
 
 namespace utils
 {
@@ -14,20 +15,22 @@ namespace utils
 		_animation_manager.loadAnimations();
 	}
 
-	gui::EntitySprite* SpriteFactory::create(Entity* entity) const
+	gui::EntitySprite* SpriteFactory::createCharacter(Character* character) const
 	{
-		gui::EntitySprite* sprite = new gui::EntitySprite(entity);
-		sprite->setTexture(_texture_manager.get(entity->getClass()));
+		gui::EntitySprite* sprite = new gui::EntitySprite(character);
+		sprite->setTexture(_texture_manager.get(character->getPlayer(), character->getClass()));
 		size_t index = 0;
 
-		for (const auto& [name, animation] : _animation_manager.get(entity->getClass()))
+		for (const gui::Animation* animation : _animation_manager.getAnimations())
 		{
 			sprite->addAnimation(index, *animation);
-			index++;
+			++index;
 		}
 
-		_world.addEntity(sprite);
+		sprite->addAnimation(index, _animation_manager.getSpecialAnimation(character->getClass()));
 
+		_world.addEntity(sprite);
+		
 		return sprite;
 	}
 }

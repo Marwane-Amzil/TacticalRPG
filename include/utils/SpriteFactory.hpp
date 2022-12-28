@@ -9,8 +9,8 @@ namespace gui
 	class World;
 }
 
-class Entity;
-class Grid;
+class Character;
+class Obstacle;
 
 namespace utils
 {
@@ -25,7 +25,7 @@ namespace utils
 
 		inline ~SpriteFactory() noexcept = default;
 
-		gui::EntitySprite* create(Entity* entity) const;
+		gui::EntitySprite* createCharacter(Character* character) const;
 
 	private:
 

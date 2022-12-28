@@ -9,22 +9,25 @@
 struct TextureRoot;
 struct TextureRootBuilder;
 
+struct Set;
+struct SetBuilder;
+
 struct Texture;
 struct TextureBuilder;
 
 struct TextureRoot FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   typedef TextureRootBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
-    VT_TEXTURES = 4
+    VT_TEXTURES_SETS = 4
   };
-  const flatbuffers::Vector<flatbuffers::Offset<Texture>> *textures() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Texture>> *>(VT_TEXTURES);
+  const flatbuffers::Vector<flatbuffers::Offset<Set>> *textures_sets() const {
+    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Set>> *>(VT_TEXTURES_SETS);
   }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
-           VerifyOffset(verifier, VT_TEXTURES) &&
-           verifier.VerifyVector(textures()) &&
-           verifier.VerifyVectorOfTables(textures()) &&
+           VerifyOffset(verifier, VT_TEXTURES_SETS) &&
+           verifier.VerifyVector(textures_sets()) &&
+           verifier.VerifyVectorOfTables(textures_sets()) &&
            verifier.EndTable();
   }
 };
@@ -33,8 +36,8 @@ struct TextureRootBuilder {
   typedef TextureRoot Table;
   flatbuffers::FlatBufferBuilder &fbb_;
   flatbuffers::uoffset_t start_;
-  void add_textures(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Texture>>> textures) {
-    fbb_.AddOffset(TextureRoot::VT_TEXTURES, textures);
+  void add_textures_sets(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Set>>> textures_sets) {
+    fbb_.AddOffset(TextureRoot::VT_TEXTURES_SETS, textures_sets);
   }
   explicit TextureRootBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
@@ -49,18 +52,91 @@ struct TextureRootBuilder {
 
 inline flatbuffers::Offset<TextureRoot> CreateTextureRoot(
     flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Texture>>> textures = 0) {
+    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Set>>> textures_sets = 0) {
   TextureRootBuilder builder_(_fbb);
-  builder_.add_textures(textures);
+  builder_.add_textures_sets(textures_sets);
   return builder_.Finish();
 }
 
 inline flatbuffers::Offset<TextureRoot> CreateTextureRootDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
-    std::vector<flatbuffers::Offset<Texture>> *textures = nullptr) {
-  auto textures__ = textures ? _fbb.CreateVectorOfSortedTables<Texture>(textures) : 0;
+    std::vector<flatbuffers::Offset<Set>> *textures_sets = nullptr) {
+  auto textures_sets__ = textures_sets ? _fbb.CreateVectorOfSortedTables<Set>(textures_sets) : 0;
   return CreateTextureRoot(
       _fbb,
+      textures_sets__);
+}
+
+struct Set FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+  typedef SetBuilder Builder;
+  enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
+    VT_PLAYER = 4,
+    VT_TEXTURES = 6
+  };
+  const flatbuffers::String *player() const {
+    return GetPointer<const flatbuffers::String *>(VT_PLAYER);
+  }
+  bool KeyCompareLessThan(const Set *o) const {
+    return *player() < *o->player();
+  }
+  int KeyCompareWithValue(const char *_player) const {
+    return strcmp(player()->c_str(), _player);
+  }
+  const flatbuffers::Vector<flatbuffers::Offset<Texture>> *textures() const {
+    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Texture>> *>(VT_TEXTURES);
+  }
+  bool Verify(flatbuffers::Verifier &verifier) const {
+    return VerifyTableStart(verifier) &&
+           VerifyOffsetRequired(verifier, VT_PLAYER) &&
+           verifier.VerifyString(player()) &&
+           VerifyOffset(verifier, VT_TEXTURES) &&
+           verifier.VerifyVector(textures()) &&
+           verifier.VerifyVectorOfTables(textures()) &&
+           verifier.EndTable();
+  }
+};
+
+struct SetBuilder {
+  typedef Set Table;
+  flatbuffers::FlatBufferBuilder &fbb_;
+  flatbuffers::uoffset_t start_;
+  void add_player(flatbuffers::Offset<flatbuffers::String> player) {
+    fbb_.AddOffset(Set::VT_PLAYER, player);
+  }
+  void add_textures(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Texture>>> textures) {
+    fbb_.AddOffset(Set::VT_TEXTURES, textures);
+  }
+  explicit SetBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+        : fbb_(_fbb) {
+    start_ = fbb_.StartTable();
+  }
+  flatbuffers::Offset<Set> Finish() {
+    const auto end = fbb_.EndTable(start_);
+    auto o = flatbuffers::Offset<Set>(end);
+    fbb_.Required(o, Set::VT_PLAYER);
+    return o;
+  }
+};
+
+inline flatbuffers::Offset<Set> CreateSet(
+    flatbuffers::FlatBufferBuilder &_fbb,
+    flatbuffers::Offset<flatbuffers::String> player = 0,
+    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Texture>>> textures = 0) {
+  SetBuilder builder_(_fbb);
+  builder_.add_textures(textures);
+  builder_.add_player(player);
+  return builder_.Finish();
+}
+
+inline flatbuffers::Offset<Set> CreateSetDirect(
+    flatbuffers::FlatBufferBuilder &_fbb,
+    const char *player = nullptr,
+    const std::vector<flatbuffers::Offset<Texture>> *textures = nullptr) {
+  auto player__ = player ? _fbb.CreateString(player) : 0;
+  auto textures__ = textures ? _fbb.CreateVector<flatbuffers::Offset<Texture>>(*textures) : 0;
+  return CreateSet(
+      _fbb,
+      player__,
       textures__);
 }
 
@@ -73,18 +149,12 @@ struct Texture FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   const flatbuffers::String *type() const {
     return GetPointer<const flatbuffers::String *>(VT_TYPE);
   }
-  bool KeyCompareLessThan(const Texture *o) const {
-    return *type() < *o->type();
-  }
-  int KeyCompareWithValue(const char *_type) const {
-    return strcmp(type()->c_str(), _type);
-  }
   const flatbuffers::String *path() const {
     return GetPointer<const flatbuffers::String *>(VT_PATH);
   }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
-           VerifyOffsetRequired(verifier, VT_TYPE) &&
+           VerifyOffset(verifier, VT_TYPE) &&
            verifier.VerifyString(type()) &&
            VerifyOffset(verifier, VT_PATH) &&
            verifier.VerifyString(path()) &&
@@ -109,7 +179,6 @@ struct TextureBuilder {
   flatbuffers::Offset<Texture> Finish() {
     const auto end = fbb_.EndTable(start_);
     auto o = flatbuffers::Offset<Texture>(end);
-    fbb_.Required(o, Texture::VT_TYPE);
     return o;
   }
 };

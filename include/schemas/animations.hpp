@@ -6,11 +6,11 @@
 
 #include "flatbuffers/flatbuffers.h"
 
-struct AnimationSetRoot;
-struct AnimationSetRootBuilder;
+struct AnimationRoot;
+struct AnimationRootBuilder;
 
-struct AnimationSet;
-struct AnimationSetBuilder;
+struct Set;
+struct SetBuilder;
 
 struct Animation;
 struct AnimationBuilder;
@@ -18,129 +18,135 @@ struct AnimationBuilder;
 struct Frame;
 struct FrameBuilder;
 
-struct AnimationSetRoot FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
-  typedef AnimationSetRootBuilder Builder;
+struct AnimationRoot FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+  typedef AnimationRootBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
-    VT_SET = 4
+    VT_ANIMATIONS = 4,
+    VT_SPECIALS = 6
   };
-  const flatbuffers::Vector<flatbuffers::Offset<AnimationSet>> *set() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<AnimationSet>> *>(VT_SET);
+  const flatbuffers::Vector<flatbuffers::Offset<Animation>> *animations() const {
+    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Animation>> *>(VT_ANIMATIONS);
+  }
+  const flatbuffers::Vector<flatbuffers::Offset<Set>> *specials() const {
+    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Set>> *>(VT_SPECIALS);
   }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
-           VerifyOffset(verifier, VT_SET) &&
-           verifier.VerifyVector(set()) &&
-           verifier.VerifyVectorOfTables(set()) &&
+           VerifyOffset(verifier, VT_ANIMATIONS) &&
+           verifier.VerifyVector(animations()) &&
+           verifier.VerifyVectorOfTables(animations()) &&
+           VerifyOffset(verifier, VT_SPECIALS) &&
+           verifier.VerifyVector(specials()) &&
+           verifier.VerifyVectorOfTables(specials()) &&
            verifier.EndTable();
   }
 };
 
-struct AnimationSetRootBuilder {
-  typedef AnimationSetRoot Table;
+struct AnimationRootBuilder {
+  typedef AnimationRoot Table;
   flatbuffers::FlatBufferBuilder &fbb_;
   flatbuffers::uoffset_t start_;
-  void add_set(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<AnimationSet>>> set) {
-    fbb_.AddOffset(AnimationSetRoot::VT_SET, set);
+  void add_animations(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Animation>>> animations) {
+    fbb_.AddOffset(AnimationRoot::VT_ANIMATIONS, animations);
   }
-  explicit AnimationSetRootBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  void add_specials(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Set>>> specials) {
+    fbb_.AddOffset(AnimationRoot::VT_SPECIALS, specials);
+  }
+  explicit AnimationRootBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<AnimationSetRoot> Finish() {
+  flatbuffers::Offset<AnimationRoot> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<AnimationSetRoot>(end);
+    auto o = flatbuffers::Offset<AnimationRoot>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<AnimationSetRoot> CreateAnimationSetRoot(
+inline flatbuffers::Offset<AnimationRoot> CreateAnimationRoot(
     flatbuffers::FlatBufferBuilder &_fbb,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<AnimationSet>>> set = 0) {
-  AnimationSetRootBuilder builder_(_fbb);
-  builder_.add_set(set);
+    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Animation>>> animations = 0,
+    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Set>>> specials = 0) {
+  AnimationRootBuilder builder_(_fbb);
+  builder_.add_specials(specials);
+  builder_.add_animations(animations);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<AnimationSetRoot> CreateAnimationSetRootDirect(
+inline flatbuffers::Offset<AnimationRoot> CreateAnimationRootDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
-    std::vector<flatbuffers::Offset<AnimationSet>> *set = nullptr) {
-  auto set__ = set ? _fbb.CreateVectorOfSortedTables<AnimationSet>(set) : 0;
-  return CreateAnimationSetRoot(
+    const std::vector<flatbuffers::Offset<Animation>> *animations = nullptr,
+    const std::vector<flatbuffers::Offset<Set>> *specials = nullptr) {
+  auto animations__ = animations ? _fbb.CreateVector<flatbuffers::Offset<Animation>>(*animations) : 0;
+  auto specials__ = specials ? _fbb.CreateVector<flatbuffers::Offset<Set>>(*specials) : 0;
+  return CreateAnimationRoot(
       _fbb,
-      set__);
+      animations__,
+      specials__);
 }
 
-struct AnimationSet FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
-  typedef AnimationSetBuilder Builder;
+struct Set FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
+  typedef SetBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TYPE = 4,
-    VT_ANIMATIONS = 6
+    VT_ANIMATION = 6
   };
   const flatbuffers::String *type() const {
     return GetPointer<const flatbuffers::String *>(VT_TYPE);
   }
-  bool KeyCompareLessThan(const AnimationSet *o) const {
-    return *type() < *o->type();
-  }
-  int KeyCompareWithValue(const char *_type) const {
-    return strcmp(type()->c_str(), _type);
-  }
-  const flatbuffers::Vector<flatbuffers::Offset<Animation>> *animations() const {
-    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Animation>> *>(VT_ANIMATIONS);
+  const Animation *animation() const {
+    return GetPointer<const Animation *>(VT_ANIMATION);
   }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
-           VerifyOffsetRequired(verifier, VT_TYPE) &&
+           VerifyOffset(verifier, VT_TYPE) &&
            verifier.VerifyString(type()) &&
-           VerifyOffset(verifier, VT_ANIMATIONS) &&
-           verifier.VerifyVector(animations()) &&
-           verifier.VerifyVectorOfTables(animations()) &&
+           VerifyOffset(verifier, VT_ANIMATION) &&
+           verifier.VerifyTable(animation()) &&
            verifier.EndTable();
   }
 };
 
-struct AnimationSetBuilder {
-  typedef AnimationSet Table;
+struct SetBuilder {
+  typedef Set Table;
   flatbuffers::FlatBufferBuilder &fbb_;
   flatbuffers::uoffset_t start_;
   void add_type(flatbuffers::Offset<flatbuffers::String> type) {
-    fbb_.AddOffset(AnimationSet::VT_TYPE, type);
+    fbb_.AddOffset(Set::VT_TYPE, type);
   }
-  void add_animations(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Animation>>> animations) {
-    fbb_.AddOffset(AnimationSet::VT_ANIMATIONS, animations);
+  void add_animation(flatbuffers::Offset<Animation> animation) {
+    fbb_.AddOffset(Set::VT_ANIMATION, animation);
   }
-  explicit AnimationSetBuilder(flatbuffers::FlatBufferBuilder &_fbb)
+  explicit SetBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
   }
-  flatbuffers::Offset<AnimationSet> Finish() {
+  flatbuffers::Offset<Set> Finish() {
     const auto end = fbb_.EndTable(start_);
-    auto o = flatbuffers::Offset<AnimationSet>(end);
-    fbb_.Required(o, AnimationSet::VT_TYPE);
+    auto o = flatbuffers::Offset<Set>(end);
     return o;
   }
 };
 
-inline flatbuffers::Offset<AnimationSet> CreateAnimationSet(
+inline flatbuffers::Offset<Set> CreateSet(
     flatbuffers::FlatBufferBuilder &_fbb,
     flatbuffers::Offset<flatbuffers::String> type = 0,
-    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Animation>>> animations = 0) {
-  AnimationSetBuilder builder_(_fbb);
-  builder_.add_animations(animations);
+    flatbuffers::Offset<Animation> animation = 0) {
+  SetBuilder builder_(_fbb);
+  builder_.add_animation(animation);
   builder_.add_type(type);
   return builder_.Finish();
 }
 
-inline flatbuffers::Offset<AnimationSet> CreateAnimationSetDirect(
+inline flatbuffers::Offset<Set> CreateSetDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
     const char *type = nullptr,
-    const std::vector<flatbuffers::Offset<Animation>> *animations = nullptr) {
+    flatbuffers::Offset<Animation> animation = 0) {
   auto type__ = type ? _fbb.CreateString(type) : 0;
-  auto animations__ = animations ? _fbb.CreateVector<flatbuffers::Offset<Animation>>(*animations) : 0;
-  return CreateAnimationSet(
+  return CreateSet(
       _fbb,
       type__,
-      animations__);
+      animation);
 }
 
 struct Animation FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
@@ -280,33 +286,33 @@ inline flatbuffers::Offset<Frame> CreateFrame(
   return builder_.Finish();
 }
 
-inline const AnimationSetRoot *GetAnimationSetRoot(const void *buf) {
-  return flatbuffers::GetRoot<AnimationSetRoot>(buf);
+inline const AnimationRoot *GetAnimationRoot(const void *buf) {
+  return flatbuffers::GetRoot<AnimationRoot>(buf);
 }
 
-inline const AnimationSetRoot *GetSizePrefixedAnimationSetRoot(const void *buf) {
-  return flatbuffers::GetSizePrefixedRoot<AnimationSetRoot>(buf);
+inline const AnimationRoot *GetSizePrefixedAnimationRoot(const void *buf) {
+  return flatbuffers::GetSizePrefixedRoot<AnimationRoot>(buf);
 }
 
-inline bool VerifyAnimationSetRootBuffer(
+inline bool VerifyAnimationRootBuffer(
     flatbuffers::Verifier &verifier) {
-  return verifier.VerifyBuffer<AnimationSetRoot>(nullptr);
+  return verifier.VerifyBuffer<AnimationRoot>(nullptr);
 }
 
-inline bool VerifySizePrefixedAnimationSetRootBuffer(
+inline bool VerifySizePrefixedAnimationRootBuffer(
     flatbuffers::Verifier &verifier) {
-  return verifier.VerifySizePrefixedBuffer<AnimationSetRoot>(nullptr);
+  return verifier.VerifySizePrefixedBuffer<AnimationRoot>(nullptr);
 }
 
-inline void FinishAnimationSetRootBuffer(
+inline void FinishAnimationRootBuffer(
     flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<AnimationSetRoot> root) {
+    flatbuffers::Offset<AnimationRoot> root) {
   fbb.Finish(root);
 }
 
-inline void FinishSizePrefixedAnimationSetRootBuffer(
+inline void FinishSizePrefixedAnimationRootBuffer(
     flatbuffers::FlatBufferBuilder &fbb,
-    flatbuffers::Offset<AnimationSetRoot> root) {
+    flatbuffers::Offset<AnimationRoot> root) {
   fbb.FinishSizePrefixed(root);
 }
 

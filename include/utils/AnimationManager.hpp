@@ -4,6 +4,7 @@
 #define __ANIMATION_MANAGER_H__
 
 #include <map> // std::map
+#include <vector> // std::vector
 #include <string> // std::string
 
 namespace gui
@@ -23,13 +24,14 @@ namespace utils
 		
 		void loadAnimations();
 
-		const std::map<std::string, gui::Animation*>& get(const std::string& type) const;
-
-		const gui::Animation& get(const std::string& type, const std::string& name) const;
+		const std::vector<gui::Animation*>& getAnimations() const;
+		
+		const gui::Animation& getSpecialAnimation(const std::string& type) const;
 		
 	private:
 
-		std::map<std::string, std::map<std::string, gui::Animation*>> _animations;
+		std::vector<gui::Animation*> _animations;
+		std::map<std::string, gui::Animation*> _specials;
 	};
 }
 

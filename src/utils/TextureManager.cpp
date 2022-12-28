@@ -3,48 +3,61 @@
 #include <SFML/Graphics/Texture.hpp> // sf::Texture
 #include <fstream> // std::ifstream
 
-utils::TextureManager::TextureManager()
-	: _textures() {}
-
-utils::TextureManager::~TextureManager() noexcept
+namespace utils
 {
-	for (auto& [type, texture] : _textures)
+	TextureManager::TextureManager()
+		: _textures() {}
+
+	TextureManager::~TextureManager() noexcept
 	{
-		delete texture;
-	}
-}
-
-void utils::TextureManager::loadTextures()
-{
-	std::ifstream infile("assets/data/textures.bin", std::ios::binary | std::ios::in);
-	infile.seekg(0, std::ios::end);
-	std::streampos length = infile.tellg();
-	infile.seekg(0, std::ios::beg);
-	char* buffer = new char[length];
-	infile.read(buffer, length);
-	infile.close();
-
-	auto textures_list = GetTextureRoot(buffer)->textures();
-
-	for (size_t i = 0; i < textures_list->size(); i++)
-	{
-		sf::Texture* texture = new sf::Texture;
-		texture->setSmooth(true);
-		
-		if (texture->loadFromFile(textures_list->Get(i)->path()->data()))
+		for (auto& [type, textures] : _textures)
 		{
-			_textures[textures_list->Get(i)->type()->data()] = texture;
-		}
-		else
-		{
-			_textures[textures_list->Get(i)->type()->data()] = nullptr;
+			for (auto& [name, texture] : textures)
+			{
+				delete texture;
+			}
 		}
 	}
-	
-	delete[] buffer;
-}
 
-const sf::Texture* utils::TextureManager::get(const std::string& type) const
-{
-	return _textures.at(type);
+	void TextureManager::loadTextures()
+	{
+		std::ifstream infile("assets/data/textures.bin", std::ios::binary | std::ios::in);
+		infile.seekg(0, std::ios::end);
+		std::streampos length = infile.tellg();
+		infile.seekg(0, std::ios::beg);
+		char* buffer = new char[length];
+		infile.read(buffer, length);
+		infile.close();
+
+		auto textures_list = GetTextureRoot(buffer)->textures_sets();
+
+		for (const auto& textures_set : *textures_list)
+		{
+			char player = textures_set->player()->str()[0];
+			auto textures = textures_set->textures();
+
+			for (const auto& texture : *textures)
+			{
+				const std::string& type = texture->type()->str();
+				const std::string& path = texture->path()->str();
+				
+				sf::Texture* new_texture = new sf::Texture;
+				new_texture->loadFromFile(path.data());
+
+				_textures[player][type] = new_texture;
+			}
+		}
+
+		delete[] buffer;
+	}
+
+	const std::map<std::string, sf::Texture*>& TextureManager::get(char player) const
+	{
+		return _textures.at(player);
+	}
+
+	const sf::Texture* TextureManager::get(char player, const std::string& type) const
+	{
+		return _textures.at(player).at(type);
+	}
 }

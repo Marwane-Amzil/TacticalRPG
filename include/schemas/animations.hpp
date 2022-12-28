@@ -89,20 +89,21 @@ struct Set FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   typedef SetBuilder Builder;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TYPE = 4,
-    VT_ANIMATION = 6
+    VT_ANIMATIONS = 6
   };
   const flatbuffers::String *type() const {
     return GetPointer<const flatbuffers::String *>(VT_TYPE);
   }
-  const Animation *animation() const {
-    return GetPointer<const Animation *>(VT_ANIMATION);
+  const flatbuffers::Vector<flatbuffers::Offset<Animation>> *animations() const {
+    return GetPointer<const flatbuffers::Vector<flatbuffers::Offset<Animation>> *>(VT_ANIMATIONS);
   }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_TYPE) &&
            verifier.VerifyString(type()) &&
-           VerifyOffset(verifier, VT_ANIMATION) &&
-           verifier.VerifyTable(animation()) &&
+           VerifyOffset(verifier, VT_ANIMATIONS) &&
+           verifier.VerifyVector(animations()) &&
+           verifier.VerifyVectorOfTables(animations()) &&
            verifier.EndTable();
   }
 };
@@ -114,8 +115,8 @@ struct SetBuilder {
   void add_type(flatbuffers::Offset<flatbuffers::String> type) {
     fbb_.AddOffset(Set::VT_TYPE, type);
   }
-  void add_animation(flatbuffers::Offset<Animation> animation) {
-    fbb_.AddOffset(Set::VT_ANIMATION, animation);
+  void add_animations(flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Animation>>> animations) {
+    fbb_.AddOffset(Set::VT_ANIMATIONS, animations);
   }
   explicit SetBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
@@ -131,9 +132,9 @@ struct SetBuilder {
 inline flatbuffers::Offset<Set> CreateSet(
     flatbuffers::FlatBufferBuilder &_fbb,
     flatbuffers::Offset<flatbuffers::String> type = 0,
-    flatbuffers::Offset<Animation> animation = 0) {
+    flatbuffers::Offset<flatbuffers::Vector<flatbuffers::Offset<Animation>>> animations = 0) {
   SetBuilder builder_(_fbb);
-  builder_.add_animation(animation);
+  builder_.add_animations(animations);
   builder_.add_type(type);
   return builder_.Finish();
 }
@@ -141,12 +142,13 @@ inline flatbuffers::Offset<Set> CreateSet(
 inline flatbuffers::Offset<Set> CreateSetDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
     const char *type = nullptr,
-    flatbuffers::Offset<Animation> animation = 0) {
+    const std::vector<flatbuffers::Offset<Animation>> *animations = nullptr) {
   auto type__ = type ? _fbb.CreateString(type) : 0;
+  auto animations__ = animations ? _fbb.CreateVector<flatbuffers::Offset<Animation>>(*animations) : 0;
   return CreateSet(
       _fbb,
       type__,
-      animation);
+      animations__);
 }
 
 struct Animation FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {

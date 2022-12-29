@@ -10,7 +10,7 @@ Position::Position(const int x, const int y)
 {
 }
 
-constexpr Position::Position(const Position& other)
+Position::Position(const Position& other)
 	: _x(other._x), _y(other._y) {}
 
 // ----------------------------------------------   Start  Getters / Setters    ------------------------------------------------------------

@@ -12,7 +12,7 @@ public:
 	/**
 	*
 	*/
-	explicit MagicalSkill(int multiplier, int range, Effect* effect = nullptr);
+	explicit MagicalSkill(int multiplier, int range, Character* character, Effect* effect = nullptr);
 	/**
 	*
 	*/

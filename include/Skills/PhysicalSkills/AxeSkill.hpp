@@ -12,7 +12,7 @@ public:
 	/**
 	*
 	*/
-	explicit AxeSkill(int multiplier, int range, Effect* effect = nullptr);
+	explicit AxeSkill(int multiplier, int range, Character* character, Effect* effect = nullptr);
 	/**
 	*
 	*/
@@ -20,7 +20,10 @@ public:
 	/**
 	*
 	*/
-	void activate(Character* character) const override;
+	void activate(Grid& grid, Character* character) const override;
+
+	std::vector<Position> getPossibleZones(const Grid& grid) const override;
+
 
 private:
 

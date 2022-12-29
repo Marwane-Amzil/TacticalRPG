@@ -4,6 +4,7 @@
 #define __GRID_H__
 
 #include <array> // std::array
+#include <vector> // std::vector
 #include <Constants.hpp> // Constant values
 
 /**
@@ -14,7 +15,7 @@
 * it is pointing to.
 */ 
 class Entity;
-
+class Position;
 /*
 * @brief The Grid class represents the field of the game and it will store entities.
 */
@@ -64,6 +65,13 @@ public:
 	* 
 	* @return returns the asked row
 	*/
+
+	/**
+	* Method wich returns the entity at a given position. If the position is out of bounds or is there is no entity, 
+	*	The method will return nullptr.
+	*/
+	const std::vector<Entity*> getEntitys(Position* pos);
+	
 	const std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index) const;
 	/**
 	* @brief Overloaded [] operator for the Grid class. Behaves the same as any

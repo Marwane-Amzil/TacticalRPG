@@ -12,7 +12,7 @@ public:
 	/**
 	*
 	*/
-	explicit PhysicalSkill(int multiplier, int range, Effect* effect = nullptr);
+	explicit PhysicalSkill(int multiplier, int range, Character* character, Effect* effect = nullptr);
 	/**
 	*
 	*/

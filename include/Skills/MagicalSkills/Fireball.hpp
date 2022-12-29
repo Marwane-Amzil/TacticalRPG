@@ -9,11 +9,14 @@ class Fireball : public MagicalSkill
 {
 public:
 
-	explicit Fireball(int multiplier, int range, Effect* effect = nullptr);
+	explicit Fireball(int multiplier, int range, Character* character,Effect* effect = nullptr);
 	
 	inline ~Fireball() noexcept = default;
 
-	void activate(Character* character) const override;
+	void activate(Grid& grid, Character& character) const override;
+	
+	std::vector<Position> getPossibleZones(const Grid& grid) const override;
+
 
 private:
 

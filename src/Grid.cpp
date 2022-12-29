@@ -1,6 +1,7 @@
 #include <Grid.hpp>
 #include <Entity.hpp>
 #include <iostream>
+#include <vector>
 
 using namespace ::grid;
 
@@ -61,6 +62,24 @@ void Grid::display() const
 
 	std::cout << "    " + std::string(-1 + (COLUMNS * 4), '-') << '\n';
 }
+
+const std::vector<Entity*> Grid::getEntitys(Position* pos) {
+	
+	std::vector<Entity*> entityContainer = std::vector<Entity*>();
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLUMNS; j++)
+		{
+			if (_grid[i][j])
+			{
+				entityContainer.push_back(_grid[i][j]);
+			}
+		}
+	}
+	
+	return entityContainer;
+}
+
 
 const std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index) const
 {

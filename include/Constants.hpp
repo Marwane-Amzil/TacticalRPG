@@ -22,36 +22,55 @@ namespace grid
 // -- Mage --
 namespace mage
 {
-    constexpr int MOVES = 0;
+    constexpr int MOVES = 3;
+    constexpr int NEG_MOVES = -2;
 }
 
 // -- Healer --
 namespace healer
 {
-    constexpr int MOVES = 0;
+    constexpr int MOVES = 4;
+    constexpr int NEG_MOVES = -3;
 }
 
 // -- Warior --
 namespace warrior
 {
-    constexpr int MOVES = 0;
+    constexpr int MOVES = 5;
+    constexpr int NEG_MOVES = -4;
 }
 
 // -- Knight --
 namespace knight
 {
-    constexpr int MOVES = 0;
+    constexpr int MOVES = 6;
+    constexpr int NEG_MOVES = -5;
 }
 
 // -- archer --
 namespace archer
 {
-    constexpr int MOVES = 0;
+    constexpr int MOVES = 4;
+    constexpr int NEG_MOVES = -3;
 }
 
 namespace skill
 {
 	constexpr size_t MAX_SKILLS = 3;
+}
+
+namespace fireball
+{
+	constexpr int DAMAGE = 20;
+	constexpr int RANGE = 5;
+	constexpr int NEG_RANGE = -4;
+}
+
+namespace axeskill
+{
+    constexpr int DAMAGE = 20;
+    constexpr int RANGE = 5;
+    constexpr int NEG_RANGE = -4;
 }
 
 #endif //!__CONSTANTS_H__

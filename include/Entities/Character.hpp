@@ -161,6 +161,12 @@ public:
 	* an instance of one of the derived class.
 	*/
 	virtual ~Character() = default;
+
+	/**
+	* This method uses the skill on a position on the grid.
+	*/
+	void useSkillOne(Position* pos, Grid* grid);
+	
 	/**
 	* @brief Method which returns the list of positions the character can actually move on.
 	* It requires the grid to performs check for valid moves such as empty case or not.

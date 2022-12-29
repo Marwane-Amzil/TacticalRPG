@@ -1,6 +1,7 @@
 #include <Skills/MagicalSkills/Fireball.hpp>
 #include <Entities/Character.hpp>
 #include <Constants.hpp>
+#include <Grid.hpp>
 
 using namespace ::fireball;
 using namespace ::grid;
@@ -17,7 +18,7 @@ void Fireball::activate(Grid& grid, Character& character) const
 	std::vector<Position> possibleZones = getPossibleZones(grid);
 	for (size_t i = 0; i < possibleZones.size(); i++)
 	{
-		if (grid[possibleZones[i].getX()][possibleZones[i].getY()] = character)
+		if (grid[possibleZones[i].getX()][possibleZones[i].getY()] = &character)
 		{
 			/*hp = hp - (magic * (1 - (res_magic / 200)));
 			if (hp < 0)

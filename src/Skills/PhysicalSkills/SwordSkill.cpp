@@ -14,3 +14,8 @@ void SwordSkill::activate(Grid& grid, Character& character) const
 	
 
 }
+
+std::vector<Position> SwordSkill::getPossibleZones(const Grid& grid) const
+{
+	return std::vector<Position>();
+}

@@ -10,13 +10,13 @@ using namespace ::grid;
 AxeSkill::AxeSkill(int multiplier, int range,Character* character, Effect* effect)
 	: super(multiplier, range, character,effect) {}
 
-void AxeSkill::activate(Grid& grid, Character* character) const
+void AxeSkill::activate(Grid& grid, Character& character) const
 {
-	int hp = character->getHp();
-	int strength = character->getStrength();
-	int res_strength = character->getResPhy();
-	character->setHp(hp - (strength * (1 - (res_strength / 200) ) ) );
-	
+	/*int hp = character.getHp();
+	int strength = character.getStrength();
+	int res_strength = character.getResPhy();
+	character.setHp(hp - (strength * (1 - (res_strength / 200) ) ) );*/
+	character.setHp(200);
 }
 
 std::vector<Position> AxeSkill::getPossibleZones(const Grid& grid) const {

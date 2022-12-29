@@ -62,8 +62,8 @@ namespace skill
 namespace fireball
 {
 	constexpr int DAMAGE = 20;
-	constexpr int RANGE = 5;
-	constexpr int NEG_RANGE = -4;
+	constexpr int RANGE = 3;
+	constexpr int NEG_RANGE = -2;
 }
 
 namespace axeskill

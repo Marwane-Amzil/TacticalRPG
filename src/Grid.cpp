@@ -80,7 +80,6 @@ const std::vector<Entity*> Grid::getEntitys(Position* pos) {
 	return entityContainer;
 }
 
-
 const std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index) const
 {
 	return _grid[index];
@@ -90,3 +89,4 @@ std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index)
 {
 	return _grid[index];
 }
+

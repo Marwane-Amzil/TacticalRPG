@@ -20,7 +20,7 @@ public:
 	/**
 	*
 	*/
-	void activate(Grid& grid, Character* character) const override;
+	void activate(Grid& grid, Character& character) const override;
 
 	std::vector<Position> getPossibleZones(const Grid& grid) const override;
 

@@ -19,16 +19,16 @@ void Fireball::activate(Grid& grid, Character& character) const
 	{
 		if (grid[possibleZones[i].getX()][possibleZones[i].getY()] = character)
 		{
-			hp = hp - (magic * (1 - (res_magic / 200)));
+			/*hp = hp - (magic * (1 - (res_magic / 200)));
 			if (hp < 0)
 			{
 				hp = 0;
-			}
+			}*/
 		}
 	}
 	
 	
-	character.setHp(hp);
+	character.setHp(100);
 
 }
 

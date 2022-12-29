@@ -4,6 +4,7 @@
 #define __SKILL_H__
 
 #include <vector> // std::vector
+#include <Position.hpp>
 
 class Effect;
 class Character;

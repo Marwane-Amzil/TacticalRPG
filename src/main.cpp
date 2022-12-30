@@ -1,5 +1,4 @@
 #include <iostream>
-#include <Grid.hpp>
 #include <Entities/Characters/MagicCharacters/Mage.hpp>
 #include <Skills/MagicalSkills/Fireball.hpp>
 #include <Constants.hpp>

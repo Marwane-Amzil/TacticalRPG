@@ -62,15 +62,34 @@ namespace skill
 namespace fireball
 {
 	constexpr int DAMAGE = 20;
-	constexpr int RANGE = 3;
-	constexpr int NEG_RANGE = -2;
+	constexpr int RANGE_X = 5;
+    constexpr int RANGE_Y = 5;
+    constexpr int AOE_RANGE_X = 3;
+	constexpr int AOE_RANGE_Y = 3;
+	//constexpr bool IS_DIAG = true;
+	constexpr int NEG_RANGE_X = -4;
+    constexpr int NEG_RANGE_Y = -4;
+
 }
 
 namespace axeskill
 {
+    constexpr int DAMAGE = 13;
+    constexpr int RANGE_X = 2;
+	constexpr int RANGE_Y = 2;
+	//constexpr bool IS_DIAG = true;
+	constexpr int NEG_RANGE_X = -1;
+    constexpr int NEG_RANGE_Y = -1;
+}
+
+namespace swordskill
+{
     constexpr int DAMAGE = 20;
-    constexpr int RANGE = 5;
-    constexpr int NEG_RANGE = -4;
+	constexpr int RANGE_X = 2;
+	constexpr int RANGE_Y = 2;
+	//constexpr bool IS_DIAG = false;
+    constexpr int NEG_RANGE_X = -1;
+    constexpr int NEG_RANGE_Y = -1;
 }
 
 #endif //!__CONSTANTS_H__

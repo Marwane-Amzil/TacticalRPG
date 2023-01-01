@@ -24,7 +24,7 @@ private:
 
 private:
 	
-	const int base_damage = 7;
+	const int _base_damage = 7;
 };
 
 #endif // !__Fireball_H__

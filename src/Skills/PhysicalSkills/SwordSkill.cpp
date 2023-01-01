@@ -1,21 +1,58 @@
 #include <Skills/PhysicalSkills/SwordSkill.hpp>
 #include <Entities/Character.hpp>
+#include <Grid.hpp>
+#include <Constants.hpp>
+#include <Position.hpp>
+#include <iostream>
+
+using namespace ::swordskill;
+using namespace ::grid;
 
 SwordSkill::SwordSkill(int multiplier, int range,Character* character, Effect* effect)
 	: super(multiplier, range,character, effect) {}
 
 void SwordSkill::activate(Grid& grid, Character& character) const
 {
-	/*int hp = character.getHp();
+	Position pos = character.getPosition();
+	int hp = character.getHp();
 	int strength = character.getStrength();
-	int res_strength = character.getResPhy();
-	character.setHp(hp - (strength * (1 - (res_strength / 200))));*/
-	character.setHp(300);
+	int res_strength = character.getResMag();
+	std::vector<Position> possibleZones = getPossibleZones(grid);
 	
-
+	for (const Position& position : possibleZones) {
+		if (pos == position) {
+			int damage = (strength * (1 - (res_strength / 200)));
+			hp = character.getHp() - damage;
+			if (hp < 0)
+			{
+				hp = 0;
+			}
+			character.setHp(hp);
+		}
+		
+	}
 }
 
 std::vector<Position> SwordSkill::getPossibleZones(const Grid& grid) const
 {
-	return std::vector<Position>();
+	std::vector<Position> possibleZones;
+	Position pos = getOwner()->getPosition();
+
+	for (int x = NEG_RANGE_X; x < RANGE_X; x++)
+	{
+		for (int y = NEG_RANGE_Y; y < RANGE_Y; y++)
+		{
+			if (abs(x) + abs(y) < RANGE_X && x != 0 || y != 0)
+			{
+				if (pos.getX() + x < COLUMNS && pos.getY() + y < COLUMNS && pos.getX() + x >= 0 && pos.getY() + y >= 0)
+				{
+					if (!grid[pos.getX() + x][pos.getY() + y])
+					{
+						possibleZones.emplace_back(pos.getX() + x, pos.getY() + y);
+					}
+				}
+			}
+		}
+	}
+	return possibleZones;
 }

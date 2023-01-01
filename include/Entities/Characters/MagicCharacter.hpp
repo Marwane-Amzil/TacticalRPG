@@ -21,13 +21,6 @@ public:
 	/**
 	 * @brief
 	 *
-	 *
-	*/
-	int getMagic();
-
-	/**
-	 * @brief
-	 *
 	 */
 
 

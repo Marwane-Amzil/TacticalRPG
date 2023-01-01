@@ -63,7 +63,7 @@ void Grid::display() const
 	std::cout << "    " + std::string(-1 + (COLUMNS * 4), '-') << '\n';
 }
 
-const std::vector<Entity*> Grid::getEntitys(Position* pos) {
+const std::vector<Entity*> Grid::getEntitys() {
 	
 	std::vector<Entity*> entityContainer = std::vector<Entity*>();
 	for (int i = 0; i < ROWS; i++)
@@ -79,6 +79,7 @@ const std::vector<Entity*> Grid::getEntitys(Position* pos) {
 	
 	return entityContainer;
 }
+
 
 const std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index) const
 {

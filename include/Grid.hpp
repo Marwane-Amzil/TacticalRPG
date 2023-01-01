@@ -70,7 +70,7 @@ public:
 	* Method wich returns the entity at a given position. If the position is out of bounds or is there is no entity, 
 	*	The method will return nullptr.
 	*/
-	const std::vector<Entity*> getEntitys(Position* pos);
+	const std::vector<Entity*> getEntitys();
 	
 	const std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index) const;
 	

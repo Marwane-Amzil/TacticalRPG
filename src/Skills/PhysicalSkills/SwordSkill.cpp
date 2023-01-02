@@ -11,23 +11,23 @@ using namespace ::grid;
 SwordSkill::SwordSkill(int multiplier, int range,Character* character, Effect* effect)
 	: super(multiplier, range,character, effect) {}
 
-void SwordSkill::activate(Grid& grid, Character& character) const
+void SwordSkill::activate(Grid& grid, Character& target) const
 {
-	Position pos = character.getPosition();
-	int hp = character.getHp();
-	int strength = character.getStrength();
-	int res_strength = character.getResMag();
+	Position pos = target.getPosition();
+	int hp = target.getHp();
+	int strength = target.getStrength();
+	int res_strength = target.getResMag();
 	std::vector<Position> possibleZones = getPossibleZones(grid);
 	
 	for (const Position& position : possibleZones) {
 		if (pos == position) {
 			int damage = (strength * (1 - (res_strength / 200)));
-			hp = character.getHp() - damage;
+			hp = target.getHp() - damage;
 			if (hp < 0)
 			{
 				hp = 0;
 			}
-			character.setHp(hp);
+			target.setHp(hp);
 		}
 		
 	}

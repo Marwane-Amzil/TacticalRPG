@@ -18,7 +18,7 @@
 class Grid;
 
 /**
-* @brief
+* @brief The skill class. Forward declared to avoid recursive includes in some files when it's not needed.
 */
 class Skill;
 

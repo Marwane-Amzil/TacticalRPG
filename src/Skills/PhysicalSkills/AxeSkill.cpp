@@ -8,44 +8,32 @@
 using namespace ::axeskill;
 using namespace ::grid;
 
+// AxeSkill constructor
 AxeSkill::AxeSkill(int multiplier, int range,Character* character, Effect* effect)
 	: super(multiplier, range, character,effect) {}
 
-void AxeSkill::activate(Grid& grid, Character& character) const
+void AxeSkill::activate(Grid& grid, Character& target) const
 {
-	Position pos = character.getPosition();
-	int hp = character.getHp();
-	int strength = character.getStrength();
-	int res_strength = character.getResMag();
+	// Declaration 
+	Position pos = target.getPosition();
+	int hp = target.getHp();
+	int strength = target.getStrength();
+	int res_strength = target.getResMag();
 	std::vector<Position> possibleZones = getPossibleZones(grid);
 
+	// Processing
 	for (const Position& position : possibleZones) {
 		if (pos == position) {
-			for (size_t x = pos.getX(); x < (pos.getX() + RANGE_X); x++)
+			int damage = (strength * (1 - (res_strength / 200)));
+			hp = target.getHp() - damage;
+			if (hp < 0)
 			{
-				for (size_t y = pos.getY(); y < pos.getY() + RANGE_Y; y++)
-				{
-					if (x <= COLUMNS && y <= COLUMNS)
-					{
-						std::cout << x << ";" << y << std::endl;
-						if (grid[x][y])
-						{
-							Entity* entity = grid[x][y];
-							int damage = (strength * (1 - (res_strength / 200)));
-							hp = entity->getHp() - damage;
-							if (hp < 0)
-							{
-								hp = 0;
-							}
-							entity->setHp(hp);
-
-						}
-					}
-				}
+				hp = 0;
 			}
+			target.setHp(hp);
 		}
+
 	}
-	character.setHp(hp);
 }
 
 std::vector<Position> AxeSkill::getPossibleZones(const Grid& grid) const {

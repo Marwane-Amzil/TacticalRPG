@@ -11,12 +11,12 @@ using namespace ::grid;
 Fireball::Fireball(int multiplier, int range, Character* character, Effect* effect)
 	: super(multiplier, range,character, effect) {}
 
-void Fireball::activate(Grid& grid, Character& character) const
+void Fireball::activate(Grid& grid, Character& target) const
 {
-	Position pos = character.getPosition();
-	int hp = character.getHp();
-	int magic = character.getMagic();
-	int res_magic = character.getResMag();
+	Position pos = target.getPosition();
+	int hp = target.getHp();
+	int magic = target.getMagic();
+	int res_magic = target.getResMag();
 	std::vector<Position> possibleZones = getPossibleZones(grid);
 	
 	for (const Position& position : possibleZones) {
@@ -28,7 +28,6 @@ void Fireball::activate(Grid& grid, Character& character) const
 				{
 					if (x <= COLUMNS && y <= COLUMNS)
 					{
-						std::cout << x << ";" << y << std::endl;
 						if (grid[x][y])
 						{
 							Entity* entity = grid[x][y];
@@ -44,11 +43,8 @@ void Fireball::activate(Grid& grid, Character& character) const
 					}
 				}
 			}
-
-			character.setHp(hp);
 		}
-		else {
-			std::cout << "sheesh" << std::endl;
+		else { // TODO, managing the no entity found. 
 		}
 	}
 }

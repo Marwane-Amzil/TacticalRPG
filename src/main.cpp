@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Entities/Characters/MagicCharacters/Mage.hpp>
 #include <Skills/MagicalSkills/Fireball.hpp>
+#include <Skills/PhysicalSkills/SwordSkill.hpp>
 #include <Constants.hpp>
 #include <Grid.hpp>
 
@@ -8,12 +9,16 @@ int main(int argc, char* argv[])
 {
 	// Declaration 
 	Mage* mage = new Mage(0, 0, 'B');
-	Mage mageTwo(10, 10, 'R');
+	Mage mageTwo(3, 3, 'R');
 	Mage mageThree(11, 11, 'R');
 	Fireball* fireball = new Fireball(10, 2, mage, nullptr);
-	Fireball fireTest();
 	Grid grid;
-
+	SwordSkill* swordskill = new SwordSkill(10, 2, &mageTwo, nullptr);
+	
+	std::vector<Position> possibleZones = swordskill->getPossibleZones(grid);
+	for (const Position& position : possibleZones) {
+		std::cout << "\nswordskill" << position.getX() << " ; " << position.getY() << std::endl;
+	}
 	grid.addEntity(mage);
 	grid.addEntity(&mageTwo);
 	grid.addEntity(&mageThree);
@@ -45,3 +50,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+

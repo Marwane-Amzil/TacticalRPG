@@ -14,7 +14,6 @@ void gui::World::addEntity(gui::EntitySprite* sprite)
 	_grid.addEntity(sprite->getEntity());
 	_sprites[x][y] = sprite;
 	_sprites[x][y]->setPosition(x * 25, y * 35);
-	_sprites[x][y]->setTextureRect(0, 710, 50, 60);
 }
 
 void gui::World::removeEntity(gui::EntitySprite* sprite)
@@ -22,9 +21,9 @@ void gui::World::removeEntity(gui::EntitySprite* sprite)
 	int x = sprite->getEntity()->getPosition().getX();
 	int y = sprite->getEntity()->getPosition().getY();
 
-	_grid.removeEntity(sprite->getEntity());
 	delete _sprites[x][y];
 	_sprites[x][y] = nullptr;
+	_grid[x][y] = nullptr;
 }
 
 const Grid& gui::World::getGrid() const

@@ -20,24 +20,25 @@ void Fireball::activate(Grid& grid, Character& target) const
 	std::vector<Position> possibleZones = getPossibleZones(grid);
 	
 	for (const Position& position : possibleZones) {
-		if (pos == position) {
-			
-			for (size_t x = pos.getX(); x < (pos.getX() + AOE_RANGE_X); x++)
+		if (pos == position) 
+		{
+			for (int x = -(pos.getX()-1); x < (pos.getX() + AOE_RANGE_X); x++)
 			{
-				for (size_t y = pos.getY(); y < pos.getY() + AOE_RANGE_Y; y++)
+				for (int y = -( pos.getY() - 1); y < (pos.getY() + AOE_RANGE_Y) ; y++)
 				{
-					if (x <= COLUMNS && y <= COLUMNS)
+					if (x <= COLUMNS && y <= COLUMNS && x >= 0 && y >= 0)
 					{
+
 						if (grid[x][y])
 						{
-							Entity* entity = grid[x][y];
+							std::cout << x << " ; " << y << std::endl;
 							int damage = (magic * (1 - (res_magic / 200)));
-							hp = entity->getHp() - damage;
+							hp = grid[x][y]->getHp() - damage;
 							if (hp < 0)
 							{
 								hp = 0;
 							}
-							entity->setHp(hp);
+							grid[x][y]->setHp(hp);
 
 						}
 					}
@@ -45,6 +46,7 @@ void Fireball::activate(Grid& grid, Character& target) const
 			}
 		}
 		else { // TODO, managing the no entity found. 
+			std::cout << "entity " << std::endl;
 		}
 	}
 }
@@ -63,7 +65,7 @@ std::vector<Position> Fireball::getPossibleZones(const Grid& grid) const{
 			{
 				if (pos.getX() + x < COLUMNS && pos.getY() + y < COLUMNS && pos.getX() + x >= 0 && pos.getY() + y >= 0)
 				{
-					if (!grid[pos.getX() + x][pos.getY() + y])
+					if (grid[pos.getX() + x][pos.getY() + y])
 					{
 						possibleZones.emplace_back(pos.getX() + x, pos.getY() + y);
 					}

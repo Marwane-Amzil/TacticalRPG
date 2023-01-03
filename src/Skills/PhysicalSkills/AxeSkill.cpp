@@ -49,7 +49,7 @@ std::vector<Position> AxeSkill::getPossibleZones(const Grid& grid) const {
 			{
 				if (pos.getX() + x < COLUMNS && pos.getY() + y < COLUMNS && pos.getX() + x >= 0 && pos.getY() + y >= 0)
 				{
-					if (!grid[pos.getX() + x][pos.getY() + y])
+					if (grid[pos.getX() + x][pos.getY() + y])
 					{
 						possibleZones.emplace_back(pos.getX() + x, pos.getY() + y);
 					}

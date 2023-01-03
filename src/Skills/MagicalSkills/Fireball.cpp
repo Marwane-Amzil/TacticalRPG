@@ -15,8 +15,8 @@ void Fireball::activate(Grid& grid, Character* target) const
 {
 	Position posTarget = target->getPosition();
 	int hp = target->getHp();
-	int strength = target->getStrength();
-	int res_strength = target->getResMag();
+	int magic = target->getStrength();
+	int res_magic = target->getResMag();
 	std::vector<Position> possibleZones = getPossibleZones(grid);
 	
 	for (const Position& position : possibleZones) {

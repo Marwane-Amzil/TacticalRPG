@@ -8,8 +8,8 @@
 
 namespace utils
 {
-	SpriteFactory::SpriteFactory(gui::World& world, TextureManager& texture_manager, AnimationManager& animation_manager)
-		: _world(world), _texture_manager(texture_manager), _animation_manager(animation_manager)
+	SpriteFactory::SpriteFactory(TextureManager& texture_manager, AnimationManager& animation_manager)
+		: _texture_manager(texture_manager), _animation_manager(animation_manager)
 	{
 		_texture_manager.loadTextures();
 		_animation_manager.loadAnimations();
@@ -32,8 +32,6 @@ namespace utils
 			sprite->addAnimation(index, *animation);
 			++index;
 		}
-
-		_world.addEntity(sprite);
 		
 		return sprite;
 	}

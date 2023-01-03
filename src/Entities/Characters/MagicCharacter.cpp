@@ -6,9 +6,3 @@ MagicCharacter::MagicCharacter(const int x, const int y, const int hp, const cha
 {
 
 }
-
-MagicCharacter::~MagicCharacter()
-{
-}
-
-

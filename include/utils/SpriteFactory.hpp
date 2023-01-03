@@ -6,7 +6,7 @@
 namespace gui
 {
 	class EntitySprite;
-	class World;
+	//class World;
 }
 
 class Character;
@@ -21,7 +21,7 @@ namespace utils
 	{
 	public:
 
-		explicit SpriteFactory(gui::World& world, TextureManager& texture_manager, AnimationManager& animation_manager);
+		explicit SpriteFactory(TextureManager& texture_manager, AnimationManager& animation_manager);
 
 		inline ~SpriteFactory() noexcept = default;
 
@@ -29,7 +29,7 @@ namespace utils
 
 	private:
 
-		gui::World& _world;
+		//gui::World& _world;
 		TextureManager& _texture_manager;
 		AnimationManager& _animation_manager;
 	};

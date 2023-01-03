@@ -4,6 +4,12 @@
 #include <Constants.hpp>
 #include <Grid.hpp>
 #include <Entities/Obstacle.hpp>
+#include <SFML/Graphics.hpp>
+#include <utils/TextureManager.hpp>
+#include <utils/AnimationManager.hpp>
+#include <utils/SpriteFactory.hpp>
+#include <GUI/game/EntitySprite.hpp>
+
 int main(int argc, char* argv[])
 {
 	// Declaration 
@@ -42,8 +48,36 @@ int main(int argc, char* argv[])
 
 	//std::cout << Warrior->getMagic();
 	
-	std::cin.get();
+	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	window.setVerticalSyncEnabled(true);
+	utils::TextureManager textureManager;
+	utils::AnimationManager animationManager;
+	utils::SpriteFactory spriteFactory(textureManager, animationManager);
+	std::vector<gui::EntitySprite*> sprites;
+	sf::Clock timer;
 
+	sprites.push_back(spriteFactory.createCharacter(new Mage(0, 0, 'R')));
+	sprites.push_back(spriteFactory.createCharacter(new Knight(5, 5, 'R')));
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+
+		window.clear();
+		for (auto sprite : sprites)
+		{
+			sprite->update(timer.getElapsedTime());
+			window.draw(*sprite);
+		}
+		window.display();
+	}
+	
 	return 0;
 }
 

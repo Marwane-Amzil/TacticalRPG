@@ -54,28 +54,28 @@
     <ClCompile Include="src\Entities\Characters\PhysicalCharacters\Knight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\ui\Button.cpp">
+    <ClCompile Include="src\Skill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\TextureManager.cpp">
+    <ClCompile Include="src\Skills\MagicalSkill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\AnimationManager.cpp">
+    <ClCompile Include="src\Skills\PhysicalSkill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\SpriteFactory.cpp">
+    <ClCompile Include="src\Effect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\game\EntitySprite.cpp">
+    <ClCompile Include="src\Effect\Burn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\game\World.cpp">
+    <ClCompile Include="src\Skills\PhysicalSkills\SwordSkill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\ui\Menu.cpp">
+    <ClCompile Include="src\Skills\PhysicalSkills\AxeSkill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\game\Animation.cpp">
+    <ClCompile Include="src\Skills\MagicalSkills\Fireball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -119,37 +119,28 @@
     <ClInclude Include="include\constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Entities.hpp">
+    <ClInclude Include="include\Skill.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\utils\TextureManager.hpp">
+    <ClInclude Include="include\Skills\MagicalSkill.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\schemas\textures.hpp">
+    <ClInclude Include="include\Skills\PhysicalSkill.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\utils\AnimationManager.hpp">
+    <ClInclude Include="include\Effect.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\utils\SpriteFactory.hpp">
+    <ClInclude Include="include\Effect\Burn.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\schemas\animations.hpp">
+    <ClInclude Include="include\Skills\PhysicalSkills\SwordSkill.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\game\EntitySprite.hpp">
+    <ClInclude Include="include\Skills\PhysicalSkills\AxeSkill.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\ui\Button.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GUI\game\World.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GUI\ui\Menu.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GUI\game\Animation.hpp">
+    <ClInclude Include="include\Skills\MagicalSkills\Fireball.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

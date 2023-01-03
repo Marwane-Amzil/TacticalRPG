@@ -4,6 +4,7 @@
 #define __GRID_H__
 
 #include <array> // std::array
+#include <vector> // std::vector
 #include <Constants.hpp> // Constant values
 
 /**
@@ -14,7 +15,7 @@
 * it is pointing to.
 */ 
 class Entity;
-
+class Position;
 /*
 * @brief The Grid class represents the field of the game and it will store entities.
 */
@@ -37,11 +38,7 @@ public:
 	* 
 	* @param entity: entity to add
 	*/
-	void addEntity(Entity* entity);
-	/**
-	*
-	*/
-	void removeEntity(Entity* entity);
+	void addEntity(Entity* const entity);
 	/**
 	* @brief Method which moves an entity from its position to a given position. Since
 	* the movement of a character is restricted to cases where there's nothing (nullptr),
@@ -54,7 +51,8 @@ public:
 	*/
 	void move(const int from_x, const int from_y, const int to_x, const int to_y);
 	/**
-	*
+	* @brief Method which display the grid and its contents inside the console.
+	* It is mainly used for debugging process in case we would need a vision of what is going on.
 	*/
 	void display() const;
 	/**
@@ -67,7 +65,15 @@ public:
 	* 
 	* @return returns the asked row
 	*/
-	const std::array<Entity*, ::grid::COLUMNS>& operator[](size_t index) const;
+
+	/**
+	* Method wich returns the entity at a given position. If the position is out of bounds or is there is no entity, 
+	*	The method will return nullptr.
+	*/
+	const std::vector<Entity*> getEntitys();
+	
+	const std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index) const;
+	
 	/**
 	* @brief Overloaded [] operator for the Grid class. Behaves the same as any
 	* [] operator in a standard container such a C-style array of std::vector.
@@ -78,7 +84,7 @@ public:
 	*
 	* @return returns the asked row
 	*/
-	std::array<Entity*, ::grid::COLUMNS>& operator[](size_t index);
+	std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index);
 
 private:
 

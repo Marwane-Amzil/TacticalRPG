@@ -28,7 +28,7 @@ public:
 	* 
 	* @param other: position to copy
 	*/
-	constexpr Position(const Position& other);
+	Position(const Position& other);
 	/**
 	* @brief Move constructor. Initialize a position with the values of an other position.
 	*

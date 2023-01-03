@@ -21,9 +21,11 @@ public:
 	*/
 	virtual ~MagicCharacter() = default;
 
-protected:
+	/**
+	 * @brief
+	 *
+	 */
 
-	int _magic;
 
 private:
 

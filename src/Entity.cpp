@@ -22,7 +22,7 @@ int Entity::getHp() const
 
 void Entity::setHp(const int hp)
 {
-	_hp = hp;
+	this->_hp = hp;
 }
 
 // ----------------------------------------------   End  Getters / Setters    ------------------------------------------------------------

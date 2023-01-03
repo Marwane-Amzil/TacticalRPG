@@ -29,6 +29,7 @@ private:
 	*
 	*/
 	std::vector<Position> getPossibleActions(const Grid& grid) const override;
+	
 	/**
 	*
 	*/

@@ -5,6 +5,8 @@
 
 #include <Entity.hpp> // Entity class
 #include <vector> // std::vector
+#include <array> // std::array
+#include <Constants.hpp> // constants::skill::MAX_SKILLS
 
 /**
 * @brief The Grid class. Forward declared to avoid recursive includes in some files when it's not needed.
@@ -14,6 +16,11 @@
 * in the header file.
 */
 class Grid;
+
+/**
+* @brief The skill class. Forward declared to avoid recursive includes in some files when it's not needed.
+*/
+class Skill;
 
 /**
 * @brief The Character class represents any entity that the user can play with. According to the rules,
@@ -38,23 +45,25 @@ public:
 	* @param will: will of the character
 	* @param res_phy: res_phy of the character
 	* @param res_mag: res_mag of the character
+	* @param magic: magic force of a character
+	* @param strength: pure strength of a character
 	*/
-	Character(const int x, const int y, const int hp, const char player, const int will, const int res_phy, const int res_mag);
+	Character(const int x, const int y, const int hp, const char player, const int will, const int res_phy, const int res_mag, const int magic, const int strength);
 	/**
 	* @brief Method which returns the player who owns the character
-	* 
+	*
 	* @return returns the owner (player) of the character
 	*/
 	char getPlayer() const;
 	/**
 	* @brief Method which returns the will of the character
-	* 
+	*
 	* @return returns the will of the character
 	*/
 	int getWill() const;
 	/**
 	* @brief Method which returns the physical resistance of a character
-	* 
+	*
 	* @return returns the physical resistance of a character
 	*/
 	int getResPhy() const;
@@ -65,23 +74,39 @@ public:
 	*/
 	int getResMag() const;
 	/**
+	* @brief
+	*/
+	bool getAction() const;
+	/**
+	* @brief
+	*/
+	bool getSpecialAction() const;
+	/**
 	* @brief Method which returns the possibility for a character to move
-	* 
+	*
 	* @return returns movement possibility
 	*/
 	bool getMove() const;
 	/**
-	* @brief Method which returns the possibility for a character to perform an action
-	*
-	* @return returns action possibility
+	* @brief
 	*/
-	bool getAction() const;
+	const Skill* getFirstSkill() const;
 	/**
-	* @brief Method which returns the possibility for a character to perform an special action
-	*
-	* @return returns special action possibility
+	* @brief
 	*/
-	bool getSpecialAction() const;
+	const Skill* getSecondSkill() const;
+	/**
+	* @brief
+	*/
+	const Skill* getSpecialSkill() const;
+	/**
+	* @brief
+	*/
+	int getMagic() const;
+	/**
+	* @brief
+	*/
+	int getStrength() const;
 	/**
 	* @brief Method which sets the current will value of the character.
 	*
@@ -119,19 +144,37 @@ public:
 	*/
 	void setSpecialAction(const bool can_sp_act);
 	/**
+	* @brief
+	*/
+	void setFirstSkill(Skill* skill);
+	/**
+	* @brief
+	*/
+	void setSecondSkill(Skill* skill);
+	/**
+	* @brief
+	*/
+	void setSpecialSkill(Skill* skill);
+	/**
 	* @brief Character destructor. Explicitly defaulted (~Character() = default).
 	* Marked as virtual to perform proper destruction when the current Character is actually
 	* an instance of one of the derived class.
 	*/
 	virtual ~Character() = default;
+
+	/**
+	* This method uses the skill on a position on the grid.
+	*/
+	void useSkillOne(Position* pos, Grid* grid);
+	
 	/**
 	* @brief Method which returns the list of positions the character can actually move on.
 	* It requires the grid to performs check for valid moves such as empty case or not.
 	* Marked as virtual to call the proper version of this function for each character (class)
 	* since they have different gimmicks.
-	* 
+	*
 	* @param grid: current play grid
-	* 
+	*
 	* @return returns a list of cases where the character can move
 	*/
 	virtual std::vector<Position> getPossibleMoves(const Grid& grid) const = 0;
@@ -156,6 +199,9 @@ protected:
 	bool _can_move;
 	bool _can_act;
 	bool _can_sp_act;
+	int _magic;
+	int _strength;
+	std::array<Skill*, ::skill::MAX_SKILLS> _skills;
 
 private:
 

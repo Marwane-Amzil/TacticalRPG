@@ -1,6 +1,7 @@
 #include <Grid.hpp>
 #include <Entity.hpp>
 #include <iostream>
+#include <vector>
 
 using namespace ::grid;
 
@@ -14,15 +15,14 @@ void Grid::addEntity(Entity* const entity)
 	* This allows us to set a specific entity at a specific position without
 	* explicitly indicating the position to the function.
 	*/
-	_grid[entity->getPosition().getX()][entity->getPosition().getY()] = entity;
-}
-
-void Grid::removeEntity(Entity* entity)
-{
-	int x = entity->getPosition().getX();
-	int y = entity->getPosition().getY();
-	
-	_grid[x][y] = nullptr;
+	if (!_grid[entity->getPosition().getX()][entity->getPosition().getY()])
+	{
+		_grid[entity->getPosition().getX()][entity->getPosition().getY()] = entity;
+	}
+	else
+	{
+		delete entity;
+	}
 }
 
 void Grid::move(const int from_x, const int from_y, const int to_x, const int to_y)
@@ -56,7 +56,7 @@ void Grid::display() const
 		{
 			if (_grid[i][j])
 			{
-				std::cout << ' ' << _grid[i][j]->getClass() << " |";
+				std::cout << ' ' << 'X' << " |";
 			}
 			else
 			{
@@ -70,12 +70,31 @@ void Grid::display() const
 	std::cout << "    " + std::string(-1 + (COLUMNS * 4), '-') << '\n';
 }
 
-const std::array<Entity*, COLUMNS>& Grid::operator[](size_t index) const
+const std::vector<Entity*> Grid::getEntitys() {
+	
+	std::vector<Entity*> entityContainer = std::vector<Entity*>();
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLUMNS; j++)
+		{
+			if (_grid[i][j])
+			{
+				entityContainer.push_back(_grid[i][j]);
+			}
+		}
+	}
+	
+	return entityContainer;
+}
+
+
+const std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index) const
 {
 	return _grid[index];
 }
 
-std::array<Entity*, COLUMNS>& Grid::operator[](size_t index)
+std::array<Entity*, COLUMNS>& Grid::operator[](const size_t& index)
 {
 	return _grid[index];
 }
+

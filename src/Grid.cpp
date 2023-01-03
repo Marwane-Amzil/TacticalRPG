@@ -15,7 +15,15 @@ void Grid::addEntity(Entity* const entity)
 	* This allows us to set a specific entity at a specific position without
 	* explicitly indicating the position to the function.
 	*/
-	_grid[entity->getPosition().getX()][entity->getPosition().getY()] = entity;
+	if (!_grid[entity->getPosition().getX()][entity->getPosition().getY()])
+	{
+		_grid[entity->getPosition().getX()][entity->getPosition().getY()] = entity;
+	}
+	else
+	{
+		delete entity;
+		std::cout << "grr" << std::endl;
+	}
 }
 
 void Grid::move(const int from_x, const int from_y, const int to_x, const int to_y)

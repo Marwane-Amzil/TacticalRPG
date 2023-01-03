@@ -22,9 +22,9 @@ void Fireball::activate(Grid& grid, Character& target) const
 	for (const Position& position : possibleZones) {
 		if (pos == position) 
 		{
-			for (int x = -(pos.getX()-1); x < (pos.getX() + AOE_RANGE_X); x++)
+			for (int x = -(pos.getX()); x < (pos.getX() + AOE_RANGE_X); x++)
 			{
-				for (int y = -( pos.getY() - 1); y < (pos.getY() + AOE_RANGE_Y) ; y++)
+				for (int y = -( pos.getY()); y < (pos.getY() + AOE_RANGE_Y) ; y++)
 				{
 					if (x <= COLUMNS && y <= COLUMNS && x >= 0 && y >= 0)
 					{

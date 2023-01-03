@@ -56,7 +56,7 @@ public:
 	/**
 	* @brief Activate method is the method that triggers the damage of the skill.
 	*/
-	virtual void activate(Grid& grid, Character& target) const = 0;
+	virtual void activate(Grid& grid, Character* target) const = 0;
 	
 	virtual std::vector<Position> getPossibleZones(const Grid& grid) const = 0;
 

@@ -28,7 +28,7 @@ public:
 	*	This methode also verifies if the skill can be launched on the character put in parametre.
 	*	Indeed the verification is done throught the getPossibleZones method.
 	*/
-	void activate(Grid& grid, Character& target) const override;
+	void activate(Grid& grid, Character* target) const override;
 
 	/**
 	*	@brief	Returns a vector of positions that are in range of the skill.

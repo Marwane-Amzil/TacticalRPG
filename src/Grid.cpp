@@ -22,7 +22,6 @@ void Grid::addEntity(Entity* const entity)
 	else
 	{
 		delete entity;
-		std::cout << "grr" << std::endl;
 	}
 }
 

@@ -11,20 +11,20 @@ using namespace ::grid;
 Fireball::Fireball(int multiplier, int range, Character* character, Effect* effect)
 	: super(multiplier, range,character, effect) {}
 
-void Fireball::activate(Grid& grid, Character& target) const
+void Fireball::activate(Grid& grid, Character* target) const
 {
-	Position pos = target.getPosition();
-	int hp = target.getHp();
-	int magic = target.getMagic();
-	int res_magic = target.getResMag();
+	Position posTarget = target->getPosition();
+	int hp = target->getHp();
+	int strength = target->getStrength();
+	int res_strength = target->getResMag();
 	std::vector<Position> possibleZones = getPossibleZones(grid);
 	
 	for (const Position& position : possibleZones) {
-		if (pos == position) 
+		if (posTarget == position) 
 		{
-			for (int x = -(pos.getX()); x < (pos.getX() + AOE_RANGE_X); x++)
+			for (int x = -(posTarget.getX()); x <= (posTarget.getX() + AOE_RANGE_X); x++)
 			{
-				for (int y = -( pos.getY()); y < (pos.getY() + AOE_RANGE_Y) ; y++)
+				for (int y = -( posTarget.getY()); y <= (posTarget.getY() + AOE_RANGE_Y) ; y++)
 				{
 					if (x <= COLUMNS && y <= COLUMNS && x >= 0 && y >= 0)
 					{
@@ -55,19 +55,19 @@ void Fireball::activate(Grid& grid, Character& target) const
 std::vector<Position> Fireball::getPossibleZones(const Grid& grid) const{
 	
 	std::vector<Position> possibleZones;
-	Position pos = getOwner()->getPosition();
+	const Position& posOwner = getOwner()->getPosition();
 
-	for (int x = NEG_RANGE_X ; x < RANGE_X ; x++)
+	for (int x = NEG_RANGE_X ; x <= RANGE_X ; x++)
 {
-		for (int y = NEG_RANGE_Y; y < RANGE_Y; y++)
+		for (int y = NEG_RANGE_Y; y <= RANGE_Y; y++)
 		{
-			if (abs(x) + abs(y) < RANGE_X && x != 0 || y != 0)
+			if (abs(x) + abs(y) <= RANGE_X && x != 0 || y != 0)
 			{
-				if (pos.getX() + x < COLUMNS && pos.getY() + y < COLUMNS && pos.getX() + x >= 0 && pos.getY() + y >= 0)
+				if (posOwner.getX() + x <= COLUMNS && posOwner.getY() + y <= COLUMNS && posOwner.getX() + x >= 0 && posOwner.getY() + y >= 0)
 				{
-					if (grid[pos.getX() + x][pos.getY() + y])
+					if (grid[posOwner.getX() + x][posOwner.getY() + y])
 					{
-						possibleZones.emplace_back(pos.getX() + x, pos.getY() + y);
+						possibleZones.emplace_back(posOwner.getX() + x, posOwner.getY() + y);
 					}
 				}
 			}

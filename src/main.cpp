@@ -20,18 +20,17 @@ int main()
 	sf::Image icon;
 	sf::Clock clock;
 	std::vector<gui::EntitySprite*> sprites;
+	Knight knight = Knight(10, 10, 'B');
+	Knight knight_2 = Knight(5, 5, 'B');
 
-	sprites.push_back(sf.create(new Knight(10, 10, 'B')));
-	sprites.push_back(sf.create(new Knight(4, 11, 'B')));
-	sprites.push_back(sf.create(new Knight(1, 7, 'B')));
-	sprites.push_back(sf.create(new Knight(2, 2, 'B')));
-	sprites.push_back(sf.create(new Knight(15, 15, 'B')));
+	sprites.push_back(sf.createCharacter(new Knight(10, 10, 'B')));
+	sprites.push_back(sf.createCharacter(new Knight(4, 11, 'B')));
 
-	sprites[0]->setCurrentAnimation(3);
-	sprites[1]->setCurrentAnimation(3);
-	sprites[2]->setCurrentAnimation(4);
-	sprites[3]->setCurrentAnimation(5);
-	sprites[4]->setCurrentAnimation(6);
+	sprites[0]->setCurrentAnimation(5);
+	sprites[1]->setCurrentAnimation(6);
+
+	sprites[0]->loopCurrentAnimation(true);
+	sprites[1]->loopCurrentAnimation(true);
 
 	//animation.setLoop(true);
 	icon.loadFromFile("assets/ui/buttons/index.jpg");

@@ -1,36 +1,29 @@
 #pragma once
 
-#ifndef __SPRITE_MANAGER_H__
-#define __SPRITE_MANAGER_H__
+#ifndef __TEXTURE_MANAGER_H__
+#define __TEXTURE_MANAGER_H__
 
+#include <schemas/textures.hpp> // schema for texture flatbuffers deserialization
+#include <SFML/Graphics/Texture.hpp> // sf::Texture
 #include <map> // std::map
+#include <string_view> // std::string_view
 #include <string> // std::string
 
-namespace sf
+class TextureManager
 {
-	class Texture;
-}
+public:
+	
+	inline TextureManager() = default;
 
-namespace utils
-{
-	class TextureManager
-	{
-	public:
+	inline ~TextureManager() noexcept = default;
 
-		TextureManager();
+	void loadTextures() noexcept;
 
-		~TextureManager() noexcept;
+	const sf::Texture* get(const char player, std::string_view type) const;
+	
+private:
 
-		void loadTextures();
+	std::map<char, std::map<std::string, std::unique_ptr<sf::Texture>>> _textures;
+};
 
-		const std::map<std::string, sf::Texture*>& getTextures(char player) const;
-
-		const sf::Texture* getTextureAt(char player, std::string_view type) const;
-
-	private:
-
-		std::map<char, std::map<std::string, sf::Texture*>> _textures;
-	};
-}
-
-#endif // !__SPRITE_MANAGER_H__
+#endif // !__TEXTURE_MANAGER_H__

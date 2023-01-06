@@ -3,12 +3,14 @@
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
 
+#include <entt.hpp>
 #include <SFML/Graphics/Sprite.hpp> // sf::Sprite
 #include <SFML/Graphics/Texture.hpp> // sf::Texture
 #include <SFML/Graphics/RenderTarget.hpp> // sf::RenderTarget
 
 struct Sprite
 {
+	
 	sf::Sprite sprite;
 	sf::Texture texture;
 

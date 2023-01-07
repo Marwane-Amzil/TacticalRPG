@@ -27,18 +27,24 @@
     <ClCompile Include="src\utils\SpriteManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\AnimationManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\SpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\external\entt.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\components\Position.hpp">
+    <ClInclude Include="include\components\PositionComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\components\Sprite.hpp">
+    <ClInclude Include="include\components\SpriteComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\components\Animation.hpp">
+    <ClInclude Include="include\components\AnimationComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\utils\EntityCreator.hpp">
@@ -50,16 +56,34 @@
     <ClInclude Include="include\utils\SpriteManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\components\Character.hpp">
+    <ClInclude Include="include\components\CharacterComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\components\characters\Knight.hpp">
+    <ClInclude Include="include\components\characters\KnightComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\components\characters\Mage.hpp">
+    <ClInclude Include="include\components\characters\MageComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\components\characters\Warrior.hpp">
+    <ClInclude Include="include\components\characters\WarriorComponent.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\AnimationManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\systems\SpriteRenderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\schemas\animations.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\schemas\textures.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\components\characters\HealerComponent.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\components\characters\ArcherComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

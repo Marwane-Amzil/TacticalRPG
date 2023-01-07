@@ -165,23 +165,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\systems\SpriteRenderer.cpp" />
+    <ClCompile Include="src\utils\AnimationManager.cpp" />
     <ClCompile Include="src\utils\SpriteManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\utils\EntityCreator.cpp" />
     <ClCompile Include="src\utils\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\components\Character.hpp" />
-    <ClInclude Include="include\components\characters\Knight.hpp" />
-    <ClInclude Include="include\components\characters\Mage.hpp" />
-    <ClInclude Include="include\components\characters\Warrior.hpp" />
+    <ClInclude Include="include\components\characters\ArcherComponent.hpp" />
+    <ClInclude Include="include\components\characters\HealerComponent.hpp" />
+    <ClInclude Include="include\schemas\animations.hpp" />
+    <ClInclude Include="include\schemas\textures.hpp" />
+    <ClInclude Include="include\utils\AnimationManager.hpp" />
+    <ClInclude Include="include\components\CharacterComponent.hpp" />
+    <ClInclude Include="include\components\characters\KnightComponent.hpp" />
+    <ClInclude Include="include\components\characters\MageComponent.hpp" />
+    <ClInclude Include="include\components\characters\WarriorComponent.hpp" />
     <ClInclude Include="include\utils\EntityCreator.hpp" />
-    <ClInclude Include="include\components\Animation.hpp" />
-    <ClInclude Include="include\components\Position.hpp" />
-    <ClInclude Include="include\components\Sprite.hpp" />
+    <ClInclude Include="include\components\AnimationComponent.hpp" />
+    <ClInclude Include="include\components\PositionComponent.hpp" />
+    <ClInclude Include="include\components\SpriteComponent.hpp" />
     <ClInclude Include="include\external\entt.hpp" />
     <ClInclude Include="include\utils\TextureManager.hpp" />
     <ClInclude Include="include\utils\SpriteManager.hpp" />
+    <ClInclude Include="include\systems\SpriteRenderer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

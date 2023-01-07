@@ -1,0 +1,1 @@
+#include <systems/SpriteRenderer.hpp> // SpriteRenderer declarations

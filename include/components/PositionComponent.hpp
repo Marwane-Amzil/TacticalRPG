@@ -3,10 +3,10 @@
 #ifndef __POSITION_H__
 #define __POSITION_H__
 
-struct Position
+struct PositionComponent
 {
-	int _x;
-	int _y;
+	int x;
+	int y;
 };
 
 #endif // !__POSITION_H__

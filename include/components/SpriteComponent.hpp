@@ -3,19 +3,17 @@
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
 
-#include <entt.hpp>
 #include <SFML/Graphics/Sprite.hpp> // sf::Sprite
 #include <SFML/Graphics/Texture.hpp> // sf::Texture
 #include <SFML/Graphics/RenderTarget.hpp> // sf::RenderTarget
 
-struct Sprite
-{
-	
+struct SpriteComponent
+{	
 	sf::Sprite sprite;
-	sf::Texture texture;
+	const sf::Texture& texture;
 
-	explicit Sprite(const sf::Texture* _Texture) noexcept
-		: texture(*_Texture)
+	inline explicit SpriteComponent(const sf::Texture& _Texture) noexcept
+		: texture(_Texture)
 	{
 		sprite.setTexture(texture);
 	}

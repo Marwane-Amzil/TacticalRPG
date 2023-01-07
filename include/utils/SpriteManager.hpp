@@ -4,7 +4,7 @@
 #define __SPRITE_MANAGER_H__
 
 #include <utils/TextureManager.hpp> // TextureManager
-#include <components/Sprite.hpp> // Sprite
+#include <components/SpriteComponent.hpp> // SpriteComponent
 
 class SpriteManager
 {
@@ -16,7 +16,7 @@ public:
 
 	void load() noexcept;
 
-	Sprite getSprite(const char player, std::string_view type) noexcept;
+	SpriteComponent get(const char player, std::string_view type) noexcept;
 
 private:
 

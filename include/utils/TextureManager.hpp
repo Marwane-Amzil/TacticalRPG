@@ -3,9 +3,9 @@
 #ifndef __TEXTURE_MANAGER_H__
 #define __TEXTURE_MANAGER_H__
 
-#include <schemas/textures.hpp> // schema for texture flatbuffers deserialization
 #include <SFML/Graphics/Texture.hpp> // sf::Texture
 #include <map> // std::map
+#include <memory> // std::unique_ptr
 #include <string_view> // std::string_view
 #include <string> // std::string
 
@@ -19,7 +19,7 @@ public:
 
 	void loadTextures() noexcept;
 
-	const sf::Texture* get(const char player, std::string_view type) const;
+	const sf::Texture& get(const char player, std::string_view type) const;
 	
 private:
 

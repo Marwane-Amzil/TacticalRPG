@@ -32,7 +32,7 @@ void TextureManager::loadTextures() noexcept
 	delete[] buffer;
 }
 
-const sf::Texture* TextureManager::get(const char player, std::string_view type) const
+const sf::Texture& TextureManager::get(const char player, std::string_view type) const
 {
-	return _textures.at(player).at(type.data()).get();
+	return *_textures.at(player).at(type.data());
 }

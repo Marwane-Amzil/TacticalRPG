@@ -1,13 +1,11 @@
-#include <utils/SpriteManager.hpp>
-#include <components/Sprite.hpp>
+#include <utils/SpriteManager.hpp> // SpriteManager declarations
 
 void SpriteManager::load() noexcept
 {
 	_texture_manager.loadTextures();
 }
 
-Sprite SpriteManager::getSprite(const char player, std::string_view type) noexcept
+SpriteComponent SpriteManager::get(const char player, std::string_view type) noexcept
 {
-	Sprite sprite(_texture_manager.get(player, type));
-	return sprite;
+	return SpriteComponent(_texture_manager.get(player, type));
 }

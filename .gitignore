@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Executable files
+## Comment next line if you want to checkin your .exe files.
+*.exe
+
 # User-specific files
 *.rsuser
 *.suo
@@ -27,7 +31,6 @@ x86
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/

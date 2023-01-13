@@ -5,17 +5,25 @@
 
 #include <SFML/Graphics/Sprite.hpp> // sf::Sprite
 #include <SFML/Graphics/Texture.hpp> // sf::Texture
-#include <SFML/Graphics/RenderTarget.hpp> // sf::RenderTarget
 
 struct SpriteComponent
 {	
 	sf::Sprite sprite;
-	const sf::Texture& texture;
+	const sf::Texture* texture;
 
-	inline explicit SpriteComponent(const sf::Texture& _Texture) noexcept
+	inline explicit SpriteComponent(const sf::Texture* _Texture = nullptr, const sf::IntRect _Rect = sf::IntRect(0, 645, 60, 65))
 		: texture(_Texture)
 	{
-		sprite.setTexture(texture);
+		if (_Texture)
+		{
+			sprite.setTexture(*texture);
+		}
+		sprite.setTextureRect(_Rect);
+	}
+
+	inline void setPosition(const sf::Vector2f& _Position)
+	{
+		sprite.setPosition(_Position);
 	}
 
 	inline operator const sf::Sprite&() const

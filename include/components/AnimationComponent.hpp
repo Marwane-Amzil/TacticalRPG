@@ -11,17 +11,13 @@ struct AnimationComponent
 {
 	std::vector<sf::IntRect> frames;
 	sf::Time frame_time;
+	sf::Time current_time;
+	bool is_playing;
 	bool is_looping;
 	std::size_t current_frame;
 
-	inline explicit AnimationComponent(const std::vector<sf::IntRect>& frames, sf::Time frame_time, bool is_looping = true) :
-		frames(frames), frame_time(frame_time), is_looping(is_looping), current_frame(0) {}
-
-	inline AnimationComponent(const AnimationComponent& other) :
-		frames(other.frames), frame_time(other.frame_time), is_looping(other.is_looping), current_frame(other.current_frame) {}
-
-	inline AnimationComponent(AnimationComponent&& other) noexcept :
-		frames(std::move(other.frames)), frame_time(other.frame_time), is_looping(other.is_looping), current_frame(other.current_frame) {}
+	inline explicit AnimationComponent(const std::vector<sf::IntRect>& _Frames, sf::Time _FrameTime, bool is_looping = true) :
+		frames(_Frames), frame_time(_FrameTime), current_time(), is_playing(true), is_looping(is_looping), current_frame(0) {}
 };
 
 #endif // !__ANIMATION_H__

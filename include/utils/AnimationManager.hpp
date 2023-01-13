@@ -16,7 +16,7 @@ public:
 
 	inline ~AnimationManager() noexcept = default;
 
-	void loadAnimations();
+	void load();
 
 	std::vector<AnimationComponent> getAnimations() const;
 

@@ -3,7 +3,7 @@
 #include <schemas/animations.hpp> // schema for animation flatbuffers deserialization
 #include <fstream> // std::ifstream
 
-void AnimationManager::loadAnimations()
+void AnimationManager::load()
 {
 	std::ifstream infile("assets/data/animations.bin", std::ios::binary | std::ios::in);
 	infile.seekg(0, std::ios::end);

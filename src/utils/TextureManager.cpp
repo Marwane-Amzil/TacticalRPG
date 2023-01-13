@@ -25,6 +25,7 @@ void TextureManager::loadTextures() noexcept
 			const char* const path = texture->path()->data();
 			std::unique_ptr<sf::Texture> pTexture = std::make_unique<sf::Texture>();
 			pTexture->loadFromFile(path);
+			pTexture->setSmooth(true);
 			_textures[player][type] = std::move(pTexture);
 		}
 	}
@@ -32,7 +33,7 @@ void TextureManager::loadTextures() noexcept
 	delete[] buffer;
 }
 
-const sf::Texture& TextureManager::get(const char player, std::string_view type) const
+const sf::Texture* TextureManager::get(const char player, std::string_view type) const
 {
-	return *_textures.at(player).at(type.data());
+	return _textures.at(player).at(type.data()).get();
 }

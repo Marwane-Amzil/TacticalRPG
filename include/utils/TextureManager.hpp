@@ -19,7 +19,7 @@ public:
 
 	void loadTextures() noexcept;
 
-	const sf::Texture& get(const char player, std::string_view type) const;
+	const sf::Texture* get(const char player, std::string_view type) const;
 	
 private:
 

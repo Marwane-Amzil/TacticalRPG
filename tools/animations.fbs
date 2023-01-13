@@ -1,0 +1,27 @@
+table AnimationRoot
+{
+    animations: [Animation];
+    specials: [Set];
+}
+
+table Set
+{
+    type: string;
+    animations: [Animation];
+}
+
+table Animation
+{
+    name: string;
+    frames: [Frame];
+}
+
+table Frame
+{
+    left: uint32;
+    top: uint32;
+    width: uint32;
+    height: uint32;
+}
+
+root_type AnimationRoot;

@@ -165,6 +165,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\systems\AnimationSystem.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="src\systems\SpriteRenderer.cpp" />
     <ClCompile Include="src\utils\AnimationManager.cpp" />
     <ClCompile Include="src\utils\SpriteManager.cpp" />
@@ -173,8 +175,11 @@
     <ClCompile Include="src\utils\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\systems\AnimationSystem.hpp" />
+    <ClInclude Include="Grid.hpp" />
     <ClInclude Include="include\components\characters\ArcherComponent.hpp" />
     <ClInclude Include="include\components\characters\HealerComponent.hpp" />
+    <ClInclude Include="include\Constants.hpp" />
     <ClInclude Include="include\schemas\animations.hpp" />
     <ClInclude Include="include\schemas\textures.hpp" />
     <ClInclude Include="include\utils\AnimationManager.hpp" />

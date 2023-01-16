@@ -67,5 +67,21 @@ void PlayState::draw()
 	// Clear the previous drawing
 	_window.clear();
 	_window.draw(m_background);
+	
+
+	int height = _window.getSize().x;
+	int length = _window.getSize().y;
+	sf::Texture t;
+	t.loadFromFile("assets\\images\\background.png", sf::IntRect(50, 50, 50, 50));
+	sf::Sprite s;
+	s.setTexture(t);
+
+	for (int i = 0; i < 20; i ++) {
+		for (int j = 0; j < 20; j ++) {
+			s.setPosition((i*20),(j*20));
+			_window.draw(s);
+			
+		}
+	}
 	_window.display();
 }

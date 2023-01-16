@@ -7,7 +7,7 @@
 namespace gui
 {
 	Button::Button(const sf::Vector2f& size, const sf::Texture* idle_texture, const sf::Texture* hover_texture, const sf::Texture* press_texture)
-		: _shape(size, 5.0f, 4), _textures(), _state(State::Idle)
+		: _shape(size, 5.0f, 4), _textures(), _state(State::Idle), _font(), _text()
 	{
 		_textures[0] = idle_texture;
 		_textures[1] = hover_texture;
@@ -33,6 +33,16 @@ namespace gui
 	const sf::Texture* Button::getPressTexture() const
 	{
 		return _textures[2];
+	}
+
+	const sf::Font& Button::getFont() const
+	{
+		return _font;
+	}
+
+	const sf::Text& Button::getText() const
+	{
+		return _text;
 	}
 
 	const sf::Vector2f& Button::getPosition() const
@@ -78,6 +88,19 @@ namespace gui
 	void Button::setPressTexture(const sf::Texture* press_texture)
 	{
 		_textures[2] = press_texture;
+	}
+
+	void Button::setFont(const sf::Font& font)
+	{
+		_font = font;
+	}
+
+	void Button::setText(const sf::String& string, unsigned int character_size)
+	{
+		_text.setString(string);
+		_text.setFont(_font);
+		_text.setCharacterSize(character_size);
+		_text.setPosition(_shape.getPosition());
 	}
 
 	void Button::setPosition(const sf::Vector2f& position)
@@ -131,5 +154,6 @@ namespace gui
 	void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(_shape, states);
+		target.draw(_text, states);
 	}
 }

@@ -4,6 +4,7 @@
 #define __BUTTON_H__
 
 #include <SFML/Graphics/RoundedRectangleShape.hpp> // sf::RoundedRectangleShape
+#include <SFML/Graphics/Text.hpp> // sf::Text
 #include <array> // std::array
 
 namespace sf
@@ -37,6 +38,10 @@ namespace gui
         
         const sf::Texture* getPressTexture() const;
 
+		const sf::Font& getFont() const;
+
+		const sf::Text& getText() const;
+
         const sf::Vector2f& getPosition() const;
 
         const sf::Vector2f& getSize() const;
@@ -54,6 +59,10 @@ namespace gui
         void setHoverTexture(const sf::Texture* hover_texture);
 
         void setPressTexture(const sf::Texture* press_texture);
+
+		void setFont(const sf::Font& font);
+
+		void setText(const sf::String& string, unsigned int character_size = 30);
 
         void setPosition(const sf::Vector2f& position);
 
@@ -79,6 +88,8 @@ namespace gui
 
         sf::RoundedRectangleShape _shape;
         std::array<const sf::Texture*, 3> _textures;
+        sf::Font _font;
+        sf::Text _text;
         uint8_t _state;
     };
 }

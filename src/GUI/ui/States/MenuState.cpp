@@ -13,6 +13,7 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, const bool
     _winclose = new sf::RectangleShape();
     _font = new sf::Font();
     _image = new sf::Texture();
+    _closingImage = new sf::Texture();
     
     // Creating a window 1280 x 720 
     window.create(sf::VideoMode(1280, 720), "Menu SFML", sf::Style::Titlebar | sf::Style::Close);
@@ -24,9 +25,9 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, const bool
     _pressed = theselect = false;
     _font->loadFromFile("./assets/ui/menu/font/ethn.otf");
     _image->loadFromFile("./assets/ui/menu/img/menu-Play.png");
+	_closingImage->loadFromFile("./assets/ui/menu/img/Button-close.png");
 
     m_background.setTexture(*_image);
-
     _pos_mouse = { 0,0 };
     _mouse_coord = { 0, 0 };
 
@@ -45,10 +46,10 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, const bool
     }
     _texts[1].setOutlineThickness(4);
     _pos = 1;
-
-    _winclose->setSize(sf::Vector2f(23, 26));
-    _winclose->setPosition(1178, 39);
-    _winclose->setFillColor(sf::Color::Transparent);
+    
+    _winclose->setSize(sf::Vector2f(50, 50));
+    _winclose->setPosition(1178, 38);
+	_winclose->setTexture(_closingImage);
 }
 
 void MenuState::pause()
@@ -124,6 +125,7 @@ void MenuState::draw()
 	// Clear the previous drawing
 	_window.clear();
     _window.draw(m_background);
+    _window.draw(*_winclose);
     for (auto t : _texts) {
         _window.draw(t);
     }

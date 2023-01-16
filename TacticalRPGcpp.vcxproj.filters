@@ -197,9 +197,6 @@
     <ClInclude Include="include\GUI\ui\Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\ui\Menu.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\schemas\animations.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

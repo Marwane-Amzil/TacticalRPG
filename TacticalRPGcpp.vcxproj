@@ -92,7 +92,6 @@
     <ClInclude Include="include\GUI\game\EntitySprite.hpp" />
     <ClInclude Include="include\GUI\game\World.hpp" />
     <ClInclude Include="include\GUI\ui\Button.hpp" />
-    <ClInclude Include="include\GUI\ui\Menu.hpp" />
     <ClInclude Include="include\GUI\ui\State.hpp" />
     <ClInclude Include="include\GUI\ui\StateMachine.hpp" />
     <ClInclude Include="include\GUI\ui\States\IntroState.hpp" />

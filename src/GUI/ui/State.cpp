@@ -1,8 +1,8 @@
 #include <GUI/ui/State.hpp>
 
 State::State(StateMachine& machine, sf::RenderWindow &window, const bool replace)
-: m_machine{ machine }
-, m_window{ window }
+: _machine{ machine }
+, _window{ window }
 , m_replacing{ replace }
 {
 

@@ -29,8 +29,8 @@ public:
 	[[nodiscard]] bool isReplacing() const;
 
 protected:
-    StateMachine& m_machine;
-    sf::RenderWindow& m_window;
+    StateMachine& _machine;
+    sf::RenderWindow& _window;
 
 	bool m_replacing;
 

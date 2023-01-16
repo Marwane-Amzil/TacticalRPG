@@ -32,23 +32,23 @@ void PlayState::resume()
 
 void PlayState::update()
 {
-	for (auto event = sf::Event{}; m_window.pollEvent(event);)
+	for (auto event = sf::Event{}; _window.pollEvent(event);)
 	{
 		switch (event.type)
 		{
 			case sf::Event::Closed:
-				m_machine.quit();
+				_machine.quit();
 				break;
 
 			case sf::Event::KeyPressed:
 				switch (event.key.code)
 				{
 					case sf::Keyboard::Escape:
-						m_machine.quit();
+						_machine.quit();
 						break;
 
 					case sf::Keyboard::M:
-						m_next = StateMachine::build<MenuState>(m_machine, m_window, false);
+						m_next = StateMachine::build<MenuState>(_machine, _window, false);
 						break;
 
 					default:
@@ -65,7 +65,7 @@ void PlayState::update()
 void PlayState::draw()
 {
 	// Clear the previous drawing
-	m_window.clear();
-	m_window.draw(m_background);
-	m_window.display();
+	_window.clear();
+	_window.draw(m_background);
+	_window.display();
 }

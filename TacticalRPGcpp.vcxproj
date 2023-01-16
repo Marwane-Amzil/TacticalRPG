@@ -24,7 +24,6 @@
     <ClCompile Include="src\GUI\game\EntitySprite.cpp" />
     <ClCompile Include="src\GUI\game\World.cpp" />
     <ClCompile Include="src\GUI\ui\Button.cpp" />
-    <ClCompile Include="src\GUI\ui\Menu.cpp" />
     <ClCompile Include="src\GUI\ui\State.cpp" />
     <ClCompile Include="src\GUI\ui\StateMachine.cpp" />
     <ClCompile Include="src\GUI\ui\States\IntroState.cpp" />

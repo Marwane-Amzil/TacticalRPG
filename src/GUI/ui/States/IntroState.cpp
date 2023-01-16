@@ -36,12 +36,12 @@ void IntroState::resume()
 
 void IntroState::update()
 {
-    for (auto event = sf::Event{}; m_window.pollEvent(event);)
+    for (auto event = sf::Event{}; _window.pollEvent(event);)
 	{
 		switch (event.type)
 		{
             case sf::Event::Closed:
-                m_machine.quit();
+                _machine.quit();
                 break;
 
             case sf::Event::KeyPressed:
@@ -49,11 +49,11 @@ void IntroState::update()
                 switch (event.key.code)
                 {
                     case sf::Keyboard::Space:
-                        m_next = StateMachine::build<PlayState>(m_machine, m_window, true);
+                        m_next = StateMachine::build<PlayState>(_machine, _window, true);
                         break;
 
                     case sf::Keyboard::Escape:
-                        m_machine.quit();
+                        _machine.quit();
                         break;
 
 					default:
@@ -78,15 +78,15 @@ void IntroState::update()
 void IntroState::draw()
 {
 	// Clear the previous drawing
-	m_window.clear();
+	_window.clear();
 
-	m_window.draw(m_background);
+	_window.draw(m_background);
 
 	// No need to draw if it's transparent
 	if (m_alpha.a != 0)
 	{
-		m_window.draw(m_fader);
+		_window.draw(m_fader);
 	}
 
-	m_window.display();
+	_window.display();
 }

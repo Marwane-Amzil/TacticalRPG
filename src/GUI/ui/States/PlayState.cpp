@@ -14,8 +14,10 @@ PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool
 	{
 		throw std::runtime_error{ "Was unable to load image 'img/play.png'" };
 	}
-	window.setSize(sf::Vector2u::Vector2(1000, 1000));
-	window.setView(sf::View(sf::FloatRect(0, 0, 1000,1000)));
+	window.create(sf::VideoMode::getDesktopMode(), "fenetre", sf::Style::Fullscreen);
+	//sf::Vector2u screenSize
+	auto [x, y] = window.getSize();
+	window.setView(sf::View(sf::FloatRect(0, 0, x, y)));
 	window.setPosition(sf::Vector2i::Vector2(0, 0));
 	window.display();
 
@@ -72,21 +74,33 @@ void PlayState::draw()
 	// Clear the previous drawing
 	_window.clear();
 	
-	
-	int height = _window.getSize().x;
-	int length = _window.getSize().y;
+	auto [x, y] = _window.getSize();
+	float background_width = (1000.0 / 1920)*x;
+	float background_height = (1000.0 / 1080)*y;
+
+	std::cout << "\nwidth : " << background_width << "						height : " << background_height;
+
+
+
+
 	sf::Texture t;
-	t.loadFromFile("assets\\images\\background.png", sf::IntRect(0,0,50,50));
+	t.loadFromFile("assets/images/background.png", sf::IntRect(0,0, static_cast<int>(background_width/20), static_cast<int>(background_height/20)));
 	sf::Sprite s;
-	s.setTexture(t, true);
+	s.setTexture(t);
 	
 
-	for (int i = 0; i < 20; i ++) {
-		for (int j = 0; j < 20; j ++) {
-			s.setPosition(int(i*50),int(j*50));
+	for (int i = 0; i < 20; ++i) {
+		for (int j = 0; j < 20; ++j) {
+			s.setPosition(i* static_cast<int>(background_width / 20) + static_cast<int>(0.24*x), j * static_cast<int>(background_height / 20) + static_cast<int>(0.04 * y));
 			_window.draw(s);
 			
 		}
 	}
 	_window.display();
+
+
+	
+
+
+
 }

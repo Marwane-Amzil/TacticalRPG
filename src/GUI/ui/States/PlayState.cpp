@@ -14,9 +14,11 @@ PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool
 	{
 		throw std::runtime_error{ "Was unable to load image 'img/play.png'" };
 	}
+	window.setSize(sf::Vector2u::Vector2(1000, 1000));
+	window.setView(sf::View(sf::FloatRect(0, 0, 1000,1000)));
+	window.setPosition(sf::Vector2i::Vector2(0, 0));
+	window.display();
 
-	_window.setSize(sf::Vector2u::Vector2(600, 600));
-	_window.display();
 
 	m_background.setTexture(m_backgroundTexture, true);
 
@@ -73,16 +75,15 @@ void PlayState::draw()
 	
 	int height = _window.getSize().x;
 	int length = _window.getSize().y;
-	std::cout << height << length;
 	sf::Texture t;
-	t.loadFromFile("assets\\images\\background.png", sf::IntRect(0,0,20,20));
+	t.loadFromFile("assets\\images\\background.png", sf::IntRect(0,0,50,50));
 	sf::Sprite s;
 	s.setTexture(t, true);
 	
 
-	for (int i = 0; i < 22; i ++) {
+	for (int i = 0; i < 20; i ++) {
 		for (int j = 0; j < 20; j ++) {
-			s.setPosition(int(i*(length/20)),int(j*(height/20)));
+			s.setPosition(int(i*50),int(j*50));
 			_window.draw(s);
 			
 		}

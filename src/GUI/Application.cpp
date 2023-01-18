@@ -1,6 +1,6 @@
 #include <GUI/Application.hpp>
-#include <GUI/ui/States/IntroState.hpp>
-
+//#include <GUI/ui/States/IntroState.hpp>
+#include <GUI/ui/States/MenuState.hpp>
 void Application::run()
 {
 	// Create render window
@@ -8,7 +8,7 @@ void Application::run()
 	_window.setFramerateLimit(30);
 
 	// Initialize the engine
-	_machine.run(StateMachine::build<IntroState>(_machine, _window, true));
+	_machine.run(StateMachine::build<MenuState>(_machine, _window, true));
 
 	// Main loop
 	while (_machine.running())

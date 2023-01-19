@@ -4,6 +4,7 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <GUI/ui/State.hpp>
 #include <utils/TextureManager.hpp>
+#include <GUI/game/EntitySprite.hpp>
 
 class StateMachine;
 
@@ -28,4 +29,20 @@ private:
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_background;
 	utils::TextureManager TM;
+
+
+	sf::Texture background_texture;
+	gui::EntitySprite background_sprite;
+
+
+	gui::EntitySprite sknight;
+	//gui::EntitySprite sknight;
+	gui::EntitySprite sarcher;
+	gui::EntitySprite shealer;
+	gui::EntitySprite smage;
+	gui::EntitySprite swarrior;
+
+
+	char color = 'B';
+
 };

@@ -9,6 +9,15 @@ namespace gui
 	EntitySprite::EntitySprite(Entity* entity)
 		: _vertices(), _texture(nullptr), _texture_rect(), _entity(entity), _animations(), _current_animation(_animations[0]) {}
 
+	EntitySprite::EntitySprite(const EntitySprite& other)
+		: _vertices(other._vertices), _texture(other._texture), _texture_rect(other._texture_rect), _entity(other._entity), _animations(other._animations), _current_animation(other._current_animation) {}
+		
+	EntitySprite::EntitySprite(EntitySprite&& other) noexcept
+		: _vertices(std::move(other._vertices)), _texture(std::move(other._texture)), _texture_rect(std::move(other._texture_rect)), _entity(other._entity), _animations(std::move(other._animations)), _current_animation(other._current_animation)
+	{
+		other._entity = nullptr;
+	}
+
 	Entity* EntitySprite::getEntity() const
 	{
 		return _entity;
@@ -147,6 +156,8 @@ namespace gui
 			_entity = other._entity;
 			_animations = std::move(other._animations);
 			_current_animation = std::move(other._current_animation);
+
+			other._entity = nullptr;
 		}
 
 		return *this;

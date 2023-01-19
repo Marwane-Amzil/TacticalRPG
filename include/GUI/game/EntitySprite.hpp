@@ -28,6 +28,10 @@ namespace gui
 
 		explicit EntitySprite(Entity* entity = nullptr);
 
+		EntitySprite(const EntitySprite& other);
+
+		EntitySprite(EntitySprite&& other) noexcept;
+
 		Entity* getEntity() const;
 
 		const Animation& getAnimation(size_t index) const;

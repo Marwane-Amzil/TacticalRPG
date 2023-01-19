@@ -62,6 +62,10 @@ namespace gui
 		
 		virtual ~EntitySprite() noexcept;
 
+		EntitySprite& operator=(const EntitySprite& other);
+
+		EntitySprite& operator=(EntitySprite&& other) noexcept;
+
 	private:
 
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

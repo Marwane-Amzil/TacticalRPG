@@ -121,4 +121,34 @@ namespace gui
 			target.draw(_vertices.data(), 4, sf::TriangleStrip, states);
 		}
 	}
+
+	EntitySprite& EntitySprite::operator=(const EntitySprite& other)
+	{
+		if (this != &other)
+		{
+			_vertices = other._vertices;
+			_texture = other._texture;
+			_texture_rect = other._texture_rect;
+			_entity = other._entity;
+			_animations = other._animations;
+			_current_animation = other._current_animation;
+		}
+
+		return *this;
+	}
+
+	EntitySprite& EntitySprite::operator=(EntitySprite&& other) noexcept
+	{
+		if (this != &other)
+		{
+			_vertices = std::move(other._vertices);
+			_texture = other._texture;
+			_texture_rect = other._texture_rect;
+			_entity = other._entity;
+			_animations = std::move(other._animations);
+			_current_animation = std::move(other._current_animation);
+		}
+
+		return *this;
+	}
 }

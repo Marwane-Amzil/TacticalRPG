@@ -25,6 +25,8 @@ public:
 	void update() override;
 	void draw() override;
 
+	void initSprite(char color);
+
 private:
 
 	sf::Texture m_backgroundTexture;

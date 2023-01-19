@@ -46,7 +46,7 @@ private:
 	gui::EntitySprite smage;
 	gui::EntitySprite swarrior;
 
-	std::array<gui::EntitySprite, 10> list_of_sprites;
+	std::array<gui::EntitySprite, 11> list_of_sprites;
 
 	char color = 'B';
 

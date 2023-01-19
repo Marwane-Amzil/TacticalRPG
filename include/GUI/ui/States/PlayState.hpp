@@ -34,14 +34,15 @@ private:
 	sf::Texture background_texture;
 	gui::EntitySprite background_sprite;
 
+	gui::EntitySprite sprite_of_selected_character;
 
 	gui::EntitySprite sknight;
-	//gui::EntitySprite sknight;
 	gui::EntitySprite sarcher;
 	gui::EntitySprite shealer;
 	gui::EntitySprite smage;
 	gui::EntitySprite swarrior;
 
+	std::vector<gui::EntitySprite> list_of_sprites;
 
 	char color = 'B';
 

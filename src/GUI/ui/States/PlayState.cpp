@@ -27,6 +27,43 @@ PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool
 	m_background.setTexture(m_backgroundTexture, true);
 
 	std::cout << "PlayState Init\n";
+
+	swarrior.setTexture(TM.getTextureAt(color, "warrior"));
+	swarrior.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.8 * y));
+	swarrior.setTextureRect(sf::IntRect(70, 650, 50, 50));
+	swarrior.setScale(3.84, 3.84);
+	
+	smage.setTexture(TM.getTextureAt(color, "mage"));
+	smage.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.6 * y));
+	smage.setTextureRect(sf::IntRect(70, 650, 50, 50));
+	smage.setScale(3.84, 3.84);
+
+	shealer.setTexture(TM.getTextureAt(color, "healer"));
+	shealer.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.4 * y));
+	shealer.setTextureRect(sf::IntRect(70, 650, 50, 50));
+	shealer.setScale(3.84, 3.84);
+
+	sarcher.setTexture(TM.getTextureAt(color, "archer"));
+	sarcher.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.2 * y));
+	sarcher.setTextureRect(sf::IntRect(70, 650, 50, 50));
+	sarcher.setScale(3.84, 3.84);
+
+	sknight.setTexture(TM.getTextureAt(color, "knight"));
+	sknight.setPosition(static_cast<int>(0.83 * x), 0.0);
+	sknight.setTextureRect(sf::IntRect(70, 650, 50, 50));
+	sknight.setScale(3.84, 3.84);
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 void PlayState::pause()
@@ -41,7 +78,6 @@ void PlayState::resume()
 
 void PlayState::update()
 {
-	gui::EntitySprite sprite_of_selected_character;
 	
 	
 	auto [x, y] = _window.getSize();
@@ -49,26 +85,7 @@ void PlayState::update()
 		_window.close();
 	}
 
-	//for (int i = 0; i < 5; ++i) {
-		/*
-		_window.clear();
-		std::cout << "cleared";
-
-		for (int i = 0; i < 20; ++i) {
-			for (int j = 0; j < 20; ++j) {
-				s.setPosition(i * static_cast<int>(background_width / 20) + basic_x_pos,
-					j * static_cast<int>(background_height / 20) + basic_y_pos);
-				_window.draw(s);
-			}
-		}
-
-		_window.draw(sknight);
-		_window.draw(sarcher);
-		_window.draw(shealer);
-		_window.draw(smage);
-		_window.draw(swarrior);
-		*/
-
+	
 
 		auto [xcoord, ycoord] = sf::Mouse::getPosition();
 
@@ -77,6 +94,10 @@ void PlayState::update()
 		while (!click_looker) {
 			auto [xcoord, ycoord] = sf::Mouse::getPosition();
 			click_looker = (xcoord < static_cast<int>(0.93 * x)) && (xcoord > static_cast<int>(0.83 * x)) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+				_window.close();
+			}
+		
 		}
 		click_looker = false;
 		
@@ -115,7 +136,7 @@ void PlayState::update()
 		}
 
 
-		/*click_looker = false;
+		click_looker = false;
 		while (!click_looker) {
 			auto [xcoord, ycoord] = sf::Mouse::getPosition();
 			click_looker = ((sf::Mouse::isButtonPressed(sf::Mouse::Left)) && (
@@ -123,10 +144,10 @@ void PlayState::update()
 				((ycoord > static_cast<int>(0.04 * y)) && (ycoord < static_cast<int>(0.96 * y)))));
 			;
 		}
-		click_looker = false;*/
+		click_looker = false;
 
 
-		//sf::Vector2i vector = sf::Mouse::getPosition();
+		sf::Vector2i vector = sf::Mouse::getPosition();
 		xcoord = vector.x;
 
 		ycoord = vector.y;
@@ -134,15 +155,14 @@ void PlayState::update()
 		int pos_grille_x = static_cast<int>(((xcoord)-460) / 50) * 50 + 460;
 		int pos_grille_y = static_cast<int>(((ycoord)-40) / 50) * 50 + 40;
 
+		std::cout << "\n" << xcoord << "//" << pos_grille_x << "\n" << ycoord << "//" << pos_grille_y;
+
 		sprite_of_selected_character.setPosition(sf::Vector2f::Vector2(pos_grille_x, pos_grille_y));
 
 
-
-
-		_window.draw(sprite_of_selected_character);
+		
 		//std::cout << "\ndrawn";
 	//}
-	color = 'R';	
 
 	//----------------
 	/*for (auto event = sf::Event{}; _window.pollEvent(event);)
@@ -197,67 +217,34 @@ void PlayState::draw()
 	int basic_y_pos = static_cast<int>(0.04 * y);
 
 	
-		for (int i = 0; i < 20; ++i) {
-			for (int j = 0; j < 20; ++j) {
-				background_sprite.setPosition(i * static_cast<int>(background_width / 20) + basic_x_pos,
-					j * static_cast<int>(background_height / 20) + basic_y_pos);
+	for (int i = 0; i < 20; ++i) {
+		for (int j = 0; j < 20; ++j) {
+			background_sprite.setPosition(i * static_cast<int>(background_width / 20) + basic_x_pos,
+				j * static_cast<int>(background_height / 20) + basic_y_pos);
 
-				_window.draw(background_sprite);
-			}
+			_window.draw(background_sprite);
 		}
+	}
 
 
+	_window.draw(sknight);
 
-		for (int i = 0; i < 2; ++i) {
+	_window.draw(sarcher);
 
-			//sf::Texture tknight;
-			//tknight.loadFromFile("assets/images/characters/" + color + "/knight.png", sf::IntRect());
-			sknight.setTexture(TM.getTextureAt(color, "knight"));
-			sknight.setPosition(static_cast<int>(0.83 * x), 0.0);
-			sknight.setTextureRect(sf::IntRect(70, 650, 50, 50));
-			sknight.setScale(3.84, 3.84);
-			_window.draw(sknight);
+	_window.draw(shealer);
 
+	_window.draw(smage);
 
-			//sf::Texture tarcher;
-			//tarcher.loadFromFile("assets/images/characters/" + color + "/archer.png", sf::IntRect());
-			sarcher.setTexture(TM.getTextureAt(color, "archer"));
-			sarcher.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.2 * y));
-			sarcher.setTextureRect(sf::IntRect(70, 650, 50, 50));
-			sarcher.setScale(3.84, 3.84);
-			_window.draw(sarcher);
+	_window.draw(swarrior);
 
-			//sf::Texture thealer;
-			//thealer.loadFromFile("assets/images/characters/" + color + "/healer.png", sf::IntRect());
-			shealer.setTexture(TM.getTextureAt(color, "healer"));
-			shealer.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.4 * y));
-			shealer.setTextureRect(sf::IntRect(70, 650, 50, 50));
-			shealer.setScale(3.84, 3.84);
-			_window.draw(shealer);
-
-
-			//sf::Texture tmage;
-			//tmage.loadFromFile("assets/images/characters/" + color + "/mage.png", sf::IntRect());
-			smage.setTexture(TM.getTextureAt(color, "mage"));
-			smage.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.6 * y));
-			smage.setTextureRect(sf::IntRect(70, 650, 50, 50));
-			smage.setScale(3.84, 3.84);
-			_window.draw(smage);
-
-			//sf::Texture twarrior;
-			//twarrior.loadFromFile("assets/images/characters/" + color + "/warrior.png", sf::IntRect());
-			swarrior.setTexture(TM.getTextureAt(color, "warrior"));
-			swarrior.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.8 * y));
-			swarrior.setTextureRect(sf::IntRect(70, 650, 50, 50));
-			swarrior.setScale(3.84, 3.84);
-			_window.draw(swarrior);
-
-			//_window.display();
+	for (int i = 0; i < list_of_sprites.size(); ++i) {
+		_window.draw(list_of_sprites[i]);
+	}
 
 
 
 
-			_window.display();
+	_window.display();
 
-		}
+		
 }

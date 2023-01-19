@@ -33,7 +33,7 @@ PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool
 	pos_in_list = 0;
 
 
-
+	initSprite('B');
 
 
 
@@ -58,13 +58,7 @@ void PlayState::resume()
 
 void PlayState::update()
 {
-	if (pos_in_list < 5) {
-		initSprite('B');
-	}
-	else {
-		
-		initSprite('R');
-	}
+	
 
 	auto [x, y] = _window.getSize();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
@@ -206,6 +200,13 @@ void PlayState::draw()
 	_window.clear();
 
 
+	if (pos_in_list < 5) {
+		initSprite('B');
+	}
+	else {
+		initSprite('R');
+	}
+
 	auto [x, y] = _window.getSize();
 	float background_width = (1000.0 / 1920) * x;
 	float background_height = (1000.0 / 1080) * y;
@@ -232,15 +233,7 @@ void PlayState::draw()
 	}
 
 
-	_window.draw(sknight);
-
-	_window.draw(sarcher);
-
-	_window.draw(shealer);
-
-	_window.draw(smage);
-
-	_window.draw(swarrior);
+	
 
 	for (int i = 0; i < list_of_sprites.size(); ++i) {
 		std::cout << "\n" << i << "  :  " << list_of_sprites[i].getPosition().x << "////" << list_of_sprites[i].getPosition().y;
@@ -286,5 +279,15 @@ void PlayState::initSprite(char color) {
 	sknight.setPosition(static_cast<int>(0.83 * x), 0.0);
 	sknight.setTextureRect(sf::IntRect(70, 650, 50, 50));
 	sknight.setScale(3.84, 3.84);
+
+	_window.draw(sknight);
+
+	_window.draw(sarcher);
+
+	_window.draw(shealer);
+
+	_window.draw(smage);
+
+	_window.draw(swarrior);
 
 }

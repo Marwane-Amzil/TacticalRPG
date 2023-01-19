@@ -3,6 +3,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <GUI/ui/State.hpp>
+#include <utils/TextureManager.hpp>
 
 class StateMachine;
 
@@ -23,6 +24,7 @@ public:
 	void draw() override;
 
 private:
+
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_background;
 	utils::TextureManager TM;

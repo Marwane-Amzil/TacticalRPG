@@ -25,4 +25,5 @@ public:
 private:
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_background;
+	utils::TextureManager TM;
 };

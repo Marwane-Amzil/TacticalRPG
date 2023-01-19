@@ -13,7 +13,7 @@ void Application::run()
 	// Main loop
 	while (_machine.running())
 	{
-		_machine.nextState();
+		//_machine.nextState();
 		_machine.update();
 		_machine.draw();
 	}

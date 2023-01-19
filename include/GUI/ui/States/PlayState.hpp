@@ -5,6 +5,7 @@
 #include <GUI/ui/State.hpp>
 #include <utils/TextureManager.hpp>
 #include <GUI/game/EntitySprite.hpp>
+#include <array>
 
 class StateMachine;
 
@@ -30,6 +31,7 @@ private:
 	sf::Sprite m_background;
 	utils::TextureManager TM;
 
+	int pos_in_list;
 
 	sf::Texture background_texture;
 	gui::EntitySprite background_sprite;
@@ -42,7 +44,7 @@ private:
 	gui::EntitySprite smage;
 	gui::EntitySprite swarrior;
 
-	std::vector<gui::EntitySprite> list_of_sprites;
+	std::array<gui::EntitySprite, 10> list_of_sprites;
 
 	char color = 'B';
 

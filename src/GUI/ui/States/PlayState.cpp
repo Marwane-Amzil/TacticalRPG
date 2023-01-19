@@ -7,6 +7,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <GUI/game/EntitySprite.hpp>
+#include <array>
+
 
 PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool replace)
 : State{ machine, window, replace }
@@ -27,6 +29,9 @@ PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool
 	m_background.setTexture(m_backgroundTexture, true);
 
 	std::cout << "PlayState Init\n";
+
+	pos_in_list = 0;
+
 
 	swarrior.setTexture(TM.getTextureAt(color, "warrior"));
 	swarrior.setPosition(static_cast<int>(0.83 * x), static_cast<int>(0.8 * y));
@@ -104,7 +109,7 @@ void PlayState::update()
 
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
-			if (sknight.getGlobalBounds().contains(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y)) {
+			if (ycoord < static_cast<int>(0.4 * y)) {
 
 				std::cout << "\nknight selected";
 				sprite_of_selected_character = sknight;
@@ -136,6 +141,8 @@ void PlayState::update()
 		}
 
 
+
+
 		click_looker = false;
 		while (!click_looker) {
 			auto [xcoord, ycoord] = sf::Mouse::getPosition();
@@ -157,7 +164,19 @@ void PlayState::update()
 
 		std::cout << "\n" << xcoord << "//" << pos_grille_x << "\n" << ycoord << "//" << pos_grille_y;
 
-		sprite_of_selected_character.setPosition(sf::Vector2f::Vector2(pos_grille_x, pos_grille_y));
+		
+
+		sprite_of_selected_character.setPosition(sf::Vector2f(pos_grille_x, pos_grille_y));
+
+		
+
+		list_of_sprites[pos_in_list] = sprite_of_selected_character;
+
+		list_of_sprites[pos_in_list++].setScale(1, 1);
+
+
+		std::cout << "\n" << list_of_sprites[0].getPosition().x << "////" << list_of_sprites[0].getPosition().y;
+
 
 
 		
@@ -238,6 +257,8 @@ void PlayState::draw()
 	_window.draw(swarrior);
 
 	for (int i = 0; i < list_of_sprites.size(); ++i) {
+		std::cout << "\n" << i << "  :  " << list_of_sprites[i].getPosition().x << "////" << list_of_sprites[i].getPosition().y;
+		
 		_window.draw(list_of_sprites[i]);
 	}
 

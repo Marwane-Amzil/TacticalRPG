@@ -62,7 +62,6 @@ Download and launch **setup.msi**. A shortcut will appear in your Desktop. The s
 **For other IDEs** :
 - Install [CMake](https://cmake.org/download/)
 - Once installed, open a command prompt in your project directory.
->![build](cmake_prompt.png)
 - Run the following commands:
 ```bash
 cd build // Go to the build directory

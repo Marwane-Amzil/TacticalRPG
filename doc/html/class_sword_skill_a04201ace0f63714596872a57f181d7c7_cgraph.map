@@ -1,0 +1,7 @@
+<map id="SwordSkill::getPossibleZones" name="SwordSkill::getPossibleZones">
+<area shape="rect" id="node1" title="Returns a vector of positions that are in range of the skill. It is where the skill (SwordSkill) can ..." alt="" coords="5,81,200,108"/>
+<area shape="rect" id="node2" href="$class_skill.html#a459f150f0df9f94118d32e3237deb98b" title="method that returns the private attribut of the Skill classes (Owner). A skill can have 1 Owner...." alt="" coords="257,5,368,32"/>
+<area shape="rect" id="node3" href="$class_entity.html#af6800b23e4a4c048b8a43afd6bbf653d" title="Method which returns the current position of the entity." alt="" coords="248,56,377,83"/>
+<area shape="rect" id="node4" href="$class_position.html#aec07bdc14874f47cd1dc675d864f49a2" title="Method which returns the x value of the position." alt="" coords="261,107,364,133"/>
+<area shape="rect" id="node5" href="$class_position.html#aecedcf0af53e559ccde18432f20d1a37" title="Method which returns the y value of the position." alt="" coords="261,157,365,184"/>
+</map>

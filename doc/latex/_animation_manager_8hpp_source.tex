@@ -1,0 +1,46 @@
+\hypertarget{_animation_manager_8hpp_source}{}\doxysection{Animation\+Manager.\+hpp}
+\label{_animation_manager_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/utils/AnimationManager.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/utils/AnimationManager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_ANIMATION\_MANAGER\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_ANIMATION\_MANAGER\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <map>} \textcolor{comment}{// std::map}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <vector>} \textcolor{comment}{// std::vector}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <string>} \textcolor{comment}{// std::string}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }gui}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }Animation;}
+\DoxyCodeLine{13 \}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }utils}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }\mbox{\hyperlink{classutils_1_1_animation_manager}{AnimationManager}}}
+\DoxyCodeLine{18     \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \mbox{\hyperlink{classutils_1_1_animation_manager}{AnimationManager}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \mbox{\hyperlink{classutils_1_1_animation_manager}{\string~AnimationManager}}() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{24         }
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} loadAnimations();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \textcolor{keyword}{const} std::vector<gui::Animation*>\& getAnimations() \textcolor{keyword}{const};}
+\DoxyCodeLine{28         }
+\DoxyCodeLine{29         \textcolor{keyword}{const} std::map<std::string, gui::Animation*>\& getSpecialAnimations(std::string\_view type) \textcolor{keyword}{const};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keyword}{const} \mbox{\hyperlink{classgui_1_1_animation}{gui::Animation}}* getSpecialAnimation(std::string\_view type, std::string\_view name) \textcolor{keyword}{const};}
+\DoxyCodeLine{32         }
+\DoxyCodeLine{33     \textcolor{keyword}{private}:}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         std::vector<gui::Animation*> \_animations;}
+\DoxyCodeLine{36         std::map<std::string, std::map<std::string, gui::Animation*>> \_specials;}
+\DoxyCodeLine{37     \};}
+\DoxyCodeLine{38 \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_ANIMATION\_MANAGER\_H\_\_}}
+
+\end{DoxyCode}

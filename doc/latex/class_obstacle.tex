@@ -1,0 +1,86 @@
+\hypertarget{class_obstacle}{}\doxysection{Obstacle Class Reference}
+\label{class_obstacle}\index{Obstacle@{Obstacle}}
+
+
+The \mbox{\hyperlink{class_obstacle}{Obstacle}} class represents any entity which are not playable by the player. According to the rules, while not being usable by the user, it still represents an entity which occupies a slot in the field, thus allowing the player to get rid of it to free some cases in the field.  
+
+
+
+
+{\ttfamily \#include $<$Obstacle.\+hpp$>$}
+
+
+
+Inheritance diagram for Obstacle\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=136pt]{class_obstacle__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Obstacle\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{class_obstacle__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_obstacle_a6c98ee47a740fbee27f04fdf290c4a02}{Obstacle}} (const int x, const int y, const int hp)
+\begin{DoxyCompactList}\small\item\em Constructor taking 2 position values and a hp value. Initialize an obstacle with a given position and a given hp value. To achieve this, it will call the base class constructor (\mbox{\hyperlink{class_entity}{Entity}}). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_obstacle_a9fdd13ed632006e691d98b2959f111d3}\label{class_obstacle_a9fdd13ed632006e691d98b2959f111d3}} 
+{\bfseries $\sim$\+Obstacle} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_obstacle}{Obstacle}} destructor. Explicitly defaulted (\mbox{\hyperlink{class_obstacle_a9fdd13ed632006e691d98b2959f111d3}{$\sim$\+Obstacle()}} = default). \end{DoxyCompactList}\item 
+std\+::string\+\_\+view \mbox{\hyperlink{class_obstacle_a0adccd35be0af6430b267c0e9987f344}{get\+Class}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_obstacle}{Obstacle}} class represents any entity which are not playable by the player. According to the rules, while not being usable by the user, it still represents an entity which occupies a slot in the field, thus allowing the player to get rid of it to free some cases in the field. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_obstacle_a6c98ee47a740fbee27f04fdf290c4a02}\label{class_obstacle_a6c98ee47a740fbee27f04fdf290c4a02}} 
+\index{Obstacle@{Obstacle}!Obstacle@{Obstacle}}
+\index{Obstacle@{Obstacle}!Obstacle@{Obstacle}}
+\doxysubsubsection{\texorpdfstring{Obstacle()}{Obstacle()}}
+{\footnotesize\ttfamily Obstacle\+::\+Obstacle (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{hp }\end{DoxyParamCaption})}
+
+
+
+Constructor taking 2 position values and a hp value. Initialize an obstacle with a given position and a given hp value. To achieve this, it will call the base class constructor (\mbox{\hyperlink{class_entity}{Entity}}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x position \\
+\hline
+{\em y} & y position \\
+\hline
+{\em hp} & hp of the obstacle \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_obstacle_a0adccd35be0af6430b267c0e9987f344}\label{class_obstacle_a0adccd35be0af6430b267c0e9987f344}} 
+\index{Obstacle@{Obstacle}!getClass@{getClass}}
+\index{getClass@{getClass}!Obstacle@{Obstacle}}
+\doxysubsubsection{\texorpdfstring{getClass()}{getClass()}}
+{\footnotesize\ttfamily std\+::string\+\_\+view Obstacle\+::get\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_entity}{Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/\+Entities/Obstacle.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/\+Entities/Obstacle.\+cpp\end{DoxyCompactItemize}

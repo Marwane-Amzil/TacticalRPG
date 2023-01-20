@@ -1,0 +1,29 @@
+\hypertarget{_magic_character_8hpp_source}{}\doxysection{Magic\+Character.\+hpp}
+\label{_magic_character_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Characters/MagicCharacter.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Characters/MagicCharacter.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_MAGIC\_CHARACTER\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_MAGIC\_CHARACTER\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Entities/Character.hpp>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_magic_character}{MagicCharacter}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_character}{Character}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18     \mbox{\hyperlink{class_magic_character}{MagicCharacter}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} y, \textcolor{keyword}{const} \textcolor{keywordtype}{int} hp, \textcolor{keyword}{const} \textcolor{keywordtype}{char} player, \textcolor{keyword}{const} \textcolor{keywordtype}{int} will, \textcolor{keyword}{const} \textcolor{keywordtype}{int} res\_phy, \textcolor{keyword}{const} \textcolor{keywordtype}{int} res\_mag, \textcolor{keyword}{const} \textcolor{keywordtype}{int} magic);}
+\DoxyCodeLine{22     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_magic_character}{\string~MagicCharacter}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{30 \textcolor{keyword}{private}:}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{comment}{// Not mendatory. Reminds of Java calls to base class for the ease of writing.}}
+\DoxyCodeLine{33     \textcolor{comment}{// For instance, super(...) calls the base class constructor with the specified parameters.}}
+\DoxyCodeLine{34     \textcolor{comment}{// In fact, it calls "{}Character(...)"{}.}}
+\DoxyCodeLine{35     \textcolor{keyword}{typedef} \mbox{\hyperlink{class_character}{Character}} \mbox{\hyperlink{class_entity}{super}};}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_MAGIC\_CHARACTER\_H\_\_}}
+
+\end{DoxyCode}

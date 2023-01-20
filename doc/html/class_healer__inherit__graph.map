@@ -1,0 +1,6 @@
+<map id="Healer" name="Healer">
+<area shape="rect" id="node1" title=" " alt="" coords="33,229,91,256"/>
+<area shape="rect" id="node2" href="$class_magic_character.html" title=" " alt="" coords="5,155,119,181"/>
+<area shape="rect" id="node3" href="$class_character.html" title="The Character class represents any entity that the user can play with. According to the rules,..." alt="" coords="23,80,101,107"/>
+<area shape="rect" id="node4" href="$class_entity.html" title="The Entity class represents any entity that might appear in the game. According to the rules,..." alt="" coords="34,5,90,32"/>
+</map>

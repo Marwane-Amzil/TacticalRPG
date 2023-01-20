@@ -1,0 +1,75 @@
+\hypertarget{_menu_state_8hpp_source}{}\doxysection{Menu\+State.\+hpp}
+\label{_menu_state_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/States/MenuState.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/States/MenuState.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <SFML/Graphics/RectangleShape.hpp>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <SFML/System/Vector2.hpp>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <GUI/ui/Button.hpp>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <GUI/ui/State.hpp>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_state_machine}{StateMachine}};}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     \textcolor{keyword}{class }RenderWindow;}
+\DoxyCodeLine{15     \textcolor{keyword}{class }Font;}
+\DoxyCodeLine{16     \textcolor{keyword}{class }Texture;}
+\DoxyCodeLine{17     \textcolor{keyword}{class }Sprite;}
+\DoxyCodeLine{18 \}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_menu_state}{MenuState}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_menu_state}{MenuState}}(\mbox{\hyperlink{class_state_machine}{StateMachine}}\& machine, sf::RenderWindow\& window, \textcolor{keywordtype}{bool} replace = \textcolor{keyword}{true});}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} pause() \textcolor{keyword}{override};}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} resume() \textcolor{keyword}{override};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} update() \textcolor{keyword}{override};}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} draw() \textcolor{keyword}{override};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32     }
+\DoxyCodeLine{33     sf::Texture m\_backgroundTexture;}
+\DoxyCodeLine{34     \textcolor{comment}{// Constains the sprites of the menu}}
+\DoxyCodeLine{35     sf::Sprite m\_background;}
+\DoxyCodeLine{36     }
+\DoxyCodeLine{37     \textcolor{keywordtype}{int} \_pos;}
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} \_pressed, theselect;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{comment}{// Menu objects. That will be used in our menu.}}
+\DoxyCodeLine{42     \textcolor{comment}{// Rectangle that will be the buttons}}
+\DoxyCodeLine{43     sf::RectangleShape* \_winclose;}
+\DoxyCodeLine{44     \textcolor{comment}{// The font used}}
+\DoxyCodeLine{45     sf::Font* \_font;}
+\DoxyCodeLine{46     \textcolor{comment}{// Contains the images}}
+\DoxyCodeLine{47     sf::Texture* \_image;}
+\DoxyCodeLine{48     \textcolor{comment}{// Contains the closing image}}
+\DoxyCodeLine{49     sf::Texture* \_closingImage;}
+\DoxyCodeLine{50     }
+\DoxyCodeLine{51     \textcolor{comment}{//sf::Vector2i (ou sf::Vector2<int>) est utile lorsqu'on a besoin d'une position en pixels par exemple (donc un nombre entier).}}
+\DoxyCodeLine{52     \textcolor{comment}{//sf::Vector2u(ou sf::Vector2<unsigned>) est utile lorsqu'on a besoin d'une position de souris }}
+\DoxyCodeLine{53     \textcolor{comment}{//par exemple(la souris ne sort pas de l'écran et aura donc toujours une position positive).}}
+\DoxyCodeLine{54     sf::Vector2i \_pos\_mouse;}
+\DoxyCodeLine{55     }
+\DoxyCodeLine{56     sf::Vector2f \_mouse\_coord;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{comment}{// Array of buttons}}
+\DoxyCodeLine{59     std::array<gui::Button, 4> \_buttons;}
+\DoxyCodeLine{60     \textcolor{comment}{// Container the options}}
+\DoxyCodeLine{61     std::vector<const char*> \_options;}
+\DoxyCodeLine{62     \textcolor{comment}{// Container of the mouse coords}}
+\DoxyCodeLine{63     std::vector<sf::Vector2f> \_coords;}
+\DoxyCodeLine{64     \textcolor{comment}{// Container of the texts}}
+\DoxyCodeLine{65     std::vector<sf::Text> \_texts;}
+\DoxyCodeLine{66     \textcolor{comment}{// Container of the sizes}}
+\DoxyCodeLine{67     std::vector<std::size\_t> \_sizes;}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \};}
+
+\end{DoxyCode}

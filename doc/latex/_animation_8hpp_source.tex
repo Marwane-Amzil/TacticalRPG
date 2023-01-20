@@ -1,0 +1,70 @@
+\hypertarget{_animation_8hpp_source}{}\doxysection{Animation.\+hpp}
+\label{_animation_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/game/Animation.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/game/Animation.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_ANIMATION\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_ANIMATION\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <SFML/Graphics/Rect.hpp>} \textcolor{comment}{// sf::IntRect}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <SFML/System/Time.hpp>} \textcolor{comment}{// sf::Time}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <vector>} \textcolor{comment}{// std::vector}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }Texture;}
+\DoxyCodeLine{13 \}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }gui}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }\mbox{\hyperlink{classgui_1_1_animation}{Animation}}}
+\DoxyCodeLine{18     \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \mbox{\hyperlink{classgui_1_1_animation}{Animation}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{keyword}{inline} \mbox{\hyperlink{classgui_1_1_animation}{\string~Animation}}() \textcolor{keyword}{noexcept} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keyword}{const} sf::IntRect\& getFrame(\textcolor{keywordtype}{size\_t} index) \textcolor{keyword}{const};}
+\DoxyCodeLine{26         }
+\DoxyCodeLine{27         \textcolor{keyword}{const} sf::IntRect\& getCurrentFrame() \textcolor{keyword}{const};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keywordtype}{size\_t} getCurrentFrameIndex() \textcolor{keyword}{const};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keywordtype}{size\_t} getFrameCount() \textcolor{keyword}{const};}
+\DoxyCodeLine{32         }
+\DoxyCodeLine{33         \textcolor{keywordtype}{bool} isPlaying() \textcolor{keyword}{const};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{keywordtype}{bool} isLooping() \textcolor{keyword}{const};}
+\DoxyCodeLine{36         }
+\DoxyCodeLine{37         \textcolor{keywordtype}{void} addFrame(\textcolor{keyword}{const} sf::IntRect\& frame);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} addFrame(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} setSpeed(\textcolor{keywordtype}{float} speed);}
+\DoxyCodeLine{42         }
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} setLoop(\textcolor{keywordtype}{bool} loop);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} pause();}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} play();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keywordtype}{void} stop();}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordtype}{void} update(sf::Time elapsed\_time);}
+\DoxyCodeLine{52         }
+\DoxyCodeLine{53     \textcolor{keyword}{private}:}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         std::vector<sf::IntRect> \_frames; \textcolor{comment}{// The frames of the animation}}
+\DoxyCodeLine{56         sf::Time \_frame\_time;             \textcolor{comment}{// The time between each frame}}
+\DoxyCodeLine{57         sf::Time \_current\_time;           \textcolor{comment}{// The current time}}
+\DoxyCodeLine{58         \textcolor{keywordtype}{size\_t} \_current\_frame;            \textcolor{comment}{// The current frame of the animation}}
+\DoxyCodeLine{59         \textcolor{keywordtype}{bool} \_is\_playing;                 \textcolor{comment}{// Is the animation playing}}
+\DoxyCodeLine{60         \textcolor{keywordtype}{bool} \_is\_looping;                 \textcolor{comment}{// Is the animation looping}}
+\DoxyCodeLine{61     \};}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_ANIMATION\_H\_\_}}
+
+\end{DoxyCode}

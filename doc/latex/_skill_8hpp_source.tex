@@ -1,0 +1,51 @@
+\hypertarget{_skill_8hpp_source}{}\doxysection{Skill.\+hpp}
+\label{_skill_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Skill.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Skill.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_SKILL\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_SKILL\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <vector>} \textcolor{comment}{// std::vector}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <Position.hpp>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_effect}{Effect}};}
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_character}{Character}};}
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_grid}{Grid}};}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_position}{Position}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/*}}
+\DoxyCodeLine{20 \textcolor{comment}{* @brief The Skill class represents the skills of the different character. It is the base class of different classes. }}
+\DoxyCodeLine{21 \textcolor{comment}{*/}}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{class_skill}{Skill}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25         }
+\DoxyCodeLine{29     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_skill_a7b81cce8e3a0bee543a2744333c55800}{Skill}}(\textcolor{keywordtype}{int} multiplier, \textcolor{keywordtype}{int} range, \mbox{\hyperlink{class_character}{Character}}* character, \mbox{\hyperlink{class_effect}{Effect}} *effect = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{33     \textcolor{keyword}{inline} \textcolor{keyword}{virtual} \mbox{\hyperlink{class_skill_a80c0ccf00965bb3d3ba449efacc07b53}{\string~Skill}}() noexcept = default;}
+\DoxyCodeLine{37     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_skill_ad7d414ac6149dacaf633724e3f5f39d1}{getMultiplier}}() const;}
+\DoxyCodeLine{41     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_skill_a8ec3f80b07b95c900dc83b6402ee7768}{getRange}}() const;}
+\DoxyCodeLine{46     const \mbox{\hyperlink{class_effect}{Effect}}* \mbox{\hyperlink{class_skill_a210be05b43b5149fb4c745934beb1ff2}{getEffect}}() const;}
+\DoxyCodeLine{52     \mbox{\hyperlink{class_character}{Character}}* \mbox{\hyperlink{class_skill_a459f150f0df9f94118d32e3237deb98b}{getOwner}}() const;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     }
+\DoxyCodeLine{59     virtual \textcolor{keywordtype}{void} \mbox{\hyperlink{class_skill_a146023835d10c3bb6106a66c0b156a4d}{activate}}(\mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}, \mbox{\hyperlink{class_character}{Character}}* target) const = 0;}
+\DoxyCodeLine{60     }
+\DoxyCodeLine{61     virtual std::vector<\mbox{\hyperlink{class_position}{Position}}> getPossibleZones(const \mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}) const = 0;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{66     \textcolor{comment}{//virtual bool canActivate(Grid* grid) const = 0;}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     }
+\DoxyCodeLine{69 private:}
+\DoxyCodeLine{70         }
+\DoxyCodeLine{71     \textcolor{keywordtype}{int} \_multiplier;}
+\DoxyCodeLine{72     \textcolor{keywordtype}{int} \_range;}
+\DoxyCodeLine{73     \mbox{\hyperlink{class_effect}{Effect}} *\_effect;}
+\DoxyCodeLine{74     \mbox{\hyperlink{class_character}{Character}} *\_character;}
+\DoxyCodeLine{75 \};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_SKILL\_H\_\_ }}
+
+\end{DoxyCode}

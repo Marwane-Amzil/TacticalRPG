@@ -1,0 +1,122 @@
+\hypertarget{class_fireball}{}\doxysection{Fireball Class Reference}
+\label{class_fireball}\index{Fireball@{Fireball}}
+
+
+Inheritance diagram for Fireball\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{class_fireball__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fireball\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{class_fireball__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_fireball_acc53903497e790392a8150965951f140}{Fireball}} (int multiplier, int range, \mbox{\hyperlink{class_character}{Character}} $\ast$character, \mbox{\hyperlink{class_effect}{Effect}} $\ast$effect=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_fireball}{Fireball}} class with default values for effect and range parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fireball_ad6dbe61a0b01886ed5e2f5a7a8ba3cc5}\label{class_fireball_ad6dbe61a0b01886ed5e2f5a7a8ba3cc5}} 
+{\bfseries $\sim$\+Fireball} () noexcept=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_fireball}{Fireball}} destructor. Explicitly defaulted (\mbox{\hyperlink{class_fireball_ad6dbe61a0b01886ed5e2f5a7a8ba3cc5}{$\sim$\+Fireball()}} = default) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fireball_a94846c4062f602c05fc02b843006445a}{activate}} (\mbox{\hyperlink{class_grid}{Grid}} \&grid, \mbox{\hyperlink{class_character}{Character}} $\ast$target) const override
+\begin{DoxyCompactList}\small\item\em method activate that activates the current skill (\mbox{\hyperlink{class_fireball}{Fireball}}) \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_fireball_a25c0d1c05abcfca37bca6959deef057e}{get\+Possible\+Zones}} (const \mbox{\hyperlink{class_grid}{Grid}} \&grid) const override
+\begin{DoxyCompactList}\small\item\em Returns a vector of positions that are in range of the skill. It is where the skill (\mbox{\hyperlink{class_fireball}{Fireball}}) can be launched. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_fireball_acc53903497e790392a8150965951f140}\label{class_fireball_acc53903497e790392a8150965951f140}} 
+\index{Fireball@{Fireball}!Fireball@{Fireball}}
+\index{Fireball@{Fireball}!Fireball@{Fireball}}
+\doxysubsubsection{\texorpdfstring{Fireball()}{Fireball()}}
+{\footnotesize\ttfamily Fireball\+::\+Fireball (\begin{DoxyParamCaption}\item[{int}]{multiplier,  }\item[{int}]{range,  }\item[{\mbox{\hyperlink{class_character}{Character}} $\ast$}]{character,  }\item[{\mbox{\hyperlink{class_effect}{Effect}} $\ast$}]{effect = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_fireball}{Fireball}} class with default values for effect and range parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multiplier} & The multiplier for the skill\textquotesingle{}s damage. \\
+\hline
+{\em character} & The character that owns the skill. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fireball_a94846c4062f602c05fc02b843006445a}\label{class_fireball_a94846c4062f602c05fc02b843006445a}} 
+\index{Fireball@{Fireball}!activate@{activate}}
+\index{activate@{activate}!Fireball@{Fireball}}
+\doxysubsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily void Fireball\+::activate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{grid,  }\item[{\mbox{\hyperlink{class_character}{Character}} $\ast$}]{target }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+method activate that activates the current skill (\mbox{\hyperlink{class_fireball}{Fireball}}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & The grid on which the skill will be activated. \\
+\hline
+{\em target} & The target is the character that is going to be targeted. This methode also verifies if the skill can be launched on the character put in parametre. Indeed the verification is done throught the get\+Possible\+Zones method. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_skill_a146023835d10c3bb6106a66c0b156a4d}{Skill}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_fireball_a94846c4062f602c05fc02b843006445a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_fireball_a25c0d1c05abcfca37bca6959deef057e}\label{class_fireball_a25c0d1c05abcfca37bca6959deef057e}} 
+\index{Fireball@{Fireball}!getPossibleZones@{getPossibleZones}}
+\index{getPossibleZones@{getPossibleZones}!Fireball@{Fireball}}
+\doxysubsubsection{\texorpdfstring{getPossibleZones()}{getPossibleZones()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ Fireball\+::get\+Possible\+Zones (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_grid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns a vector of positions that are in range of the skill. It is where the skill (\mbox{\hyperlink{class_fireball}{Fireball}}) can be launched. 
+
+
+
+Implements \mbox{\hyperlink{class_skill}{Skill}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_fireball_a25c0d1c05abcfca37bca6959deef057e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{class_fireball_a25c0d1c05abcfca37bca6959deef057e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/\+Skills/\+Magical\+Skills/Fireball.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/\+Skills/\+Magical\+Skills/Fireball.\+cpp\end{DoxyCompactItemize}

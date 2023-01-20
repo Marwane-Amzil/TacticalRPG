@@ -1,0 +1,47 @@
+var annotated_dup =
+[
+    [ "gui", null, [
+      [ "Animation", "classgui_1_1_animation.html", null ],
+      [ "Button", "classgui_1_1_button.html", null ],
+      [ "EntitySprite", "classgui_1_1_entity_sprite.html", null ],
+      [ "World", "classgui_1_1_world.html", null ]
+    ] ],
+    [ "utils", null, [
+      [ "AnimationManager", "classutils_1_1_animation_manager.html", null ],
+      [ "SpriteFactory", "classutils_1_1_sprite_factory.html", null ],
+      [ "TextureManager", "classutils_1_1_texture_manager.html", null ]
+    ] ],
+    [ "AnimationBuilder", "struct_animation_builder.html", null ],
+    [ "AnimationRootBuilder", "struct_animation_root_builder.html", null ],
+    [ "Application", "class_application.html", null ],
+    [ "Archer", "class_archer.html", null ],
+    [ "AxeSkill", "class_axe_skill.html", "class_axe_skill" ],
+    [ "Burn", "class_burn.html", null ],
+    [ "Character", "class_character.html", "class_character" ],
+    [ "Effect", "class_effect.html", null ],
+    [ "Entity", "class_entity.html", "class_entity" ],
+    [ "Fireball", "class_fireball.html", "class_fireball" ],
+    [ "FLATBUFFERS_FINAL_CLASS", "struct_f_l_a_t_b_u_f_f_e_r_s___f_i_n_a_l___c_l_a_s_s.html", null ],
+    [ "FrameBuilder", "struct_frame_builder.html", null ],
+    [ "Grid", "class_grid.html", "class_grid" ],
+    [ "Healer", "class_healer.html", null ],
+    [ "IntroState", "class_intro_state.html", null ],
+    [ "Knight", "class_knight.html", null ],
+    [ "Mage", "class_mage.html", null ],
+    [ "MagicalSkill", "class_magical_skill.html", "class_magical_skill" ],
+    [ "MagicCharacter", "class_magic_character.html", null ],
+    [ "MenuState", "class_menu_state.html", null ],
+    [ "Obstacle", "class_obstacle.html", "class_obstacle" ],
+    [ "PhysicalCharacter", "class_physical_character.html", null ],
+    [ "PhysicalSkill", "class_physical_skill.html", "class_physical_skill" ],
+    [ "PlayState", "class_play_state.html", null ],
+    [ "Position", "class_position.html", "class_position" ],
+    [ "SetBuilder", "struct_set_builder.html", null ],
+    [ "Skill", "class_skill.html", "class_skill" ],
+    [ "State", "class_state.html", null ],
+    [ "StateMachine", "class_state_machine.html", null ],
+    [ "SwordSkill", "class_sword_skill.html", "class_sword_skill" ],
+    [ "TextureBuilder", "struct_texture_builder.html", null ],
+    [ "TextureRootBuilder", "struct_texture_root_builder.html", null ],
+    [ "Warrior", "class_warrior.html", null ]
+];

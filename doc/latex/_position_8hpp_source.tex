@@ -1,0 +1,37 @@
+\hypertarget{_position_8hpp_source}{}\doxysection{Position.\+hpp}
+\label{_position_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Position.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Position.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_POSITION\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_POSITION\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <ostream>} \textcolor{comment}{// std::ostream}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_position}{Position}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18     \textcolor{keyword}{constexpr} \mbox{\hyperlink{class_position_a0b999a00aca4f1cb032c66777206f86c}{Position}}();}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_position_a0b999a00aca4f1cb032c66777206f86c}{Position}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_position_a0b999a00aca4f1cb032c66777206f86c}{Position}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_position}{Position}}\& other);}
+\DoxyCodeLine{37     \textcolor{keyword}{constexpr} \mbox{\hyperlink{class_position_afc24188ee25ebf40af35bb9a36c6a2b3}{Position}}(\mbox{\hyperlink{class_position}{Position}}\&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{41     \mbox{\hyperlink{class_position_aee60b747b400f86b69c1d00ff728a3af}{\string~Position}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{47     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_position_aec07bdc14874f47cd1dc675d864f49a2}{getX}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{53     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_position_aecedcf0af53e559ccde18432f20d1a37}{getY}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_position_a3b661be82e6cd6cd09cfaacbc3486916}{setX}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} x);}
+\DoxyCodeLine{65     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_position_ab833dc705f3d95ef428d4e4f43fd4e95}{setY}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{74     \mbox{\hyperlink{class_position}{Position}}\& \mbox{\hyperlink{class_position_a41dab045ca3899ae1c740efbe0b46da8}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_position}{Position}}\& other);}
+\DoxyCodeLine{84     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_position}{Position}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{94     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_position_ae4d491be71bc11896f864835187e860d}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_position}{Position}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{105     \textcolor{keyword}{friend} std::ostream\& \mbox{\hyperlink{class_position_afae8406419baf4612099d2a9e94fb53b}{operator<<}}(std::ostream\& ostream, \textcolor{keyword}{const} \mbox{\hyperlink{class_position}{Position}}\& \_this);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{keyword}{private}:}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     \textcolor{keywordtype}{int} \_x, \_y;}
+\DoxyCodeLine{110 \};}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_POSITION\_H\_\_}}
+
+\end{DoxyCode}

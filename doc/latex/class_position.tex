@@ -1,0 +1,256 @@
+\hypertarget{class_position}{}\doxysection{Position Class Reference}
+\label{class_position}\index{Position@{Position}}
+
+
+The position class represents the coordinates of an entity in the grid.  
+
+
+
+
+{\ttfamily \#include $<$Position.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_position_a0b999a00aca4f1cb032c66777206f86c}\label{class_position_a0b999a00aca4f1cb032c66777206f86c}} 
+constexpr {\bfseries Position} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. Initialize a position with values (0,0). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}} (const int x, const int y)
+\begin{DoxyCompactList}\small\item\em Constructor taking 2 values. Initialize a position with the given values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_position_a3a9d2597283a5b09328cbe2391da0775}{Position}} (const \mbox{\hyperlink{class_position}{Position}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. Initialize a position with the values of an other position. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{class_position_afc24188ee25ebf40af35bb9a36c6a2b3}{Position}} (\mbox{\hyperlink{class_position}{Position}} \&\&)=default
+\begin{DoxyCompactList}\small\item\em Move constructor. Initialize a position with the values of an other position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_position_aee60b747b400f86b69c1d00ff728a3af}\label{class_position_aee60b747b400f86b69c1d00ff728a3af}} 
+{\bfseries $\sim$\+Position} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_position}{Position}} destructor. Explicitly defaulted (\mbox{\hyperlink{class_position_aee60b747b400f86b69c1d00ff728a3af}{$\sim$\+Position()}} = default). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_position_aec07bdc14874f47cd1dc675d864f49a2}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the x value of the position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_position_aecedcf0af53e559ccde18432f20d1a37}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the y value of the position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_position_a3b661be82e6cd6cd09cfaacbc3486916}{setX}} (const int x)
+\begin{DoxyCompactList}\small\item\em Method which sets the current x value of the position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_position_ab833dc705f3d95ef428d4e4f43fd4e95}{setY}} (const int y)
+\begin{DoxyCompactList}\small\item\em Method which sets the current y value of the position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_position}{Position}} \& \mbox{\hyperlink{class_position_a41dab045ca3899ae1c740efbe0b46da8}{operator=}} (const \mbox{\hyperlink{class_position}{Position}} \&other)
+\begin{DoxyCompactList}\small\item\em Overloaded = operator for the \mbox{\hyperlink{class_position}{Position}} class. Needed since the \mbox{\hyperlink{class_position}{Position}} class has a move constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}{operator==}} (const \mbox{\hyperlink{class_position}{Position}} \&other) const
+\begin{DoxyCompactList}\small\item\em Overloaded == operator for the \mbox{\hyperlink{class_position}{Position}} class. Behaves the same as any == operator, it compares each member values of this instance of the class and the parameter instance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_position_ae4d491be71bc11896f864835187e860d}{operator!=}} (const \mbox{\hyperlink{class_position}{Position}} \&other) const
+\begin{DoxyCompactList}\small\item\em Overloaded != operator for the \mbox{\hyperlink{class_position}{Position}} class. Behaves the same as any != operator, it compares each member values of this instance of the class and the parameter instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_position_afae8406419baf4612099d2a9e94fb53b}{operator$<$$<$}} (std\+::ostream \&ostream, const \mbox{\hyperlink{class_position}{Position}} \&\+\_\+this)
+\begin{DoxyCompactList}\small\item\em Overloaded \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator for the \mbox{\hyperlink{class_position}{Position}} class. Allows to print a variable of type \mbox{\hyperlink{class_position}{Position}} using std\+::cout and such utilities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The position class represents the coordinates of an entity in the grid. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_position_a8ec2fb21251eb9cd336530543ffd530f}\label{class_position_a8ec2fb21251eb9cd336530543ffd530f}} 
+\index{Position@{Position}!Position@{Position}}
+\index{Position@{Position}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Position\+::\+Position (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y }\end{DoxyParamCaption})}
+
+
+
+Constructor taking 2 values. Initialize a position with the given values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x value \\
+\hline
+{\em y} & y value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_a3a9d2597283a5b09328cbe2391da0775}\label{class_position_a3a9d2597283a5b09328cbe2391da0775}} 
+\index{Position@{Position}!Position@{Position}}
+\index{Position@{Position}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Position\+::\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. Initialize a position with the values of an other position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & position to copy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_afc24188ee25ebf40af35bb9a36c6a2b3}\label{class_position_afc24188ee25ebf40af35bb9a36c6a2b3}} 
+\index{Position@{Position}!Position@{Position}}
+\index{Position@{Position}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily constexpr Position\+::\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}, {\ttfamily [default]}}
+
+
+
+Move constructor. Initialize a position with the values of an other position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & position to move \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_position_aec07bdc14874f47cd1dc675d864f49a2}\label{class_position_aec07bdc14874f47cd1dc675d864f49a2}} 
+\index{Position@{Position}!getX@{getX}}
+\index{getX@{getX}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily int Position\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the x value of the position. 
+
+\begin{DoxyReturn}{Returns}
+returns the x value of the position 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_position_aec07bdc14874f47cd1dc675d864f49a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_position_aecedcf0af53e559ccde18432f20d1a37}\label{class_position_aecedcf0af53e559ccde18432f20d1a37}} 
+\index{Position@{Position}!getY@{getY}}
+\index{getY@{getY}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily int Position\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the y value of the position. 
+
+\begin{DoxyReturn}{Returns}
+returns the y value of the position 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_position_aecedcf0af53e559ccde18432f20d1a37_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_position_ae4d491be71bc11896f864835187e860d}\label{class_position_ae4d491be71bc11896f864835187e860d}} 
+\index{Position@{Position}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Position\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Overloaded != operator for the \mbox{\hyperlink{class_position}{Position}} class. Behaves the same as any != operator, it compares each member values of this instance of the class and the parameter instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & position to compare\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the inequality of the 2 positions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_position_a41dab045ca3899ae1c740efbe0b46da8}\label{class_position_a41dab045ca3899ae1c740efbe0b46da8}} 
+\index{Position@{Position}!operator=@{operator=}}
+\index{operator=@{operator=}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_position}{Position}} \& Position\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Overloaded = operator for the \mbox{\hyperlink{class_position}{Position}} class. Needed since the \mbox{\hyperlink{class_position}{Position}} class has a move constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & position to copy\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a position with changed values 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}\label{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}} 
+\index{Position@{Position}!operator==@{operator==}}
+\index{operator==@{operator==}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Position\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Overloaded == operator for the \mbox{\hyperlink{class_position}{Position}} class. Behaves the same as any == operator, it compares each member values of this instance of the class and the parameter instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & position to compare\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the equality of the 2 positions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_position_a3b661be82e6cd6cd09cfaacbc3486916}\label{class_position_a3b661be82e6cd6cd09cfaacbc3486916}} 
+\index{Position@{Position}!setX@{setX}}
+\index{setX@{setX}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily void Position\+::setX (\begin{DoxyParamCaption}\item[{const int}]{x }\end{DoxyParamCaption})}
+
+
+
+Method which sets the current x value of the position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & new x value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_position_ab833dc705f3d95ef428d4e4f43fd4e95}\label{class_position_ab833dc705f3d95ef428d4e4f43fd4e95}} 
+\index{Position@{Position}!setY@{setY}}
+\index{setY@{setY}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily void Position\+::setY (\begin{DoxyParamCaption}\item[{const int}]{y }\end{DoxyParamCaption})}
+
+
+
+Method which sets the current y value of the position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & new y value to set \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_position_afae8406419baf4612099d2a9e94fb53b}\label{class_position_afae8406419baf4612099d2a9e94fb53b}} 
+\index{Position@{Position}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{ostream,  }\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{\+\_\+this }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloaded \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator for the \mbox{\hyperlink{class_position}{Position}} class. Allows to print a variable of type \mbox{\hyperlink{class_position}{Position}} using std\+::cout and such utilities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ostream} & stream storing the position \\
+\hline
+{\em \+\_\+this} & instance of the position to store in the stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a printable stream containing the position 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/Position.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/Position.\+cpp\end{DoxyCompactItemize}

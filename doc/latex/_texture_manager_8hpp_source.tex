@@ -1,0 +1,42 @@
+\hypertarget{_texture_manager_8hpp_source}{}\doxysection{Texture\+Manager.\+hpp}
+\label{_texture_manager_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/utils/TextureManager.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/utils/TextureManager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_SPRITE\_MANAGER\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_SPRITE\_MANAGER\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <map>} \textcolor{comment}{// std::map}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>} \textcolor{comment}{// std::string}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keyword}{class }Texture;}
+\DoxyCodeLine{12 \}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }utils}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classutils_1_1_texture_manager}{TextureManager}}}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         \mbox{\hyperlink{classutils_1_1_texture_manager}{TextureManager}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \mbox{\hyperlink{classutils_1_1_texture_manager}{\string~TextureManager}}() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} loadTextures();}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keyword}{const} std::map<std::string, sf::Texture*>\& getTextures(\textcolor{keywordtype}{char} player) \textcolor{keyword}{const};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keyword}{const} sf::Texture* getTextureAt(\textcolor{keywordtype}{char} player, std::string\_view type) \textcolor{keyword}{const};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keyword}{private}:}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         std::map<char, std::map<std::string, sf::Texture*>> \_textures;}
+\DoxyCodeLine{33     \};}
+\DoxyCodeLine{34 \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_SPRITE\_MANAGER\_H\_\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,236 @@
+\hypertarget{class_entity}{}\doxysection{Entity Class Reference}
+\label{class_entity}\index{Entity@{Entity}}
+
+
+The \mbox{\hyperlink{class_entity}{Entity}} class represents any entity that might appear in the game. According to the rules, the entities are either an obstacle or a character. Despite both being entities, they have different behaviour depending on which derived class they are from.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+hpp$>$}
+
+
+
+Inheritance diagram for Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_entity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{class_entity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a9f941bbdec70478d3393052b78bc291b}{Entity}} (const int x, const int y, const int hp)
+\begin{DoxyCompactList}\small\item\em Constructor taking 2 position values and a hp value. Initialize an entity with a given position and a given hp value. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_position}{Position}} \& \mbox{\hyperlink{class_entity_af6800b23e4a4c048b8a43afd6bbf653d}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the current position of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_aaab9c086920959e0f902da2e24035dba}{set\+Position}} (const \mbox{\hyperlink{class_position}{Position}} \&position)
+\begin{DoxyCompactList}\small\item\em Method which sets the current position of the entity. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_entity_aa6080cdbf25bece934c49e79634011ef}{get\+Hp}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the current hp of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a9ac380d71f8c70c7a5f7ba7b0387d658}{set\+Hp}} (const int hp)
+\begin{DoxyCompactList}\small\item\em Method which sets the current hp of the entity. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_entity_abeedd2b9ad7b200acca5ac2522607fad}{operator==}} (const \mbox{\hyperlink{class_entity}{Entity}} \&other) const
+\begin{DoxyCompactList}\small\item\em Overloaded == operator for the \mbox{\hyperlink{class_entity}{Entity}} class (which applies to its derived class). Behaves the same as any == operator, it compares each member values of this instance of the class and the parameter instance. To do so, it performs a call to the \mbox{\hyperlink{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}{equals()}} method marked as virtual so that every derived class may be compared. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_entity_ae2bb991352e76415d09f30aa69d6b9f4}{operator!=}} (const \mbox{\hyperlink{class_entity}{Entity}} \&other) const
+\begin{DoxyCompactList}\small\item\em Overloaded != operator for the \mbox{\hyperlink{class_entity}{Entity}} class (which applies to its derived class). Behaves the same as any != operator, it compares each member values of this instance of the class and the parameter instance. To do so, it performs a call to the \mbox{\hyperlink{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}{equals()}} method marked as virtual so that every derived class may be compared. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_ac479d009ddde62dfb378ca0a70d81307}\label{class_entity_ac479d009ddde62dfb378ca0a70d81307}} 
+virtual {\bfseries $\sim$\+Entity} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_entity}{Entity}} destructor. Explicitly defaulted ($\sim$\+Grid() = default). Marked as virtual to perform proper destruction when the current \mbox{\hyperlink{class_entity}{Entity}} is actually an instance of one of the derived class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a04c112f9dff9a66db2651cadb1836d6e}\label{class_entity_a04c112f9dff9a66db2651cadb1836d6e}} 
+virtual std\+::string\+\_\+view {\bfseries get\+Class} () const =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}{equals}} (const \mbox{\hyperlink{class_entity}{Entity}} \&other) const =0
+\begin{DoxyCompactList}\small\item\em Method which performs equality checks between 2 entities. Marked as virtual to perform the same checks for every instance of the derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_entity_ad9927ad4356b3a7716ccb668e9b4b322}\label{class_entity_ad9927ad4356b3a7716ccb668e9b4b322}} 
+\mbox{\hyperlink{class_position}{Position}} {\bfseries \+\_\+position}
+\item 
+\mbox{\Hypertarget{class_entity_aa95c77cc71236d2e4423301eaa60fae6}\label{class_entity_aa95c77cc71236d2e4423301eaa60fae6}} 
+int {\bfseries \+\_\+hp}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_entity}{Entity}} class represents any entity that might appear in the game. According to the rules, the entities are either an obstacle or a character. Despite both being entities, they have different behaviour depending on which derived class they are from. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_entity_a9f941bbdec70478d3393052b78bc291b}\label{class_entity_a9f941bbdec70478d3393052b78bc291b}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{hp }\end{DoxyParamCaption})}
+
+
+
+Constructor taking 2 position values and a hp value. Initialize an entity with a given position and a given hp value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x position \\
+\hline
+{\em y} & y position \\
+\hline
+{\em hp} & hp of the entity \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}\label{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}} 
+\index{Entity@{Entity}!equals@{equals}}
+\index{equals@{equals}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily virtual bool Entity\+::equals (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_entity}{Entity}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Method which performs equality checks between 2 entities. Marked as virtual to perform the same checks for every instance of the derived classes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & entity to compare\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the equality of the 2 entities 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_aa6080cdbf25bece934c49e79634011ef}\label{class_entity_aa6080cdbf25bece934c49e79634011ef}} 
+\index{Entity@{Entity}!getHp@{getHp}}
+\index{getHp@{getHp}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getHp()}{getHp()}}
+{\footnotesize\ttfamily int Entity\+::get\+Hp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the current hp of the entity. 
+
+\begin{DoxyReturn}{Returns}
+returns the remaining hp of the entity 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{class_entity_aa6080cdbf25bece934c49e79634011ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_entity_af6800b23e4a4c048b8a43afd6bbf653d}\label{class_entity_af6800b23e4a4c048b8a43afd6bbf653d}} 
+\index{Entity@{Entity}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_position}{Position}} \& Entity\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the current position of the entity. 
+
+\begin{DoxyReturn}{Returns}
+returns the position of the entity. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_entity_af6800b23e4a4c048b8a43afd6bbf653d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_entity_ae2bb991352e76415d09f30aa69d6b9f4}\label{class_entity_ae2bb991352e76415d09f30aa69d6b9f4}} 
+\index{Entity@{Entity}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Entity\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_entity}{Entity}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Overloaded != operator for the \mbox{\hyperlink{class_entity}{Entity}} class (which applies to its derived class). Behaves the same as any != operator, it compares each member values of this instance of the class and the parameter instance. To do so, it performs a call to the \mbox{\hyperlink{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}{equals()}} method marked as virtual so that every derived class may be compared. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & entity to compare\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the inequality of the 2 entities 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_abeedd2b9ad7b200acca5ac2522607fad}\label{class_entity_abeedd2b9ad7b200acca5ac2522607fad}} 
+\index{Entity@{Entity}!operator==@{operator==}}
+\index{operator==@{operator==}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Entity\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_entity}{Entity}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Overloaded == operator for the \mbox{\hyperlink{class_entity}{Entity}} class (which applies to its derived class). Behaves the same as any == operator, it compares each member values of this instance of the class and the parameter instance. To do so, it performs a call to the \mbox{\hyperlink{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}{equals()}} method marked as virtual so that every derived class may be compared. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & entity to compare\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the equality of the 2 entities 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a9ac380d71f8c70c7a5f7ba7b0387d658}\label{class_entity_a9ac380d71f8c70c7a5f7ba7b0387d658}} 
+\index{Entity@{Entity}!setHp@{setHp}}
+\index{setHp@{setHp}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setHp()}{setHp()}}
+{\footnotesize\ttfamily void Entity\+::set\+Hp (\begin{DoxyParamCaption}\item[{const int}]{hp }\end{DoxyParamCaption})}
+
+
+
+Method which sets the current hp of the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hp} & new hp value to set \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{class_entity_a9ac380d71f8c70c7a5f7ba7b0387d658_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_entity_aaab9c086920959e0f902da2e24035dba}\label{class_entity_aaab9c086920959e0f902da2e24035dba}} 
+\index{Entity@{Entity}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Entity\+::set\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{position }\end{DoxyParamCaption})}
+
+
+
+Method which sets the current position of the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & new position to set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/Entity.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/Entity.\+cpp\end{DoxyCompactItemize}

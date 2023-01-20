@@ -1,0 +1,4 @@
+<map id="Fireball::getPossibleZones" name="Fireball::getPossibleZones">
+<area shape="rect" id="node1" title="Returns a vector of positions that are in range of the skill. It is where the skill (Fireball) can be..." alt="" coords="169,5,344,32"/>
+<area shape="rect" id="node2" href="$class_fireball.html#a94846c4062f602c05fc02b843006445a" title="method activate that activates the current skill (Fireball)" alt="" coords="5,5,121,32"/>
+</map>

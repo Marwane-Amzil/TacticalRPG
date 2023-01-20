@@ -1,0 +1,44 @@
+\hypertarget{_state_8hpp_source}{}\doxysection{State.\+hpp}
+\label{_state_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/State.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/State.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_state_machine}{StateMachine}};}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{keyword}{class }RenderWindow;}
+\DoxyCodeLine{10 \}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_state}{State}}(\mbox{\hyperlink{class_state_machine}{StateMachine}}\& machine, sf::RenderWindow\& window, \textcolor{keywordtype}{bool} replace = \textcolor{keyword}{true});}
+\DoxyCodeLine{16     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_state}{\string~State}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \mbox{\hyperlink{class_state}{State}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_state}{State}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_state}{State}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_state}{State}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} pause() = 0;}
+\DoxyCodeLine{22     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} resume() = 0;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} update() = 0;}
+\DoxyCodeLine{25     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} draw() = 0;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     std::unique\_ptr<State> next();}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     [[nodiscard]] \textcolor{keywordtype}{bool} isReplacing() \textcolor{keyword}{const};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{32     \mbox{\hyperlink{class_state_machine}{StateMachine}}\& \_machine;}
+\DoxyCodeLine{33     sf::RenderWindow\& \_window;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{bool} m\_replacing;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     std::unique\_ptr<State> m\_next;}
+\DoxyCodeLine{38 \};}
+
+\end{DoxyCode}

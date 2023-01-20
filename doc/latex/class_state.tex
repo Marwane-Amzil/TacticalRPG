@@ -1,0 +1,73 @@
+\hypertarget{class_state}{}\doxysection{State Class Reference}
+\label{class_state}\index{State@{State}}
+
+
+Inheritance diagram for State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{class_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_state__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_state_abb906f43c96330fa5ef0c35e2286e9d1}\label{class_state_abb906f43c96330fa5ef0c35e2286e9d1}} 
+{\bfseries State} (\mbox{\hyperlink{class_state_machine}{State\+Machine}} \&machine, sf\+::\+Render\+Window \&window, bool replace=true)
+\item 
+\mbox{\Hypertarget{class_state_a649fea964c3fb765bd4bbc6ae55ddffb}\label{class_state_a649fea964c3fb765bd4bbc6ae55ddffb}} 
+{\bfseries State} (const \mbox{\hyperlink{class_state}{State}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_state_afa76ec47c297745c61b8954df6647a48}\label{class_state_afa76ec47c297745c61b8954df6647a48}} 
+\mbox{\hyperlink{class_state}{State}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_state}{State}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_state_ad8530393b468e4494f965f61259c84c4}\label{class_state_ad8530393b468e4494f965f61259c84c4}} 
+virtual void {\bfseries pause} ()=0
+\item 
+\mbox{\Hypertarget{class_state_a6397f6c277e077f5284f06c9902b63ee}\label{class_state_a6397f6c277e077f5284f06c9902b63ee}} 
+virtual void {\bfseries resume} ()=0
+\item 
+\mbox{\Hypertarget{class_state_a06315e7e44aadfa576cbf7e6c1c7d87f}\label{class_state_a06315e7e44aadfa576cbf7e6c1c7d87f}} 
+virtual void {\bfseries update} ()=0
+\item 
+\mbox{\Hypertarget{class_state_ae261605bc40b7e3959ce5df5457e4942}\label{class_state_ae261605bc40b7e3959ce5df5457e4942}} 
+virtual void {\bfseries draw} ()=0
+\item 
+\mbox{\Hypertarget{class_state_ac929fd0bea5a741365d77666883cff4e}\label{class_state_ac929fd0bea5a741365d77666883cff4e}} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_state}{State}} $>$ {\bfseries next} ()
+\item 
+\mbox{\Hypertarget{class_state_a8964c72d0acfa3e4be9d73c3ff3b257a}\label{class_state_a8964c72d0acfa3e4be9d73c3ff3b257a}} 
+bool {\bfseries is\+Replacing} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_state_a804dd3c2ba7c6c4a5fa2cc1a66dea1e1}\label{class_state_a804dd3c2ba7c6c4a5fa2cc1a66dea1e1}} 
+\mbox{\hyperlink{class_state_machine}{State\+Machine}} \& {\bfseries \+\_\+machine}
+\item 
+\mbox{\Hypertarget{class_state_a8275d531073387e8e081bfd0bb7d9f42}\label{class_state_a8275d531073387e8e081bfd0bb7d9f42}} 
+sf\+::\+Render\+Window \& {\bfseries \+\_\+window}
+\item 
+\mbox{\Hypertarget{class_state_a930ad9cb2fc500584a3a68b41b5dd8ed}\label{class_state_a930ad9cb2fc500584a3a68b41b5dd8ed}} 
+bool {\bfseries m\+\_\+replacing}
+\item 
+\mbox{\Hypertarget{class_state_a739cabdb230da7cc1ddcba9bea555c42}\label{class_state_a739cabdb230da7cc1ddcba9bea555c42}} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_state}{State}} $>$ {\bfseries m\+\_\+next}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/\+GUI/ui/State.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/\+GUI/ui/State.\+cpp\end{DoxyCompactItemize}

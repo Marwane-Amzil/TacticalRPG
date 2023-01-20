@@ -1,0 +1,11 @@
+<map id="AxeSkill::activate" name="AxeSkill::activate">
+<area shape="rect" id="node1" title="method activate that activates the current skill (AxeSkill)" alt="" coords="5,107,128,133"/>
+<area shape="rect" id="node2" href="$class_entity.html#aa6080cdbf25bece934c49e79634011ef" title="Method which returns the current hp of the entity." alt="" coords="217,5,316,32"/>
+<area shape="rect" id="node3" href="$class_entity.html#af6800b23e4a4c048b8a43afd6bbf653d" title="Method which returns the current position of the entity." alt="" coords="405,56,535,83"/>
+<area shape="rect" id="node4" href="$class_axe_skill.html#a820d08358c854b715890f6b7e62070b7" title="Returns a vector of positions that are in range of the skill (AxeSKill). It is where the skill can be..." alt="" coords="176,107,357,133"/>
+<area shape="rect" id="node8" href="$class_character.html#a84c4989dd0f37c85e171fcb486b4ca3d" title="Method which returns the magical resistance of a character." alt="" coords="191,157,343,184"/>
+<area shape="rect" id="node9" href="$class_entity.html#a9ac380d71f8c70c7a5f7ba7b0387d658" title="Method which sets the current hp of the entity." alt="" coords="217,208,316,235"/>
+<area shape="rect" id="node5" href="$class_skill.html#a459f150f0df9f94118d32e3237deb98b" title="method that returns the private attribut of the Skill classes (Owner). A skill can have 1 Owner...." alt="" coords="415,107,525,133"/>
+<area shape="rect" id="node6" href="$class_position.html#aec07bdc14874f47cd1dc675d864f49a2" title="Method which returns the x value of the position." alt="" coords="419,157,521,184"/>
+<area shape="rect" id="node7" href="$class_position.html#aecedcf0af53e559ccde18432f20d1a37" title="Method which returns the y value of the position." alt="" coords="418,208,522,235"/>
+</map>

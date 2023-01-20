@@ -1,0 +1,64 @@
+\hypertarget{_state_machine_8hpp_source}{}\doxysection{State\+Machine.\+hpp}
+\label{_state_machine_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/StateMachine.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/StateMachine.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}State.hpp"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stack>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }RenderWindow;}
+\DoxyCodeLine{13 \}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_state_machine}{StateMachine}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_state_machine}{StateMachine}}();}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} run(std::unique\_ptr<State> state);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} nextState();}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} lastState();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} update();}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} draw();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     [[nodiscard]] \textcolor{keywordtype}{bool} running() \textcolor{keyword}{const};}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} quit();}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{32     \textcolor{keyword}{static} std::unique\_ptr<T> build(\mbox{\hyperlink{class_state_machine}{StateMachine}}\& machine, sf::RenderWindow\& window, \textcolor{keywordtype}{bool} replace = \textcolor{keyword}{true});}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{private}:}
+\DoxyCodeLine{35     \textcolor{comment}{// The stack of states}}
+\DoxyCodeLine{36     std::stack<std::unique\_ptr<State>> m\_states;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} m\_resume;}
+\DoxyCodeLine{39     \textcolor{keywordtype}{bool} m\_running;}
+\DoxyCodeLine{40 \};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{43 std::unique\_ptr<T> StateMachine::build(\mbox{\hyperlink{class_state_machine}{StateMachine}}\& machine, sf::RenderWindow\& window, \textcolor{keywordtype}{bool} replace)}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     \textcolor{keyword}{auto} new\_state = std::unique\_ptr<T>\{ \textcolor{keyword}{nullptr} \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49         new\_state = std::make\_unique<T>(machine, window, replace);}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51     \textcolor{keywordflow}{catch}(std::runtime\_error\& exception)}
+\DoxyCodeLine{52     \{}
+\DoxyCodeLine{53         std::cout << \textcolor{stringliteral}{"{}Creation of new state was unsuccessful\(\backslash\)n"{}};}
+\DoxyCodeLine{54         std::cout << exception.what() << std::endl;}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordflow}{return} new\_state;}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}

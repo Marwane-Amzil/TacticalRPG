@@ -1,0 +1,7 @@
+<map id="Knight" name="Knight">
+<area shape="rect" id="node1" title=" " alt="" coords="40,323,99,349"/>
+<area shape="rect" id="node2" href="$class_physical_character.html" title=" " alt="" coords="5,247,133,273"/>
+<area shape="rect" id="node3" href="$class_character.html" title="The Character class represents any entity that the user can play with. According to the rules,..." alt="" coords="30,171,109,197"/>
+<area shape="rect" id="node4" href="$class_entity.html" title="The Entity class represents any entity that might appear in the game. According to the rules,..." alt="" coords="41,95,97,121"/>
+<area shape="rect" id="node5" href="$class_position.html" title="The position class represents the coordinates of an entity in the grid." alt="" coords="35,5,104,32"/>
+</map>

@@ -1,0 +1,55 @@
+\hypertarget{_play_state_8hpp_source}{}\doxysection{Play\+State.\+hpp}
+\label{_play_state_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/States/PlayState.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/States/PlayState.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <SFML/Graphics/Texture.hpp>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <GUI/ui/State.hpp>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <utils/TextureManager.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <GUI/game/EntitySprite.hpp>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_state_machine}{StateMachine}};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{keyword}{class }RenderWindow;}
+\DoxyCodeLine{14 \}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_play_state}{PlayState}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_play_state}{PlayState}}(\mbox{\hyperlink{class_state_machine}{StateMachine}}\& machine, sf::RenderWindow\& window, \textcolor{keywordtype}{bool} replace = \textcolor{keyword}{true});}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} pause() \textcolor{keyword}{override};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} resume() \textcolor{keyword}{override};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} update() \textcolor{keyword}{override};}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} draw() \textcolor{keyword}{override};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     sf::Texture m\_backgroundTexture;}
+\DoxyCodeLine{30     sf::Sprite m\_background;}
+\DoxyCodeLine{31     \mbox{\hyperlink{classutils_1_1_texture_manager}{utils::TextureManager}} TM;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     sf::Texture background\_texture;}
+\DoxyCodeLine{35     \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}} background\_sprite;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}} sprite\_of\_selected\_character;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}} sknight;}
+\DoxyCodeLine{40     \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}} sarcher;}
+\DoxyCodeLine{41     \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}} shealer;}
+\DoxyCodeLine{42     \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}} smage;}
+\DoxyCodeLine{43     \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}} swarrior;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     std::vector<gui::EntitySprite> list\_of\_sprites;}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keywordtype}{char} color = \textcolor{charliteral}{'B'};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,4 @@
+<map id="AxeSkill::getPossibleZones" name="AxeSkill::getPossibleZones">
+<area shape="rect" id="node1" title="Returns a vector of positions that are in range of the skill (AxeSKill). It is where the skill can be..." alt="" coords="176,5,357,32"/>
+<area shape="rect" id="node2" href="$class_axe_skill.html#abf63fcc14c08a175d9c87c22e77c880b" title="method activate that activates the current skill (AxeSkill)" alt="" coords="5,5,128,32"/>
+</map>

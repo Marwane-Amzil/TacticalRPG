@@ -1,0 +1,5 @@
+<map id="Obstacle" name="Obstacle">
+<area shape="rect" id="node1" title="The Obstacle class represents any entity which are not playable by the player. According to the rules..." alt="" coords="5,171,80,197"/>
+<area shape="rect" id="node2" href="$class_entity.html" title="The Entity class represents any entity that might appear in the game. According to the rules,..." alt="" coords="15,95,71,121"/>
+<area shape="rect" id="node3" href="$class_position.html" title="The position class represents the coordinates of an entity in the grid." alt="" coords="8,5,77,32"/>
+</map>

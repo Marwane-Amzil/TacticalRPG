@@ -1,0 +1,34 @@
+\hypertarget{_obstacle_8hpp_source}{}\doxysection{Obstacle.\+hpp}
+\label{_obstacle_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Obstacle.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Obstacle.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_OBSTACLE\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_OBSTACLE\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Entity.hpp>} \textcolor{comment}{// Entity class}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_obstacle}{Obstacle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_entity}{Entity}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{26     \mbox{\hyperlink{class_obstacle_a6c98ee47a740fbee27f04fdf290c4a02}{Obstacle}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} y, \textcolor{keyword}{const} \textcolor{keywordtype}{int} hp);}
+\DoxyCodeLine{30     \mbox{\hyperlink{class_obstacle_a9fdd13ed632006e691d98b2959f111d3}{\string~Obstacle}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{34     std::string\_view getClass() \textcolor{keyword}{const override};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{private}:}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{bool} equals(\textcolor{keyword}{const} \mbox{\hyperlink{class_entity}{Entity}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{private}:}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{comment}{// Not mendatory. Reminds of Java calls to base class for the ease of writing.}}
+\DoxyCodeLine{50     \textcolor{comment}{// For instance, super(...) calls the base class constructor with the specified parameters.}}
+\DoxyCodeLine{51     \textcolor{comment}{// In fact, it calls "{}Entity(...)"{}.}}
+\DoxyCodeLine{52     \textcolor{keyword}{typedef} \mbox{\hyperlink{class_entity}{Entity}} \mbox{\hyperlink{class_entity}{super}};}
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_OBSTACLE\_H\_\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,91 @@
+\hypertarget{_constants_8hpp_source}{}\doxysection{Constants.\+hpp}
+\label{_constants_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Constants.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Constants.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_CONSTANTS\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_CONSTANTS\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{16 \textcolor{comment}{// -\/-\/ Grid -\/-\/}}
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacegrid}{grid}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} ROWS = 20;}
+\DoxyCodeLine{20     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} COLUMNS = 20;}
+\DoxyCodeLine{21 \}}
+\DoxyCodeLine{22 \textcolor{comment}{// -\/-\/ Mage -\/-\/}}
+\DoxyCodeLine{23 \textcolor{keyword}{namespace }mage}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} MOVES = 3;}
+\DoxyCodeLine{26     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_MOVES = -\/3;}
+\DoxyCodeLine{27 \}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{// -\/-\/ Healer -\/-\/}}
+\DoxyCodeLine{30 \textcolor{keyword}{namespace }healer}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} MOVES = 4;}
+\DoxyCodeLine{33     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_MOVES = -\/4;}
+\DoxyCodeLine{34 \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// -\/-\/ Warrior -\/-\/}}
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }warrior}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} MOVES = 4;}
+\DoxyCodeLine{40     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_MOVES = -\/4;}
+\DoxyCodeLine{41 \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{comment}{// -\/-\/ Knight -\/-\/}}
+\DoxyCodeLine{44 \textcolor{keyword}{namespace }knight}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} MOVES = 5;}
+\DoxyCodeLine{47     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_MOVES = -\/5;}
+\DoxyCodeLine{48 \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{// -\/-\/ Archer -\/-\/}}
+\DoxyCodeLine{51 \textcolor{keyword}{namespace }archer}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} MOVES = 3;}
+\DoxyCodeLine{54     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_MOVES = -\/3;}
+\DoxyCodeLine{55 \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keyword}{namespace }skill}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} MAX\_SKILLS = 3;}
+\DoxyCodeLine{60 \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{keyword}{namespace }fireball}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} DAMAGE = 20;}
+\DoxyCodeLine{65     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} RANGE\_X = 5;}
+\DoxyCodeLine{66     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} RANGE\_Y = 5;}
+\DoxyCodeLine{67     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} AOE\_RANGE\_X = 3;}
+\DoxyCodeLine{68     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} AOE\_RANGE\_Y = 3;}
+\DoxyCodeLine{69     \textcolor{comment}{//static constexpr bool IS\_DIAG = true;}}
+\DoxyCodeLine{70     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_RANGE\_X = -\/5;}
+\DoxyCodeLine{71     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_RANGE\_Y = -\/5;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keyword}{namespace }axeskill}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} DAMAGE = 13;}
+\DoxyCodeLine{78     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} RANGE\_X = 2;}
+\DoxyCodeLine{79     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} RANGE\_Y = 2;}
+\DoxyCodeLine{80     \textcolor{comment}{//static constexpr bool IS\_DIAG = true;}}
+\DoxyCodeLine{81     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_RANGE\_X = -\/2;}
+\DoxyCodeLine{82     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_RANGE\_Y = -\/2;}
+\DoxyCodeLine{83 \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{keyword}{namespace }swordskill}
+\DoxyCodeLine{86 \{}
+\DoxyCodeLine{87     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} DAMAGE = 20;}
+\DoxyCodeLine{88     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} RANGE\_X = 1;}
+\DoxyCodeLine{89     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} RANGE\_Y = 1;}
+\DoxyCodeLine{90     \textcolor{comment}{//static constexpr bool IS\_DIAG = false;}}
+\DoxyCodeLine{91     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_RANGE\_X = -\/1;}
+\DoxyCodeLine{92     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} NEG\_RANGE\_Y = -\/1;}
+\DoxyCodeLine{93 \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#endif }}
+
+\end{DoxyCode}

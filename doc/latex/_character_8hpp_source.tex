@@ -1,0 +1,75 @@
+\hypertarget{_character_8hpp_source}{}\doxysection{Character.\+hpp}
+\label{_character_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Character.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Character.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_CHARACTER\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_CHARACTER\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Entity.hpp>} \textcolor{comment}{// Entity class}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <vector>} \textcolor{comment}{// std::vector}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <array>} \textcolor{comment}{// std::array}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <Constants.hpp>} \textcolor{comment}{// constants::skill::MAX\_SKILLS}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_grid}{Grid}};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{class_skill}{Skill}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{30 \textcolor{keyword}{class }\mbox{\hyperlink{class_character}{Character}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_entity}{Entity}}}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{51     \mbox{\hyperlink{class_character_abd2335d0a0dbebdafedc50e5e68c14b6}{Character}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} y, \textcolor{keyword}{const} \textcolor{keywordtype}{int} hp, \textcolor{keyword}{const} \textcolor{keywordtype}{char} player, \textcolor{keyword}{const} \textcolor{keywordtype}{int} will, \textcolor{keyword}{const} \textcolor{keywordtype}{int} res\_phy, \textcolor{keyword}{const} \textcolor{keywordtype}{int} res\_mag, \textcolor{keyword}{const} \textcolor{keywordtype}{int} magic, \textcolor{keyword}{const} \textcolor{keywordtype}{int} strength);}
+\DoxyCodeLine{57     \textcolor{keywordtype}{char} \mbox{\hyperlink{class_character_a106c4e0a2e731ab569ee728fa22ec804}{getPlayer}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{63     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_character_a21c61e4b5ccf6bcfd1c993938ceab0df}{getWill}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{69     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_character_acfa9beda1317d55ba4bc02c8d9ececa3}{getResPhy}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{75     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_character_a84c4989dd0f37c85e171fcb486b4ca3d}{getResMag}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{79     \textcolor{keywordtype}{bool} getAction() \textcolor{keyword}{const};}
+\DoxyCodeLine{83     \textcolor{keywordtype}{bool} getSpecialAction() \textcolor{keyword}{const};}
+\DoxyCodeLine{89     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_character_a4f55dfe0a2e2b071b575361703119d0c}{getMove}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{93     \textcolor{keyword}{const} \mbox{\hyperlink{class_skill}{Skill}}* getFirstSkill() \textcolor{keyword}{const};}
+\DoxyCodeLine{97     \textcolor{keyword}{const} \mbox{\hyperlink{class_skill}{Skill}}* getSecondSkill() \textcolor{keyword}{const};}
+\DoxyCodeLine{101     \textcolor{keyword}{const} \mbox{\hyperlink{class_skill}{Skill}}* getSpecialSkill() \textcolor{keyword}{const};}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} getMagic() \textcolor{keyword}{const};}
+\DoxyCodeLine{109     \textcolor{keywordtype}{int} getStrength() \textcolor{keyword}{const};}
+\DoxyCodeLine{115     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_add9446d7d5b8f69963f3012a95acccc9}{setWill}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} will);}
+\DoxyCodeLine{121     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a2ece6f3dee0df1e8b716ee2f762140a9}{setResPhy}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} res\_phy);}
+\DoxyCodeLine{127     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a1e98abf43fc1598382a682c06416b25a}{setResMag}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} res\_mag);}
+\DoxyCodeLine{133     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a7970029c0aa945b527b76307cf1c0252}{setMove}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} can\_move);}
+\DoxyCodeLine{139     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_adbecdd9c27570bf872636ac2fd47822c}{setAction}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} can\_act);}
+\DoxyCodeLine{145     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_ad08694535995d0c53a5560d056870a81}{setSpecialAction}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} can\_sp\_act);}
+\DoxyCodeLine{149     \textcolor{keywordtype}{void} setFirstSkill(\mbox{\hyperlink{class_skill}{Skill}}* skill);}
+\DoxyCodeLine{153     \textcolor{keywordtype}{void} setSecondSkill(\mbox{\hyperlink{class_skill}{Skill}}* skill);}
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} setSpecialSkill(\mbox{\hyperlink{class_skill}{Skill}}* skill);}
+\DoxyCodeLine{163     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_character_a3333a88ae593c36b229c90371e935d42}{\string~Character}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{168     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a94d463709e65d944f6cf2bdfcd572684}{useSkillOne}}(\mbox{\hyperlink{class_position}{Position}}* pos, \mbox{\hyperlink{class_grid}{Grid}}* \mbox{\hyperlink{namespacegrid}{grid}});}
+\DoxyCodeLine{169     }
+\DoxyCodeLine{180     \textcolor{keyword}{virtual} std::vector<Position> \mbox{\hyperlink{class_character_a9a2eb6682063f88f7a3bbdad51d959bd}{getPossibleMoves}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{191     \textcolor{keyword}{virtual} std::vector<Position> \mbox{\hyperlink{class_character_a4c4eba6f2ba3d1aa93ddf1e80534ef5e}{getPossibleActions}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     \textcolor{keywordtype}{char} \_player;}
+\DoxyCodeLine{196     \textcolor{keywordtype}{int} \_will;}
+\DoxyCodeLine{197     \textcolor{keywordtype}{int} \_res\_phy;}
+\DoxyCodeLine{198     \textcolor{keywordtype}{int} \_res\_mag;}
+\DoxyCodeLine{199     \textcolor{keywordtype}{bool} \_can\_move;}
+\DoxyCodeLine{200     \textcolor{keywordtype}{bool} \_can\_act;}
+\DoxyCodeLine{201     \textcolor{keywordtype}{bool} \_can\_sp\_act;}
+\DoxyCodeLine{202     \textcolor{keywordtype}{int} \_magic;}
+\DoxyCodeLine{203     \textcolor{keywordtype}{int} \_strength;}
+\DoxyCodeLine{204     std::array<Skill*, ::skill::MAX\_SKILLS> \_skills;}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 \textcolor{keyword}{private}:}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     \textcolor{comment}{// Not mendatory. Reminds of Java calls to base class for the ease of writing.}}
+\DoxyCodeLine{209     \textcolor{comment}{// For instance, super(...) calls the base class constructor with the specified parameters.}}
+\DoxyCodeLine{210     \textcolor{comment}{// In fact, it calls "{}Entity(...)"{}.}}
+\DoxyCodeLine{211     \textcolor{keyword}{typedef} \mbox{\hyperlink{class_entity}{Entity}} \mbox{\hyperlink{class_entity}{super}};}
+\DoxyCodeLine{212 \};}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_CHARACTER\_H\_\_}}
+
+\end{DoxyCode}

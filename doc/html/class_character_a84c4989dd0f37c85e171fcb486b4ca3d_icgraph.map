@@ -1,0 +1,6 @@
+<map id="Character::getResMag" name="Character::getResMag">
+<area shape="rect" id="node1" title="Method which returns the magical resistance of a character." alt="" coords="188,56,340,83"/>
+<area shape="rect" id="node2" href="$class_fireball.html#a94846c4062f602c05fc02b843006445a" title="method activate that activates the current skill (Fireball)" alt="" coords="15,5,131,32"/>
+<area shape="rect" id="node3" href="$class_axe_skill.html#abf63fcc14c08a175d9c87c22e77c880b" title="method activate that activates the current skill (AxeSkill)" alt="" coords="11,56,134,83"/>
+<area shape="rect" id="node4" href="$class_sword_skill.html#ac821c976bdc375920b57a968a67bcab9" title="method activate that activates the current skill (SwordSkill)" alt="" coords="5,107,140,133"/>
+</map>

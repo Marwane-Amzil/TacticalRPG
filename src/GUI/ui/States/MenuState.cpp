@@ -4,7 +4,7 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Event.hpp>
-#include <GUI/ui/States/PlayState.hpp>
+#include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
 #include <iostream>
 
 MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, const bool replace)
@@ -110,7 +110,7 @@ void MenuState::update()
             }
 
 			if (_pos == 1) {
-				_machine.run(StateMachine::build<PlayState>(_machine, _window, true));
+				_machine.run(StateMachine::build<CharacterChoice>(_machine, _window, true));
 			}
             std::cout << _options[_pos] << '\n';
         }

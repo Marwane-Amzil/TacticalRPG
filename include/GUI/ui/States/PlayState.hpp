@@ -6,48 +6,24 @@
 #include <utils/TextureManager.hpp>
 #include <GUI/game/EntitySprite.hpp>
 #include <array>
+#include <GUI/game/World.hpp>
 
 class StateMachine;
-
 namespace sf
 {
 	class RenderWindow;
 }
 
-class PlayState final : public State
+class PlayState : public State
 {
 public:
 	PlayState(StateMachine& machine, sf::RenderWindow& window, bool replace = true);
+	
+	gui::World getWorld() const;
 
-	void pause() override;
-	void resume() override;
-
-	void update() override;
-	void draw() override;
-
-	void initSprite(char color);
 
 private:
-
-	sf::Texture m_backgroundTexture;
-	sf::Sprite m_background;
-	utils::TextureManager TM;
-
-	int pos_in_list;
-
-	sf::Texture background_texture;
-	gui::EntitySprite background_sprite;
-
-	gui::EntitySprite sprite_of_selected_character;
-
-	gui::EntitySprite sknight;
-	gui::EntitySprite sarcher;
-	gui::EntitySprite shealer;
-	gui::EntitySprite smage;
-	gui::EntitySprite swarrior;
-
-	std::array<gui::EntitySprite, 10> list_of_sprites;
-
-	char color = 'B';
-
+	typedef State super;
+	
+	gui::World _world;
 };

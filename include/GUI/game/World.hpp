@@ -4,6 +4,8 @@
 #define __WORLD_H__
 
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/Texture.hpp>
+#include <GUI/game/EntitySprite.hpp>
 #include <Grid.hpp>
 #include <array>
 #include <Constants.hpp>
@@ -16,7 +18,7 @@ namespace gui
 	{
 	public:
 
-		explicit World();
+		explicit World(sf::RenderTarget& target);
 
 		const Grid& getGrid() const;
 
@@ -32,9 +34,16 @@ namespace gui
 
 	private:
 
-		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	private:
+
+
+		sf::Texture background_texture;
+		gui::EntitySprite background_sprite;
+
+
+
 
 		sf::RectangleShape _shape;
 		Grid _grid;

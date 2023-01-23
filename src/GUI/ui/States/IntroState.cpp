@@ -1,5 +1,5 @@
 #include <GUI/ui/States/IntroState.hpp>
-#include <GUI/ui/States/PlayState.hpp>
+#include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
 #include <GUI/ui/StateMachine.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
@@ -49,7 +49,7 @@ void IntroState::update()
                 switch (event.key.code)
                 {
                     case sf::Keyboard::Space:
-                        m_next = StateMachine::build<PlayState>(_machine, _window, true);
+                        m_next = StateMachine::build<CharacterChoice>(_machine, _window, true);
                         break;
 
                     case sf::Keyboard::Escape:

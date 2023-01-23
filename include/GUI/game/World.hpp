@@ -26,7 +26,7 @@ namespace gui
 
 		void removeEntity(EntitySprite* sprite);
 
-		virtual ~World() noexcept;
+		virtual ~World()  = default;
 
 		const std::array<EntitySprite*, ::grid::COLUMNS>& operator[](size_t index) const;
 		

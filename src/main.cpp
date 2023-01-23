@@ -17,7 +17,8 @@ int main(int argc, char* argv[])
 		}
 		
 	}
-	
+	*/
+	/*
 	sf::RenderWindow _window(sf::VideoMode(1280, 720), "Menu SFML", sf::Style::Titlebar | sf::Style::Close);
 	gui::World test(_window);
 	//StateMachine _machine;
@@ -40,4 +41,5 @@ int main(int argc, char* argv[])
 	Application app;
 	app.run();
 	return 0;
+	
 }

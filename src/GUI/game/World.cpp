@@ -82,17 +82,6 @@ void gui::World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	}
 }
 
-gui::World::~World() noexcept
-{
-	for (size_t i = 0; i < ::grid::ROWS; i++)
-	{
-		for (size_t j = 0; j < ::grid::COLUMNS; j++)
-		{
-			delete _sprites[i][j];
-		}
-	}
-}
-
 const std::array<gui::EntitySprite*, ::grid::COLUMNS>& gui::World::operator[](size_t index) const
 {
 	return _sprites[index];

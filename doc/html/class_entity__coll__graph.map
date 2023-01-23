@@ -1,0 +1,4 @@
+<map id="Entity" name="Entity">
+<area shape="rect" id="node1" title="The Entity class represents any entity that might appear in the game. According to the rules,..." alt="" coords="12,95,68,121"/>
+<area shape="rect" id="node2" href="$class_position.html" title="The position class represents the coordinates of an entity in the grid." alt="" coords="5,5,75,32"/>
+</map>

@@ -1,0 +1,36 @@
+\hypertarget{_fireball_8hpp_source}{}\doxysection{Fireball.\+hpp}
+\label{_fireball_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Skills/MagicalSkills/Fireball.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Skills/MagicalSkills/Fireball.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_Fireball\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_Fireball\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Skills/MagicalSkill.hpp>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_fireball}{Fireball}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_magical_skill}{MagicalSkill}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{17     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_fireball_acc53903497e790392a8150965951f140}{Fireball}}(\textcolor{keywordtype}{int} multiplier, \textcolor{keywordtype}{int} range, \mbox{\hyperlink{class_character}{Character}}* character,\mbox{\hyperlink{class_effect}{Effect}}* effect = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{18     }
+\DoxyCodeLine{22     \textcolor{keyword}{inline} \mbox{\hyperlink{class_fireball_ad6dbe61a0b01886ed5e2f5a7a8ba3cc5}{\string~Fireball}}() noexcept = default;}
+\DoxyCodeLine{23     }
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_fireball_a94846c4062f602c05fc02b843006445a}{activate}}(\mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}, \mbox{\hyperlink{class_character}{Character}}* target) const override;}
+\DoxyCodeLine{32     }
+\DoxyCodeLine{37     std::vector<\mbox{\hyperlink{class_position}{Position}}> \mbox{\hyperlink{class_fireball_a25c0d1c05abcfca37bca6959deef057e}{getPossibleZones}}(const \mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}) const override;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 private:}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     typedef \mbox{\hyperlink{class_magical_skill}{MagicalSkill}} \mbox{\hyperlink{class_skill}{super}};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 private:}
+\DoxyCodeLine{45     }
+\DoxyCodeLine{46     const \textcolor{keywordtype}{int} \_base\_damage = 7;}
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_Fireball\_H\_\_}}
+
+\end{DoxyCode}

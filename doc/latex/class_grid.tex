@@ -1,0 +1,111 @@
+\hypertarget{class_grid}{}\doxysection{Grid Class Reference}
+\label{class_grid}\index{Grid@{Grid}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}\label{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}} 
+{\bfseries Grid} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. Initialize an empty grid of entities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_grid_afaa9ca34af7821fbfe4aae13fe03ea82}{add\+Entity}} (\mbox{\hyperlink{class_entity}{Entity}} $\ast$const entity)
+\begin{DoxyCompactList}\small\item\em Method which adds an entity in the grid. The entity\textquotesingle{}s position will be used to determine where to add the entity in the grid. Since it uses the entity\textquotesingle{}s position, assigning a nullptr to this function will result in undefinied behaviour or even a crash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_grid_a53287842f3d8ce1f88b0018ce9998152}{move}} (const int from\+\_\+x, const int from\+\_\+y, const int to\+\_\+x, const int to\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Method which moves an entity from its position to a given position. Since the movement of a character is restricted to cases where there\textquotesingle{}s nothing (nullptr), it just performs a swap of 2 cases. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_grid_a031f4305267873f9a15884f61fb569fe}\label{class_grid_a031f4305267873f9a15884f61fb569fe}} 
+void {\bfseries display} () const
+\begin{DoxyCompactList}\small\item\em Method which display the grid and its contents inside the console. It is mainly used for debugging process in case we would need a vision of what is going on. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_entity}{Entity}} $\ast$ $>$ \mbox{\hyperlink{class_grid_a70f7c2c8bd796ebd9e9ba436a4e3d8c2}{get\+Entitys}} ()
+\begin{DoxyCompactList}\small\item\em Overloaded \mbox{[}\mbox{]} operator for the \mbox{\hyperlink{class_grid}{Grid}} class. Behaves the same as any \mbox{[}\mbox{]} operator in a standard container such a C-\/style array of std\+::vector. This one is the const version of the operator to be able to use it with \mbox{\hyperlink{class_grid}{Grid}} marked as const. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_grid_a66ab6d3259e717601ef79487c59bb23b}\label{class_grid_a66ab6d3259e717601ef79487c59bb23b}} 
+const std\+::array$<$ \mbox{\hyperlink{class_entity}{Entity}} $\ast$, \+::grid\+::\+COLUMNS $>$ \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const size\+\_\+t \&index) const
+\item 
+std\+::array$<$ \mbox{\hyperlink{class_entity}{Entity}} $\ast$, \+::grid\+::\+COLUMNS $>$ \& \mbox{\hyperlink{class_grid_aa4ae3f7cd515a8b83e05345d8a0db914}{operator\mbox{[}$\,$\mbox{]}}} (const size\+\_\+t \&index)
+\begin{DoxyCompactList}\small\item\em Overloaded \mbox{[}\mbox{]} operator for the \mbox{\hyperlink{class_grid}{Grid}} class. Behaves the same as any \mbox{[}\mbox{]} operator in a standard container such a C-\/style array of std\+::vector. This one is the non-\/const version of the operator to be able to insert or modify element within the grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_grid_afaa9ca34af7821fbfe4aae13fe03ea82}\label{class_grid_afaa9ca34af7821fbfe4aae13fe03ea82}} 
+\index{Grid@{Grid}!addEntity@{addEntity}}
+\index{addEntity@{addEntity}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{addEntity()}{addEntity()}}
+{\footnotesize\ttfamily void Grid\+::add\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} $\ast$const}]{entity }\end{DoxyParamCaption})}
+
+
+
+Method which adds an entity in the grid. The entity\textquotesingle{}s position will be used to determine where to add the entity in the grid. Since it uses the entity\textquotesingle{}s position, assigning a nullptr to this function will result in undefinied behaviour or even a crash. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to add \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{class_grid_afaa9ca34af7821fbfe4aae13fe03ea82_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_grid_a70f7c2c8bd796ebd9e9ba436a4e3d8c2}\label{class_grid_a70f7c2c8bd796ebd9e9ba436a4e3d8c2}} 
+\index{Grid@{Grid}!getEntitys@{getEntitys}}
+\index{getEntitys@{getEntitys}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{getEntitys()}{getEntitys()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{class_entity}{Entity}} $\ast$ $>$ Grid\+::get\+Entitys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Overloaded \mbox{[}\mbox{]} operator for the \mbox{\hyperlink{class_grid}{Grid}} class. Behaves the same as any \mbox{[}\mbox{]} operator in a standard container such a C-\/style array of std\+::vector. This one is the const version of the operator to be able to use it with \mbox{\hyperlink{class_grid}{Grid}} marked as const. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & row to select an element from\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the asked row Method wich returns the entity at a given position. If the position is out of bounds or is there is no entity, The method will return nullptr. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_grid_a53287842f3d8ce1f88b0018ce9998152}\label{class_grid_a53287842f3d8ce1f88b0018ce9998152}} 
+\index{Grid@{Grid}!move@{move}}
+\index{move@{move}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Grid\+::move (\begin{DoxyParamCaption}\item[{const int}]{from\+\_\+x,  }\item[{const int}]{from\+\_\+y,  }\item[{const int}]{to\+\_\+x,  }\item[{const int}]{to\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Method which moves an entity from its position to a given position. Since the movement of a character is restricted to cases where there\textquotesingle{}s nothing (nullptr), it just performs a swap of 2 cases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+\_\+x} & starting x position \\
+\hline
+{\em from\+\_\+y} & starting y position \\
+\hline
+{\em to\+\_\+x} & final x position \\
+\hline
+{\em to\+\_\+y} & final y position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_grid_aa4ae3f7cd515a8b83e05345d8a0db914}\label{class_grid_aa4ae3f7cd515a8b83e05345d8a0db914}} 
+\index{Grid@{Grid}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily std\+::array$<$ \mbox{\hyperlink{class_entity}{Entity}} $\ast$, COLUMNS $>$ \& Grid\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{index }\end{DoxyParamCaption})}
+
+
+
+Overloaded \mbox{[}\mbox{]} operator for the \mbox{\hyperlink{class_grid}{Grid}} class. Behaves the same as any \mbox{[}\mbox{]} operator in a standard container such a C-\/style array of std\+::vector. This one is the non-\/const version of the operator to be able to insert or modify element within the grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & row to select an element from\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the asked row 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/Grid.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/Grid.\+cpp\end{DoxyCompactItemize}

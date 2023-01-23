@@ -1,0 +1,103 @@
+\hypertarget{_button_8hpp_source}{}\doxysection{Button.\+hpp}
+\label{_button_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/Button.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/Button.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_BUTTON\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_BUTTON\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <SFML/Graphics/RoundedRectangleShape.hpp>} \textcolor{comment}{// sf::RoundedRectangleShape}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <SFML/Graphics/Text.hpp>} \textcolor{comment}{// sf::Text}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <array>} \textcolor{comment}{// std::array}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }Texture;}
+\DoxyCodeLine{13 \}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }gui}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{namespace }\mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{18     \{}
+\DoxyCodeLine{19         enum : uint8\_t}
+\DoxyCodeLine{20         \{}
+\DoxyCodeLine{21             Idle = \textcolor{charliteral}{'0'},}
+\DoxyCodeLine{22             Hovered = \textcolor{charliteral}{'1'},}
+\DoxyCodeLine{23             Pressed = \textcolor{charliteral}{'2'}}
+\DoxyCodeLine{24         \};}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keyword}{class }\mbox{\hyperlink{classgui_1_1_button}{Button}} : \textcolor{keyword}{public} sf::Drawable}
+\DoxyCodeLine{28     \{}
+\DoxyCodeLine{29     \textcolor{keyword}{public}:}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keyword}{explicit} \mbox{\hyperlink{classgui_1_1_button}{Button}}(\textcolor{keyword}{const} sf::Vector2f\& size = sf::Vector2f(150, 100), \textcolor{keyword}{const} sf::Texture* idle\_texture = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} sf::Texture* hover\_texture = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} sf::Texture* press\_texture = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordtype}{float} getCornersRadius() \textcolor{keyword}{const};}
+\DoxyCodeLine{34         }
+\DoxyCodeLine{35         \textcolor{keyword}{const} sf::Texture* getIdleTexture() \textcolor{keyword}{const};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \textcolor{keyword}{const} sf::Texture* getHoverTexture() \textcolor{keyword}{const};}
+\DoxyCodeLine{38         }
+\DoxyCodeLine{39         \textcolor{keyword}{const} sf::Texture* getPressTexture() \textcolor{keyword}{const};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keyword}{const} sf::Font\& getFont() \textcolor{keyword}{const};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keyword}{const} sf::Text\& getText() \textcolor{keyword}{const};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{keyword}{const} sf::Vector2f\& getPosition() \textcolor{keyword}{const};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \textcolor{keyword}{const} sf::Vector2f\& getSize() \textcolor{keyword}{const};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keywordtype}{bool} isHovered() \textcolor{keyword}{const};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordtype}{bool} isPressed() \textcolor{keyword}{const};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53         \textcolor{keywordtype}{void} setCornerRadius(\textcolor{keywordtype}{float} radius);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         \textcolor{keywordtype}{void} setCornerPointCount(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} count);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{keywordtype}{void} setIdleTexture(\textcolor{keyword}{const} sf::Texture* idle\_texture);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} setHoverTexture(\textcolor{keyword}{const} sf::Texture* hover\_texture);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \textcolor{keywordtype}{void} setPressTexture(\textcolor{keyword}{const} sf::Texture* press\_texture);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{keywordtype}{void} setFont(\textcolor{keyword}{const} sf::Font\& font);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         \textcolor{keywordtype}{void} setText(\textcolor{keyword}{const} sf::String\& \textcolor{keywordtype}{string}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} character\_size = 30);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \textcolor{keywordtype}{void} setPosition(\textcolor{keyword}{const} sf::Vector2f\& position);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         \textcolor{keywordtype}{void} setPosition(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y);}
+\DoxyCodeLine{70         }
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} setSize(\textcolor{keyword}{const} sf::Vector2f\& size);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         \textcolor{keywordtype}{void} setSize(\textcolor{keywordtype}{float} width, \textcolor{keywordtype}{float} height);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75         \textcolor{keywordtype}{void} setOutlineThickness(\textcolor{keywordtype}{float} thickness);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77         \textcolor{keywordtype}{void} setOutlineColor(\textcolor{keyword}{const} sf::Color\& color);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         \textcolor{keywordtype}{void} update(\textcolor{keyword}{const} sf::Vector2i\& mouse\_position);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81         \textcolor{keyword}{inline} \textcolor{keyword}{virtual} \mbox{\hyperlink{classgui_1_1_button}{\string~Button}}() \textcolor{keyword}{noexcept} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{keyword}{private}:}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} draw(sf::RenderTarget\& target, sf::RenderStates states) \textcolor{keyword}{const override};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{keyword}{private}:}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         sf::RoundedRectangleShape \_shape;}
+\DoxyCodeLine{90         std::array<const sf::Texture*, 3> \_textures;}
+\DoxyCodeLine{91         sf::Font \_font;}
+\DoxyCodeLine{92         sf::Text \_text;}
+\DoxyCodeLine{93         uint8\_t \_state;}
+\DoxyCodeLine{94     \};}
+\DoxyCodeLine{95 \}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_BUTTON\_H\_\_}}
+
+\end{DoxyCode}

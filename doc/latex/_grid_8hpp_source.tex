@@ -1,0 +1,44 @@
+\hypertarget{_grid_8hpp_source}{}\doxysection{Grid.\+hpp}
+\label{_grid_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Grid.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Grid.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_GRID\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_GRID\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <array>} \textcolor{comment}{// std::array}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <vector>} \textcolor{comment}{// std::vector}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <Constants.hpp>} \textcolor{comment}{// Constant values}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_entity}{Entity}};}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_position}{Position}};}
+\DoxyCodeLine{19 \textcolor{comment}{/*}}
+\DoxyCodeLine{20 \textcolor{comment}{* @brief The Grid class represents the field of the game and it will store entities.}}
+\DoxyCodeLine{21 \textcolor{comment}{*/}}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{class_grid}{Grid}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{29     \mbox{\hyperlink{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}{Grid}}();}
+\DoxyCodeLine{30     \textcolor{comment}{/*}}
+\DoxyCodeLine{31 \textcolor{comment}{    * @brief Grid destructor. Explicitly defaulted (\string~Grid() = default)}}
+\DoxyCodeLine{32 \textcolor{comment}{    */}}
+\DoxyCodeLine{33     \mbox{\hyperlink{class_grid}{\string~Grid}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_grid_afaa9ca34af7821fbfe4aae13fe03ea82}{addEntity}}(\mbox{\hyperlink{class_entity}{Entity}}* \textcolor{keyword}{const} entity);}
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_grid_a53287842f3d8ce1f88b0018ce9998152}{move}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} from\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} from\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{int} to\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} to\_y);}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_grid_a031f4305267873f9a15884f61fb569fe}{display}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{73     \textcolor{keyword}{const} std::vector<Entity*> \mbox{\hyperlink{class_grid_a70f7c2c8bd796ebd9e9ba436a4e3d8c2}{getEntitys}}();}
+\DoxyCodeLine{74     }
+\DoxyCodeLine{75     \textcolor{keyword}{const} std::array<Entity*, ::grid::COLUMNS>\& operator[](\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& index) \textcolor{keyword}{const};}
+\DoxyCodeLine{76     }
+\DoxyCodeLine{87     std::array<Entity*, ::grid::COLUMNS>\& operator[](\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t}\& index);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{keyword}{private}:}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     std::array<std::array<Entity*, ::grid::ROWS>, ::grid::COLUMNS> \_grid;}
+\DoxyCodeLine{92 \};}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_GRID\_H\_\_}}
+
+\end{DoxyCode}

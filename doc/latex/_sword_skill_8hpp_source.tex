@@ -1,0 +1,36 @@
+\hypertarget{_sword_skill_8hpp_source}{}\doxysection{Sword\+Skill.\+hpp}
+\label{_sword_skill_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Skills/PhysicalSkills/SwordSkill.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Skills/PhysicalSkills/SwordSkill.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_SWORD\_SKILL\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_SWORD\_SKILL\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Skills/PhysicalSkill.hpp>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_sword_skill}{SwordSkill}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_physical_skill}{PhysicalSkill}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     }
+\DoxyCodeLine{17     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_sword_skill_a89c506a887b4fcee53a7fbaf76d6e975}{SwordSkill}}(\textcolor{keywordtype}{int} multiplier, \textcolor{keywordtype}{int} range, \mbox{\hyperlink{class_character}{Character}}* character, \mbox{\hyperlink{class_effect}{Effect}}* effect = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{18     }
+\DoxyCodeLine{22     \textcolor{keyword}{inline} \mbox{\hyperlink{class_sword_skill_a3ebcf15f7892aa7653b59c9bfc8a8ace}{\string~SwordSkill}}() noexcept = default;}
+\DoxyCodeLine{23     }
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sword_skill_ac821c976bdc375920b57a968a67bcab9}{activate}}(\mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}, \mbox{\hyperlink{class_character}{Character}}* target) const override;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{37     std::vector<\mbox{\hyperlink{class_position}{Position}}> \mbox{\hyperlink{class_sword_skill_a04201ace0f63714596872a57f181d7c7}{getPossibleZones}}(const \mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}) const override;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 private:}
+\DoxyCodeLine{41     }
+\DoxyCodeLine{42     typedef \mbox{\hyperlink{class_physical_skill}{PhysicalSkill}} \mbox{\hyperlink{class_skill}{super}};}
+\DoxyCodeLine{43     }
+\DoxyCodeLine{44 private:}
+\DoxyCodeLine{45     }
+\DoxyCodeLine{46     const \textcolor{keywordtype}{int} base\_damage = 10;}
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_SWORD\_SKILL\_H\_\_ }}
+
+\end{DoxyCode}

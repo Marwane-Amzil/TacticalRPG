@@ -1,0 +1,5 @@
+<map id="Entity::setHp" name="Entity::setHp">
+<area shape="rect" id="node1" title="Method which sets the current hp of the entity." alt="" coords="188,31,287,57"/>
+<area shape="rect" id="node2" href="$class_axe_skill.html#abf63fcc14c08a175d9c87c22e77c880b" title="method activate that activates the current skill (AxeSkill)" alt="" coords="11,5,134,32"/>
+<area shape="rect" id="node3" href="$class_sword_skill.html#ac821c976bdc375920b57a968a67bcab9" title="method activate that activates the current skill (SwordSkill)" alt="" coords="5,56,140,83"/>
+</map>

@@ -1,0 +1,122 @@
+\hypertarget{class_sword_skill}{}\doxysection{Sword\+Skill Class Reference}
+\label{class_sword_skill}\index{SwordSkill@{SwordSkill}}
+
+
+Inheritance diagram for Sword\+Skill\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{class_sword_skill__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sword\+Skill\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{class_sword_skill__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sword_skill_a89c506a887b4fcee53a7fbaf76d6e975}{Sword\+Skill}} (int multiplier, int range, \mbox{\hyperlink{class_character}{Character}} $\ast$character, \mbox{\hyperlink{class_effect}{Effect}} $\ast$effect=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_sword_skill}{Sword\+Skill}} class with default values for effect and range parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sword_skill_a3ebcf15f7892aa7653b59c9bfc8a8ace}\label{class_sword_skill_a3ebcf15f7892aa7653b59c9bfc8a8ace}} 
+{\bfseries $\sim$\+Sword\+Skill} () noexcept=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_sword_skill}{Sword\+Skill}} destructor. Explicitly defaulted (\mbox{\hyperlink{class_sword_skill_a3ebcf15f7892aa7653b59c9bfc8a8ace}{$\sim$\+Sword\+Skill()}} = default) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sword_skill_ac821c976bdc375920b57a968a67bcab9}{activate}} (\mbox{\hyperlink{class_grid}{Grid}} \&grid, \mbox{\hyperlink{class_character}{Character}} $\ast$target) const override
+\begin{DoxyCompactList}\small\item\em method activate that activates the current skill (\mbox{\hyperlink{class_sword_skill}{Sword\+Skill}}) \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_sword_skill_a04201ace0f63714596872a57f181d7c7}{get\+Possible\+Zones}} (const \mbox{\hyperlink{class_grid}{Grid}} \&grid) const override
+\begin{DoxyCompactList}\small\item\em Returns a vector of positions that are in range of the skill. It is where the skill (\mbox{\hyperlink{class_sword_skill}{Sword\+Skill}}) can be launched. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sword_skill_a89c506a887b4fcee53a7fbaf76d6e975}\label{class_sword_skill_a89c506a887b4fcee53a7fbaf76d6e975}} 
+\index{SwordSkill@{SwordSkill}!SwordSkill@{SwordSkill}}
+\index{SwordSkill@{SwordSkill}!SwordSkill@{SwordSkill}}
+\doxysubsubsection{\texorpdfstring{SwordSkill()}{SwordSkill()}}
+{\footnotesize\ttfamily Sword\+Skill\+::\+Sword\+Skill (\begin{DoxyParamCaption}\item[{int}]{multiplier,  }\item[{int}]{range,  }\item[{\mbox{\hyperlink{class_character}{Character}} $\ast$}]{character,  }\item[{\mbox{\hyperlink{class_effect}{Effect}} $\ast$}]{effect = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_sword_skill}{Sword\+Skill}} class with default values for effect and range parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multiplier} & The multiplier for the skill\textquotesingle{}s damage. \\
+\hline
+{\em character} & The character that owns the skill. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sword_skill_ac821c976bdc375920b57a968a67bcab9}\label{class_sword_skill_ac821c976bdc375920b57a968a67bcab9}} 
+\index{SwordSkill@{SwordSkill}!activate@{activate}}
+\index{activate@{activate}!SwordSkill@{SwordSkill}}
+\doxysubsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily void Sword\+Skill\+::activate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{grid,  }\item[{\mbox{\hyperlink{class_character}{Character}} $\ast$}]{target }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+method activate that activates the current skill (\mbox{\hyperlink{class_sword_skill}{Sword\+Skill}}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & The grid on which the skill will be activated. \\
+\hline
+{\em target} & The target is the character that is going to be targeted. This methode also verifies if the skill can be launched on the character put in parametre. Indeed the verification is done throught the get\+Possible\+Zones method. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_skill_a146023835d10c3bb6106a66c0b156a4d}{Skill}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sword_skill_ac821c976bdc375920b57a968a67bcab9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_sword_skill_a04201ace0f63714596872a57f181d7c7}\label{class_sword_skill_a04201ace0f63714596872a57f181d7c7}} 
+\index{SwordSkill@{SwordSkill}!getPossibleZones@{getPossibleZones}}
+\index{getPossibleZones@{getPossibleZones}!SwordSkill@{SwordSkill}}
+\doxysubsubsection{\texorpdfstring{getPossibleZones()}{getPossibleZones()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ Sword\+Skill\+::get\+Possible\+Zones (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_grid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns a vector of positions that are in range of the skill. It is where the skill (\mbox{\hyperlink{class_sword_skill}{Sword\+Skill}}) can be launched. 
+
+
+
+Implements \mbox{\hyperlink{class_skill}{Skill}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sword_skill_a04201ace0f63714596872a57f181d7c7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sword_skill_a04201ace0f63714596872a57f181d7c7_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/\+Skills/\+Physical\+Skills/Sword\+Skill.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/\+Skills/\+Physical\+Skills/Sword\+Skill.\+cpp\end{DoxyCompactItemize}

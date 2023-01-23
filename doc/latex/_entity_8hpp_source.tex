@@ -1,0 +1,38 @@
+\hypertarget{_entity_8hpp_source}{}\doxysection{Entity.\+hpp}
+\label{_entity_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Entity.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Entity.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_ENTITY\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_ENTITY\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Position.hpp>} \textcolor{comment}{// Position class}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_entity}{Entity}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{25     \mbox{\hyperlink{class_entity_a9f941bbdec70478d3393052b78bc291b}{Entity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} y, \textcolor{keyword}{const} \textcolor{keywordtype}{int} hp);}
+\DoxyCodeLine{31     \textcolor{keyword}{const} \mbox{\hyperlink{class_position}{Position}}\& \mbox{\hyperlink{class_entity_af6800b23e4a4c048b8a43afd6bbf653d}{getPosition}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_entity_aaab9c086920959e0f902da2e24035dba}{setPosition}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_position}{Position}}\& position);}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_entity_aa6080cdbf25bece934c49e79634011ef}{getHp}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_entity_a9ac380d71f8c70c7a5f7ba7b0387d658}{setHp}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} hp);}
+\DoxyCodeLine{60     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_entity_abeedd2b9ad7b200acca5ac2522607fad}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_entity}{Entity}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{71     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_entity_ae2bb991352e76415d09f30aa69d6b9f4}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_entity}{Entity}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{77     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_entity_ac479d009ddde62dfb378ca0a70d81307}{\string~Entity}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{81     \textcolor{keyword}{virtual} std::string\_view getClass() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{94     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_entity_af98cfa8bf1afcd0b66898e6f884854eb}{equals}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_entity}{Entity}}\& other) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     \mbox{\hyperlink{class_position}{Position}} \_position;}
+\DoxyCodeLine{99     \textcolor{keywordtype}{int} \_hp;}
+\DoxyCodeLine{100 \};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_ENTITY\_H\_\_}}
+
+\end{DoxyCode}

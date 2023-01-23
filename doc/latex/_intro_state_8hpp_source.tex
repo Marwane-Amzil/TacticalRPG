@@ -1,0 +1,38 @@
+\hypertarget{_intro_state_8hpp_source}{}\doxysection{Intro\+State.\+hpp}
+\label{_intro_state_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/States/IntroState.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/ui/States/IntroState.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <SFML/Graphics/Color.hpp>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <SFML/Graphics/RectangleShape.hpp>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <SFML/Graphics/Texture.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <GUI/ui/State.hpp>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_state_machine}{StateMachine}};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{keyword}{class }RenderWindow;}
+\DoxyCodeLine{14 \}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_intro_state}{IntroState}} final : \textcolor{keyword}{public} \mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_intro_state}{IntroState}}(\mbox{\hyperlink{class_state_machine}{StateMachine}}\& machine, sf::RenderWindow\& window, \textcolor{keywordtype}{bool} replace = \textcolor{keyword}{true});}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} pause() \textcolor{keyword}{override};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} resume() \textcolor{keyword}{override};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} update() \textcolor{keyword}{override};}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} draw() \textcolor{keyword}{override};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{28     sf::Texture m\_backgroundTexture;}
+\DoxyCodeLine{29     sf::Sprite m\_background;}
+\DoxyCodeLine{30     sf::RectangleShape m\_fader;}
+\DoxyCodeLine{31     sf::Color m\_alpha;}
+\DoxyCodeLine{32 \};}
+
+\end{DoxyCode}

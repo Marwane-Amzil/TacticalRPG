@@ -1,0 +1,70 @@
+\hypertarget{class_skill}{}\doxysection{Skill Class Reference}
+\label{class_skill}\index{Skill@{Skill}}
+
+
+Inheritance diagram for Skill\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{class_skill__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_skill_a7b81cce8e3a0bee543a2744333c55800}\label{class_skill_a7b81cce8e3a0bee543a2744333c55800}} 
+{\bfseries Skill} (int multiplier, int range, \mbox{\hyperlink{class_character}{Character}} $\ast$character, \mbox{\hyperlink{class_effect}{Effect}} $\ast$effect=nullptr)
+\begin{DoxyCompactList}\small\item\em Default constructor. Initialize a skill with a multiplier, a range, a character and an effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_skill_a80c0ccf00965bb3d3ba449efacc07b53}\label{class_skill_a80c0ccf00965bb3d3ba449efacc07b53}} 
+virtual {\bfseries $\sim$\+Skill} () noexcept=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_skill}{Skill}} destructor. Explicitly defaulted (\mbox{\hyperlink{class_skill_a80c0ccf00965bb3d3ba449efacc07b53}{$\sim$\+Skill()}} = default) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_skill_ad7d414ac6149dacaf633724e3f5f39d1}\label{class_skill_ad7d414ac6149dacaf633724e3f5f39d1}} 
+int {\bfseries get\+Multiplier} () const
+\begin{DoxyCompactList}\small\item\em method that returns the private attribut of the SKill classes (multiplier). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_skill_a8ec3f80b07b95c900dc83b6402ee7768}\label{class_skill_a8ec3f80b07b95c900dc83b6402ee7768}} 
+int {\bfseries get\+Range} () const
+\begin{DoxyCompactList}\small\item\em method that returns the private attribut of the \mbox{\hyperlink{class_skill}{Skill}} classes (range). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_skill_a210be05b43b5149fb4c745934beb1ff2}\label{class_skill_a210be05b43b5149fb4c745934beb1ff2}} 
+const \mbox{\hyperlink{class_effect}{Effect}} $\ast$ {\bfseries get\+Effect} () const
+\begin{DoxyCompactList}\small\item\em method that returns the private attribut of the \mbox{\hyperlink{class_skill}{Skill}} classes (effect). An effect can exist or be nullptr. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_skill_a459f150f0df9f94118d32e3237deb98b}\label{class_skill_a459f150f0df9f94118d32e3237deb98b}} 
+\mbox{\hyperlink{class_character}{Character}} $\ast$ {\bfseries get\+Owner} () const
+\begin{DoxyCompactList}\small\item\em method that returns the private attribut of the \mbox{\hyperlink{class_skill}{Skill}} classes (Owner). A skill can have 1 Owner. But an Owner can have different skills. The Owner is the one that activates the different classes. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_skill_a146023835d10c3bb6106a66c0b156a4d}{activate}} (\mbox{\hyperlink{class_grid}{Grid}} \&grid, \mbox{\hyperlink{class_character}{Character}} $\ast$target) const =0
+\begin{DoxyCompactList}\small\item\em Activate method is the method that triggers the damage of the skill. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_skill_aa67fd2f9af9a748583944b7199c286a5}{get\+Possible\+Zones}} (const \mbox{\hyperlink{class_grid}{Grid}} \&grid) const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_skill_a146023835d10c3bb6106a66c0b156a4d}\label{class_skill_a146023835d10c3bb6106a66c0b156a4d}} 
+\index{Skill@{Skill}!activate@{activate}}
+\index{activate@{activate}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily virtual void Skill\+::activate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{grid,  }\item[{\mbox{\hyperlink{class_character}{Character}} $\ast$}]{target }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Activate method is the method that triggers the damage of the skill. 
+
+
+
+Implemented in \mbox{\hyperlink{class_fireball_a94846c4062f602c05fc02b843006445a}{Fireball}}, \mbox{\hyperlink{class_axe_skill_abf63fcc14c08a175d9c87c22e77c880b}{Axe\+Skill}}, and \mbox{\hyperlink{class_sword_skill_ac821c976bdc375920b57a968a67bcab9}{Sword\+Skill}}.
+
+\mbox{\Hypertarget{class_skill_aa67fd2f9af9a748583944b7199c286a5}\label{class_skill_aa67fd2f9af9a748583944b7199c286a5}} 
+\index{Skill@{Skill}!getPossibleZones@{getPossibleZones}}
+\index{getPossibleZones@{getPossibleZones}!Skill@{Skill}}
+\doxysubsubsection{\texorpdfstring{getPossibleZones()}{getPossibleZones()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ Skill\+::get\+Possible\+Zones (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_grid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_fireball_a25c0d1c05abcfca37bca6959deef057e}{Fireball}}, \mbox{\hyperlink{class_axe_skill_a820d08358c854b715890f6b7e62070b7}{Axe\+Skill}}, and \mbox{\hyperlink{class_sword_skill_a04201ace0f63714596872a57f181d7c7}{Sword\+Skill}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/Skill.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/Skill.\+cpp\end{DoxyCompactItemize}

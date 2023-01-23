@@ -1,0 +1,35 @@
+\hypertarget{_archer_8hpp_source}{}\doxysection{Archer.\+hpp}
+\label{_archer_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Characters/PhysicalCharacters/Archer.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/Entities/Characters/PhysicalCharacters/Archer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_ARCHER\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_ARCHER\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Entities/Characters/PhysicalCharacter.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <Constants.hpp>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_archer}{Archer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_physical_character}{PhysicalCharacter}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{16     \mbox{\hyperlink{class_archer}{Archer}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} y, \textcolor{keyword}{const} \textcolor{keywordtype}{char} player);}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_archer}{\string~Archer}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{27     std::vector<Position> getPossibleMoves(\textcolor{keyword}{const} \mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}) \textcolor{keyword}{const override};}
+\DoxyCodeLine{31     std::vector<Position> getPossibleActions(\textcolor{keyword}{const} \mbox{\hyperlink{class_grid}{Grid}}\& \mbox{\hyperlink{namespacegrid}{grid}}) \textcolor{keyword}{const override};}
+\DoxyCodeLine{32     }
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} equals(\textcolor{keyword}{const} \mbox{\hyperlink{class_entity}{Entity}}\& other) \textcolor{keyword}{const override};}
+\DoxyCodeLine{40     std::string\_view getClass() \textcolor{keyword}{const override};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{private}:}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keyword}{typedef} \mbox{\hyperlink{class_physical_character}{PhysicalCharacter}} \mbox{\hyperlink{class_entity}{super}};}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_ARCHER\_H\_\_}}
+
+\end{DoxyCode}

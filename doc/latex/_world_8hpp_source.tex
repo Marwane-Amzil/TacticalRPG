@@ -1,0 +1,53 @@
+\hypertarget{_world_8hpp_source}{}\doxysection{World.\+hpp}
+\label{_world_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/game/World.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/game/World.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_WORLD\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_WORLD\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <SFML/Graphics/RectangleShape.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <SFML/Graphics/Texture.hpp>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <Grid.hpp>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <Constants.hpp>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }gui}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     \textcolor{keyword}{class }EntitySprite;}
+\DoxyCodeLine{15     }
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classgui_1_1_world}{World}} : \textcolor{keyword}{public} sf::Drawable}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         \textcolor{keyword}{explicit} \mbox{\hyperlink{classgui_1_1_world}{World}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width = 1920, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height = 1080);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{keyword}{const} \mbox{\hyperlink{class_grid}{Grid}}\& getGrid() \textcolor{keyword}{const};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} addEntity(\mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}* sprite);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keywordtype}{void} removeEntity(\mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}* sprite);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keyword}{virtual} \mbox{\hyperlink{classgui_1_1_world}{\string~World}}() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keyword}{const} std::array<EntitySprite*, ::grid::COLUMNS>\& operator[](\textcolor{keywordtype}{size\_t} index) \textcolor{keyword}{const};}
+\DoxyCodeLine{31         }
+\DoxyCodeLine{32         std::array<EntitySprite*, ::grid::COLUMNS>\& operator[](\textcolor{keywordtype}{size\_t} index);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keyword}{private}:}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} draw(sf::RenderTarget\& target, sf::RenderStates states) \textcolor{keyword}{const override};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keyword}{private}:}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         sf::RectangleShape \_shape;}
+\DoxyCodeLine{41         sf::Texture \_texture;}
+\DoxyCodeLine{42         \mbox{\hyperlink{class_grid}{Grid}} \_grid;}
+\DoxyCodeLine{43         std::array<std::array<EntitySprite*, ::grid::ROWS>, ::grid::COLUMNS> \_sprites;}
+\DoxyCodeLine{44     \};}
+\DoxyCodeLine{45 \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_WORLD\_H\_\_}}
+
+\end{DoxyCode}

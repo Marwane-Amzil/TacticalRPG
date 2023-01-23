@@ -1,0 +1,10 @@
+<map id="Position::getX" name="Position::getX">
+<area shape="rect" id="node1" title="Method which returns the x value of the position." alt="" coords="431,84,533,110"/>
+<area shape="rect" id="node2" href="$class_fireball.html#a94846c4062f602c05fc02b843006445a" title="method activate that activates the current skill (Fireball)" alt="" coords="15,33,131,60"/>
+<area shape="rect" id="node3" href="$class_grid.html#afaa9ca34af7821fbfe4aae13fe03ea82" title="Method which adds an entity in the grid. The entity&#39;s position will be used to determine where to add..." alt="" coords="231,33,340,60"/>
+<area shape="rect" id="node4" href="$class_fireball.html#a25c0d1c05abcfca37bca6959deef057e" title="Returns a vector of positions that are in range of the skill. It is where the skill (Fireball) can be..." alt="" coords="198,84,373,110"/>
+<area shape="rect" id="node5" href="$class_axe_skill.html#a820d08358c854b715890f6b7e62070b7" title="Returns a vector of positions that are in range of the skill (AxeSKill). It is where the skill can be..." alt="" coords="195,134,376,161"/>
+<area shape="rect" id="node7" href="$class_sword_skill.html#a04201ace0f63714596872a57f181d7c7" title="Returns a vector of positions that are in range of the skill. It is where the skill (SwordSkill) can ..." alt="" coords="188,185,383,212"/>
+<area shape="rect" id="node6" href="$class_axe_skill.html#abf63fcc14c08a175d9c87c22e77c880b" title="method activate that activates the current skill (AxeSkill)" alt="" coords="11,134,134,161"/>
+<area shape="rect" id="node8" href="$class_sword_skill.html#ac821c976bdc375920b57a968a67bcab9" title="method activate that activates the current skill (SwordSkill)" alt="" coords="5,185,140,212"/>
+</map>

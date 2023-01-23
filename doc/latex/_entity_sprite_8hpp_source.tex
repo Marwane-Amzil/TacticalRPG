@@ -1,0 +1,94 @@
+\hypertarget{_entity_sprite_8hpp_source}{}\doxysection{Entity\+Sprite.\+hpp}
+\label{_entity_sprite_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/GUI/game/EntitySprite.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/GUI/game/EntitySprite.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_ENTITY\_SPRITE\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_ENTITY\_SPRITE\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <SFML/Graphics/Drawable.hpp>} \textcolor{comment}{// sf::Drawable}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <SFML/Graphics/Transformable.hpp>} \textcolor{comment}{// sf::Transformable}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <SFML/Graphics/Vertex.hpp>} \textcolor{comment}{// sf::Vertex}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <SFML/Graphics/Rect.hpp>} \textcolor{comment}{// sf::IntRect, sf::FloatRect}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <SFML/System/Time.hpp>} \textcolor{comment}{// sf::Time}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <GUI/game/Animation.hpp>} \textcolor{comment}{// gui::Animation}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <array>} \textcolor{comment}{// std::array}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_entity}{Entity}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }sf}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{class }Texture;}
+\DoxyCodeLine{19 \}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{namespace }gui}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23     \textcolor{keyword}{class }Animation;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{class }\mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}} : \textcolor{keyword}{public} sf::Drawable, \textcolor{keyword}{public} sf::Transformable}
+\DoxyCodeLine{26     \{}
+\DoxyCodeLine{27     \textcolor{keyword}{public}:}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keyword}{explicit} \mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}(\mbox{\hyperlink{class_entity}{Entity}}* entity = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}(\textcolor{keyword}{const} \mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}\& other);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}(\mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}\&\& other) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \mbox{\hyperlink{class_entity}{Entity}}* getEntity() \textcolor{keyword}{const};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \textcolor{keyword}{const} \mbox{\hyperlink{classgui_1_1_animation}{Animation}}\& getAnimation(\textcolor{keywordtype}{size\_t} index) \textcolor{keyword}{const};}
+\DoxyCodeLine{38         }
+\DoxyCodeLine{39         \textcolor{keyword}{const} \mbox{\hyperlink{classgui_1_1_animation}{Animation}}\& getCurrentAnimation() \textcolor{keyword}{const};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keyword}{const} sf::Texture* getTexture() \textcolor{keyword}{const};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keyword}{const} sf::IntRect\& getTextureRect() \textcolor{keyword}{const};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         sf::FloatRect getLocalBounds() \textcolor{keyword}{const};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         sf::FloatRect getGlobalBounds() \textcolor{keyword}{const};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keywordtype}{void} addAnimation(\textcolor{keywordtype}{size\_t} index, \textcolor{keyword}{const} \mbox{\hyperlink{classgui_1_1_animation}{Animation}}\& animation);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordtype}{void} setCurrentAnimation(\textcolor{keywordtype}{size\_t} index);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53         \textcolor{keywordtype}{void} setTexture(\textcolor{keyword}{const} sf::Texture* texture);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         \textcolor{keywordtype}{void} setTextureRect(\textcolor{keyword}{const} sf::IntRect\& texture\_rect);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{keywordtype}{void} setTextureRect(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} loopCurrentAnimation(\textcolor{keywordtype}{bool} loop);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \textcolor{keywordtype}{void} playAnimation();}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{keywordtype}{void} stopAnimation();}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         \textcolor{keywordtype}{void} update(sf::Time elapsed\_time);}
+\DoxyCodeLine{66         }
+\DoxyCodeLine{67         \textcolor{keyword}{virtual} \mbox{\hyperlink{classgui_1_1_entity_sprite}{\string~EntitySprite}}() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         \mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}\& other);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         \mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}\& operator=(\mbox{\hyperlink{classgui_1_1_entity_sprite}{EntitySprite}}\&\& other) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keyword}{private}:}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} draw(sf::RenderTarget\& target, sf::RenderStates states) \textcolor{keyword}{const override};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keyword}{private}:}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         std::array<sf::Vertex, 4> \_vertices;         \textcolor{comment}{// The vertices of the sprite.}}
+\DoxyCodeLine{80         \textcolor{keyword}{const} sf::Texture* \_texture;                 \textcolor{comment}{// The texture of the sprite.}}
+\DoxyCodeLine{81         sf::IntRect \_texture\_rect;                   \textcolor{comment}{// The sub-\/rectangle of the texture to display.}}
+\DoxyCodeLine{82         \mbox{\hyperlink{class_entity}{Entity}}* \_entity;                           \textcolor{comment}{// The entity that the sprite is representing.}}
+\DoxyCodeLine{83         std::array<Animation, 14> \_animations;       \textcolor{comment}{// The animations of the sprite.}}
+\DoxyCodeLine{84         \mbox{\hyperlink{classgui_1_1_animation}{Animation}}\& \_current\_animation;              \textcolor{comment}{// The current animation of the sprite.}}
+\DoxyCodeLine{85     \};}
+\DoxyCodeLine{86 \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_ENTITY\_SPRITE\_H\_\_}}
+
+\end{DoxyCode}

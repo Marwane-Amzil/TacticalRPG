@@ -1,0 +1,382 @@
+\hypertarget{class_character}{}\doxysection{Character Class Reference}
+\label{class_character}\index{Character@{Character}}
+
+
+The \mbox{\hyperlink{class_character}{Character}} class represents any entity that the user can play with. According to the rules, this same entity is divided in several other classes (derived) to allow different play styles and strategies. Each character (class) has its own gimmicks and stats.  
+
+
+
+
+{\ttfamily \#include $<$Character.\+hpp$>$}
+
+
+
+Inheritance diagram for Character\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_character__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Character\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{class_character__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_abd2335d0a0dbebdafedc50e5e68c14b6}{Character}} (const int x, const int y, const int hp, const char player, const int will, const int res\+\_\+phy, const int res\+\_\+mag, const int magic, const int strength)
+\begin{DoxyCompactList}\small\item\em Constructor taking 2 position values and a hp value for the base constructor and values for the will and both physical and magical resistance of the character. Initialize a character with a given position and a given hp value. To achieve this, it will call the base class constructor (\mbox{\hyperlink{class_entity}{Entity}}). \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_character_a106c4e0a2e731ab569ee728fa22ec804}{get\+Player}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the player who owns the character. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_character_a21c61e4b5ccf6bcfd1c993938ceab0df}{get\+Will}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the will of the character. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_character_acfa9beda1317d55ba4bc02c8d9ececa3}{get\+Res\+Phy}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the physical resistance of a character. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_character_a84c4989dd0f37c85e171fcb486b4ca3d}{get\+Res\+Mag}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the magical resistance of a character. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_ae02feb52f5d8975e974b5ac2aef07095}\label{class_character_ae02feb52f5d8975e974b5ac2aef07095}} 
+bool {\bfseries get\+Action} () const
+\item 
+\mbox{\Hypertarget{class_character_a2c233ebd0edb6ea61a46afb44f6c015a}\label{class_character_a2c233ebd0edb6ea61a46afb44f6c015a}} 
+bool {\bfseries get\+Special\+Action} () const
+\item 
+bool \mbox{\hyperlink{class_character_a4f55dfe0a2e2b071b575361703119d0c}{get\+Move}} () const
+\begin{DoxyCompactList}\small\item\em Method which returns the possibility for a character to move. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_aee5e10d53f52c6ba13762f997c3ce99a}\label{class_character_aee5e10d53f52c6ba13762f997c3ce99a}} 
+const \mbox{\hyperlink{class_skill}{Skill}} $\ast$ {\bfseries get\+First\+Skill} () const
+\item 
+\mbox{\Hypertarget{class_character_a15b57b99128288ceb636117ec3a4b5fb}\label{class_character_a15b57b99128288ceb636117ec3a4b5fb}} 
+const \mbox{\hyperlink{class_skill}{Skill}} $\ast$ {\bfseries get\+Second\+Skill} () const
+\item 
+\mbox{\Hypertarget{class_character_ae71046ef1eb9e5b2b62d45b523a95bdc}\label{class_character_ae71046ef1eb9e5b2b62d45b523a95bdc}} 
+const \mbox{\hyperlink{class_skill}{Skill}} $\ast$ {\bfseries get\+Special\+Skill} () const
+\item 
+\mbox{\Hypertarget{class_character_a5fbf94b100e59fc31a21fa5b6726daa9}\label{class_character_a5fbf94b100e59fc31a21fa5b6726daa9}} 
+int {\bfseries get\+Magic} () const
+\item 
+\mbox{\Hypertarget{class_character_aeeab2ce512bf79e2f8b8f13dd4e417b8}\label{class_character_aeeab2ce512bf79e2f8b8f13dd4e417b8}} 
+int {\bfseries get\+Strength} () const
+\item 
+void \mbox{\hyperlink{class_character_add9446d7d5b8f69963f3012a95acccc9}{set\+Will}} (const int will)
+\begin{DoxyCompactList}\small\item\em Method which sets the current will value of the character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_a2ece6f3dee0df1e8b716ee2f762140a9}{set\+Res\+Phy}} (const int res\+\_\+phy)
+\begin{DoxyCompactList}\small\item\em Method which sets the current physical resistance value of the character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_a1e98abf43fc1598382a682c06416b25a}{set\+Res\+Mag}} (const int res\+\_\+mag)
+\begin{DoxyCompactList}\small\item\em Method which sets the current magical resistance value of the character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_a7970029c0aa945b527b76307cf1c0252}{set\+Move}} (const bool can\+\_\+move)
+\begin{DoxyCompactList}\small\item\em Method which sets the possibility for a character to move. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_adbecdd9c27570bf872636ac2fd47822c}{set\+Action}} (const bool can\+\_\+act)
+\begin{DoxyCompactList}\small\item\em Method which sets the possibility for a character to perform an action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_ad08694535995d0c53a5560d056870a81}{set\+Special\+Action}} (const bool can\+\_\+sp\+\_\+act)
+\begin{DoxyCompactList}\small\item\em Method which sets the possibility for a character to perform an special action. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a80b718a94d54fb59f2f046156c41bd61}\label{class_character_a80b718a94d54fb59f2f046156c41bd61}} 
+void {\bfseries set\+First\+Skill} (\mbox{\hyperlink{class_skill}{Skill}} $\ast$skill)
+\item 
+\mbox{\Hypertarget{class_character_af335e1e1508b8de487dde1b899d6dfa7}\label{class_character_af335e1e1508b8de487dde1b899d6dfa7}} 
+void {\bfseries set\+Second\+Skill} (\mbox{\hyperlink{class_skill}{Skill}} $\ast$skill)
+\item 
+\mbox{\Hypertarget{class_character_a2ab45b6c04ebca1247a90ca760bbfb87}\label{class_character_a2ab45b6c04ebca1247a90ca760bbfb87}} 
+void {\bfseries set\+Special\+Skill} (\mbox{\hyperlink{class_skill}{Skill}} $\ast$skill)
+\item 
+\mbox{\Hypertarget{class_character_a3333a88ae593c36b229c90371e935d42}\label{class_character_a3333a88ae593c36b229c90371e935d42}} 
+virtual {\bfseries $\sim$\+Character} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_character}{Character}} destructor. Explicitly defaulted (\mbox{\hyperlink{class_character_a3333a88ae593c36b229c90371e935d42}{$\sim$\+Character()}} = default). Marked as virtual to perform proper destruction when the current \mbox{\hyperlink{class_character}{Character}} is actually an instance of one of the derived class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_a94d463709e65d944f6cf2bdfcd572684}{use\+Skill\+One}} (\mbox{\hyperlink{class_position}{Position}} $\ast$pos, \mbox{\hyperlink{class_grid}{Grid}} $\ast$grid)
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_character_a9a2eb6682063f88f7a3bbdad51d959bd}{get\+Possible\+Moves}} (const \mbox{\hyperlink{class_grid}{Grid}} \&grid) const =0
+\begin{DoxyCompactList}\small\item\em Method which returns the list of positions the character can actually move on. It requires the grid to performs check for valid moves such as empty case or not. Marked as virtual to call the proper version of this function for each character (class) since they have different gimmicks. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_character_a4c4eba6f2ba3d1aa93ddf1e80534ef5e}{get\+Possible\+Actions}} (const \mbox{\hyperlink{class_grid}{Grid}} \&grid) const =0
+\begin{DoxyCompactList}\small\item\em Method which returns the list of positions the character can launch a skill. It requires the grid to performs check for valid moves such as empty case or not. Marked as virtual to call the proper version of this function for each character (class) since they have different gimmicks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_character_a9b65ab749d4919af0f55822fc60496ec}\label{class_character_a9b65ab749d4919af0f55822fc60496ec}} 
+char {\bfseries \+\_\+player}
+\item 
+\mbox{\Hypertarget{class_character_a42ca9dc2d508fcebe35060f029aee16f}\label{class_character_a42ca9dc2d508fcebe35060f029aee16f}} 
+int {\bfseries \+\_\+will}
+\item 
+\mbox{\Hypertarget{class_character_a8e80393688ab2e2142ac624ae4c035ec}\label{class_character_a8e80393688ab2e2142ac624ae4c035ec}} 
+int {\bfseries \+\_\+res\+\_\+phy}
+\item 
+\mbox{\Hypertarget{class_character_a14dba28f27fabe61a2d092d562991c2d}\label{class_character_a14dba28f27fabe61a2d092d562991c2d}} 
+int {\bfseries \+\_\+res\+\_\+mag}
+\item 
+\mbox{\Hypertarget{class_character_a864e8d7335d9310d4afcb20d1e14011b}\label{class_character_a864e8d7335d9310d4afcb20d1e14011b}} 
+bool {\bfseries \+\_\+can\+\_\+move}
+\item 
+\mbox{\Hypertarget{class_character_ae8356370ea02e6782641d9fa0c73846e}\label{class_character_ae8356370ea02e6782641d9fa0c73846e}} 
+bool {\bfseries \+\_\+can\+\_\+act}
+\item 
+\mbox{\Hypertarget{class_character_a5fc0ad107289359d8ae939474ac5da6b}\label{class_character_a5fc0ad107289359d8ae939474ac5da6b}} 
+bool {\bfseries \+\_\+can\+\_\+sp\+\_\+act}
+\item 
+\mbox{\Hypertarget{class_character_a54ac044d21bfaa441e7b212eda78f438}\label{class_character_a54ac044d21bfaa441e7b212eda78f438}} 
+int {\bfseries \+\_\+magic}
+\item 
+\mbox{\Hypertarget{class_character_afd08f3084cd778ca10f01f268c825e2f}\label{class_character_afd08f3084cd778ca10f01f268c825e2f}} 
+int {\bfseries \+\_\+strength}
+\item 
+\mbox{\Hypertarget{class_character_a47a96d6714fcf92d75506565fcf5b6b8}\label{class_character_a47a96d6714fcf92d75506565fcf5b6b8}} 
+std\+::array$<$ \mbox{\hyperlink{class_skill}{Skill}} $\ast$, \+::skill\+::\+MAX\+\_\+\+SKILLS $>$ {\bfseries \+\_\+skills}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_character}{Character}} class represents any entity that the user can play with. According to the rules, this same entity is divided in several other classes (derived) to allow different play styles and strategies. Each character (class) has its own gimmicks and stats. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_character_abd2335d0a0dbebdafedc50e5e68c14b6}\label{class_character_abd2335d0a0dbebdafedc50e5e68c14b6}} 
+\index{Character@{Character}!Character@{Character}}
+\index{Character@{Character}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{Character()}{Character()}}
+{\footnotesize\ttfamily Character\+::\+Character (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{hp,  }\item[{const char}]{player,  }\item[{const int}]{will,  }\item[{const int}]{res\+\_\+phy,  }\item[{const int}]{res\+\_\+mag,  }\item[{const int}]{magic,  }\item[{const int}]{strength }\end{DoxyParamCaption})}
+
+
+
+Constructor taking 2 position values and a hp value for the base constructor and values for the will and both physical and magical resistance of the character. Initialize a character with a given position and a given hp value. To achieve this, it will call the base class constructor (\mbox{\hyperlink{class_entity}{Entity}}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x position \\
+\hline
+{\em y} & y position \\
+\hline
+{\em hp} & hp of the character \\
+\hline
+{\em player} & owner of the character \\
+\hline
+{\em will} & will of the character \\
+\hline
+{\em res\+\_\+phy} & res\+\_\+phy of the character \\
+\hline
+{\em res\+\_\+mag} & res\+\_\+mag of the character \\
+\hline
+{\em magic} & magic force of a character \\
+\hline
+{\em strength} & pure strength of a character \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_character_a4f55dfe0a2e2b071b575361703119d0c}\label{class_character_a4f55dfe0a2e2b071b575361703119d0c}} 
+\index{Character@{Character}!getMove@{getMove}}
+\index{getMove@{getMove}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getMove()}{getMove()}}
+{\footnotesize\ttfamily bool Character\+::get\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the possibility for a character to move. 
+
+\begin{DoxyReturn}{Returns}
+returns movement possibility 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_character_a106c4e0a2e731ab569ee728fa22ec804}\label{class_character_a106c4e0a2e731ab569ee728fa22ec804}} 
+\index{Character@{Character}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily char Character\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the player who owns the character. 
+
+\begin{DoxyReturn}{Returns}
+returns the owner (player) of the character 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_character_a4c4eba6f2ba3d1aa93ddf1e80534ef5e}\label{class_character_a4c4eba6f2ba3d1aa93ddf1e80534ef5e}} 
+\index{Character@{Character}!getPossibleActions@{getPossibleActions}}
+\index{getPossibleActions@{getPossibleActions}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getPossibleActions()}{getPossibleActions()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ Character\+::get\+Possible\+Actions (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_grid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method which returns the list of positions the character can launch a skill. It requires the grid to performs check for valid moves such as empty case or not. Marked as virtual to call the proper version of this function for each character (class) since they have different gimmicks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & current play grid\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a list of cases where the character can perform an action 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_character_a9a2eb6682063f88f7a3bbdad51d959bd}\label{class_character_a9a2eb6682063f88f7a3bbdad51d959bd}} 
+\index{Character@{Character}!getPossibleMoves@{getPossibleMoves}}
+\index{getPossibleMoves@{getPossibleMoves}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getPossibleMoves()}{getPossibleMoves()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ Character\+::get\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_grid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method which returns the list of positions the character can actually move on. It requires the grid to performs check for valid moves such as empty case or not. Marked as virtual to call the proper version of this function for each character (class) since they have different gimmicks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & current play grid\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a list of cases where the character can move 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_character_a84c4989dd0f37c85e171fcb486b4ca3d}\label{class_character_a84c4989dd0f37c85e171fcb486b4ca3d}} 
+\index{Character@{Character}!getResMag@{getResMag}}
+\index{getResMag@{getResMag}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getResMag()}{getResMag()}}
+{\footnotesize\ttfamily int Character\+::get\+Res\+Mag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the magical resistance of a character. 
+
+\begin{DoxyReturn}{Returns}
+returns the magical resistance of a character 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{class_character_a84c4989dd0f37c85e171fcb486b4ca3d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_character_acfa9beda1317d55ba4bc02c8d9ececa3}\label{class_character_acfa9beda1317d55ba4bc02c8d9ececa3}} 
+\index{Character@{Character}!getResPhy@{getResPhy}}
+\index{getResPhy@{getResPhy}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getResPhy()}{getResPhy()}}
+{\footnotesize\ttfamily int Character\+::get\+Res\+Phy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the physical resistance of a character. 
+
+\begin{DoxyReturn}{Returns}
+returns the physical resistance of a character 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_character_a21c61e4b5ccf6bcfd1c993938ceab0df}\label{class_character_a21c61e4b5ccf6bcfd1c993938ceab0df}} 
+\index{Character@{Character}!getWill@{getWill}}
+\index{getWill@{getWill}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{getWill()}{getWill()}}
+{\footnotesize\ttfamily int Character\+::get\+Will (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Method which returns the will of the character. 
+
+\begin{DoxyReturn}{Returns}
+returns the will of the character 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_character_adbecdd9c27570bf872636ac2fd47822c}\label{class_character_adbecdd9c27570bf872636ac2fd47822c}} 
+\index{Character@{Character}!setAction@{setAction}}
+\index{setAction@{setAction}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setAction()}{setAction()}}
+{\footnotesize\ttfamily void Character\+::set\+Action (\begin{DoxyParamCaption}\item[{const bool}]{can\+\_\+act }\end{DoxyParamCaption})}
+
+
+
+Method which sets the possibility for a character to perform an action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em can\+\_\+act} & action possibility \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_character_a7970029c0aa945b527b76307cf1c0252}\label{class_character_a7970029c0aa945b527b76307cf1c0252}} 
+\index{Character@{Character}!setMove@{setMove}}
+\index{setMove@{setMove}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setMove()}{setMove()}}
+{\footnotesize\ttfamily void Character\+::set\+Move (\begin{DoxyParamCaption}\item[{const bool}]{can\+\_\+move }\end{DoxyParamCaption})}
+
+
+
+Method which sets the possibility for a character to move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em can\+\_\+move} & movement possibility \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_character_a1e98abf43fc1598382a682c06416b25a}\label{class_character_a1e98abf43fc1598382a682c06416b25a}} 
+\index{Character@{Character}!setResMag@{setResMag}}
+\index{setResMag@{setResMag}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setResMag()}{setResMag()}}
+{\footnotesize\ttfamily void Character\+::set\+Res\+Mag (\begin{DoxyParamCaption}\item[{const int}]{res\+\_\+mag }\end{DoxyParamCaption})}
+
+
+
+Method which sets the current magical resistance value of the character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em res\+\_\+mag} & new magical res value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_character_a2ece6f3dee0df1e8b716ee2f762140a9}\label{class_character_a2ece6f3dee0df1e8b716ee2f762140a9}} 
+\index{Character@{Character}!setResPhy@{setResPhy}}
+\index{setResPhy@{setResPhy}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setResPhy()}{setResPhy()}}
+{\footnotesize\ttfamily void Character\+::set\+Res\+Phy (\begin{DoxyParamCaption}\item[{const int}]{res\+\_\+phy }\end{DoxyParamCaption})}
+
+
+
+Method which sets the current physical resistance value of the character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em res\+\_\+phy} & new physical res value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_character_ad08694535995d0c53a5560d056870a81}\label{class_character_ad08694535995d0c53a5560d056870a81}} 
+\index{Character@{Character}!setSpecialAction@{setSpecialAction}}
+\index{setSpecialAction@{setSpecialAction}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setSpecialAction()}{setSpecialAction()}}
+{\footnotesize\ttfamily void Character\+::set\+Special\+Action (\begin{DoxyParamCaption}\item[{const bool}]{can\+\_\+sp\+\_\+act }\end{DoxyParamCaption})}
+
+
+
+Method which sets the possibility for a character to perform an special action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em can\+\_\+sp\+\_\+act} & special action possibility \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_character_add9446d7d5b8f69963f3012a95acccc9}\label{class_character_add9446d7d5b8f69963f3012a95acccc9}} 
+\index{Character@{Character}!setWill@{setWill}}
+\index{setWill@{setWill}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{setWill()}{setWill()}}
+{\footnotesize\ttfamily void Character\+::set\+Will (\begin{DoxyParamCaption}\item[{const int}]{will }\end{DoxyParamCaption})}
+
+
+
+Method which sets the current will value of the character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em will} & new will value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_character_a94d463709e65d944f6cf2bdfcd572684}\label{class_character_a94d463709e65d944f6cf2bdfcd572684}} 
+\index{Character@{Character}!useSkillOne@{useSkillOne}}
+\index{useSkillOne@{useSkillOne}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{useSkillOne()}{useSkillOne()}}
+{\footnotesize\ttfamily void Character\+::use\+Skill\+One (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}} $\ast$}]{pos,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} $\ast$}]{grid }\end{DoxyParamCaption})}
+
+This method uses the skill on a position on the grid. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/include/\+Entities/Character.\+hpp\item 
+C\+:/\+Users/doria/source/repos/\+Tactical\+RPG/src/\+Entities/Character.\+cpp\end{DoxyCompactItemize}

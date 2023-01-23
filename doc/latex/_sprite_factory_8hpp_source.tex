@@ -1,0 +1,44 @@
+\hypertarget{_sprite_factory_8hpp_source}{}\doxysection{Sprite\+Factory.\+hpp}
+\label{_sprite_factory_8hpp_source}\index{C:/Users/doria/source/repos/TacticalRPG/include/utils/SpriteFactory.hpp@{C:/Users/doria/source/repos/TacticalRPG/include/utils/SpriteFactory.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_\_SPRITE\_FACTORY\_H\_\_}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_\_SPRITE\_FACTORY\_H\_\_}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }gui}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     \textcolor{keyword}{class }EntitySprite;}
+\DoxyCodeLine{9     \textcolor{keyword}{class }World;}
+\DoxyCodeLine{10 \}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_character}{Character}};}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_obstacle}{Obstacle}};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }utils}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }TextureManager;}
+\DoxyCodeLine{18     \textcolor{keyword}{class }AnimationManager;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keyword}{class }\mbox{\hyperlink{classutils_1_1_sprite_factory}{SpriteFactory}}}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keyword}{explicit} \mbox{\hyperlink{classutils_1_1_sprite_factory}{SpriteFactory}}(\mbox{\hyperlink{classgui_1_1_world}{gui::World}}\& world, \mbox{\hyperlink{classutils_1_1_texture_manager}{TextureManager}}\& texture\_manager, \mbox{\hyperlink{classutils_1_1_animation_manager}{AnimationManager}}\& animation\_manager);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keyword}{inline} \mbox{\hyperlink{classutils_1_1_sprite_factory}{\string~SpriteFactory}}() \textcolor{keyword}{noexcept} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \mbox{\hyperlink{classgui_1_1_entity_sprite}{gui::EntitySprite}}* createCharacter(\mbox{\hyperlink{class_character}{Character}}* character) \textcolor{keyword}{const};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keyword}{private}:}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \mbox{\hyperlink{classgui_1_1_world}{gui::World}}\& \_world;}
+\DoxyCodeLine{33         \mbox{\hyperlink{classutils_1_1_texture_manager}{TextureManager}}\& \_texture\_manager;}
+\DoxyCodeLine{34         \mbox{\hyperlink{classutils_1_1_animation_manager}{AnimationManager}}\& \_animation\_manager;}
+\DoxyCodeLine{35     \};}
+\DoxyCodeLine{36 \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_\_SPRITE\_FACTORY\_H\_\_}}
+
+\end{DoxyCode}

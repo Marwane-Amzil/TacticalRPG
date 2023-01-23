@@ -1,0 +1,6 @@
+<map id="Grid::addEntity" name="Grid::addEntity">
+<area shape="rect" id="node1" title="Method which adds an entity in the grid. The entity&#39;s position will be used to determine where to add..." alt="" coords="5,56,115,83"/>
+<area shape="rect" id="node2" href="$class_entity.html#af6800b23e4a4c048b8a43afd6bbf653d" title="Method which returns the current position of the entity." alt="" coords="163,5,292,32"/>
+<area shape="rect" id="node3" href="$class_position.html#aec07bdc14874f47cd1dc675d864f49a2" title="Method which returns the x value of the position." alt="" coords="176,56,279,83"/>
+<area shape="rect" id="node4" href="$class_position.html#aecedcf0af53e559ccde18432f20d1a37" title="Method which returns the y value of the position." alt="" coords="175,107,279,133"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="SwordSkill::getPossibleZones" name="SwordSkill::getPossibleZones">
+<area shape="rect" id="node1" title="Returns a vector of positions that are in range of the skill. It is where the skill (SwordSkill) can ..." alt="" coords="188,5,383,32"/>
+<area shape="rect" id="node2" href="$class_sword_skill.html#ac821c976bdc375920b57a968a67bcab9" title="method activate that activates the current skill (SwordSkill)" alt="" coords="5,5,140,32"/>
+</map>

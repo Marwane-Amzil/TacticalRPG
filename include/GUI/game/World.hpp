@@ -47,6 +47,8 @@ namespace gui
 
 		sf::RectangleShape _shape;
 		Grid _grid;
+		std::array<std::array<EntitySprite*, ::grid::ROWS>, ::grid::COLUMNS> _backgroundSprites;
+
 		std::array<std::array<EntitySprite*, ::grid::ROWS>, ::grid::COLUMNS> _sprites;
 	};
 }

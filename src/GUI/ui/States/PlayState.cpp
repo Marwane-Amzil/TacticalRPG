@@ -11,14 +11,6 @@
 
 
 PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool replace)
-: super{ machine, window, replace }, _world(_window)
+: super{ machine, window, replace }, _world(_window), _spriteFactory(_world, _textureManager, _animationManager)
 {
 }
-
-
-gui::World PlayState::getWorld() const
-{
-	return _world; 
-}
-
-

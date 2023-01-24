@@ -33,6 +33,7 @@ private:
 	typedef PlayState super;
 
 
+	
 	sf::Texture _m_backgroundTexture;
 	sf::Sprite _m_background;
 		

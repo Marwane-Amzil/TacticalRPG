@@ -8,7 +8,8 @@
 #include <iostream>
 
 gui::World::World(sf::RenderTarget& target)
-{
+	: _shape(), _grid(), _backgroundSprites() , _sprites()
+{	
 	_shape.setSize(sf::Vector2f(1280, 720));
 	auto[x, y] = target.getSize();
 	
@@ -29,8 +30,7 @@ gui::World::World(sf::RenderTarget& target)
 		for (int j = 0; j < 20; ++j) {
 			background_sprite.setPosition(i * static_cast<int>(background_width / 20) + basic_x_pos,
 				j * static_cast<int>(background_height / 20) + basic_y_pos);
-			_sprites[i][j] = new EntitySprite(background_sprite);
-			std::cout << "\n" << _sprites[i][j];
+			_backgroundSprites[i][j] = new EntitySprite(background_sprite);
 		}
 	}
 }
@@ -55,7 +55,7 @@ void gui::World::removeEntity(gui::EntitySprite* sprite)
 	int x = sprite->getEntity()->getPosition().getX();
 	int y = sprite->getEntity()->getPosition().getY();
 
-	delete &_sprites[x][y];
+	delete _sprites[x][y];
 	_sprites[x][y] = nullptr;
 	_grid[x][y] = nullptr;
 }
@@ -70,14 +70,17 @@ void gui::World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(_shape, states);
 	target.clear();
 
+
 	for (size_t i = 0; i < ::grid::ROWS; i++)
 	{
 		for (size_t j = 0; j < ::grid::COLUMNS; j++)
 		{
-			if (&_sprites[i][j])
+			target.draw(*_backgroundSprites[i][j], states);
+			if (_sprites[i][j])
 			{
 				target.draw(*_sprites[i][j], states);
 			}
+			
 		}
 	}
 }

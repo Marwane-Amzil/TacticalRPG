@@ -19,7 +19,7 @@ namespace sf
 	class Sprite;
 }
 class CharacterChoice : public PlayState
-	{
+{
 public:
 	CharacterChoice(StateMachine& machine, sf::RenderWindow& window, bool replace = true);
 
@@ -33,13 +33,15 @@ private:
 	typedef PlayState super;
 
 
-	
+
 	sf::Texture _m_backgroundTexture;
 	sf::Sprite _m_background;
-		
+
 	sf::Vector2i _pos_mouse;
 	sf::Vector2f _mouse_coord;
-	std::array<gui::EntitySprite*, 1> m_characters;
+	std::array<std::string, 5> _m_characterNames = {"warrior", "archer", "knight", "healer", "mage"};
+	
+	std::array<gui::EntitySprite, 10> m_characters;
 	sf::Clock _clock = sf::Clock();
 		
 };

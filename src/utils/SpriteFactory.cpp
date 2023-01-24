@@ -35,7 +35,7 @@ namespace utils
 			sprite->addAnimation(index, *animation);
 			++index;
 		}
-		sprite->setCurrentAnimation(9);
+		sprite->setCurrentAnimation(5);
 		sprite->playAnimation();
 		sprite->loopCurrentAnimation(true);
 		_world.addEntity(sprite);

@@ -6,7 +6,7 @@
 void Application::run()
 {
 	// Create render window
-	_window.create({ 1280, 720 }, "Engine Test v3.0", sf::Style::Titlebar | sf::Style::Close);
+	_window.create(sf::VideoMode(1080, 720), "");
 	_window.setFramerateLimit(30);
 
 	// Initialize the engine

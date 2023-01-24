@@ -8,8 +8,8 @@
 CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window, bool replace)
 : super(machine, window, replace){
     
-    _spriteFactory.createCharacter(new Healer(2, 2, 'Rs'));
-    _spriteFactory.createCharacter(new Healer(15, 5, 'R'));
+    //_spriteFactory.createCharacter(new Healer(2, 2, 'Rs'));
+    m_characters[0] = _spriteFactory.createCharacter(new Healer(15, 5, 'R'));
 
 }
 
@@ -23,6 +23,10 @@ void CharacterChoice::resume()
 
 void CharacterChoice::update()
 {
+	for (sf::Event event = sf::Event(); _window.pollEvent(event);)
+	{
+		
+	}
 }
 
 void CharacterChoice::draw()

@@ -38,6 +38,7 @@ namespace utils
 
 		sprite->setTextureRect(0,64,50,60);
 		sprite->setCurrentAnimation(5);
+		sprite->loopCurrentAnimation(true);
 		sprite->playAnimation();
 
 		_world.addEntity(sprite);

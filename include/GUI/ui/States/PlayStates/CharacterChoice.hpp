@@ -39,6 +39,7 @@ private:
 		
 	sf::Vector2i _pos_mouse;
 	sf::Vector2f _mouse_coord;
+	std::array<gui::EntitySprite*, 4> m_characters;
 		
 };
 

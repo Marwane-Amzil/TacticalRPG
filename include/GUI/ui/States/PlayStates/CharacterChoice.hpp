@@ -39,7 +39,8 @@ private:
 		
 	sf::Vector2i _pos_mouse;
 	sf::Vector2f _mouse_coord;
-	std::array<gui::EntitySprite*, 4> m_characters;
+	std::array<gui::EntitySprite*, 1> m_characters;
+	sf::Clock _clock = sf::Clock();
 		
 };
 

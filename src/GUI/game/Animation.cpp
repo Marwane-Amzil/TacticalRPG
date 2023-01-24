@@ -4,7 +4,7 @@
 namespace gui
 {
 	Animation::Animation()
-		: _frames(), _frame_time(sf::seconds(0.1f)), _current_time(), _current_frame(0), _is_playing(false), _is_looping(false) {}
+		: _frames(), _frame_time(sf::seconds(2.0f)), _current_time(), _current_frame(0), _is_playing(false), _is_looping(false) {}
 
 	const sf::IntRect& Animation::getFrame(size_t index) const
 	{

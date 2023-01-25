@@ -23,7 +23,6 @@ CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window
 			m_characters[nb].setPosition(multyx * x,  multiy * y);
 			m_characters[nb].setTextureRect(sf::IntRect(70, 650, 50, 50));
 			m_characters[nb].setScale(2.8f, 2.8f);
-			
 			multiy = multiy - 0.2f;
 			nb++;
 		}
@@ -57,39 +56,96 @@ void CharacterChoice::update()
 				_window.close();
 		}
 	}
-
-	
 	auto [x, y] = _window.getSize();
-	for (size_t i = 0; i < m_characters.size(); i++)
-	{
-		if (m_characters[i].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))
-		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				bool click_looker = false;
-				while (!click_looker) {
-					sf::Vector2i vector = sf::Mouse::getPosition();
-					//std::cout << "sheesh";
-					click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-				}
-				click_looker = false;
-				
-					int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - 460) / 50) * 50 + 460;
-					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - 40) / 50) * 50 + 40;
-					
-					
-					std::cout << pos_grille_x << " " << pos_grille_y << std::endl;
-					m_characters[i].setScale(0.8, 0.8);
-					m_characters[i].setPosition(pos_grille_x, pos_grille_y);
-					//_world.addEntity(&m_characters[i]);
+	
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{ 
+	std::cout << static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) << " " << static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) << std::endl;
+	}
 
+		for (size_t i = 0; i < m_characters.size(); i++)
+		{
+			if (m_characters[i].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))
+			{
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+				{
+					bool click_looker = false;
+					while (!click_looker) {
+						sf::Vector2i vector = sf::Mouse::getPosition();
+						//std::cout << "sheesh";
+						click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+					}
+					click_looker = false;
+						
+					// 460 -> espace à gauche grille bords écrans
+					// 40 -> espace en haut grille bords écrans
+					
+					int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)- (0.24 * x)) / 50) * 50 + (0.24 * x);
+					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * x);
+					int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
+					int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+						
+						//std::cout << pos_grille_x << " " << pos_grille_y << std::endl;
+						std::cout << pos_grid_x << " " << pos_grid_y<< std::endl;
+					
+					//gui::EntitySprite entitySprite(m_characters[i]);
+					if (i == 0) {
+						_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'B'));
+					}
+					else if (i == 1)
+					{
+						_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'B'));
+					}
+					else if (i == 2)
+					{
+						_CurrentCharacter = _CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
+					}
+					else if (i == 3)
+					{
+						_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'B'));
+					}
+					else if (i == 4)
+					{
+						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'B'));
+					}
+					else if (i == 5) {
+						_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'R'));
+					}
+					else if (i == 6)
+					{
+						_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'R'));
+					}
+					else if (i == 7)
+					{
+						_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'R'));
+					}
+					else if (i == 8)
+					{
+						_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'R'));
+					}
+					else if (i == 9)
+					{
+						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'R'));
+					}
+					
+				}
 			}
 		}
-	}
+	_CurrentCharacter->update(_clock.getElapsedTime());
 	
-}
+}// End Update()
 
 
+//_spriteFactory.createCharacter(m_characters[i].getEntity());
+
+
+
+/*m_characters[i].setScale(0.8, 0.8);
+m_characters[i].setPosition(pos_grille_x, pos_grille_y);
+m_characters[i].setPosition(pos_grille_x, pos_grille_y);
+*/
+//_world.addEntity(&entitySprite);
+//_world.addEntity(&m_characters[i]);
 
 /*
 bool click_looker = false;

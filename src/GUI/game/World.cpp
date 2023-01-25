@@ -18,7 +18,7 @@ gui::World::World(sf::RenderTarget& target)
 	//std::cout << "\nwidth : " << background_width << "						height : " << background_height;
 
 
-	background_texture.loadFromFile("assets/images/background.png", sf::IntRect(0, 0, static_cast<int>(background_width / 20), static_cast<int>(background_height / 20)));
+	background_texture.loadFromFile("assets/images/background.png", sf::IntRect(0, 0, static_cast<int>(background_width / 19), static_cast<int>(background_height / 19)));
 	background_sprite.setTexture(&background_texture);
 
 	
@@ -28,8 +28,9 @@ gui::World::World(sf::RenderTarget& target)
 
 	
 	_shape.setSize(sf::Vector2f(19 * static_cast<int>(background_height / 20 ) + basic_y_pos , 19 * static_cast<int>(background_height / 20) + basic_y_pos));
-	
 	_shape.setPosition(basic_x_pos, basic_y_pos);
+
+	
 
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {

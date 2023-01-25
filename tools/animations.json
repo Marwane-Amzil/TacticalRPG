@@ -1,7 +1,7 @@
 {
   "animations": [
     {
-      "name": "dead",
+      "name": "dead", 
       "frames": [
         {
           "top": 1300,

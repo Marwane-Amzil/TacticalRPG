@@ -5,6 +5,7 @@
 #include <GUI/game/EntitySprite.hpp> // gui::EntitySprite
 #include <Entities/Character.hpp> // Character
 #include <Entities/Obstacle.hpp> // Obstacle
+#include <iostream>
 
 namespace utils
 {
@@ -21,23 +22,30 @@ namespace utils
 	{
 		
 		gui::EntitySprite* sprite = new gui::EntitySprite(character);
+		
 		sprite->setTexture(_texture_manager.getTextureAt(character->getPlayer(), character->getClass()));
 		size_t index = 0;
 
-		for (const gui::Animation* animation : _animation_manager.getAnimations())
+		
+		/*for (const gui::Animation* animation : _animation_manager.getAnimations())
 		{
 			sprite->addAnimation(index, *animation);
 			++index;
-		}
+			std::cout << "index = " << index << std::endl;
 
+		}
+		*/
 		for (const auto& [name, animation] : _animation_manager.getSpecialAnimations(character->getClass()))
 		{
 			sprite->addAnimation(index, *animation);
 			++index;
+			std::cout << "index = " << index << " name = " << name << std::endl;
 		}
-		sprite->setCurrentAnimation(5);
+		
+		sprite->setCurrentAnimation(2);
 		sprite->playAnimation();
 		sprite->loopCurrentAnimation(true);
+		
 		_world.addEntity(sprite);
 		
 		return sprite;

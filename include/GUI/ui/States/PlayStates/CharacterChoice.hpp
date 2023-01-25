@@ -34,7 +34,7 @@ private:
 
 	int nb = 0;
 	
-
+	gui::EntitySprite* _CurrentCharacter;
 
 	sf::Texture _m_backgroundTexture;
 	sf::Sprite _m_background;

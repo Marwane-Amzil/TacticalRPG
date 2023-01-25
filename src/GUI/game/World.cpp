@@ -10,9 +10,8 @@
 gui::World::World(sf::RenderTarget& target)
 	: _shape(), _grid(), _backgroundSprites() , _sprites()
 {	
-	_shape.setSize(sf::Vector2f(1280, 720));
 	auto[x, y] = target.getSize();
-	
+
 	float background_width = (1000.0 / 1920) * x;
 	float background_height = (1000.0 / 1080) * y;
 
@@ -22,9 +21,15 @@ gui::World::World(sf::RenderTarget& target)
 	background_texture.loadFromFile("assets/images/background.png", sf::IntRect(0, 0, static_cast<int>(background_width / 20), static_cast<int>(background_height / 20)));
 	background_sprite.setTexture(&background_texture);
 
+	
+
 	int basic_x_pos = static_cast<int>(0.24 * x);
 	int basic_y_pos = static_cast<int>(0.04 * y);
 
+	
+	_shape.setSize(sf::Vector2f(19 * static_cast<int>(background_height / 20 ) + basic_y_pos , 19 * static_cast<int>(background_height / 20) + basic_y_pos));
+	
+	_shape.setPosition(basic_x_pos, basic_y_pos);
 
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
@@ -33,6 +38,8 @@ gui::World::World(sf::RenderTarget& target)
 			_backgroundSprites[i][j] = new EntitySprite(background_sprite);
 		}
 	}
+	
+	
 }
 
 
@@ -43,7 +50,7 @@ void gui::World::addEntity(gui::EntitySprite* sprite)
 
 	_grid.addEntity(sprite->getEntity());
 	
-	int pos_world_x = static_cast<int>(((x)-460) / 50) * 50 + 460;        
+	int pos_world_x = static_cast<int>(((x)-460) / 50) * 50 + 460;      
 	int pos_world_y = static_cast<int>(((y)-40) / 50) * 50 + 40;
 	
 	_sprites[x][y] = sprite;
@@ -64,6 +71,13 @@ const Grid& gui::World::getGrid() const
 {
 	return _grid;
 }
+
+
+sf::RectangleShape gui::World::getShape() const
+{
+	return _shape;
+}
+
 
 void gui::World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

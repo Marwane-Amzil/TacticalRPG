@@ -6,7 +6,7 @@
 void Application::run()
 {
 	// Create render window
-	_window.create(sf::VideoMode(1080, 720), "");
+	_window.create(sf::VideoMode(1280, 720), "SFML window");
 	_window.setFramerateLimit(30);
 
 	// Initialize the engine

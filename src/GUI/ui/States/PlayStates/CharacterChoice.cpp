@@ -10,10 +10,11 @@ CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window
 {
 	_animationManager.loadAnimations();
     //_spriteFactory.createCharacter(new Healer(2, 2, 'Rs'));
-	int nb = 0;
 	char color = 'B';
-	float multiy = 0.8f;
+	
+	float multiy = 0.83f;
 	float multyx = 0.1f;
+	
 	auto [x, y] = _window.getSize();
 
 	for (size_t i = 0; i < 2; i++){
@@ -24,15 +25,11 @@ CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window
 			m_characters[nb].setScale(2.8f, 2.8f);
 			
 			multiy = multiy - 0.2f;
-			if (multiy < 0) {
-				multiy = 0.8f;
-			}
 			nb++;
-			if (nb == 5){
-				color = 'R';
-				multyx = 0.83f;
-			}
 		}
+		color = 'R';
+		multyx = 0.8f;
+		multiy = 0.83f;
 	}
 	
 
@@ -60,26 +57,52 @@ void CharacterChoice::update()
 				_window.close();
 		}
 	}
+
 	
-
-
+	auto [x, y] = _window.getSize();
 	for (size_t i = 0; i < m_characters.size(); i++)
 	{
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (m_characters[i].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))
 		{
-			if (m_characters[i].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
-				int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)-460) / 50) * 50 + 460;
-				int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y)-40) / 50) * 50 + 40;
-				auto [x, y] = _window.getSize();
-				std::cout << m_characters[i].getPosition().x << " " << m_characters[i].getPosition().y << std::endl;
-				m_characters[i].setScale(1, 1);
-				m_characters[i].setPosition(pos_grille_x,pos_grille_y);
+				bool click_looker = false;
+				while (!click_looker) {
+					sf::Vector2i vector = sf::Mouse::getPosition();
+					//std::cout << "sheesh";
+					click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+				}
+				click_looker = false;
+				
+					int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - 460) / 50) * 50 + 460;
+					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - 40) / 50) * 50 + 40;
+					
+					
+					std::cout << pos_grille_x << " " << pos_grille_y << std::endl;
+					m_characters[i].setScale(0.8, 0.8);
+					m_characters[i].setPosition(pos_grille_x, pos_grille_y);
+					//_world.addEntity(&m_characters[i]);
 
 			}
 		}
 	}
+	
 }
+
+
+
+/*
+bool click_looker = false;
+while (!click_looker) {
+	sf::Vector2i vector = sf::Mouse::getPosition();
+
+	click_looker = (sf::Mouse::getPosition(_window).x < static_cast<int>(0.93 * x)) && (sf::Mouse::getPosition(_window).x > static_cast<int>(0.83 * x)) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		_window.close();
+	}
+}
+click_looker = false;
+*/
 
 void CharacterChoice::draw()
 {

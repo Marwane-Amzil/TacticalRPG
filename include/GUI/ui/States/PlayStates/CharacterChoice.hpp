@@ -32,6 +32,8 @@ public:
 private:
 	typedef PlayState super;
 
+	int nb = 0;
+	
 
 
 	sf::Texture _m_backgroundTexture;

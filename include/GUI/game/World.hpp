@@ -25,6 +25,8 @@ namespace gui
 		void addEntity(EntitySprite* sprite);
 
 		void removeEntity(EntitySprite* sprite);
+		
+		sf::RectangleShape getShape() const;
 
 		virtual ~World()  = default;
 

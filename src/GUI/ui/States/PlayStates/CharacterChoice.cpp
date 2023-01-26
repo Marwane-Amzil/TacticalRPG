@@ -81,7 +81,8 @@ void CharacterChoice::update()
 					// 40 -> espace en haut grille bords écrans
 					
 					int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)- (0.24 * x)) / 50) * 50 + (0.24 * x);
-					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * x);
+					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
+					
 					int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 					int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 						
@@ -98,7 +99,7 @@ void CharacterChoice::update()
 					}
 					else if (i == 2)
 					{
-						_CurrentCharacter = _CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
+						_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
 					}
 					else if (i == 3)
 					{
@@ -130,8 +131,8 @@ void CharacterChoice::update()
 					
 				}
 			}
-		}
-	_CurrentCharacter->update(_clock.getElapsedTime());
+		}    
+		//_CurrentCharacter->update(_clock.getElapsedTime());
 	
 }// End Update()
 

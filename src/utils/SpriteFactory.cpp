@@ -23,29 +23,35 @@ namespace utils
 		
 		gui::EntitySprite* sprite = new gui::EntitySprite(character);
 		
+		int sprite_x = sprite->getEntity()->getPosition().getX() * 50 + (0.24 * _world.getShape().getGlobalBounds().getPosition().x);
+		int sprite_y = sprite->getEntity()->getPosition().getY() * 50 + (0.04 * _world.getShape().getGlobalBounds().getPosition().y);
+
+		std::cout << "sprite_x : " << sprite_x << "   " << sprite_y << std::endl;
+		
+		sprite->setPosition(sprite_x,sprite_y);
 		sprite->setTexture(_texture_manager.getTextureAt(character->getPlayer(), character->getClass()));
 		size_t index = 0;
 
-		
-		/*for (const gui::Animation* animation : _animation_manager.getAnimations())
+		/*
+		for (const gui::Animation* animation : _animation_manager.getAnimations())
 		{
 			sprite->addAnimation(index, *animation);
 			++index;
 			std::cout << "index = " << index << std::endl;
 
 		}
-		*/
 		for (const auto& [name, animation] : _animation_manager.getSpecialAnimations(character->getClass()))
 		{
 			sprite->addAnimation(index, *animation);
 			++index;
 			std::cout << "index = " << index << " name = " << name << std::endl;
 		}
-		
+
 		sprite->setCurrentAnimation(2);
 		sprite->playAnimation();
 		sprite->loopCurrentAnimation(true);
-		
+		*/
+
 		_world.addEntity(sprite);
 		
 		return sprite;

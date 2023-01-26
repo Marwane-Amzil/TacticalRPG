@@ -51,8 +51,8 @@ void gui::World::addEntity(gui::EntitySprite* sprite)
 
 	_grid.addEntity(sprite->getEntity());
 	
-	int pos_world_x = static_cast<int>(((x)-460) / 50) * 50 + 460;      
-	int pos_world_y = static_cast<int>(((y)-40) / 50) * 50 + 40;
+	int pos_world_x = sprite->getPosition().x;      
+	int pos_world_y = sprite->getPosition().y;
 	
 	_sprites[x][y] = sprite;
 	_sprites[x][y]->setPosition(pos_world_x, pos_world_y);

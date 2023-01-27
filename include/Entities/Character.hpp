@@ -201,7 +201,7 @@ protected:
 	bool _can_sp_act;
 	int _magic;
 	int _strength;
-	std::array<Skill*, ::skill::MAX_SKILLS> _skills;
+	std::array<Skill*, ::skill::MAX_SKILLS> _skills; 
 
 private:
 

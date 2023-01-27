@@ -8,6 +8,8 @@
 CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window, bool replace)
 : super(machine, window, replace)
 {
+	_clock.restart();
+
 	_animationManager.loadAnimations();
     //_spriteFactory.createCharacter(new Healer(2, 2, 'Rs'));
 	char color = 'B';
@@ -129,10 +131,11 @@ void CharacterChoice::update()
 						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'R'));
 					}
 					
+					//_CurrentCharacter->update(_clock.getElapsedTime());
+					//_clock.restart();
 				}
 			}
 		}    
-		//_CurrentCharacter->update(_clock.getElapsedTime());
 	
 }// End Update()
 

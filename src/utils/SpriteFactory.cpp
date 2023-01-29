@@ -10,13 +10,7 @@
 namespace utils
 {
 	SpriteFactory::SpriteFactory(gui::World& world, TextureManager& texture_manager, AnimationManager& animation_manager)
-		: _world(world), _texture_manager(texture_manager), _animation_manager(animation_manager)
-	{
-		// Load the textures and animations
-		_texture_manager.loadTextures();
-		_animation_manager.loadAnimations();
-		
-	}
+		: _world(world), _texture_manager(texture_manager), _animation_manager(animation_manager) {}
 
 	gui::EntitySprite* SpriteFactory::createCharacter(Character* character) const
 	{

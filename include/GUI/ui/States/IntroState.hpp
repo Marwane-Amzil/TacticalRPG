@@ -5,6 +5,8 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <GUI/ui/State.hpp>
+#include <GUI/game/World.hpp>
+#include <utils/TextureManager.hpp>
 
 class StateMachine;
 
@@ -16,7 +18,8 @@ namespace sf
 class IntroState final : public State
 {
 public:
-	IntroState(StateMachine& machine, sf::RenderWindow& window, bool replace = true);
+	
+	explicit IntroState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
 
 	void pause() override;
 	void resume() override;
@@ -25,6 +28,9 @@ public:
 	void draw() override;
 
 private:
+	
+	gui::World& _world;
+	utils::TextureManager& _texture_manager;
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_background;
 	sf::RectangleShape m_fader;

@@ -1,16 +1,16 @@
 #include <GUI/ui/States/IntroState.hpp>
-#include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
+#include <GUI/ui/States/MenuState.hpp>
 #include <GUI/ui/StateMachine.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <iostream>
 #include <memory>
 
-IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, const bool replace)
-: State{ machine, window, replace }
+IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
+	: State(machine, window, replace), _world(world), _texture_manager(texture_manager)
 , m_alpha{ 0, 0, 0, 255 } // Start off opaque
 {
-	if (!m_backgroundTexture.loadFromFile("assets/images/intro.png"))
+	if (!m_backgroundTexture.loadFromFile("./assets/ui/menu/img/menu-Play.png"))
 	{
 		throw std::runtime_error{ "Was unable to load image 'img/intro.png'" };
 	}
@@ -49,7 +49,7 @@ void IntroState::update()
                 switch (event.key.code)
                 {
                     case sf::Keyboard::Space:
-                        m_next = StateMachine::build<CharacterChoice>(_machine, _window, true);
+						m_next = StateMachine::build<MenuState>(_machine, _window, _world, _texture_manager, true);
                         break;
 
                     case sf::Keyboard::Escape:

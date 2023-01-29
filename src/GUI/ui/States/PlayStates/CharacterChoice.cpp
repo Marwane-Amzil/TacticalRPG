@@ -2,11 +2,12 @@
 #include <GUI/game/EntitySprite.hpp>
 #include <Entities.hpp>
 #include <iostream>
-#include <GUI/ui/States/PlayState.hpp>
+#include <GUI/ui/StateMachine.hpp>
+#include <GUI/ui/States/MenuState.hpp>
 
 
-CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window, bool replace)
-: super(machine, window, replace)
+CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
+: super(machine, window, world, texture_manager, replace), _animationManager(), _spriteFactory(_world, texture_manager, _animationManager)
 {
 	_clock.restart();
 
@@ -39,10 +40,12 @@ CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window
 
 void CharacterChoice::pause()
 {
+	std::cout << "pause choice\n";
 }
 
 void CharacterChoice::resume()
 {
+	std::cout << "resume choice\n";
 }
 
 void CharacterChoice::update()
@@ -55,9 +58,13 @@ void CharacterChoice::update()
 		if (event.type == sf::Event::KeyPressed)
 		{
 			if (event.key.code == sf::Keyboard::Escape)
-				_window.close();
+			{
+				_world.clean();
+				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
+			}
 		}
 	}
+	
 	auto [x, y] = _window.getSize();
 	
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -66,7 +73,7 @@ void CharacterChoice::update()
 	}
 
 		for (size_t i = 0; i < m_characters.size(); i++)
-		{
+		{	
 			if (m_characters[i].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))
 			{
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -79,8 +86,8 @@ void CharacterChoice::update()
 					}
 					click_looker = false;
 						
-					// 460 -> espace à gauche grille bords écrans
-					// 40 -> espace en haut grille bords écrans
+					// 460 -> espace ï¿½ gauche grille bords ï¿½crans
+					// 40 -> espace en haut grille bords ï¿½crans
 					
 					int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)- (0.24 * x)) / 50) * 50 + (0.24 * x);
 					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
@@ -135,7 +142,7 @@ void CharacterChoice::update()
 					//_clock.restart();
 				}
 			}
-		}    
+		}
 	
 }// End Update()
 

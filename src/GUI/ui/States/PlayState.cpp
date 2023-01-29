@@ -10,7 +10,5 @@
 #include <array>
 
 
-PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, const bool replace)
-: super{ machine, window, replace }, _world(_window), _spriteFactory(_world, _textureManager, _animationManager)
-{
-}
+PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
+	: State(machine, window, replace), _world(world), _textureManager(texture_manager) {}

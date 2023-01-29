@@ -28,6 +28,8 @@ namespace gui
 		
 		sf::RectangleShape getShape() const;
 
+		void clean();
+
 		virtual ~World()  = default;
 
 		const std::array<EntitySprite*, ::grid::COLUMNS>& operator[](size_t index) const;

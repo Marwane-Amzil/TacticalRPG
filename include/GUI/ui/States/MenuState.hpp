@@ -6,6 +6,8 @@
 #include <array>
 #include <GUI/ui/Button.hpp>
 #include <GUI/ui/State.hpp>
+#include <GUI/game/World.hpp>
+#include <utils/TextureManager.hpp>
 
 class StateMachine;
 
@@ -20,7 +22,8 @@ namespace sf
 class MenuState final : public State
 {
 public:
-	MenuState(StateMachine& machine, sf::RenderWindow& window, bool replace = true);
+	
+    explicit MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
 
 	void pause() override;
 	void resume() override;
@@ -30,6 +33,8 @@ public:
 
 private:
     
+    gui::World& _world;
+	utils::TextureManager& _texture_manager;
 	sf::Texture m_backgroundTexture;
 	// Constains the sprites of the menu
 	sf::Sprite m_background;
@@ -50,7 +55,7 @@ private:
     
     //sf::Vector2i (ou sf::Vector2<int>) est utile lorsqu'on a besoin d'une position en pixels par exemple (donc un nombre entier).
     //sf::Vector2u(ou sf::Vector2<unsigned>) est utile lorsqu'on a besoin d'une position de souris 
-    //par exemple(la souris ne sort pas de l'écran et aura donc toujours une position positive).
+    //par exemple(la souris ne sort pas de l'ï¿½cran et aura donc toujours une position positive).
     sf::Vector2i _pos_mouse;
     
     sf::Vector2f _mouse_coord;

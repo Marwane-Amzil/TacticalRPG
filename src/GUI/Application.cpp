@@ -1,16 +1,19 @@
 #include <GUI/Application.hpp>
-//#include <GUI/ui/States/IntroState.hpp>
-//#include <GUI/ui/States/MenuState.hpp>
+#include <GUI/ui/States/IntroState.hpp>
+#include <GUI/ui/States/MenuState.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
+
+Application::Application()
+	: _machine(), _window(sf::VideoMode::getDesktopMode(), "SFML Window", sf::Style::Fullscreen), _world(_window)
+{
+	_window.setVerticalSyncEnabled(true);
+	_textureManager.loadTextures();
+}
 
 void Application::run()
 {
-	// Create render window
-	_window.create(sf::VideoMode(1920, 1080), "SFML window", sf::Style::Fullscreen);
-	_window.setFramerateLimit(30);
-
 	// Initialize the engine
-	_machine.run(StateMachine::build<CharacterChoice>(_machine, _window, true));
+	_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
 
 	// Main loop
 	while (_machine.running())

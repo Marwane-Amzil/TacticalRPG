@@ -120,6 +120,9 @@
     <ClCompile Include="src\GUI\ui\States\PlayStates\CharacterChoice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\ui\States\PlayStates\ChoosePlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Entities\Character.hpp">
@@ -633,6 +636,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GUI\ui\States\PlayStates\CharacterChoice.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\ui\States\PlayStates\ChoosePlay.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

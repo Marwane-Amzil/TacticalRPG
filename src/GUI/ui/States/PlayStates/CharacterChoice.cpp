@@ -3,6 +3,9 @@
 #include <Entities.hpp>
 #include <iostream>
 #include <GUI/ui/States/PlayState.hpp>
+#include <GUI/ui/States/PlayStates/ChoosePlay.hpp>
+#include <GUI/ui/State.hpp>
+#include <GUI/ui/StateMachine.hpp>
 
 
 CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window, bool replace)
@@ -55,7 +58,13 @@ void CharacterChoice::update()
 		if (event.type == sf::Event::KeyPressed)
 		{
 			if (event.key.code == sf::Keyboard::Escape)
+			{
 				_window.close();
+			}
+				if (event.key.code == sf::Keyboard::Space)
+			{
+				_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, true));
+			}
 		}
 	}
 	auto [x, y] = _window.getSize();

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\ui\States\PlayStates\ChoosePlay.cpp" />
     <ClCompile Include="src\GUI\ui\States\PlayStates\CharacterChoice.cpp" />
     <ClCompile Include="src\GUI\Application.cpp" />
     <ClCompile Include="src\GUI\game\Animation.cpp" />
@@ -56,6 +57,7 @@
     <ClCompile Include="src\utils\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\GUI\ui\States\PlayStates\ChoosePlay.hpp" />
     <ClInclude Include="include\GUI\ui\States\PlayStates\CharacterChoice.hpp" />
     <ClInclude Include="include\Entities.hpp" />
     <ClInclude Include="include\flatbuffers\allocator.h" />

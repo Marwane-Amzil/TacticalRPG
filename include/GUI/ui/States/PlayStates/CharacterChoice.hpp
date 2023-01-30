@@ -19,6 +19,7 @@ namespace sf
 	class Font;
 	class Texture;
 	class Sprite;
+	class Clock;
 }
 class CharacterChoice : public PlayState
 {

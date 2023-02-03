@@ -31,13 +31,16 @@ public:
 	void update() override;
 	void draw() override;
 
+
 private:
 
 	typedef PlayState super;
-	int nb = 0;
 	utils::AnimationManager _animationManager;
 	utils::SpriteFactory _spriteFactory;
 	sf::Texture _m_backgroundTexture;
+
+	
+	int nb = 0;
 	sf::Sprite _m_background;
 	sf::Vector2i _pos_mouse;
 	sf::Vector2f _mouse_coord;

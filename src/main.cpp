@@ -1,6 +1,7 @@
 #include <GUI/Application.hpp>
 #include <SFML/Graphics.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
+#include <GUI/game/ActionsGraphic.hpp>
 #include <GUI/ui/StateMachine.hpp>
 int main(int argc, char* argv[])
 {
@@ -20,7 +21,7 @@ int main(int argc, char* argv[])
 	*/
 	/*
 	sf::RenderWindow _window(sf::VideoMode(1280, 720), "Menu SFML", sf::Style::Titlebar | sf::Style::Close);
-	gui::World test(_window);
+	gui::ActionsGraphic test(_window);
 	//StateMachine _machine;
 	//CharacterChoice _characterChoise(_machine, _window);
 	

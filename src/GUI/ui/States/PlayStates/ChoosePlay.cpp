@@ -2,9 +2,8 @@
 
 
 
-
-ChoosePlay::ChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
-	: super(machine, window, world, texture_manager, replace), _animationManager(), _spriteFactory(_world, texture_manager, _animationManager)	
+ChoosePlay::ChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace )
+	: super(machine, window, world, texture_manager, replace), _animationManager(),_actions(window), _spriteFactory(_world, texture_manager, _animationManager)
 {
 	
 }
@@ -20,11 +19,14 @@ void ChoosePlay::resume()
 void ChoosePlay::update()
 {
 	
+
+
 }
 
 void ChoosePlay::draw()
 {
 	_window.clear();
 	_window.draw(_world);
+	_window.draw(_actions);
 	_window.display();
 }

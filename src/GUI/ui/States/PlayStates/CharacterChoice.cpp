@@ -4,6 +4,8 @@
 #include <iostream>
 #include <GUI/ui/StateMachine.hpp>
 #include <GUI/ui/States/MenuState.hpp>
+#include <GUI/ui/States/PlayStates/ChoosePlay.hpp>
+
 
 
 CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
@@ -61,6 +63,11 @@ void CharacterChoice::update()
 			{
 				_world.clean();
 				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
+			}
+			if(event.key.code == sf::Keyboard::Up)
+			{
+				_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
+
 			}
 		}
 	}

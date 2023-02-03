@@ -96,7 +96,7 @@ void gui::World::clean()
 void gui::World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(_shape, states);
-	target.clear();
+	//target.clear();
 
 
 	for (size_t i = 0; i < ::grid::ROWS; i++)

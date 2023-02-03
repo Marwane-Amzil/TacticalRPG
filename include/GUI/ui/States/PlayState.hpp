@@ -30,7 +30,7 @@ public:
 	*	@see gui::World
 	*	@see gui::EntitySprite
 	*/
-	PlayState(StateMachine& machine, sf::RenderWindow& window, bool replace = true);
+	explicit PlayState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
 
 private:
 
@@ -40,9 +40,7 @@ private:
 	typedef State super;
 protected:
 
-	gui::World _world;
-	utils::TextureManager _textureManager;
-	utils::AnimationManager _animationManager;
-	utils::SpriteFactory _spriteFactory;
+	gui::World& _world;
+	utils::TextureManager& _textureManager;
 	
 };

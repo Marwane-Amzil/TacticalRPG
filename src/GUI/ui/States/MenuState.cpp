@@ -7,19 +7,13 @@
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
 #include <iostream>
 
-MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, const bool replace)
-: State{ machine, window, replace }
+MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
+	: State(machine, window, replace), _world(world), _texture_manager(texture_manager)
 {
     _winclose = new sf::RectangleShape();
     _font = new sf::Font();
     _image = new sf::Texture();
     _closingImage = new sf::Texture();
-    
-    // Creating a window 1280 x 720 
-    window.create(sf::VideoMode(1280, 720), "Menu SFML", sf::Style::Titlebar | sf::Style::Close);
-    // The mouse is at 0,0
-    window.setPosition(sf::Vector2i(0, 0));
-
 
     _pos = 0;
     _pressed = theselect = false;
@@ -106,11 +100,11 @@ void MenuState::update()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !theselect) {
             theselect = true;
             if (_pos == 4) {
-                _window.close();
+                _machine.quit();
             }
 
 			if (_pos == 1) {
-				_machine.run(StateMachine::build<CharacterChoice>(_machine, _window, true));
+				_machine.run(StateMachine::build<CharacterChoice>(_machine, _window, _world, _texture_manager, true));
 			}
             std::cout << _options[_pos] << '\n';
         }
@@ -118,7 +112,7 @@ void MenuState::update()
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
             if (_winclose->getGlobalBounds().contains(_mouse_coord)) {
                 //std::cout << "Close the window!" << '\n';
-                _window.close();
+                _machine.quit();
             }
         }
     }

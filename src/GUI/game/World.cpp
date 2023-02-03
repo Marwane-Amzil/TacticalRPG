@@ -79,6 +79,19 @@ sf::RectangleShape gui::World::getShape() const
 	return _shape;
 }
 
+void gui::World::clean()
+{
+	for (auto& col : _sprites)
+	{
+		for (gui::EntitySprite* const& sprite : col)
+		{
+			if (sprite)
+			{
+				removeEntity(sprite);
+			}
+		}
+	}
+}
 
 void gui::World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

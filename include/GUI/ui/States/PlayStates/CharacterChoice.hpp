@@ -7,6 +7,8 @@
 #include <GUI/ui/Button.hpp>
 #include <GUI/ui/State.hpp>
 #include <GUI/ui/States/PlayState.hpp>
+#include <GUI/game/World.hpp>
+#include <utils/TextureManager.hpp>
 
 
 class StateMachine;
@@ -21,7 +23,7 @@ namespace sf
 class CharacterChoice : public PlayState
 {
 public:
-	CharacterChoice(StateMachine& machine, sf::RenderWindow& window, bool replace = true);
+	explicit CharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
 
 	void pause() override;
 	void resume() override;
@@ -30,21 +32,18 @@ public:
 	void draw() override;
 
 private:
+
 	typedef PlayState super;
-
 	int nb = 0;
-	
-	gui::EntitySprite* _CurrentCharacter;
-
+	utils::AnimationManager _animationManager;
+	utils::SpriteFactory _spriteFactory;
 	sf::Texture _m_backgroundTexture;
 	sf::Sprite _m_background;
-
 	sf::Vector2i _pos_mouse;
 	sf::Vector2f _mouse_coord;
+	gui::EntitySprite* _CurrentCharacter;
 	std::array<std::string, 5> _m_characterNames = {"warrior", "archer", "knight", "healer", "mage"};
-	
 	std::array<gui::EntitySprite, 10> m_characters;
 	sf::Clock _clock = sf::Clock();
-		
 };
 

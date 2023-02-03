@@ -76,13 +76,15 @@ void CharacterChoice::update()
 		{	
 			if (m_characters[i].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))
 			{
+
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
 					bool click_looker = false;
 					while (!click_looker) {
+						std::cout << "\nbloqué" << std::endl;
 						sf::Vector2i vector = sf::Mouse::getPosition();
-						//std::cout << "sheesh";
 						click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+						
 					}
 					click_looker = false;
 						
@@ -96,47 +98,37 @@ void CharacterChoice::update()
 					int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 						
 						//std::cout << pos_grille_x << " " << pos_grille_y << std::endl;
-						std::cout << pos_grid_x << " " << pos_grid_y<< std::endl;
+						std::cout << pos_grid_x << " et " << pos_grid_y<< std::endl;
 					
 					//gui::EntitySprite entitySprite(m_characters[i]);
-					if (i == 0) {
-						_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'B'));
+					
+						
+					char color = 'B';
+					if (i >4) {
+						color = 'R';
+						i -= 5;
 					}
-					else if (i == 1)
+
+					switch (i)
 					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'B'));
+					case 0 :
+						_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, color));
+						break;
+					case 1 :
+						_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, color));
+						break;
+					case 2:
+						_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, color));
+						break;
+					case 3:
+						_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, color));
+						break;
+					default:
+						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, color));
+						break;
 					}
-					else if (i == 2)
-					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
-					}
-					else if (i == 3)
-					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'B'));
-					}
-					else if (i == 4)
-					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'B'));
-					}
-					else if (i == 5) {
-						_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'R'));
-					}
-					else if (i == 6)
-					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'R'));
-					}
-					else if (i == 7)
-					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'R'));
-					}
-					else if (i == 8)
-					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'R'));
-					}
-					else if (i == 9)
-					{
-						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'R'));
-					}
+
+					
 					
 					//_CurrentCharacter->update(_clock.getElapsedTime());
 					//_clock.restart();

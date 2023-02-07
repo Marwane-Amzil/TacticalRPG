@@ -29,12 +29,15 @@ public:
 	*	Indeed the verification is done throught the getPossibleZones method.
 	*/
 	void activate(Grid& grid, Character* target) const override;
-
+	
 	/**
 	*	@brief	Returns a vector of positions that are in range of the skill (AxeSKill).
 	*	It is where the skill can be launched.
 	*/
 	std::vector<Position> getPossibleZones(const Grid& grid) const override;
+
+	std::string getName() const override;
+
 
 
 private:

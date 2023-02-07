@@ -6,6 +6,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics.hpp>
 #include <GUI/game/EntitySprite.hpp>
+#include <Entities/Character.hpp>
 #include <Grid.hpp>
 #include <array>
 #include <Constants.hpp>
@@ -20,11 +21,15 @@ namespace gui
 
 		explicit ActionsGraphic(sf::RenderTarget& target);
 
-		//sf::RectangleShape getShape() const;
+		sf::RectangleShape getShape() const;
 
 		//void clean();
 
 		virtual ~ActionsGraphic() = default;
+
+		std::array<sf::Sprite*, 6> getSprites() const;
+
+		void setText(Character* character);
 
 	private:
 
@@ -32,7 +37,7 @@ namespace gui
 
 	private:
 		
-		Entity* _character;
+		Character* _character;
 		
 		//sf::Texture _background_texture;
 		// Shape du drawable.

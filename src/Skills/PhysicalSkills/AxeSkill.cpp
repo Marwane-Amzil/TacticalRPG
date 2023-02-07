@@ -35,6 +35,7 @@ void AxeSkill::activate(Grid& grid, Character* target) const
 	}
 }
 
+
 std::vector<Position> AxeSkill::getPossibleZones(const Grid& grid) const {
 
 	std::vector<Position> possibleZones;
@@ -57,4 +58,7 @@ std::vector<Position> AxeSkill::getPossibleZones(const Grid& grid) const {
 		}
 	}
 	return possibleZones;
+}
+std::string AxeSkill::getName() const {
+	return "AxeSkill";
 }

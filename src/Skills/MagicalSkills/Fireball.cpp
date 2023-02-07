@@ -52,6 +52,7 @@ void Fireball::activate(Grid& grid, Character* target) const
 }
 
 
+
 std::vector<Position> Fireball::getPossibleZones(const Grid& grid) const{
 	
 	std::vector<Position> possibleZones;
@@ -74,4 +75,9 @@ std::vector<Position> Fireball::getPossibleZones(const Grid& grid) const{
 		}
 	}
 	return possibleZones;
+}
+
+std::string Fireball::getName() const
+{
+	return "Fireball";
 }

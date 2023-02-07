@@ -36,6 +36,8 @@ public:
 	*/
 	std::vector<Position> getPossibleZones(const Grid& grid) const override;
 
+	std::string getName() const override;
+
 
 private:
 

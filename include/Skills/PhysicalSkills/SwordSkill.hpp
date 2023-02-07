@@ -30,11 +30,15 @@ public:
 	*/
 	void activate(Grid& grid, Character* target) const override;
 
+	
 	/**
 	*	@brief	Returns a vector of positions that are in range of the skill.
 	*	It is where the skill (SwordSkill) can be launched.
 	*/
 	std::vector<Position> getPossibleZones(const Grid& grid) const override;
+
+	std::string getName() const override;
+
 
 
 private:

@@ -60,6 +60,9 @@ public:
 	
 	virtual std::vector<Position> getPossibleZones(const Grid& grid) const = 0;
 
+	virtual std::string getName() const = 0;
+
+
 	/**
 	*
 	*/

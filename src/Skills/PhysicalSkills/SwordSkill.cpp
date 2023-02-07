@@ -33,6 +33,8 @@ void SwordSkill::activate(Grid& grid, Character* target) const
 	}
 }
 
+
+
 std::vector<Position> SwordSkill::getPossibleZones(const Grid& grid) const
 {
 	std::vector<Position> possibleZones;
@@ -55,4 +57,8 @@ std::vector<Position> SwordSkill::getPossibleZones(const Grid& grid) const
 		}
 	}
 	return possibleZones;
+}
+
+std::string SwordSkill::getName() const{
+	return "SwordSkill";
 }

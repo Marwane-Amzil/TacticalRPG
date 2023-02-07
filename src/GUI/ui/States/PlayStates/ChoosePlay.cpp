@@ -39,29 +39,64 @@ void ChoosePlay::update()
 	}
 	
 	auto [x, y] = _window.getSize();
+	//_m_isCharacterSelected = false;
+
 	
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
+		int mouse_x = sf::Mouse::getPosition(_window).x;
+		int mouse_y = sf::Mouse::getPosition(_window).y;
 		int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) * 50 + (0.24 * x);
 		int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
 		
 		int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 		int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 		
-		if (_world.getGrid()[pos_grid_x][ pos_grid_y])
+		
+		
+		
+		if (_m_isCharacterSelected)
 		{
-			std::cout << _world.getGrid().getEntitys()[pos_grid_x + ::grid::COLUMNS * pos_grid_y]->getClass() << std::endl;
+			for (int i = 0; i < _actions.getSprites().size(); i++)
+			{
+				if (_actions.getSprites()[i]->getGlobalBounds().contains(mouse_x, mouse_y))
+				{
+					std::cout << "Sprite " << i << std::endl;
+					_m_isCharacterSelected = true;
+					std::cout << currentCharacterName << std::endl;
+					break;
+
+				}
+				else {
+					_m_isCharacterSelected = false;
+				}
+			}
 		}
+		if (0 <= pos_grid_x && pos_grid_x < 20 && 0 <= pos_grid_y && pos_grid_y < 20)
+		{
+			if (_world.getGrid()[pos_grid_x][pos_grid_y])
+			{
+				currentCharacter = _world.getGrid()[pos_grid_x][pos_grid_y];
+				currentCharacterName = _world.getGrid()[pos_grid_x][pos_grid_y]->getClass();
+				_actions.setText(dynamic_cast<Character*>(currentCharacter));
+				_m_isCharacterSelected = true;
+			}
+		}
+
+		std::cout << _m_isCharacterSelected << std::endl;
+		
 	}
-
-
-
 }
+
 
 void ChoosePlay::draw()
 {
 	_window.clear();
 	_window.draw(_world);
-	_window.draw(_actions);
+	if (_m_isCharacterSelected)
+	{
+		_window.draw(_actions);
+	}
+
 	_window.display();
 }

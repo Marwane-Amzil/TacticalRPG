@@ -40,6 +40,11 @@ private:
 	utils::SpriteFactory _spriteFactory;
 	sf::Texture _m_backgroundTexture;
 	gui::ActionsGraphic _actions;
+
+	Entity* currentCharacter;
+	bool _m_isCharacterSelected = false;
+	std::string currentCharacterName;
+
 	
 	int nb = 0;
 	sf::Sprite _m_background;

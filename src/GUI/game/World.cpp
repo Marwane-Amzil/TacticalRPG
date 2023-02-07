@@ -68,7 +68,7 @@ void gui::World::removeEntity(gui::EntitySprite* sprite)
 	_grid[x][y] = nullptr;
 }
 
-const Grid& gui::World::getGrid() const
+Grid& gui::World::getGrid() 
 {
 	return _grid;
 }

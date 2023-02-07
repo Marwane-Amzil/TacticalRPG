@@ -74,6 +74,7 @@ public:
 	
 	const std::array<Entity*, ::grid::COLUMNS>& operator[](const size_t& index) const;
 	
+	
 	/**
 	* @brief Overloaded [] operator for the Grid class. Behaves the same as any
 	* [] operator in a standard container such a C-style array of std::vector.

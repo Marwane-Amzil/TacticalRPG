@@ -73,11 +73,6 @@ void CharacterChoice::update()
 	}
 	
 	auto [x, y] = _window.getSize();
-	
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{ 
-	std::cout << static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) << " " << static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) << std::endl;
-	}
 
 		for (size_t i = 0; i < m_characters.size(); i++)
 		{	

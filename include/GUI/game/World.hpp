@@ -20,7 +20,7 @@ namespace gui
 
 		explicit World(sf::RenderTarget& target);
 
-		const Grid& getGrid() const;
+		Grid& getGrid() ;
 
 		void addEntity(EntitySprite* sprite);
 

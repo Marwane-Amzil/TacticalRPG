@@ -50,7 +50,7 @@ void ChoosePlay::update()
 		
 		if (_world.getGrid()[pos_grid_x][ pos_grid_y])
 		{
-			std::cout << _world.getGrid().getEntitys()[pos_grid_x, pos_grid_y]->getClass() << std::endl;
+			std::cout << _world.getGrid().getEntitys()[pos_grid_x + ::grid::COLUMNS * pos_grid_y]->getClass() << std::endl;
 		}
 	}
 

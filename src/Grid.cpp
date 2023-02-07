@@ -77,10 +77,7 @@ const std::vector<Entity*> Grid::getEntitys() {
 	{
 		for (int j = 0; j < COLUMNS; j++)
 		{
-			if (_grid[i][j])
-			{
-				entityContainer.push_back(_grid[i][j]);
-			}
+			entityContainer.push_back(_grid[i][j]);
 		}
 	}
 	

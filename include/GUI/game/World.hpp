@@ -27,6 +27,8 @@ namespace gui
 		void addEntity(EntitySprite* sprite);
 
 		void removeEntity(EntitySprite* sprite);
+
+		void removeEntity(int x, int y);
 		
 		sf::RectangleShape getShape() const;
 

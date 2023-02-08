@@ -68,6 +68,13 @@ void gui::World::removeEntity(gui::EntitySprite* sprite)
 	_grid[x][y] = nullptr;
 }
 
+void gui::World::removeEntity(int x, int y)
+{
+	delete _sprites[x][y];
+	_sprites[x][y] = nullptr;
+	_grid[x][y] = nullptr;
+}
+
 Grid& gui::World::getGrid() 
 {
 	return _grid;

@@ -59,11 +59,16 @@ void CharacterChoice::resume()
 
 void CharacterChoice::update()
 {
-	
+	if (count == 9)
+		{
+			_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
+
+		}
 	
 	sf::Event event;
 	while (_window.pollEvent(event))
 	{
+		
 		if (event.type == sf::Event::Closed)
 			_window.close();
 		if (event.type == sf::Event::KeyPressed)
@@ -73,11 +78,7 @@ void CharacterChoice::update()
 				_world.clean();
 				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
 			}
-			if(event.key.code == sf::Keyboard::Up)
-			{
-				_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
-
-			}
+			
 		}
 	}
 	
@@ -228,9 +229,13 @@ void CharacterChoice::update()
 
 	case 0 :
 		color_looker = 1;
+		count++;
+
 		break;
 	case 1 :
 		color_looker = 0;
+		count++;
+
 		break;
 	default:
 		color_looker = 0;

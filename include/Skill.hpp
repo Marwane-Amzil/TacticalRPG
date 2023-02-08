@@ -69,7 +69,7 @@ public:
 	//virtual bool canActivate(Grid* grid) const = 0;
 
 	
-private:
+protected:
 		
 	int _multiplier;
 	int _range;

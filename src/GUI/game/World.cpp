@@ -73,6 +73,11 @@ Grid& gui::World::getGrid()
 	return _grid;
 }
 
+const std::array<std::array<gui::EntitySprite*, ::grid::ROWS>, ::grid::COLUMNS>& gui::World::getSprites()
+{
+	return _sprites;
+}
+
 
 sf::RectangleShape gui::World::getShape() const
 {

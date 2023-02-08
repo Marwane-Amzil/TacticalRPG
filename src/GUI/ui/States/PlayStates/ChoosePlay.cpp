@@ -11,7 +11,18 @@
 ChoosePlay::ChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace )
 	: super(machine, window, world, texture_manager, replace), _animationManager(),_actions(window), _spriteFactory(_world, texture_manager, _animationManager)
 {
-	
+	for (auto& row : _world.getSprites())
+	{
+		for (auto& sprite : row)
+		{
+			if (sprite)
+			{
+				sprite->setCurrentAnimation(7);
+				sprite->loopCurrentAnimation(true);
+				sprite->playAnimation();
+			}
+		}
+	}
 }
 
 void ChoosePlay::pause()
@@ -23,7 +34,7 @@ void ChoosePlay::resume()
 }
 
 void ChoosePlay::update()
-{
+{	
 	sf::Event event;
 	while (_window.pollEvent(event))
 	{
@@ -65,7 +76,6 @@ void ChoosePlay::update()
 					std::cout << currentEntity->getHp() << std::endl;
 					if (i == 2)
 					{
-						std::cout << "You clicked 2" << std::endl;
 						bool wait = false;
 						Character* currentCharacter = dynamic_cast<Character*>(currentEntity);
 						characterSkill = currentCharacter->getFirstSkill();
@@ -75,14 +85,19 @@ void ChoosePlay::update()
 							wait = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
 						}
 						wait = false;
-						std::cout << "shesh" << std::endl;
 						pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 						pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+						
 						if (_world.getGrid()[pos_grid_x][pos_grid_y])
 						{
-							if ((dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() != currentCharacter->getPlayer()))
+							Character* characterTarget = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
+							
+							if (characterTarget->getPlayer() != currentCharacter->getPlayer())
 							{
 								std::cout << "You attack" << std::endl;
+								std::cout << "HP before : " << characterTarget->getHp() << std::endl;
+								currentCharacter->getFirstSkill()->activate(_world.getGrid(), characterTarget);
+								std::cout << "HP after : " << characterTarget->getHp() << std::endl;
 							}
 							else
 							{
@@ -116,9 +131,17 @@ void ChoosePlay::update()
 				_m_isCharacterSelected = true;
 			}
 		}
+	}
 
-		std::cout << _m_isCharacterSelected << std::endl;
-
+	for (auto& row : _world.getSprites())
+	{
+		for (auto& sprite : row)
+		{
+			if (sprite)
+			{
+				sprite->update(_clock.getElapsedTime());
+			}
+		}
 	}
 }
 

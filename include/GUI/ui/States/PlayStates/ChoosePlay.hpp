@@ -41,7 +41,8 @@ private:
 	sf::Texture _m_backgroundTexture;
 	gui::ActionsGraphic _actions;
 
-	Entity* currentCharacter;
+	Entity* currentEntity;
+	const Skill* characterSkill;
 	bool _m_isCharacterSelected = false;
 	std::string currentCharacterName;
 

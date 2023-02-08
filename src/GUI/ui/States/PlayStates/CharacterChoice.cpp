@@ -83,7 +83,6 @@ void CharacterChoice::update()
 				{
 					bool click_looker = false;
 					while (!click_looker) {
-						std::cout << "\nbloqué" << std::endl;
 						sf::Vector2i vector = sf::Mouse::getPosition();
 						click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
 						

@@ -47,7 +47,9 @@ private:
 	sf::Vector2f _mouse_coord;
 	gui::EntitySprite* _CurrentCharacter;
 	std::array<std::string, 5> _m_characterNames = {"warrior", "archer", "knight", "healer", "mage"};
-	std::array<gui::EntitySprite, 10> m_characters;
+	std::array<gui::EntitySprite, 5> m_characters_blue;
+	std::array<gui::EntitySprite, 5> m_characters_red;
+
 	sf::Clock _clock = sf::Clock();
 };
 

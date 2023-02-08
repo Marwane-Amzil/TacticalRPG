@@ -1,10 +1,14 @@
 #include <Entities/Characters/MagicCharacters/Mage.hpp>
+#include <Skills/MagicalSkills/FireBall.hpp>
 #include <Grid.hpp>
 
 using namespace ::grid;
 
 Mage::Mage(const int x, const int y, const char player)
-	: super(x, y, 60, player, 7, 25, 22, 48) {}
+	: super(x, y, 60, player, 7, 25, 22, 48) 
+{
+	setFirstSkill(new Fireball(2, 3, this));
+}
 
 std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
 {

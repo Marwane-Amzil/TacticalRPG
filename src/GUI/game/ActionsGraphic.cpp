@@ -12,7 +12,8 @@
 gui::ActionsGraphic::ActionsGraphic(sf::RenderTarget& target)
 	: _shape(), _actionSprites(), _character()
 {
-	
+	font.loadFromFile("assets/ui/menu/font/ethn.otf");
+
 	_actionsTexture.loadFromFile("assets/images/actionsGraphics/gallerybutton_selecthover_blank.png");
 	
 	
@@ -34,7 +35,8 @@ gui::ActionsGraphic::ActionsGraphic(sf::RenderTarget& target)
 		_actionSprites[i] = _sprite;
 	}
 
-	_actionsTexts[0].setPosition(50, 2*50 + (background_height - 6 * 50));
+	_actionsTexts[1].setPosition(60, 1 * 50 + (background_height - 6 * 50));
+	_actionsTexts[2].setPosition(60, 2*50 + (background_height - 6 * 50));
 
 	
 }
@@ -48,9 +50,16 @@ std::array<sf::Sprite*,6> gui::ActionsGraphic::getSprites() const
 
 void gui::ActionsGraphic::setText(Character* character)
 {
-	_actionsTexts[0].setString(character->getFirstSkill()->getName());
-	_actionsTexts[0].setCharacterSize(20);
-	_actionsTexts[0].setFillColor(sf::Color::Magenta);
+	
+	_actionsTexts[1].setString("Actions");
+	_actionsTexts[1].setCharacterSize(25);
+	_actionsTexts[1].setFillColor(sf::Color::Magenta);
+	_actionsTexts[1].setFont(font);
+	
+	_actionsTexts[2].setString(character->getFirstSkill()->getName());
+	_actionsTexts[2].setCharacterSize(25);
+	_actionsTexts[2].setFillColor(sf::Color::White);
+	_actionsTexts[2].setFont(font);
 }
 
 
@@ -70,7 +79,9 @@ void gui::ActionsGraphic::draw(sf::RenderTarget& target, sf::RenderStates states
 	{
 		target.draw(*_actionSprites[i], states);
 	}
-	target.draw(_actionsTexts[0], states);
+	target.draw(_actionsTexts[1], states);
+	target.draw(_actionsTexts[2], states);
+
 
 	
 	

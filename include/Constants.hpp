@@ -92,4 +92,14 @@ namespace swordskill
     static constexpr int NEG_RANGE_Y = -1;
 }
 
+namespace bowshot
+{
+    static constexpr int DAMAGE = 13;
+    static constexpr int RANGE_X = 7;
+    static constexpr int RANGE_Y = 7;
+    //static constexpr bool IS_DIAG = true;
+    static constexpr int NEG_RANGE_X = -2;
+    static constexpr int NEG_RANGE_Y = -2;
+}
+
 #endif //!__CONSTANTS_H__

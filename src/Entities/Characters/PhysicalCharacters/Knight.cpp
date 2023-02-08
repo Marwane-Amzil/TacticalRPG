@@ -1,11 +1,15 @@
 #include <Entities/Characters/PhysicalCharacters/Knight.hpp>
+#include <Skills/PhysicalSkills/SwordSkill.hpp>
 #include <Grid.hpp>
 
 using namespace grid;
 using namespace knight;
 
 Knight::Knight(const int x, const int y, const char player)
-	: super(x,y, 100, player, 80, 100, 0, 150) {}
+	: super(x,y, 100, player, 80, 100, 0, 150) 
+{
+	setFirstSkill(new SwordSkill(2, 3, this));
+}
 
 std::vector<Position> Knight::getPossibleMoves(const Grid& grid) const
 {

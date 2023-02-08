@@ -38,7 +38,8 @@ namespace gui
 	private:
 		
 		Character* _character;
-		
+		sf::Font font;
+
 		//sf::Texture _background_texture;
 		// Shape du drawable.
 		sf::RectangleShape _shape;

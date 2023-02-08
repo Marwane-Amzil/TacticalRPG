@@ -1,10 +1,15 @@
 #include <Entities/Characters/PhysicalCharacters/Archer.hpp>
+#include <Skills/PhysicalSkills/BowShot.hpp>
+
 #include <Grid.hpp>
 
 using namespace ::grid;
 
 Archer::Archer(const int x, const int y, const char player)
-	: super(x, y, 100, player, 80, 25, 20, 30) {}
+	: super(x, y, 100, player, 80, 25, 20, 30) 
+{
+	setFirstSkill(new BowShot(2, 3, this));
+}
 
 std::vector<Position> Archer::getPossibleMoves(const Grid& grid) const
 {

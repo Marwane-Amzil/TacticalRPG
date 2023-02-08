@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\game\ZoneGraphic.cpp" />
     <ClCompile Include="src\Skills\PhysicalSkills\BowShot.cpp" />
     <ClCompile Include="src\GUI\game\ActionsGraphic.cpp" />
     <ClCompile Include="src\GUI\ui\States\PlayStates\ChoosePlay.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="include\utils\AnimationManager.hpp" />
     <ClInclude Include="include\utils\SpriteFactory.hpp" />
     <ClInclude Include="include\utils\TextureManager.hpp" />
+    <ClInclude Include="include\GUI\game\ZoneGraphic.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

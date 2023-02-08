@@ -129,6 +129,9 @@
     <ClCompile Include="src\Skills\PhysicalSkills\BowShot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\game\ZoneGraphic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Entities\Character.hpp">
@@ -255,6 +258,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Skills\PhysicalSkills\BowShot.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\game\ZoneGraphic.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

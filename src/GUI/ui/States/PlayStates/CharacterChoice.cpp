@@ -87,16 +87,24 @@ void CharacterChoice::update()
 
 		for (size_t i = 0; i < 10; i++)
 		{	
-			while (!sf::Mouse::isButtonPressed(sf::Mouse::Left));
+			
 			int color_looker = i % 2; //permet d'alterner entre les couleurs
 			int iterator = static_cast<int>(i / 2);
 			
+			bool click_looker = false;
+			/*while (!click_looker) {
+				if (color_looker == 0 && (m_characters_blue[iterator].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) {
+					click_looker = (sf::Mouse::isButtonPressed(sf::Mouse::Left)&&)
+				}
+				else if ()
+			}
+			*/
 			if (m_characters_blue[iterator].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker== 0)
 			{
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
-					bool click_looker = false;
+					click_looker = false;
 					while (!click_looker) {
 						sf::Vector2i vector = sf::Mouse::getPosition();
 						click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);

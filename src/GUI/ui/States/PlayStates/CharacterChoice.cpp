@@ -15,14 +15,14 @@ CharacterChoice::CharacterChoice(StateMachine& machine, sf::RenderWindow& window
 
 	_animationManager.loadAnimations();
     //_spriteFactory.createCharacter(new Healer(2, 2, 'Rs'));
-	char color = 'B';
 	
 	float multiy = 0.83f;
 	float multyx = 0.1f;
 	
 	auto [x, y] = _window.getSize();
 
-	
+
+	//met les différentes textures dans m_characters_blue/red
 	for (auto characterName : _m_characterNames){
 		m_characters_blue[nb].setTexture(_textureManager.getTextureAt('B', characterName));
 		m_characters_blue[nb].setPosition(multyx * x,  multiy * y);
@@ -59,6 +59,8 @@ void CharacterChoice::resume()
 
 void CharacterChoice::update()
 {
+	
+	
 	sf::Event event;
 	while (_window.pollEvent(event))
 	{
@@ -85,160 +87,160 @@ void CharacterChoice::update()
 
 	auto [x, y] = _window.getSize();
 
-		for (size_t i = 0; i < 10; i++)
-		{	
-			
-			int color_looker = i % 2; //permet d'alterner entre les couleurs
-			int iterator = static_cast<int>(i / 2);
-			
-			bool click_looker = false;
-			/*while (!click_looker) {
-				if (color_looker == 0 && (m_characters_blue[iterator].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) {
-					click_looker = (sf::Mouse::isButtonPressed(sf::Mouse::Left)&&)
-				}
-				else if ()
-			}
-			*/
-			if (m_characters_blue[iterator].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker== 0)
-			{
-
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-					click_looker = false;
-					while (!click_looker) {
-						sf::Vector2i vector = sf::Mouse::getPosition();
-						click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-						std::cout << "\nbleu touche" << click_looker;
-					}
-					click_looker = false;
-						
-					// 460 -> espace � gauche grille bords �crans
-					// 40 -> espace en haut grille bords �crans
-					
-					int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)- (0.24 * x)) / 50) * 50 + (0.24 * x);
-					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
-					
-					int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
-					int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
-						
-						//std::cout << pos_grille_x << " " << pos_grille_y << std::endl;
-						std::cout << pos_grid_x << " et " << pos_grid_y<< std::endl;
-					
-					//gui::EntitySprite entitySprite(m_characters[i]);
-					
-						
-					
-
-					switch (iterator)
-					{
-					case 0 :
-						_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'B'));
-						break;
-					case 1 :
-						_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'B'));
-						break;
-					case 2:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
-						break;
-					case 3:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'B'));
-						break;
-					default:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'B'));
-						break;
-					}
-
-					
-					
-					//_CurrentCharacter->update(_clock.getElapsedTime());
-					//_clock.restart();
-				}
-			}
-
-
-			if (m_characters_red[iterator].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker == 1)
-			{
-
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-					bool click_looker = false;
-					while (!click_looker) {
-						sf::Vector2i vector = sf::Mouse::getPosition();
-						click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-						std::cout << "\nrouge touche" << click_looker;
-					}
-					click_looker = false;
-
-					// 460 -> espace � gauche grille bords �crans
-					// 40 -> espace en haut grille bords �crans
-
-					int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) * 50 + (0.24 * x);
-					int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
-
-					int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
-					int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
-
-					//std::cout << pos_grille_x << " " << pos_grille_y << std::endl;
-					std::cout << pos_grid_x << " et " << pos_grid_y << std::endl;
-
-					//gui::EntitySprite entitySprite(m_characters[i]);
-
-
-
-
-					switch (iterator)
-					{
-					case 0:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'R'));
-						break;
-					case 1:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'R'));
-						break;
-					case 2:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'R'));
-						break;
-					case 3:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'R'));
-						break;
-					default:
-						_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'R'));
-						break;
-					}
-
-
-
-					//_CurrentCharacter->update(_clock.getElapsedTime());
-					//_clock.restart();
-				}
-			}
-		}
 	
+	bool click_looker = false;
+	
+	int j = 0;
+	while (!click_looker) {
+		j = (j + 1) % 5;
+		if (color_looker == 0) {
+			click_looker = (sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_characters_blue[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y));
+		}
+		else if (color_looker == 1) {
+			click_looker = (sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_characters_red[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y));
+
+		}
+		else {
+			click_looker = 1;
+		}
+		
+	}
+
+
+	if (color_looker == 0) {
+		std::cout << "blue" << _m_characterNames[j];
+	}
+	else {
+		std::cout << "rouge" << _m_characterNames[j];
+	}
+	
+
+	if (m_characters_blue[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker== 0)
+	{
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			click_looker = false;
+			while (!click_looker) {
+				sf::Vector2i vector = sf::Mouse::getPosition();
+				click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+				std::cout << "\nbleu touche" << click_looker;
+			}
+			click_looker = false;
+				
+			// 460 -> espace � gauche grille bords �crans
+			// 40 -> espace en haut grille bords �crans
+			
+			int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)- (0.24 * x)) / 50) * 50 + (0.24 * x);
+			int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
+			
+			int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
+			int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+				
+				std::cout << pos_grid_x << " et " << pos_grid_y<< std::endl;
+			
+			
+				
+			
+
+			switch (j)
+			{
+			case 0 :
+				_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'B'));
+				break;
+			case 1 :
+				_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'B'));
+				break;
+			case 2:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
+				break;
+			case 3:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'B'));
+				break;
+			default:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'B'));
+				break;
+			}
+
+			
+			
+			//_CurrentCharacter->update(_clock.getElapsedTime());
+			//_clock.restart();
+		}
+	}
+
+
+	if (m_characters_red[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker == 1)
+	{
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			bool click_looker = false;
+			while (!click_looker) {
+				sf::Vector2i vector = sf::Mouse::getPosition();
+				click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+				std::cout << "\nrouge touche" << click_looker;
+			}
+			click_looker = false;
+
+			// 460 -> espace � gauche grille bords �crans
+			// 40 -> espace en haut grille bords �crans
+
+			int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) * 50 + (0.24 * x);
+			int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
+
+			int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
+			int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+
+			std::cout << pos_grid_x << " et " << pos_grid_y << std::endl;
+
+
+
+
+
+			switch (j)
+			{
+			case 0:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'R'));
+				break;
+			case 1:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'R'));
+				break;
+			case 2:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'R'));
+				break;
+			case 3:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'R'));
+				break;
+			default:
+				_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'R'));
+				break;
+			}
+
+
+
+			//_CurrentCharacter->update(_clock.getElapsedTime());
+			//_clock.restart();
+		}
+	}
+
+	switch (color_looker) {
+
+	case 0 :
+		color_looker = 1;
+		break;
+	case 1 :
+		color_looker = 0;
+		break;
+	default:
+		color_looker = 0;
+		break;
+	}
+	
+
 }// End Update()
 
 
-//_spriteFactory.createCharacter(m_characters[i].getEntity());
-
-
-
-/*m_characters[i].setScale(0.8, 0.8);
-m_characters[i].setPosition(pos_grille_x, pos_grille_y);
-m_characters[i].setPosition(pos_grille_x, pos_grille_y);
-*/
-//_world.addEntity(&entitySprite);
-//_world.addEntity(&m_characters[i]);
-
-/*
-bool click_looker = false;
-while (!click_looker) {
-	sf::Vector2i vector = sf::Mouse::getPosition();
-
-	click_looker = (sf::Mouse::getPosition(_window).x < static_cast<int>(0.93 * x)) && (sf::Mouse::getPosition(_window).x > static_cast<int>(0.83 * x)) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		_window.close();
-	}
-}
-click_looker = false;
-*/
 
 void CharacterChoice::draw()
 {

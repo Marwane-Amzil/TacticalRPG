@@ -40,7 +40,7 @@ private:
 	utils::SpriteFactory _spriteFactory;
 	sf::Texture _m_backgroundTexture;
 
-	
+	int color_looker = 2;
 	int nb = 0;
 	sf::Sprite _m_background;
 	sf::Vector2i _pos_mouse;

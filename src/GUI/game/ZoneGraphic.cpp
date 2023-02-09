@@ -31,7 +31,7 @@ void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
 	std::string endCirclePath =  "lueZone.png";
 	std::string path = startCirclePath + color + endCirclePath;
 	_actionsTexture.loadFromFile(path);
-	_actionSprites.clear();
+	_moovementSprites.clear();
 
 	for (Position& pos : character->getPossibleMoves(grid))
 	{
@@ -43,7 +43,7 @@ void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
 		_sprite->setTexture(_actionsTexture);
 		_sprite->setTextureRect(sf::IntRect(0, 0, 30, 28));
 		_sprite->setPosition(pos_window_x, pos_window_y);
-		_actionSprites.push_back(_sprite);
+		_moovementSprites.push_back(_sprite);
 	}
 }
 
@@ -55,11 +55,10 @@ void gui::ZoneGraphic::showAttackZones(const Skill* skill, Grid& grid)
 	std::string endCirclePath = "lueZone.png";
 	std::string path = startCirclePath + color + endCirclePath;
 	_actionsTexture.loadFromFile(path);
-	_actionSprites.clear();
+	_attackSprites.clear();
 
 	for (Position& pos : skill->getPossibleZones(grid))
 	{
-
 		int pos_window_x = (pos.getX() * 50 + (0.24 * window_x)) + 10;
 		int pos_window_y = (pos.getY() * 50 + (0.04 * window_y)) + 11;
 
@@ -67,17 +66,9 @@ void gui::ZoneGraphic::showAttackZones(const Skill* skill, Grid& grid)
 		_sprite->setTexture(_actionsTexture);
 		_sprite->setTextureRect(sf::IntRect(0, 0, 30, 28));
 		_sprite->setPosition(pos_window_x, pos_window_y);
-		_actionSprites.push_back(_sprite);
+		_attackSprites.push_back(_sprite);
 	}
 }
-
-
-
-
-
-
-
-
 
 sf::RectangleShape gui::ZoneGraphic::getShape() const
 {
@@ -85,15 +76,19 @@ sf::RectangleShape gui::ZoneGraphic::getShape() const
 }
 
 
-
 void gui::ZoneGraphic::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(_shape, states);
 	//target.clear();
 
-	for (int i = 0; i < _actionSprites.size(); i++)
+	for (int i = 0; i < _moovementSprites.size(); i++)
 	{
-		target.draw(*_actionSprites[i], states);
+		target.draw(*_moovementSprites[i], states);
+	}
+
+	for (int i = 0; i < _attackSprites.size(); i++)
+	{
+		target.draw(*_attackSprites[i], states);
 	}
 	
 	//target.draw(_spriteTest);

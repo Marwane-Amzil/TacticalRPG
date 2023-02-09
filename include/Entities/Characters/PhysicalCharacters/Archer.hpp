@@ -39,6 +39,9 @@ private:
 	*/
 	std::string_view getClass() const override;
 
+	bool canMove(Grid& grid,int x, int y) const override;
+
+
 private:
 
 	typedef PhysicalCharacter super;

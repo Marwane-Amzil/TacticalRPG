@@ -84,6 +84,29 @@ void ChoosePlay::update()
 						// Drawing the zones where the character can go.
 						_zones.showMovingZones((dynamic_cast<Character*>(currentEntity)), _world.getGrid());
 						_m_isMoovement = true;
+						this->draw();
+
+						// Click Looker. 
+						// Checking for a click on the grid.	
+						bool wait = false;
+						while (!wait) {
+							sf::Vector2i vector = sf::Mouse::getPosition();
+							wait = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+						}
+						wait = false;
+						// End Click Looker
+						// Getting the position of the click on the grid.
+						pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
+						pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+						// If we can move to the position we clicked on.
+						if ((dynamic_cast<Character*>(currentEntity)->canMove(_world.getGrid(),pos_grid_x,pos_grid_y) ))
+						{
+							std::cout << "Move" << std::endl;
+						}
+						else
+						{
+							_m_isMoovement = false;
+						}
 						
 					}
 					if (i == 2) // First Attack
@@ -113,17 +136,17 @@ void ChoosePlay::update()
 						// Getting the position of the click on the grid.
 						pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 						pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
-						
 						// Checking if there is a character on the grid.
 						if (_world.getGrid()[pos_grid_x][pos_grid_y])
 						{
 							// Getting the target character on the grid as a character class, and not an Entity.
 							Character* characterTarget = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
 							
-							if (characterTarget->getPlayer() != currentCharacter->getPlayer())
-							{
+							if (currentCharacter->getFirstSkill()->canActivate(_world.getGrid(), characterTarget))
+							{	
 								std::cout << "You attack" << std::endl;
 								currentCharacter->getFirstSkill()->activate(_world.getGrid(), characterTarget);
+								_m_isMoovement = false;
 							}
 							else
 							{
@@ -133,7 +156,7 @@ void ChoosePlay::update()
 						else
 						{
 							std::cout << "You can't attack an empty case" << std::endl;
-
+							_m_isMoovement = false;
 						}
 					}// end Moove 2
 

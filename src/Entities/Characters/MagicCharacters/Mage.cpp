@@ -67,3 +67,20 @@ std::string_view Mage::getClass() const
 {
 	return "mage";
 }
+
+
+bool Mage::canMove(Grid& grid, int x, int y) const
+{
+	Position* pos = new Position(x, y);
+	std::vector<Position> possibleMoves = getPossibleMoves(grid);
+
+	for (Position& move : possibleMoves)
+	{
+		if (move == *pos)
+		{
+			return true;
+		}
+	}
+	return false;
+
+}

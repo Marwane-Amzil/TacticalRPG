@@ -39,6 +39,8 @@ public:
 
 	std::string getName() const override;
 
+	bool canActivate(Grid& grid, Character* target) const override;
+
 
 
 private:

@@ -62,6 +62,8 @@ public:
 
 	virtual std::string getName() const = 0;
 
+	virtual bool canActivate(Grid& grid, Character* target) const = 0;
+
 
 	/**
 	*

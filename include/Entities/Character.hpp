@@ -190,6 +190,8 @@ public:
 	*/
 	virtual std::vector<Position> getPossibleActions(const Grid& grid) const = 0;
 
+	virtual bool canMove(Grid& grid, int x, int y) const = 0;
+
 protected:
 
 	char _player;

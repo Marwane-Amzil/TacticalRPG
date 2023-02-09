@@ -54,6 +54,10 @@ namespace gui
 		
 		std::vector<sf::Sprite*> _actionSprites;
 
+		std::vector<sf::Sprite*> _moovementSprites;
+		std::vector<sf::Sprite*> _attackSprites;
+
+
 		std::array<sf::Text, 6> _actionsTexts;
 
 

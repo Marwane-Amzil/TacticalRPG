@@ -62,13 +62,13 @@ namespace skill
 namespace fireball
 {
 	static constexpr int DAMAGE = 20;
-	static constexpr int RANGE_X = 5;
-    static constexpr int RANGE_Y = 5;
     static constexpr int AOE_RANGE_X = 3;
 	static constexpr int AOE_RANGE_Y = 3;
+    static constexpr int RANGE_X = 10;
+    static constexpr int RANGE_Y = 10;
 	//static constexpr bool IS_DIAG = true;
-	static constexpr int NEG_RANGE_X = -5;
-    static constexpr int NEG_RANGE_Y = -5;
+	static constexpr int NEG_RANGE_X = -10;
+    static constexpr int NEG_RANGE_Y = -10;
 
 }
 
@@ -85,11 +85,11 @@ namespace axeskill
 namespace swordskill
 {
     static constexpr int DAMAGE = 20;
-	static constexpr int RANGE_X = 1;
-	static constexpr int RANGE_Y = 1;
+	static constexpr int RANGE_X = 2;
+	static constexpr int RANGE_Y = 2;
 	//static constexpr bool IS_DIAG = false;
-    static constexpr int NEG_RANGE_X = -1;
-    static constexpr int NEG_RANGE_Y = -1;
+    static constexpr int NEG_RANGE_X = -2;
+    static constexpr int NEG_RANGE_Y = -2;
 }
 
 namespace bowshot

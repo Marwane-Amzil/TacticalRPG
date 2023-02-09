@@ -39,7 +39,7 @@ void BowShot::activate(Grid& grid, Character* target) const
 std::vector<Position> BowShot::getPossibleZones(const Grid& grid) const {
 
 	std::vector<Position> possibleZones;
-	Position pos = getOwner()->getPosition();
+	Position posOwner = getOwner()->getPosition();
 
 	for (int x = NEG_RANGE_X; x <= RANGE_X; x++)
 	{
@@ -47,11 +47,15 @@ std::vector<Position> BowShot::getPossibleZones(const Grid& grid) const {
 		{
 			if (abs(x) + abs(y) <= RANGE_X && x != 0 || y != 0)
 			{
-				if (pos.getX() + x < COLUMNS && pos.getY() + y < COLUMNS && pos.getX() + x >= 0 && pos.getY() + y >= 0)
+				if (posOwner.getX() + x < COLUMNS && posOwner.getY() + y < COLUMNS && posOwner.getX() + x >= 0 && posOwner.getY() + y >= 0)
 				{
-					if (grid[pos.getX() + x][pos.getY() + y])
+					if (grid[posOwner.getX() + x][posOwner.getY() + y])
 					{
-						possibleZones.emplace_back(pos.getX() + x, pos.getY() + y);
+						Character* target = dynamic_cast<Character*>(grid[posOwner.getX() + x][posOwner.getY() + y]);
+						if (target->getPlayer() != getOwner()->getPlayer())
+						{
+							possibleZones.emplace_back(posOwner.getX() + x, posOwner.getY() + y);
+						}
 					}
 				}
 			}
@@ -61,4 +65,19 @@ std::vector<Position> BowShot::getPossibleZones(const Grid& grid) const {
 }
 std::string BowShot::getName() const {
 	return "BowShot";
+}
+
+bool BowShot::canActivate(Grid& grid, Character* target) const
+{
+	Position posTarget = target->getPosition();
+	std::vector<Position> possibleZones = getPossibleZones(grid);
+	if (getOwner()->getPlayer() != target->getPlayer())
+	{
+		for (const Position& position : possibleZones) {
+			if (posTarget == position) {
+				return true;
+			}
+		}
+	}
+	return false;
 }

@@ -68,7 +68,11 @@ std::vector<Position> Fireball::getPossibleZones(const Grid& grid) const{
 				{
 					if (grid[posOwner.getX() + x][posOwner.getY() + y])
 					{
-						possibleZones.emplace_back(posOwner.getX() + x, posOwner.getY() + y);
+						Character* target = dynamic_cast<Character*>(grid[posOwner.getX() + x][posOwner.getY() + y]);
+						if (target->getPlayer() != getOwner()->getPlayer())
+						{
+							possibleZones.emplace_back(posOwner.getX() + x, posOwner.getY() + y);
+						}
 					}
 				}
 			}
@@ -80,4 +84,20 @@ std::vector<Position> Fireball::getPossibleZones(const Grid& grid) const{
 std::string Fireball::getName() const
 {
 	return "Fireball";
+}
+
+bool Fireball::canActivate(Grid& grid, Character* target) const
+{
+	std::vector<Position> possibleZones = getPossibleZones(grid);
+	Position posTarget = target->getPosition();
+	if (getOwner()->getPlayer() != target->getPlayer())
+	{
+		for (const Position& position : possibleZones) {
+			if (posTarget == position) {
+				return true;
+			}
+		}
+	}
+	
+	return false;
 }

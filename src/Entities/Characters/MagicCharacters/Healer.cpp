@@ -15,7 +15,7 @@ std::vector<Position> Healer::getPossibleMoves(const Grid& grid) const
 	{
 		for (int y = NEG_MOVES; y < MOVES; y++)
 		{
-			if (abs(x) + abs(y) < MOVES && x != 0 || y != 0)
+			if (abs(x) + abs(y) < MOVES && (x != 0 || y != 0))
 			{
 				if (getPosition().getX() + x < COLUMNS && getPosition().getY() + y < COLUMNS && getPosition().getX() + x >= 0 && getPosition().getY() + y >= 0)
 				{

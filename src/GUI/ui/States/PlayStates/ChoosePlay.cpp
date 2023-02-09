@@ -9,7 +9,7 @@
 
 
 ChoosePlay::ChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace )
-	: super(machine, window, world, texture_manager, replace), _animationManager(),_actions(window), _spriteFactory(_world, texture_manager, _animationManager)
+	: super(machine, window, world, texture_manager, replace), _animationManager(),_actions(window), _zones(window), _spriteFactory(_world, texture_manager, _animationManager)
 {
 	for (auto& row : _world.getSprites())
 	{
@@ -74,6 +74,12 @@ void ChoosePlay::update()
 				{
 					_m_isCharacterSelected = true;
 					std::cout << currentEntity->getHp() << std::endl;
+					if (i == 0)
+					{
+						_zones.setZones((dynamic_cast<Character*>(currentEntity)), _world.getGrid());
+						_m_isMoovement = true;
+						
+					}
 					if (i == 2)
 					{
 						bool wait = false;
@@ -155,5 +161,10 @@ void ChoosePlay::draw()
 		_window.draw(_actions);
 	}
 
+	if (_m_isMoovement)
+	{
+		_window.draw(_zones);
+	}
+	
 	_window.display();
 }

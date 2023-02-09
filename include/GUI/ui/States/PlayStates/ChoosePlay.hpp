@@ -1,6 +1,6 @@
 
 #include <GUI/game/ActionsGraphic.hpp>
-
+#include <GUI/game/ZoneGraphic.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics.hpp>
@@ -40,10 +40,12 @@ private:
 	utils::SpriteFactory _spriteFactory;
 	sf::Texture _m_backgroundTexture;
 	gui::ActionsGraphic _actions;
-
+	gui::ZoneGraphic _zones;
+	
 	Entity* currentEntity;
 	const Skill* characterSkill;
 	bool _m_isCharacterSelected = false;
+	bool _m_isMoovement = false;
 	std::string currentCharacterName;
 
 	

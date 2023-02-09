@@ -2,6 +2,7 @@
 #include <GUI/game/EntitySprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <GUI/game/World.hpp>
 #include <Skill.hpp>
 #include <Entity.hpp>
 #include <Constants.hpp>
@@ -10,21 +11,10 @@
 
 
 gui::ZoneGraphic::ZoneGraphic(sf::RenderTarget& target)
-	: _shape(), _actionSprites(), _character()
+	: _shape(), _character()
 {
 	window_x = target.getSize().x;
 	window_y = target.getSize().y;
-	
-	font.loadFromFile("assets/ui/menu/font/ethn.otf");
-
-	_actionsTexture.loadFromFile("assets/images/ZoneGraphic/BlueZone.png");
-	
-	_spriteTest.setTexture(_actionsTexture);
-	_spriteTest.setTextureRect(sf::IntRect(0, 0, 500, 500));
-	_spriteTest.setPosition(0, 0);
-	
-	auto [x, y] = target.getSize();
-
 }
 
 
@@ -36,34 +26,29 @@ std::vector<sf::Sprite*> gui::ZoneGraphic::getSprites() const
 
 void gui::ZoneGraphic::setZones(Character* character, Grid& grid)
 {
-	
-	for (const Position& pos : character->getPossibleMoves(grid))
+	_actionsTexture.loadFromFile("assets/images/ZoneGraphic/BlueZone.png");
+	_actionSprites.clear();
+
+	for (Position& pos : character->getPossibleMoves(grid))
 	{
+		std::cout << _actionSprites.size() << std::endl;
 
-		_actionsTexture.loadFromFile("assets/images/ZoneGraphic/BlueZone.png");
+		int pos_window_x =  (pos.getX() * 50 + (0.24 * window_x)) + 10;
+		int pos_window_y =  (pos.getY() * 50 + (0.04 * window_y)) + 11;
 
-		float background_width = (1000.0 / 1920) * window_x;
-		float background_height = (1000.0 / 1080) * window_y;
-		
-		int pos_window_x = (pos.getX() * 50 ) + background_width ;
-		int pos_window_y = (pos.getY() * 50 ) + background_height ;
+		//std::cout << world.getShape().getGlobalBounds().getPosition().x << "   " << world.getShape().getGlobalBounds().getPosition().y << std::endl;
+		std::cout << pos.getX()*50 << "  j  " << pos.getY()*50 << std::endl;
 
-		std::cout << pos_window_x << "   " << pos_window_y<< std::endl;
-		
-		size = character->getPossibleMoves(grid).size();
-		for (int i = 0; i < size ; i++)
-		{
-			sf::Sprite* _sprite = new sf::Sprite();
-			_sprite->setTexture(_actionsTexture);
-			_sprite->setTextureRect(sf::IntRect(0, 0, 50, 48));
-			_sprite->setPosition(pos_window_x, pos_window_x);
-			_actionSprites.push_back(_sprite);
-		}
-		
-		
+
+		std::cout << pos_window_x << "  i   " << pos_window_y << std::endl;
+		//std::cout << window_x << "   " << window_y << std::endl;
+
+		sf::Sprite* _sprite = new sf::Sprite();
+		_sprite->setTexture(_actionsTexture);
+		_sprite->setTextureRect(sf::IntRect(0, 0, 30, 28));
+		_sprite->setPosition(pos_window_x, pos_window_y);
+		_actionSprites.push_back(_sprite);
 	}
-	
-
 }
 
 
@@ -78,7 +63,6 @@ void gui::ZoneGraphic::draw(sf::RenderTarget& target, sf::RenderStates states) c
 {
 	target.draw(_shape, states);
 	//target.clear();
-
 
 	for (int i = 0; i < _actionSprites.size(); i++)
 	{

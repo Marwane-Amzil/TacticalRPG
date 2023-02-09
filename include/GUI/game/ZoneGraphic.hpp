@@ -14,6 +14,7 @@
 namespace gui
 {
 	class EntitySprite;
+	class World;
 
 	class ZoneGraphic : public sf::Drawable
 	{

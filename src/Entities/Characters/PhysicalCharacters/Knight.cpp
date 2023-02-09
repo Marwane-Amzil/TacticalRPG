@@ -19,7 +19,7 @@ std::vector<Position> Knight::getPossibleMoves(const Grid& grid) const
 	{
 		for (int y = -6; y < 7; y++)
 		{
-			if (abs(x) + abs(y) < 7 && x != 0 || y != 0)
+			if (abs(x) + abs(y) < 7 && (x != 0 || y != 0))
 			{
 				if (getPosition().getX() + x < COLUMNS && getPosition().getY() + y < COLUMNS && getPosition().getX() + x >= 0 && getPosition().getY() + y >= 0)
 				{

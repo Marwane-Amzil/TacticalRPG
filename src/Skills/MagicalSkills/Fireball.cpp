@@ -31,7 +31,7 @@ void Fireball::activate(Grid& grid, Character* target) const
 
 						if (grid[x][y])
 						{
-							std::cout << x << " ; " << y << std::endl;
+						
 							int damage = (magic * (1 - (res_magic / 200)));
 							hp = grid[x][y]->getHp() - damage;
 							if (hp < 0)
@@ -46,7 +46,7 @@ void Fireball::activate(Grid& grid, Character* target) const
 			}
 		}
 		else { // TODO, managing the no entity found. 
-			std::cout << "entity " << std::endl;
+			
 		}
 	}
 }

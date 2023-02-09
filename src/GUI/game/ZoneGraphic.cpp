@@ -35,12 +35,9 @@ void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
 
 	for (Position& pos : character->getPossibleMoves(grid))
 	{
-		std::cout << _actionSprites.size() << std::endl;
 
 		int pos_window_x =  (pos.getX() * 50 + (0.24 * window_x)) + 10;
 		int pos_window_y =  (pos.getY() * 50 + (0.04 * window_y)) + 11;
-		std::cout << character->getPlayer();
-
 
 		sf::Sprite* _sprite = new sf::Sprite();
 		_sprite->setTexture(_actionsTexture);

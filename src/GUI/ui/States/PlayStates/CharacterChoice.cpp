@@ -108,14 +108,6 @@ void CharacterChoice::update()
 	}
 
 
-	if (color_looker == 0) {
-		std::cout << "blue" << _m_characterNames[j];
-	}
-	else {
-		std::cout << "rouge" << _m_characterNames[j];
-	}
-	
-
 	if (m_characters_blue[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker== 0)
 	{
 
@@ -125,7 +117,7 @@ void CharacterChoice::update()
 			while (!click_looker) {
 				sf::Vector2i vector = sf::Mouse::getPosition();
 				click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-				std::cout << "\nbleu touche" << click_looker;
+				
 			}
 			click_looker = false;
 				
@@ -138,7 +130,6 @@ void CharacterChoice::update()
 			int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 			int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 				
-				std::cout << pos_grid_x << " et " << pos_grid_y<< std::endl;
 			
 			
 				
@@ -180,7 +171,7 @@ void CharacterChoice::update()
 			while (!click_looker) {
 				sf::Vector2i vector = sf::Mouse::getPosition();
 				click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-				std::cout << "\nrouge touche" << click_looker;
+			
 			}
 			click_looker = false;
 
@@ -193,7 +184,7 @@ void CharacterChoice::update()
 			int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 			int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 
-			std::cout << pos_grid_x << " et " << pos_grid_y << std::endl;
+		
 
 
 

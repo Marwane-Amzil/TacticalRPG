@@ -106,7 +106,7 @@ void MenuState::update()
 			if (_pos == 1) {
 				_machine.run(StateMachine::build<CharacterChoice>(_machine, _window, _world, _texture_manager, true));
 			}
-            std::cout << _options[_pos] << '\n';
+            
         }
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {

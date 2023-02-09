@@ -109,9 +109,7 @@ void ChoosePlay::update()
 							if (characterTarget->getPlayer() != currentCharacter->getPlayer())
 							{
 								std::cout << "You attack" << std::endl;
-								std::cout << "HP before : " << characterTarget->getHp() << std::endl;
 								currentCharacter->getFirstSkill()->activate(_world.getGrid(), characterTarget);
-								std::cout << "HP after : " << characterTarget->getHp() << std::endl;
 							}
 							else
 							{

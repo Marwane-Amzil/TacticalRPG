@@ -88,22 +88,36 @@ void ChoosePlay::update()
 					}
 					if (i == 2) // First Attack
 					{
+						//Getting the current character as a character Class, and not an Entity. 
 						Character* currentCharacter = dynamic_cast<Character*>(currentEntity);
+						// Getting the first skill of the character.
 						characterSkill = currentCharacter->getFirstSkill();
+
+
+						// Drawing the zones where the character can attack.
+						_zones.showAttackZones(characterSkill, _world.getGrid());
+						_m_isMoovement = true;
+						this->draw();
+
+
 						// Click Looker. 
+						// Checking for a click on the grid.
 						bool wait = false;
 						while (!wait) {
 							sf::Vector2i vector = sf::Mouse::getPosition();
 							wait = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
 						}
 						wait = false;
-						// End Click Looker
 
+						// End Click Looker
+						// Getting the position of the click on the grid.
 						pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 						pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 						
+						// Checking if there is a character on the grid.
 						if (_world.getGrid()[pos_grid_x][pos_grid_y])
 						{
+							// Getting the target character on the grid as a character class, and not an Entity.
 							Character* characterTarget = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
 							
 							if (characterTarget->getPlayer() != currentCharacter->getPlayer())
@@ -121,7 +135,7 @@ void ChoosePlay::update()
 							std::cout << "You can't attack an empty case" << std::endl;
 
 						}
-					}
+					}// end Moove 2
 
 					break;
 

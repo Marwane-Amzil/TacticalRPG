@@ -32,6 +32,8 @@ namespace gui
 
 		void showMovingZones(Character* character, Grid& grid);
 
+		void showAttackZones(const Skill* skill, Grid& grid);
+
 	private:
 
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

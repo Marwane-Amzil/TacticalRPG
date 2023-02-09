@@ -48,6 +48,37 @@ void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
 }
 
 
+void gui::ZoneGraphic::showAttackZones(const Skill* skill, Grid& grid)
+{
+	char color = skill->getOwner()->getPlayer();
+	std::string startCirclePath = "assets/images/ZoneGraphic/";
+	std::string endCirclePath = "lueZone.png";
+	std::string path = startCirclePath + color + endCirclePath;
+	_actionsTexture.loadFromFile(path);
+	_actionSprites.clear();
+
+	for (Position& pos : skill->getPossibleZones(grid))
+	{
+
+		int pos_window_x = (pos.getX() * 50 + (0.24 * window_x)) + 10;
+		int pos_window_y = (pos.getY() * 50 + (0.04 * window_y)) + 11;
+
+		sf::Sprite* _sprite = new sf::Sprite();
+		_sprite->setTexture(_actionsTexture);
+		_sprite->setTextureRect(sf::IntRect(0, 0, 30, 28));
+		_sprite->setPosition(pos_window_x, pos_window_y);
+		_actionSprites.push_back(_sprite);
+	}
+}
+
+
+
+
+
+
+
+
+
 sf::RectangleShape gui::ZoneGraphic::getShape() const
 {
 	return _shape;

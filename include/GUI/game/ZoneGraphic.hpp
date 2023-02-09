@@ -30,7 +30,7 @@ namespace gui
 
 		std::vector<sf::Sprite*> getSprites() const;
 
-		void setZones(Character* character, Grid& grid);
+		void showMovingZones(Character* character, Grid& grid);
 
 	private:
 

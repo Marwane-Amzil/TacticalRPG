@@ -57,6 +57,8 @@ void ChoosePlay::update()
 	{
 		int mouse_x = sf::Mouse::getPosition(_window).x;
 		int mouse_y = sf::Mouse::getPosition(_window).y;
+
+
 		int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) * 50 + (0.24 * x);
 		int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
 
@@ -65,32 +67,38 @@ void ChoosePlay::update()
 
 
 
-
+		// If we have selected a character.
 		if (_m_isCharacterSelected)
 		{
+			// For each action button
 			for (int i = 0; i < _actions.getSprites().size(); i++)
 			{
+				// If we click on an action button
 				if (_actions.getSprites()[i]->getGlobalBounds().contains(mouse_x, mouse_y))
 				{
+					// We put The Boolean to true, because we have selected an action.
 					_m_isCharacterSelected = true;
-					std::cout << currentEntity->getHp() << std::endl;
-					if (i == 0)
+					// If we have clicked on Moove.
+					if (i == 0) // Moove
 					{
-						_zones.setZones((dynamic_cast<Character*>(currentEntity)), _world.getGrid());
+						// Drawing the zones where the character can go.
+						_zones.showMovingZones((dynamic_cast<Character*>(currentEntity)), _world.getGrid());
 						_m_isMoovement = true;
 						
 					}
-					if (i == 2)
+					if (i == 2) // First Attack
 					{
-						bool wait = false;
 						Character* currentCharacter = dynamic_cast<Character*>(currentEntity);
 						characterSkill = currentCharacter->getFirstSkill();
-
+						// Click Looker. 
+						bool wait = false;
 						while (!wait) {
 							sf::Vector2i vector = sf::Mouse::getPosition();
 							wait = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
 						}
 						wait = false;
+						// End Click Looker
+
 						pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 						pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 						

@@ -24,9 +24,13 @@ std::vector<sf::Sprite*> gui::ZoneGraphic::getSprites() const
 	return _actionSprites;
 }
 
-void gui::ZoneGraphic::setZones(Character* character, Grid& grid)
+void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
 {
-	_actionsTexture.loadFromFile("assets/images/ZoneGraphic/BlueZone.png");
+	char color = character->getPlayer();
+	std::string startCirclePath = "assets/images/ZoneGraphic/";
+	std::string endCirclePath =  "lueZone.png";
+	std::string path = startCirclePath + color + endCirclePath;
+	_actionsTexture.loadFromFile(path);
 	_actionSprites.clear();
 
 	for (Position& pos : character->getPossibleMoves(grid))
@@ -35,13 +39,8 @@ void gui::ZoneGraphic::setZones(Character* character, Grid& grid)
 
 		int pos_window_x =  (pos.getX() * 50 + (0.24 * window_x)) + 10;
 		int pos_window_y =  (pos.getY() * 50 + (0.04 * window_y)) + 11;
+		std::cout << character->getPlayer();
 
-		//std::cout << world.getShape().getGlobalBounds().getPosition().x << "   " << world.getShape().getGlobalBounds().getPosition().y << std::endl;
-		std::cout << pos.getX()*50 << "  j  " << pos.getY()*50 << std::endl;
-
-
-		std::cout << pos_window_x << "  i   " << pos_window_y << std::endl;
-		//std::cout << window_x << "   " << window_y << std::endl;
 
 		sf::Sprite* _sprite = new sf::Sprite();
 		_sprite->setTexture(_actionsTexture);

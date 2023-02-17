@@ -9,7 +9,7 @@
 
 
 ChoosePlay::ChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace )
-	: super(machine, window, world, texture_manager, replace), _animationManager(),_actions(window), _zones(window), _spriteFactory(_world, texture_manager, _animationManager)
+	: super(machine, window, world, texture_manager, replace), _animationManager(),_actions(window), _movements(window), _spriteFactory(_world, texture_manager, _animationManager)
 {
 	for (auto& row : _world.getSprites())
 	{
@@ -82,7 +82,7 @@ void ChoosePlay::update()
 					if (i == 0) // Moove
 					{
 						// Drawing the zones where the character can go.
-						_zones.showMovingZones((dynamic_cast<Character*>(currentEntity)), _world.getGrid());
+						_movements.showMovingZones((dynamic_cast<Character*>(currentEntity)), _world.getGrid());
 						_m_isMoovement = true;
 						this->draw();
 
@@ -118,8 +118,8 @@ void ChoosePlay::update()
 
 
 						// Drawing the zones where the character can attack.
-						_zones.showAttackZones(characterSkill, _world.getGrid());
-						_m_isMoovement = true;
+						_movements.showAttackZones(characterSkill, _world.getGrid());
+						_m_isAttack = true;
 						this->draw();
 
 
@@ -146,7 +146,7 @@ void ChoosePlay::update()
 							{	
 								std::cout << "You attack" << std::endl;
 								currentCharacter->getFirstSkill()->activate(_world.getGrid(), characterTarget);
-								_m_isMoovement = false;
+								_m_isAttack = false;
 							}
 							else
 							{
@@ -156,7 +156,7 @@ void ChoosePlay::update()
 						else
 						{
 							std::cout << "You can't attack an empty case" << std::endl;
-							_m_isMoovement = false;
+							_m_isAttack = false;
 						}
 					}// end Moove 2
 
@@ -204,9 +204,9 @@ void ChoosePlay::draw()
 		_window.draw(_actions);
 	}
 
-	if (_m_isMoovement)
+	if (_m_isMoovement || _m_isAttack)
 	{
-		_window.draw(_zones);
+		_window.draw(_movements);
 	}
 	
 	_window.display();

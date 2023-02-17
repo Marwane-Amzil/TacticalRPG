@@ -40,12 +40,13 @@ private:
 	utils::SpriteFactory _spriteFactory;
 	sf::Texture _m_backgroundTexture;
 	gui::ActionsGraphic _actions;
-	gui::ZoneGraphic _zones;
+	gui::ZoneGraphic _movements;
 	
 	Entity* currentEntity;
 	const Skill* characterSkill;
 	bool _m_isCharacterSelected = false;
 	bool _m_isMoovement = false;
+	bool _m_isAttack = false;
 	std::string currentCharacterName;
 
 	

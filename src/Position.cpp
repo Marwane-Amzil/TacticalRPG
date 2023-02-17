@@ -1,5 +1,6 @@
 #include <Position.hpp>
 
+
 constexpr Position::Position()
 	: _x(0), _y(0) {}
 

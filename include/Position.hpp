@@ -12,6 +12,7 @@ class Position
 {
 public:
 
+
 	/**
 	* @brief Default constructor. Initialize a position with values (0,0).
 	*/
@@ -28,6 +29,7 @@ public:
 	* 
 	* @param other: position to copy
 	*/
+
 	Position(const Position& other);
 	/**
 	* @brief Move constructor. Initialize a position with the values of an other position.

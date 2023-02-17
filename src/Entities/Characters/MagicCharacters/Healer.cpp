@@ -1,4 +1,5 @@
 #include <Entities/Characters/MagicCharacters/Healer.hpp>
+#include <Skills/MagicalSkills/HealerTemp.hpp>
 #include <Grid.hpp>
 
 using namespace ::grid;

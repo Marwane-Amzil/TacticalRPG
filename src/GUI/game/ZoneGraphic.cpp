@@ -32,6 +32,7 @@ void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
 	std::string path = startCirclePath + color + endCirclePath;
 	_actionsTexture.loadFromFile(path);
 	_moovementSprites.clear();
+	_attackSprites.clear();
 
 	for (Position& pos : character->getPossibleMoves(grid))
 	{
@@ -56,6 +57,7 @@ void gui::ZoneGraphic::showAttackZones(const Skill* skill, Grid& grid)
 	std::string path = startCirclePath + color + endCirclePath;
 	_actionsTexture.loadFromFile(path);
 	_attackSprites.clear();
+	_moovementSprites.clear();
 
 	for (Position& pos : skill->getPossibleZones(grid))
 	{

@@ -132,6 +132,9 @@
     <ClCompile Include="src\GUI\game\ZoneGraphic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Skills\MagicalSkills\HealerTemp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Entities\Character.hpp">
@@ -261,6 +264,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GUI\game\ZoneGraphic.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Skills\MagicalSkills\HealerTemp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

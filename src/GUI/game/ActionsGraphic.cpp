@@ -12,7 +12,7 @@
 gui::ActionsGraphic::ActionsGraphic(sf::RenderTarget& target)
 	: _shape(), _actionSprites(), _character()
 {
-	font.loadFromFile("assets/ui/menu/font/ethn.otf");
+	font.loadFromFile("assets/ui/menu/font/Roboto-Bold.ttf");
 
 	_actionsTexture.loadFromFile("assets/images/actionsGraphics/gallerybutton_selecthover_blank.png");
 	
@@ -30,13 +30,13 @@ gui::ActionsGraphic::ActionsGraphic(sf::RenderTarget& target)
 	{
 		sf::Sprite* _sprite = new sf::Sprite();
 		_sprite->setTexture(_actionsTexture);
-		_sprite->setTextureRect(sf::IntRect(0, 0,223 , 50));
-		_sprite->setPosition(i+50, i*50+(background_height - 6*50));
+		_sprite->setTextureRect(sf::IntRect(0, 0,400 , 87));
+		_sprite->setPosition(i+25, i*87 + (background_height - 6*77));
 		_actionSprites[i] = _sprite;
 	}
 
-	_actionsTexts[1].setPosition(60, 1 * 50 + (background_height - 6 * 50));
-	_actionsTexts[2].setPosition(60, 2*50 + (background_height - 6 * 50));
+	_actionsTexts[1].setPosition(110, 1 * 77 + (background_height - 6 * 77));
+	_actionsTexts[2].setPosition(110, 2 * 77 + (background_height - 6 * 77));
 
 	
 }
@@ -51,9 +51,9 @@ std::array<sf::Sprite*,6> gui::ActionsGraphic::getSprites() const
 void gui::ActionsGraphic::setText(Character* character)
 {
 	
-	_actionsTexts[1].setString("Actions");
+	_actionsTexts[1].setString("ACTIONS");
 	_actionsTexts[1].setCharacterSize(25);
-	_actionsTexts[1].setFillColor(sf::Color::Magenta);
+	_actionsTexts[1].setFillColor(sf::Color::White);
 	_actionsTexts[1].setFont(font);
 	
 	_actionsTexts[2].setString(character->getFirstSkill()->getName());

@@ -30,9 +30,9 @@ namespace gui
 
 		std::vector<sf::Sprite*> getSprites() const;
 
-		void showMovingZones(Character* character, Grid& grid);
+		void showMovingZones(sf::RenderTarget& target,Character* character, Grid& grid);
 
-		void showAttackZones(const Skill* skill, Grid& grid);
+		void showAttackZones(sf::RenderTarget& target, const Skill* skill, Grid& grid);
 
 	private:
 

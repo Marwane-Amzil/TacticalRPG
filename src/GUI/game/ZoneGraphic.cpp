@@ -24,7 +24,7 @@ std::vector<sf::Sprite*> gui::ZoneGraphic::getSprites() const
 	return _actionSprites;
 }
 
-void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
+void gui::ZoneGraphic::showMovingZones(sf::RenderTarget& target, Character* character, Grid& grid)
 {
 	char color = character->getPlayer();
 	std::string startCirclePath = "assets/images/ZoneGraphic/";
@@ -45,11 +45,13 @@ void gui::ZoneGraphic::showMovingZones(Character* character, Grid& grid)
 		_sprite->setTextureRect(sf::IntRect(0, 0, 30, 28));
 		_sprite->setPosition(pos_window_x, pos_window_y);
 		_moovementSprites.push_back(_sprite);
+		target.draw(*_sprite);
+
 	}
 }
 
 
-void gui::ZoneGraphic::showAttackZones(const Skill* skill, Grid& grid)
+void gui::ZoneGraphic::showAttackZones(sf::RenderTarget& target, const Skill* skill, Grid& grid)
 {
 	char color = skill->getOwner()->getPlayer();
 	std::string startCirclePath = "assets/images/ZoneGraphic/";
@@ -69,7 +71,11 @@ void gui::ZoneGraphic::showAttackZones(const Skill* skill, Grid& grid)
 		_sprite->setTextureRect(sf::IntRect(0, 0, 30, 28));
 		_sprite->setPosition(pos_window_x, pos_window_y);
 		_attackSprites.push_back(_sprite);
+		target.draw(*_sprite);
 	}
+
+
+
 }
 
 sf::RectangleShape gui::ZoneGraphic::getShape() const

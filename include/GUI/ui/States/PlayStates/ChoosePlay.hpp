@@ -35,6 +35,9 @@ public:
 
 private:
 
+	int window_click_x;
+	int window_click_y;
+
 	typedef PlayState super;
 	utils::AnimationManager _animationManager;
 	utils::SpriteFactory _spriteFactory;

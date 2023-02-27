@@ -13,7 +13,7 @@ Application::Application()
 void Application::run()
 {
 	// Initialize the engine
-	_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
+	_machine.run(StateMachine::build<CharacterChoice>(_machine, _window, _world, _textureManager, true));
 
 	// Main loop
 	while (_machine.running())

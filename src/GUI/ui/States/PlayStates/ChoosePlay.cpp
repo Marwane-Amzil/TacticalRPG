@@ -57,6 +57,8 @@ void ChoosePlay::update()
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
+
+		// Taking where the mouse is clicked. 
 		int mouse_x = sf::Mouse::getPosition(_window).x;
 		int mouse_y = sf::Mouse::getPosition(_window).y;
 
@@ -72,23 +74,24 @@ void ChoosePlay::update()
 		// If we have selected a character.
 		if (_m_isCharacterSelected)
 		{
-			// For each action button
+			// Iterating in each Button sprite. 
 			for (int i = 0; i < _actions.getSprites().size(); i++)
 			{
-				// If we click on an action button
+				// Checking if a click is detected on One of the sprites
 				if (_actions.getSprites()[i]->getGlobalBounds().contains(mouse_x, mouse_y))
 				{
-					// We put The Boolean to true, because we have selected an action.
+					// This boolean is here to check when a character is selecter. It is set to true to draw draw the action sprites that have the actions on 
 					_m_isCharacterSelected = true;
-					// If we have clicked on Moove.
+					// The sprites are stocked in an array. So we can access them with they're index
+					// If the index is 0, it is the move sprite.
 					if (i == 0) // Moove
 					{
-						// Drawing the zones where the character can go.
+						// Stocking the zones where the character can go
 						_movements.showMovingZones(_window,(dynamic_cast<Character*>(currentEntity)), _world.getGrid());
 						_m_isMoovement = true;
 						this->draw();
 
-						// Click Looker. 
+						// Click Blocker. 
 						// Checking for a click on the grid.	
 						bool wait = false;
 						while (!wait) {
@@ -96,9 +99,10 @@ void ChoosePlay::update()
 							wait = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
 						}
 						wait = false;
-						// End Click Looker
+						// End Click blocker
 						// Getting the position of the click on the grid.
 						
+						// Changing the position of the character
 						Character* currentCharacter = dynamic_cast<Character*>(currentEntity);
 						// If we can move to the position we clicked on.
 
@@ -107,22 +111,20 @@ void ChoosePlay::update()
 
 						if ((dynamic_cast<Character*>(currentEntity)->canMove(_world.getGrid(),pos_grid_x,pos_grid_y) ))
 						{
-
+								
 							int pos_X_Init = window_click_x ;
 							int pos_Y_Init = window_click_y;
 
-							std::cout << "pos_X_Init : " << pos_X_Init << "pos_Y_Init : " << pos_Y_Init << std::endl;
-							// Moving the character.
 							int pos_arrival_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)));
 							int pos_arrival_y = static_cast<int>(((sf::Mouse::getPosition(_window).y)));
 							/*
 							int pos_X_arrival = pos_grid_x * 50 + (0.24 * x);
 							int pos_Y_arrival = pos_grid_y * 50 + (0.04 * y);
 							*/
-							std::cout << " pos_grille_x " << pos_arrival_x << "pos_grille_y" << pos_arrival_y << std::endl;
 							_world.getGrid().move(currentCharacter->getPosition().getX(), currentCharacter->getPosition().getY(), pos_grid_x, pos_grid_y);
 							
-							_world[currentCharacter->getPosition().getX()][currentCharacter->getPosition().getY()]->move(sf::Vector2f( pos_arrival_x - pos_X_Init, pos_arrival_y - pos_Y_Init));//.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
+							_world[currentCharacter->getPosition().getX()][currentCharacter->getPosition().getY()]->move(sf::Vector2f( pos_arrival_x - pos_X_Init , pos_arrival_y - pos_Y_Init));//.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
+							this->draw();
 							std::cout << "Move" << std::endl;
 							_m_isMoovement = false;
 						}
@@ -144,7 +146,7 @@ void ChoosePlay::update()
 						_movements.showAttackZones(_window,characterSkill, _world.getGrid());
 						_m_isAttack = true;
 						
-						//this->draw();
+						this->draw();
 
 
 						// Click Looker. 
@@ -224,7 +226,6 @@ void ChoosePlay::update()
 void ChoosePlay::draw()
 {
 	_window.clear();
-
 	_window.draw(_world);
 
 	if (_m_isCharacterSelected)

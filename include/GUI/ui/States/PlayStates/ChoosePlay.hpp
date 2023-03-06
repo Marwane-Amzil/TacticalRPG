@@ -53,7 +53,7 @@ private:
 	std::string currentCharacterName;
 
 	
-	int nb = 0;
+	
 	sf::Sprite _m_background;
 	sf::Vector2i _pos_mouse;
 	sf::Vector2f _mouse_coord;

@@ -136,7 +136,12 @@
 				31,
 				32,
 				33,
-				34
+				34,
+				35,
+				36,
+				37,
+				38,
+				39
 			]
 		}
 	],
@@ -232,7 +237,12 @@
 				31,
 				32,
 				33,
-				34
+				34,
+				35,
+				36,
+				37,
+				38,
+				39
 			]
 		}
 	],
@@ -319,6 +329,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/GUI/game/ActionsGraphic.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/GUI/game/Animation.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -337,13 +353,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/GUI/ui/Button.cpp",
+			"path" : "src/GUI/game/ZoneGraphic.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/GUI/ui/Menu.cpp",
+			"path" : "src/GUI/ui/Button.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -379,6 +395,18 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/GUI/ui/States/PlayStates/CharacterChoice.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/GUI/ui/States/PlayStates/ChoosePlay.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/Grid.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -409,6 +437,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/Skills/MagicalSkills/HealerTemp.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/Skills/PhysicalSkill.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -416,6 +450,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/Skills/PhysicalSkills/AxeSkill.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Skills/PhysicalSkills/BowShot.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

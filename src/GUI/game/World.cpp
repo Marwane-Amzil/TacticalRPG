@@ -107,18 +107,25 @@ void gui::World::clean()
 
 void gui::World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+
 	target.draw(_shape, states);
-	//target.clear();
 
 	for (size_t i = 0; i < ::grid::ROWS; i++)
 	{
 		for (size_t j = 0; j < ::grid::COLUMNS; j++)
 		{
 			target.draw(*_backgroundSprites[i][j], states);
+		}
+	}
+	for (size_t i = 0; i < ::grid::ROWS; i++)
+	{
+		for (size_t j = 0; j < ::grid::COLUMNS; j++)
+		{
 			if (_sprites[i][j])
 			{
 				target.draw(*_sprites[i][j], states);
 			}
+
 		}
 	}
 }

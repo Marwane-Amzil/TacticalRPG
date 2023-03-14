@@ -45,11 +45,13 @@ private:
 	gui::ActionsGraphic _actions;
 	gui::ZoneGraphic _movements;
 	
-	Entity* currentEntity;
+	Character* currentEntity;
 	const Skill* characterSkill;
+
 	bool _m_isCharacterSelected = false;
 	bool _m_isMoovement = false;
 	bool _m_isAttack = false;
+
 	std::string currentCharacterName;
 
 	

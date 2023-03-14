@@ -29,7 +29,7 @@ void gui::ZoneGraphic::showMovingZones(sf::RenderTarget& target, Character* char
 	char color = character->getPlayer();
 	std::string startCirclePath = "assets/images/ZoneGraphic/";
 	std::string endCirclePath =  "lueZone.png";
-	std::string path = startCirclePath + color + endCirclePath;
+	std::string path = "assets/images/ZoneGraphic/BlueZone.png";
 	_actionsTexture.loadFromFile(path);
 	_moovementSprites.clear();
 	_attackSprites.clear();
@@ -56,7 +56,7 @@ void gui::ZoneGraphic::showAttackZones(sf::RenderTarget& target, const Skill* sk
 	char color = skill->getOwner()->getPlayer();
 	std::string startCirclePath = "assets/images/ZoneGraphic/";
 	std::string endCirclePath = "lueZone.png";
-	std::string path = startCirclePath + color + endCirclePath;
+	std::string path = "assets/images/ZoneGraphic/BlueZone.png";
 	_actionsTexture.loadFromFile(path);
 	_attackSprites.clear();
 	_moovementSprites.clear();

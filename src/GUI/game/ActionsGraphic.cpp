@@ -51,7 +51,7 @@ std::array<sf::Sprite*,6> gui::ActionsGraphic::getSprites() const
 void gui::ActionsGraphic::setText(Character* character)
 {
 	
-	_actionsTexts[1].setString("ACTIONS");
+	/*_actionsTexts[1].setString("ACTIONS");
 	_actionsTexts[1].setCharacterSize(25);
 	_actionsTexts[1].setFillColor(sf::Color::White);
 	_actionsTexts[1].setFont(font);
@@ -60,6 +60,7 @@ void gui::ActionsGraphic::setText(Character* character)
 	_actionsTexts[2].setCharacterSize(25);
 	_actionsTexts[2].setFillColor(sf::Color::White);
 	_actionsTexts[2].setFont(font);
+	*/
 }
 
 

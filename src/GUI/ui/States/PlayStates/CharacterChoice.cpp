@@ -59,7 +59,7 @@ void CharacterChoice::resume()
 
 void CharacterChoice::update()
 {
-	if (count == 9)
+	if (count == 1)
 		{
 			_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
 

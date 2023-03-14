@@ -59,7 +59,7 @@ void CharacterChoice::resume()
 
 void CharacterChoice::update()
 {
-	if (count == 1)
+	if (count == 9)
 		{
 			_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
 
@@ -107,7 +107,7 @@ void CharacterChoice::update()
 		
 	}
 
-
+	// 0 --> Blue 
 	if (m_characters_blue[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker== 0)
 	{
 
@@ -115,16 +115,17 @@ void CharacterChoice::update()
 		{
 			click_looker = false;
 			while (!click_looker) {
-				sf::Vector2i vector = sf::Mouse::getPosition();
-				click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-				
+				int the_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+				if (the_y <= 5) {
+					click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) && (sf::Mouse::isButtonPressed(sf::Mouse::Left)));
+				}
 			}
 			click_looker = false;
 				
-			// 460 -> espace � gauche grille bords �crans
+			// 460 -> espace a gauche grille bords �crans
 			// 40 -> espace en haut grille bords �crans
 			
-			int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)- (0.24 * x)) / 50) * 50 + (0.24 * x);
+			int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) * 50 + (0.24 * x);
 			int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
 			
 			int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
@@ -162,6 +163,7 @@ void CharacterChoice::update()
 	}
 
 
+	// 1 --> Red
 	if (m_characters_red[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color_looker == 1)
 	{
 
@@ -169,9 +171,10 @@ void CharacterChoice::update()
 		{
 			bool click_looker = false;
 			while (!click_looker) {
-				sf::Vector2i vector = sf::Mouse::getPosition();
-				click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
-			
+				int the_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+				if (the_y <= 19 && the_y >= 14) {
+					click_looker = ( (_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) && sf::Mouse::isButtonPressed(sf::Mouse::Left));
+				}
 			}
 			click_looker = false;
 
@@ -185,9 +188,6 @@ void CharacterChoice::update()
 			int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 
 		
-
-
-
 
 
 			switch (j)
@@ -221,16 +221,17 @@ void CharacterChoice::update()
 	case 0 :
 		color_looker = 1;
 		count++;
-
 		break;
+
 	case 1 :
 		color_looker = 0;
 		count++;
-
 		break;
+
 	default:
 		color_looker = 0;
 		break;
+
 	}
 	
 

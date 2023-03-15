@@ -6,6 +6,7 @@
 #include <Constants.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <iostream>
+#include <algorithm>
 
 gui::World::World(sf::RenderTarget& target)
 	: _shape(), _grid(), _backgroundSprites() , _sprites()
@@ -73,6 +74,28 @@ void gui::World::removeEntity(int x, int y)
 	delete _sprites[x][y];
 	_sprites[x][y] = nullptr;
 	_grid[x][y] = nullptr;
+}
+
+void gui::World::update()
+{
+	// find sprite sharing same entity inside 2d array
+	for (int i = 0; i < ::grid::COLUMNS; ++i)
+	{
+		for (int j = 0; j < ::grid::ROWS; ++j)
+		{
+			if (_sprites[i][j] != nullptr)
+			{
+				auto entity = _sprites[i][j]->getEntity();
+				auto& position = entity->getPosition();
+				
+				if (position.getX() != i || position.getY() != j)
+				{
+					_sprites[position.getX()][position.getY()] = _sprites[i][j];
+					_sprites[i][j] = nullptr;
+				}
+			}
+		}
+	}
 }
 
 Grid& gui::World::getGrid() 

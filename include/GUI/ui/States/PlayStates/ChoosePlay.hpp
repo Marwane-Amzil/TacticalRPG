@@ -11,9 +11,8 @@
 #include <GUI/game/World.hpp>
 #include <utils/TextureManager.hpp>
 
-
 class StateMachine;
-
+class Position;
 namespace sf
 {
 	class RenderWindow;

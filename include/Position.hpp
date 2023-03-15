@@ -16,7 +16,7 @@ public:
 	/**
 	* @brief Default constructor. Initialize a position with values (0,0).
 	*/
-	constexpr Position();
+	Position();
 	/**
 	* @brief Constructor taking 2 values. Initialize a position with the given values.
 	* 

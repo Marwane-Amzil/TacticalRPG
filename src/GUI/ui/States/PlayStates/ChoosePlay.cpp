@@ -115,12 +115,12 @@ void ChoosePlay::update()
 							int pos_X_arrival = pos_grid_x * 50 + (0.24 * x);
 							int pos_Y_arrival = pos_grid_y * 50 + (0.04 * y);
 
+							Position currentPos = currentEntity->getPosition();
+
 							std::cout << pos_grid_x << "  " << pos_grid_y << std::endl;
-							
 							_world.getGrid().move(currentEntity->getPosition().getX(), currentEntity->getPosition().getY(), pos_grid_x, pos_grid_y);
-							_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]->setPosition(pos_X_arrival, pos_Y_arrival);///.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
-							//_window.draw(*_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]);
-							//std::cout << currentEntity->getPosition().getX() << "  2  " << currentEntity->getPosition().getY() << std::endl;
+							_world[currentPos.getX()][currentPos.getY()]->setPosition(pos_X_arrival, pos_Y_arrival);///.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
+							
 							playerDetector = (playerDetector + 1) % 2;
 
 							std::cout << "Move" << std::endl;
@@ -200,6 +200,8 @@ void ChoosePlay::update()
 				{
 					std::cout << pos_grid_x << "  ;  " << pos_grid_y << std::endl;
 					currentEntity = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
+
+
 					currentCharacterName = currentEntity->getClass();
 					//_actions.setText(dynamic_cast<Character*>(currentEntity));
 

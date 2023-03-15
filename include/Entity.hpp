@@ -40,6 +40,9 @@ public:
 	* 
 	* @return returns the remaining hp of the entity
 	*/
+
+	void setPosition(const int _x, const int _y);
+
 	int getHp() const;
 	/**
 	* @brief Method which sets the current hp of the entity.

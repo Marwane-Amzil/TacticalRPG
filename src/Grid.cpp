@@ -35,6 +35,8 @@ void Grid::move(const int from_x, const int from_y, const int to_x, const int to
 	* is only allowed in an empty case.
 	*/
 	std::swap(_grid[from_x][from_y], _grid[to_x][to_y]);
+	std::cout << _grid[to_x][to_y]->getPosition() << std::endl;
+	_grid[to_x][to_y]->setPosition(to_x,to_y);
 }
 
 void Grid::display() const

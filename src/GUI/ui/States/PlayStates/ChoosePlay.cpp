@@ -85,6 +85,7 @@ void ChoosePlay::update()
 						_movements.showMovingZones(_window,dynamic_cast<Character*>(currentEntity), _world.getGrid());
 						_m_isMoovement = true;
 						this->draw();
+						std::cout << currentEntity->getPosition().getX() << " 1 " << currentEntity->getPosition().getY() << std::endl;
 
 						// Click Blocker. 
 						// Checking for a click on the grid.	
@@ -102,7 +103,6 @@ void ChoosePlay::update()
 						pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
 						pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 
-						std::cout << pos_grid_x << "  " << pos_grid_y << std::endl;
 						if ((currentEntity->canMove(_world.getGrid(),pos_grid_x,pos_grid_y) ))
 						{
 							/*
@@ -115,12 +115,12 @@ void ChoosePlay::update()
 							int pos_X_arrival = pos_grid_x * 50 + (0.24 * x);
 							int pos_Y_arrival = pos_grid_y * 50 + (0.04 * y);
 
-							std::cout << pos_grid_x << pos_grid_y << " ||| " << pos_X_arrival << pos_Y_arrival << std::endl;
+							std::cout << pos_grid_x << "  " << pos_grid_y << std::endl;
 							
 							_world.getGrid().move(currentEntity->getPosition().getX(), currentEntity->getPosition().getY(), pos_grid_x, pos_grid_y);
-
 							_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]->setPosition(pos_X_arrival, pos_Y_arrival);///.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
 							//_window.draw(*_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]);
+							//std::cout << currentEntity->getPosition().getX() << "  2  " << currentEntity->getPosition().getY() << std::endl;
 							playerDetector = (playerDetector + 1) % 2;
 
 							std::cout << "Move" << std::endl;
@@ -198,6 +198,7 @@ void ChoosePlay::update()
 			{
 				if (playerDetector == 0 && dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'B'  || playerDetector == 1 && dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'R')
 				{
+					std::cout << pos_grid_x << "  ;  " << pos_grid_y << std::endl;
 					currentEntity = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
 					currentCharacterName = currentEntity->getClass();
 					//_actions.setText(dynamic_cast<Character*>(currentEntity));

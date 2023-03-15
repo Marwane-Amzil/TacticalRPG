@@ -15,6 +15,12 @@ void Entity::setPosition(const Position& position)
 	_position = position;
 }
 
+void Entity::setPosition(const int _x, const int _y)
+{
+	_position.setX(_x);
+	_position.setY(_y);
+}
+
 int Entity::getHp() const
 {
 	return _hp;

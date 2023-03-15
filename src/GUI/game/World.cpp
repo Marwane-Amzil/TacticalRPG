@@ -22,7 +22,9 @@ gui::World::World(sf::RenderTarget& target)
 	background_texture.loadFromFile("assets/images/background.png", sf::IntRect(0, 0, static_cast<int>(background_width / 19), static_cast<int>(background_height / 19)));
 	background_sprite.setTexture(&background_texture);
 
-	
+	cloud_texture.loadFromFile("assets/images/World/coulds.png");
+	_cloud_sprite.setTexture(&cloud_texture);
+
 
 	int basic_x_pos = static_cast<int>(0.24 * x);
 	int basic_y_pos = static_cast<int>(0.04 * y);
@@ -132,6 +134,8 @@ void gui::World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 
 	target.draw(_shape, states);
+
+	target.draw(_cloud_sprite);
 
 	for (size_t i = 0; i < ::grid::ROWS; i++)
 	{

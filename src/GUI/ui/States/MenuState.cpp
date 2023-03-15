@@ -17,7 +17,7 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World
 
     _pos = 0;
     _pressed = theselect = false;
-    _font->loadFromFile("./assets/ui/menu/font/ethn.otf");
+    _font->loadFromFile("./assets/ui/menu/font/Roboto-Bold.ttf");
     _image->loadFromFile("./assets/ui/menu/img/menu-Play.png");
 	_closingImage->loadFromFile("./assets/ui/menu/img/Button-close.png");
 
@@ -26,10 +26,10 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World
     _mouse_coord = { 0, 0 };
 
     // The different containers are linked by the id. option[0] refeeres to coords[0] refeers to size[0]
-    _options = { "War Game", "Play", "Options", "About", "Quit" };
+    _options = { "War Game", "Play", "Online", "Options", "Quit" };
     _texts.resize(5);
-    _coords = { {460,100},{200,213},{188,295},{200,370},{220,447} };
-    _sizes = { 50,28,24,24,24 };
+    _coords = { {800,160},{310,308},{301,432},{300,545},{330,661} };
+    _sizes = { 100,56,48,48,48 };
 
     for (std::size_t i{}; i < _texts.size(); ++i) {
         _texts[i].setFont(*_font);
@@ -42,7 +42,7 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World
     _pos = 1;
     
     _winclose->setSize(sf::Vector2f(50, 50));
-    _winclose->setPosition(1178, 38);
+    _winclose->setPosition(1767, 57);
 	_winclose->setTexture(_closingImage);
 }
 

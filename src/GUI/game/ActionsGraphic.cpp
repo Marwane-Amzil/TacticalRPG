@@ -12,7 +12,7 @@
 gui::ActionsGraphic::ActionsGraphic(sf::RenderTarget& target)
 	: _shape(), _actionSprites(), _character()
 {
-	font.loadFromFile("assets/ui/menu/font/Roboto-Bold.ttf");
+	font.loadFromFile("./assets/ui/menu/font/Roboto-Bold.ttf");
 
 	_actionsTexture.loadFromFile("assets/images/actionsGraphics/gallerybutton_selecthover_blank.png");
 	

@@ -51,7 +51,11 @@ namespace gui
 
 		sf::Texture background_texture;
 		gui::EntitySprite background_sprite;
-
+		
+		sf::Texture cloud_texture;
+		gui::EntitySprite _cloud_sprite;
+		sf::Texture desert_texture;
+		gui::EntitySprite _desert_sprite;
 
 
 

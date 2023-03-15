@@ -191,13 +191,13 @@ void ChoosePlay::update()
 							std::cout << "sprite at " << _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()] << '\n';
 							
 							playerDetector = (playerDetector + 1) % 2;
+							_m_isCharacterSelected = false;
 
-							_m_isMoovement = false;
+							
 						}
-						else
-						{
-							_m_isMoovement = false;
-						}
+						
+						_m_isMoovement = false;
+						
 						
 					}
 					if (i == 2) // First Attack

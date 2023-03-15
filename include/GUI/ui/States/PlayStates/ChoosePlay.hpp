@@ -38,6 +38,10 @@ private:
 	int window_click_x;
 	int window_click_y;
 
+	// 0 --> Blue
+	// 1 --> Red
+	int playerDetector = 0;
+
 	typedef PlayState super;
 	utils::AnimationManager _animationManager;
 	utils::SpriteFactory _spriteFactory;

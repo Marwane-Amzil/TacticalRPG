@@ -81,7 +81,7 @@ void ChoosePlay::update()
 					if (i == 0) // Moove
 					{
 						// Stocking the zones where the character can go
-						_movements.showMovingZones(_window,currentEntity, _world.getGrid());
+						_movements.showMovingZones(_window,dynamic_cast<Character*>(currentEntity), _world.getGrid());
 						_m_isMoovement = true;
 						this->draw();
 
@@ -120,6 +120,8 @@ void ChoosePlay::update()
 
 							_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]->setPosition(pos_X_arrival, pos_Y_arrival);///.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
 							//_window.draw(*_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]);
+							playerDetector = (playerDetector + 1) % 2;
+
 							std::cout << "Move" << std::endl;
 							_m_isMoovement = false;
 						}
@@ -139,7 +141,6 @@ void ChoosePlay::update()
 						// Drawing the zones where the character can attack.
 						_movements.showAttackZones(_window,characterSkill, _world.getGrid());
 						_m_isAttack = true;
-						
 						this->draw();
 
 
@@ -166,6 +167,8 @@ void ChoosePlay::update()
 							{	
 								std::cout << "You attack" << std::endl;
 								currentEntity->getFirstSkill()->activate(_world.getGrid(), characterTarget);
+								playerDetector = (playerDetector + 1) % 2;
+
 								_m_isAttack = false;
 							}
 							else
@@ -192,14 +195,19 @@ void ChoosePlay::update()
 		{
 			if (_world.getGrid()[pos_grid_x][pos_grid_y])
 			{
-				currentEntity = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
-				currentCharacterName = currentEntity->getClass();
-				//_actions.setText(dynamic_cast<Character*>(currentEntity));
+				if (playerDetector == 0 && dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'B'  || playerDetector == 1 && dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'R')
+				{
+					currentEntity = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
+					currentCharacterName = currentEntity->getClass();
+					//_actions.setText(dynamic_cast<Character*>(currentEntity));
 
-				window_click_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)));
-				window_click_y = static_cast<int>(((sf::Mouse::getPosition(_window).y)));
+					window_click_x = static_cast<int>(((sf::Mouse::getPosition(_window).x)));
+					window_click_y = static_cast<int>(((sf::Mouse::getPosition(_window).y)));
 
-				_m_isCharacterSelected = true;
+					_m_isCharacterSelected = true;
+					std::cout << "You selected a character : " << playerDetector << std::endl;
+				}
+				
 			}
 		}
 	}
@@ -224,6 +232,8 @@ void ChoosePlay::draw()
 {
 	_window.clear();
 
+	_window.draw(_world);
+
 	if (_m_isCharacterSelected)
 	{
 		_window.draw(_actions);
@@ -233,7 +243,6 @@ void ChoosePlay::draw()
 	{
 		_window.draw(_movements);
 	}
-	_window.draw(_world);
 
 	_window.display();
 }

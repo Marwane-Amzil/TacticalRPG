@@ -208,7 +208,7 @@ void CharacterChoice::update()
 		}
 	}
 
-	if (count == 1)
+	if (count == 3)
 	{
 		_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
 	}

@@ -192,6 +192,12 @@ public:
 
 	virtual bool canMove(Grid& grid, int x, int y) const = 0;
 
+	virtual void setNbMoves(const int nbMoves) = 0;
+
+	virtual void resetNbMoves() = 0;
+
+	virtual int getNbMoves() const = 0;
+
 protected:
 
 	char _player;

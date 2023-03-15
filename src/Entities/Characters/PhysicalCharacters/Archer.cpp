@@ -4,11 +4,13 @@
 #include <Grid.hpp>
 
 using namespace ::grid;
+using namespace ::archer;
 
 Archer::Archer(const int x, const int y, const char player)
 	: super(x, y, 100, player, 80, 25, 20, 30) 
 {
 	setFirstSkill(new BowShot(2, 3, this));
+	_nbMooves = MOVES;
 }
 
 std::vector<Position> Archer::getPossibleMoves(const Grid& grid) const
@@ -58,6 +60,22 @@ std::vector<Position> Archer::getPossibleMoves(const Grid& grid) const
 
 
 	return positions;
+}
+
+void Archer::setNbMoves(const int nbMoves) 
+{
+	_nbMooves -= nbMoves;
+
+}
+
+void Archer::resetNbMoves() 
+{
+	_nbMooves = archer::MOVES;
+}
+
+int Archer::getNbMoves() const
+{
+	return _nbMooves;
 }
 
 std::vector<Position> Archer::getPossibleActions(const Grid& grid) const

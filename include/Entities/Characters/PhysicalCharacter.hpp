@@ -18,10 +18,6 @@ public:
 	*/
 	virtual ~PhysicalCharacter();
 
-	/**
-	 * @brief
-	 *
-	 */
 
 
 

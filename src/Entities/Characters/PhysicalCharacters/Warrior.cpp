@@ -4,11 +4,13 @@
 #include <iostream>
 
 using namespace ::grid;
+using namespace ::warrior;
 
 Warrior::Warrior(const int x, const int y, const char player)
 	: super(x, y, 80, player, 100, 50, 25, 75)
 {
 	setFirstSkill(new AxeSkill(2,3,this));
+	_nbMooves = MOVES;
 }
 
 std::vector<Position> Warrior::getPossibleMoves(const Grid& grid) const
@@ -64,6 +66,22 @@ std::vector<Position> Warrior::getPossibleMoves(const Grid& grid) const
 
 
 	return positions;
+}
+
+void Warrior::setNbMoves(const int nbMoves) 
+{
+	_nbMooves -= nbMoves;
+
+}
+
+void Warrior::resetNbMoves() 
+{
+	_nbMooves = warrior::MOVES;
+}
+
+int Warrior::getNbMoves() const
+{
+	return _nbMooves;
 }
 
 std::vector<Position> Warrior::getPossibleActions(const Grid& grid) const

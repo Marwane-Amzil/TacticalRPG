@@ -10,6 +10,7 @@ Knight::Knight(const int x, const int y, const char player)
 	: super(x,y, 100, player, 80, 100, 0, 150) 
 {
 	setFirstSkill(new SwordSkill(2, 3, this));
+	_nbMooves = MOVES;
 }
 
 std::vector<Position> Knight::getPossibleMoves(const Grid& grid) const
@@ -21,7 +22,7 @@ std::vector<Position> Knight::getPossibleMoves(const Grid& grid) const
 
 	checked_positions.emplace_back(getPosition());
 
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < _nbMooves; i++) {
 		for (auto& pos : checked_positions) {
 			for (int x = -1; x < 2; x++) {
 				for (int y = -1; y < 2; y++) {
@@ -59,6 +60,20 @@ std::vector<Position> Knight::getPossibleMoves(const Grid& grid) const
 
 
 	return positions;
+}
+void Knight::setNbMoves(const int nbMoves)
+{
+	_nbMooves -= nbMoves;
+}
+
+void Knight::resetNbMoves() 
+{
+	_nbMooves = MOVES;
+}
+
+int Knight::getNbMoves() const
+{
+	return _nbMooves;
 }
 
 std::vector<Position> Knight::getPossibleActions(const Grid& grid) const
@@ -111,6 +126,10 @@ std::string_view Knight::getClass() const
 {
 	return "knight";
 }
+
+
+
+
 
 bool Knight::canMove(Grid& grid, int x, int y) const
 {

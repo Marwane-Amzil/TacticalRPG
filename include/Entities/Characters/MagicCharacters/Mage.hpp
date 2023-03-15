@@ -38,12 +38,20 @@ private:
 	*/
 	std::string_view getClass() const override;
 
+	void setNbMoves(int nbMoves)  override;
+
+	void  resetNbMoves()  override;
+
+	int getNbMoves() const override;
+
 	bool canMove(Grid& grid, int x, int y) const override;
 
 
 private:
 
 	typedef MagicCharacter super;
+	int _nbMooves ;
+
 };
 
 #endif // !__MAGE_H__

@@ -108,6 +108,4 @@ void Character::setSpecialSkill(Skill* skill)
 {
 	_skills[2] = skill;
 }
-
-
 // ----------------------------------------------   End  Getters / Setters    ------------------------------------------------------------

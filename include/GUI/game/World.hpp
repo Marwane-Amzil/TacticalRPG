@@ -14,6 +14,7 @@ namespace gui
 {
 	class EntitySprite;
 	
+
 	class World : public sf::Drawable
 	{
 	public:
@@ -56,7 +57,6 @@ namespace gui
 		gui::EntitySprite _cloud_sprite;
 		sf::Texture desert_texture;
 		gui::EntitySprite _desert_sprite;
-
 
 
 		sf::RectangleShape _shape;

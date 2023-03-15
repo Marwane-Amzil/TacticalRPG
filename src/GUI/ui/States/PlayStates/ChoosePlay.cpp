@@ -31,6 +31,8 @@ void ChoosePlay::resume()
 {
 }
 
+
+
 void ChoosePlay::update()
 {	
 	sf::Event event;
@@ -183,20 +185,19 @@ void ChoosePlay::update()
 							_is_moving = false;
 
 							//_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]->setPosition(pos_X_arrival, pos_Y_arrival);///.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
+							std::cout << "AUUUUGH" << std::abs((pos_grid_x + pos_grid_y) - (currentEntity->getPosition().getX() + currentEntity->getPosition().getY())) << std::endl;
+							currentEntity->setNbMoves(std::abs((pos_grid_x + pos_grid_y) - (currentEntity->getPosition().getX() + currentEntity->getPosition().getY())));
 							_world.getGrid().move(currentEntity->getPosition().getX(), currentEntity->getPosition().getY(), pos_grid_x, pos_grid_y);
 							_world.update();
-							std::cout << "after: " << currentEntity->getPosition() << '\n';
-							std::cout << "sprite at " << _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()] << '\n';
+							std::cout << "beforee: " << currentEntity->getNbMoves() << '\n';
+							//std::cout << "sprite at " << _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()] << '\n';
 							
-							playerDetector = (playerDetector + 1) % 2;
 							_m_isCharacterSelected = false;
 
-							
 						}
 						
 						_m_isMoovement = false;
-						
-						
+							
 					}
 					if (i == 2) // First Attack
 					{
@@ -252,7 +253,13 @@ void ChoosePlay::update()
 							_m_isAttack = false;
 						}
 					}// end Moove 2
+					if (i == 5)
+					{
+						playerDetector = (playerDetector + 1) % 2;
+						currentEntity->resetNbMoves();
+						std::cout << "after: " << currentEntity->getNbMoves() << '\n';
 
+					}
 					break;
 
 				}

@@ -58,7 +58,7 @@ private:
 
 	std::string currentCharacterName;
 
-	
+	std::vector<Character*> _usedCharacters;
 	
 	sf::Sprite _m_background;
 	sf::Vector2i _pos_mouse;

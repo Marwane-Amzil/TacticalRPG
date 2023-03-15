@@ -64,7 +64,7 @@ std::vector<Position> Fireball::getPossibleZones(const Grid& grid) const{
 		{
 			if (abs(x) + abs(y) <= RANGE_X && x != 0 || y != 0)
 			{
-				if (posOwner.getX() + x <= COLUMNS && posOwner.getY() + y <= COLUMNS && posOwner.getX() + x >= 0 && posOwner.getY() + y >= 0)
+				if (posOwner.getX() + x < COLUMNS && posOwner.getY() + y < COLUMNS && posOwner.getX() + x >= 0 && posOwner.getY() + y >= 0)
 				{
 					if (grid[posOwner.getX() + x][posOwner.getY() + y])
 					{

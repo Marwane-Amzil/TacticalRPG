@@ -3,11 +3,13 @@
 #include <Grid.hpp>
 
 using namespace ::grid;
+using namespace ::mage;
 
 Mage::Mage(const int x, const int y, const char player)
 	: super(x, y, 60, player, 7, 25, 22, 48) 
 {
 	setFirstSkill(new Fireball(2, 3, this));
+	_nbMooves = MOVES;
 }
 
 std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
@@ -57,6 +59,22 @@ std::vector<Position> Mage::getPossibleMoves(const Grid& grid) const
 
 
 	return positions;
+}
+
+void Mage::setNbMoves(const int nbMoves) 
+{
+	_nbMooves -= nbMoves;
+
+}
+
+void Mage::resetNbMoves() 
+{
+	_nbMooves = mage::MOVES;
+}
+
+int Mage::getNbMoves() const
+{
+	return _nbMooves;
 }
 
 

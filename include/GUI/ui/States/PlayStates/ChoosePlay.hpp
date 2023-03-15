@@ -65,5 +65,6 @@ private:
 	std::array<std::string, 5> _m_characterNames = { "warrior", "archer", "knight", "healer", "mage" };
 	std::array<gui::EntitySprite, 10> m_characters;
 	sf::Clock _clock = sf::Clock();
+	bool _is_moving;
 };
 

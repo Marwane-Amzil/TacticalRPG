@@ -51,6 +51,8 @@ void ChoosePlay::update()
 		}
 	}
 
+	_is_moving = false;
+
 	auto [x, y] = _window.getSize();
 
 
@@ -119,12 +121,46 @@ void ChoosePlay::update()
 							std::cout << "before: " << currentEntity->getPosition() << '\n';
 							std::cout << "sprite at " << _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()] << '\n';
 							
-							_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]->setPosition(pos_X_arrival, pos_Y_arrival);///.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
+							auto& current_sprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
+							
+							_is_moving = true;
+							
+							while (current_sprite->getPosition().x != pos_X_arrival)
+							{
+								if (current_sprite->getPosition().x < pos_X_arrival)
+								{
+									current_sprite->move(2.f, 0);
+								}
+								else if (current_sprite->getPosition().x > pos_X_arrival)
+								{
+									current_sprite->move(-2.f, 0);
+								}
+								
+								this->draw();
+							}
+
+							while (current_sprite->getPosition().y != pos_Y_arrival)
+							{
+								if (current_sprite->getPosition().y < pos_Y_arrival)
+								{
+									current_sprite->move(0, 2.f);
+								}
+								else if (current_sprite->getPosition().y > pos_Y_arrival)
+								{
+									current_sprite->move(0, -2.f);
+								}
+								
+								this->draw();
+							}
+
+							_is_moving = false;
+
+							//_world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()]->setPosition(pos_X_arrival, pos_Y_arrival);///.move(pos_X_Init - pos_X_arrival, pos_Y_Init - pos_Y_arrival);
 							_world.getGrid().move(currentEntity->getPosition().getX(), currentEntity->getPosition().getY(), pos_grid_x, pos_grid_y);
 							_world.update();
 							std::cout << "after: " << currentEntity->getPosition() << '\n';
 							std::cout << "sprite at " << _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()] << '\n';
-							;
+							
 							playerDetector = (playerDetector + 1) % 2;
 
 							_m_isMoovement = false;
@@ -238,12 +274,12 @@ void ChoosePlay::draw()
 
 	_window.draw(_world);
 
-	if (_m_isCharacterSelected)
+	if (_m_isCharacterSelected && !_is_moving)
 	{
 		_window.draw(_actions);
 	}
 
-	if (_m_isMoovement || _m_isAttack)
+	if ((_m_isMoovement || _m_isAttack) && !_is_moving)
 	{
 		_window.draw(_movements);
 	}

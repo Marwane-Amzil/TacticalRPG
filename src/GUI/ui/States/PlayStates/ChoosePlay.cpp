@@ -35,6 +35,7 @@ void ChoosePlay::resume()
 
 void ChoosePlay::update()
 {	
+
 	sf::Event event;
 	while (_window.pollEvent(event))
 	{

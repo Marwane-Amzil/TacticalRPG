@@ -17,7 +17,7 @@ ChoosePlay::ChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::Wor
 		{
 			if (sprite)
 			{
-				sprite->setCurrentAnimation(7);
+				//sprite->setCurrentAnimation(7);
 				sprite->loopCurrentAnimation(true);
 				sprite->playAnimation();
 			}
@@ -35,7 +35,6 @@ void ChoosePlay::resume()
 
 void ChoosePlay::update()
 {	
-
 	sf::Event event;
 	while (_window.pollEvent(event))
 	{
@@ -121,37 +120,67 @@ void ChoosePlay::update()
 							std::cout << "before: " << currentEntity->getPosition() << '\n';
 							std::cout << "sprite at " << _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()] << '\n';
 							
-							auto& current_sprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
+							currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
 							
 							_is_moving = true;
 							
-							while (current_sprite->getPosition().x != pos_X_arrival)
+							while (currentSprite->getPosition().x != pos_X_arrival || currentSprite->getPosition().y != pos_Y_arrival)
 							{
-								if (current_sprite->getPosition().x < pos_X_arrival)
+								if (currentSprite->getPosition().x < pos_X_arrival)
 								{
-									current_sprite->move(2.f, 0);
+									currentSprite->setCurrentAnimation(7);
 								}
-								else if (current_sprite->getPosition().x > pos_X_arrival)
+								else if (currentSprite->getPosition().x > pos_X_arrival)
 								{
-									current_sprite->move(-2.f, 0);
+									currentSprite->setCurrentAnimation(6);
 								}
+								else if (currentSprite->getPosition().y < pos_Y_arrival)
+								{
+									currentSprite->setCurrentAnimation(5);
+								}
+								else if (currentSprite->getPosition().y > pos_Y_arrival)
+								{
+									currentSprite->setCurrentAnimation(8);
+								}
+
+								currentSprite->loopCurrentAnimation(true);
+								currentSprite->playAnimation();
 								
-								this->draw();
+								if (currentSprite->getPosition().x < pos_X_arrival)
+								{
+									while (currentSprite->getPosition().x != pos_X_arrival)
+									{
+										currentSprite->move(2.f, 0.f);
+										this->draw();
+									}
+								}
+								else if (currentSprite->getPosition().x > pos_X_arrival)
+								{
+									while (currentSprite->getPosition().x != pos_X_arrival)
+									{
+										currentSprite->move(-2.f, 0.f);
+										this->draw();
+									}
+								}
+								else if (currentSprite->getPosition().y < pos_Y_arrival)
+								{
+									while (currentSprite->getPosition().y != pos_Y_arrival)
+									{
+										currentSprite->move(0.f, 2.f);
+										this->draw();
+									}
+								}
+								else if (currentSprite->getPosition().y > pos_Y_arrival)
+								{
+									while (currentSprite->getPosition().y != pos_Y_arrival)
+									{
+										currentSprite->move(0.f, -2.f);
+										this->draw();
+									}
+								}
 							}
 
-							while (current_sprite->getPosition().y != pos_Y_arrival)
-							{
-								if (current_sprite->getPosition().y < pos_Y_arrival)
-								{
-									current_sprite->move(0, 2.f);
-								}
-								else if (current_sprite->getPosition().y > pos_Y_arrival)
-								{
-									current_sprite->move(0, -2.f);
-								}
-								
-								this->draw();
-							}
+							currentSprite->stopAnimation();
 
 							_is_moving = false;
 
@@ -204,8 +233,11 @@ void ChoosePlay::update()
 							Character* characterTarget = dynamic_cast<Character*>(_world.getGrid()[Attack_click_x][Attack_click_y]);
 							
 							if (currentEntity->getFirstSkill()->canActivate(_world.getGrid(), characterTarget))
-							{	
+							{
 								std::cout << "You attack" << std::endl;
+								// play animation and block the rest until it's done
+								//currentSprite->setCurrentAnimation(9);
+								//auto& anim = currentSprite->getCurrentAnimation();
 								currentEntity->getFirstSkill()->activate(_world.getGrid(), characterTarget);
 								playerDetector = (playerDetector + 1) % 2;
 
@@ -238,6 +270,7 @@ void ChoosePlay::update()
 				if (playerDetector == 0 && dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'B'  || playerDetector == 1 && dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'R')
 				{
 					currentEntity = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
+					currentSprite = _world[pos_grid_x][pos_grid_y];
 
 					currentCharacterName = currentEntity->getClass();
 					//_actions.setText(dynamic_cast<Character*>(currentEntity));
@@ -251,20 +284,6 @@ void ChoosePlay::update()
 			}
 		}
 	}
-
-
-
-	/*for (auto& row : _world.getSprites())
-	{
-		for (auto& sprite : row)
-		{
-			if (sprite)
-			{
-				sprite->update(_clock.getElapsedTime());
-			}
-		}
-	}
-	*/
 }
 
 
@@ -272,6 +291,11 @@ void ChoosePlay::draw()
 {
 	_window.clear();
 
+	if (_is_moving)
+	{
+		currentSprite->update(_clock.restart());
+	}
+	
 	_window.draw(_world);
 
 	if (_m_isCharacterSelected && !_is_moving)

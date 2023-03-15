@@ -76,11 +76,6 @@ void CharacterChoice::update()
 		}
 	}
 	
-	if (count == 1)
-	{
-		_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
-	}
-	
 
 
 	auto [x, y] = _window.getSize();
@@ -211,6 +206,11 @@ void CharacterChoice::update()
 			//_CurrentCharacter->update(_clock.getElapsedTime());
 			//_clock.restart();
 		}
+	}
+
+	if (count == 1)
+	{
+		_machine.run(StateMachine::build<ChoosePlay>(_machine, _window, _world, _textureManager, true));
 	}
 
 	switch (color_looker) {

@@ -17,9 +17,7 @@ ChoosePlay::ChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::Wor
 		{
 			if (sprite)
 			{
-				//sprite->setCurrentAnimation(7);
-				sprite->loopCurrentAnimation(true);
-				sprite->playAnimation();
+				sprite->setOrigin(.0f, 9.5f);
 			}
 		}
 	}

@@ -71,12 +71,12 @@ std::string_view Archer::getClass() const
 
 bool Archer::canMove(Grid& grid, int x, int y) const
 {
-	Position* pos = new Position(x, y);
+	Position pos = Position(x, y);
 	std::vector<Position> possibleMoves = getPossibleMoves(grid);
 
 	for (Position& move : possibleMoves)
 	{
-		if (move == *pos)
+		if (move == pos)
 		{
 			return true;
 		}

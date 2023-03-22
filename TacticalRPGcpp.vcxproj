@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.cpp" />
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.cpp" />
     <ClCompile Include="src\Skills\MagicalSkills\HealerTemp.cpp" />
     <ClCompile Include="src\GUI\game\ZoneGraphic.cpp" />
     <ClCompile Include="src\Skills\PhysicalSkills\BowShot.cpp" />
@@ -61,6 +63,8 @@
     <ClCompile Include="src\utils\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.hpp" />
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.hpp" />
     <ClInclude Include="include\Skills\MagicalSkills\HealerTemp.hpp" />
     <ClInclude Include="include\Skills\PhysicalSkills\BowShot.hpp" />
     <ClInclude Include="include\GUI\game\ActionsGraphic.hpp" />

@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Event.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
+#include <GUI/ui/States/ArtificialStates/ArtificialCharacterChoice.hpp>
+
 #include <iostream>
 
 MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
@@ -26,7 +28,7 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World
     _mouse_coord = { 0, 0 };
 
     // The different containers are linked by the id. option[0] refeeres to coords[0] refeers to size[0]
-    _options = { "War Game", "Play", "Online", "Options", "Quit" };
+    _options = { "War Game", "Play", "Online", "VS Computer ", "Online" };
     _texts.resize(5);
     _coords = { {800,160},{310,308},{301,432},{300,545},{330,661} };
     _sizes = { 100,56,48,48,48 };
@@ -99,13 +101,19 @@ void MenuState::update()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !theselect) {
             theselect = true;
+            if (_pos == 1) {
+                _machine.run(StateMachine::build<CharacterChoice>(_machine, _window, _world, _texture_manager, true));
+            }
+
             if (_pos == 4) {
                 _machine.quit();
             }
 
-			if (_pos == 1) {
-				_machine.run(StateMachine::build<CharacterChoice>(_machine, _window, _world, _texture_manager, true));
-			}
+            if (_pos == 3) {
+                _machine.run(StateMachine::build<ArtificialCharacterChoice>(_machine, _window, _world, _texture_manager, true));
+            }
+
+			
             
         }
 

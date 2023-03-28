@@ -2,6 +2,7 @@
 #include <Entity.hpp>
 #include <iostream>
 #include <vector>
+#include <Entities/Character.hpp>
 
 using namespace ::grid;
 
@@ -82,6 +83,38 @@ const std::vector<Entity*> Grid::getEntitys() {
 		}
 	}
 	
+	return entityContainer;
+}
+
+std::vector<Entity*> Grid::getRedEntities() {
+
+	std::vector<Entity*> entityContainer = std::vector<Entity*>();
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLUMNS; j++)
+		{
+			if (_grid[i][j] != nullptr && dynamic_cast<Character*>(_grid[i][j])->getPlayer() == 'R') {
+				entityContainer.push_back(_grid[i][j]);
+			}
+		}
+	}
+
+	return entityContainer;
+}
+
+std::vector<Entity*> Grid::getBlueEntities() {
+
+	std::vector<Entity*> entityContainer = std::vector<Entity*>();
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLUMNS; j++)
+		{
+			if (_grid[i][j] != nullptr && dynamic_cast<Character*>(_grid[i][j])->getPlayer() == 'B') {
+				entityContainer.push_back(_grid[i][j]);
+			}
+		}
+	}
+
 	return entityContainer;
 }
 

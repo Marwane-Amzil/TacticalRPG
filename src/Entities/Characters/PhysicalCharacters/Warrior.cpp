@@ -35,7 +35,6 @@ std::vector<Position> Warrior::getPossibleMoves(const Grid& grid) const
 
 							if (!grid[new_pos.getX()][new_pos.getY()])
 							{
-								std::cout << "nouvelle position : " << new_pos.getX() << " " << new_pos.getY() << std::endl;
 								new_positions.emplace_back(new_pos);
 							}
 

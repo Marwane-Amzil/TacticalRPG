@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.cpp" />
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.cpp" />
+    <ClCompile Include="src\GUI\ui\States\NetworkPlayState.cpp" />
+    <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\NetworkCharacterChoice.cpp" />
+    <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\NetworkChoosePlay.cpp" />
     <ClCompile Include="src\Skills\MagicalSkills\HealerTemp.cpp" />
     <ClCompile Include="src\GUI\game\ZoneGraphic.cpp" />
     <ClCompile Include="src\Skills\PhysicalSkills\BowShot.cpp" />
@@ -65,6 +68,10 @@
   <ItemGroup>
     <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.hpp" />
     <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.hpp" />
+    <ClInclude Include="include\GUI\ui\States\NetworkPlayState.hpp" />
+    <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\NetworkCharacterChoice.hpp" />
+    <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\NetworkChoosePlay.hpp" />
+    <ClInclude Include="include\network.hpp" />
     <ClInclude Include="include\Skills\MagicalSkills\HealerTemp.hpp" />
     <ClInclude Include="include\Skills\PhysicalSkills\BowShot.hpp" />
     <ClInclude Include="include\GUI\game\ActionsGraphic.hpp" />

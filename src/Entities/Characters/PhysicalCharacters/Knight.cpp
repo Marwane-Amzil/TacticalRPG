@@ -5,6 +5,7 @@
 
 using namespace grid;
 using namespace knight;
+using namespace swordskill;
 
 Knight::Knight(const int x, const int y, const char player)
 	: super(x,y, 100, player, 80, 100, 0, 150) 
@@ -80,9 +81,9 @@ std::vector<Position> Knight::getPossibleActions(const Grid& grid) const
 {
 	std::vector <Position> positions;
 
-	for (int x = -2; x < 3; x++)
+	for (int x = swordskill::NEG_RANGE_X; x < swordskill::RANGE_X; x++)
 	{
-		for (int y = -2; y < 3; y++)
+		for (int y = swordskill::NEG_RANGE_Y; y < swordskill::RANGE_Y; y++)
 		{
 			if (abs(x) + abs(y) < 2 && x != 0 || y != 0)
 			{
@@ -93,23 +94,6 @@ std::vector<Position> Knight::getPossibleActions(const Grid& grid) const
 						positions.emplace_back(getPosition().getX() + x, getPosition().getY() + y);
 					}
 				}
-			}
-		}
-	}
-	for (int x = 3; x < 5; x++) 
-	{
-		if (getPosition().getX() + x < COLUMNS && getPosition().getX() + x >= 0 )
-		{
-			if (grid[getPosition().getX() + x][getPosition().getY()])
-			{
-				positions.emplace_back(getPosition().getX() + x, getPosition().getY());
-			}
-		}
-		if (getPosition().getY() + x < COLUMNS  && getPosition().getY() + x >= 0)
-		{
-			if (grid[getPosition().getX()][getPosition().getY() + x])
-			{
-				positions.emplace_back(getPosition().getX(), getPosition().getY() + x);
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Event.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
-#include <GUI/ui/States/ArtificialStates/ArtificialCharacterChoice.hpp>
+#include <GUI/ui/States/ArtificialStates/randomOne/ArtificialCharacterChoice.hpp>
 
 #include <iostream>
 

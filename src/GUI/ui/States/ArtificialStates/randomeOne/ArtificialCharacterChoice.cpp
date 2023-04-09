@@ -1,10 +1,10 @@
-#include <GUI/ui/States/ArtificialStates/ArtificialCharacterChoice.hpp>
+#include <GUI/ui/States/ArtificialStates/randomOne/ArtificialCharacterChoice.hpp>
 #include <GUI/game/EntitySprite.hpp>
 #include <Entities.hpp>
 #include <iostream>
 #include <GUI/ui/StateMachine.hpp>
 #include <GUI/ui/States/MenuState.hpp>
-#include <GUI/ui/States/ArtificialStates/ArtificialChoosePlay.hpp>
+#include <GUI/ui/States/ArtificialStates/randomOne/ArtificialChoosePlay.hpp>
 
 
 

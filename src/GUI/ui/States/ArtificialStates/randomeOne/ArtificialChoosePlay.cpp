@@ -1,4 +1,4 @@
-#include "GUI/ui/States/ArtificialStates/ArtificialChoosePlay.hpp"
+#include "GUI/ui/States/ArtificialStates/randomOne/ArtificialChoosePlay.hpp"
 #include <GUI/game/EntitySprite.hpp>
 #include <Skill.hpp>
 #include <Entities.hpp>
@@ -74,7 +74,7 @@ void ArtificialChoosePlay::update()
 
 		if (_m_isCharacterSelected)
 		{
-			if ( playerDetector == 0)
+			if (playerDetector == 0) // Blue --> Humain
 			{
 				for (int i = 0; i < _actions.getSprites().size(); i++)
 				{
@@ -234,7 +234,7 @@ void ArtificialChoosePlay::update()
 									//currentSprite->setCurrentAnimation(9);
 									//auto& anim = currentSprite->getCurrentAnimation();
 									currentEntity->getFirstSkill()->activate(_world.getGrid(), characterTarget);
-									playerDetector = (playerDetector + 1) % 2;
+									//playerDetector = (playerDetector + 1) % 2;
 
 									_m_isAttack = false;
 								}
@@ -253,37 +253,25 @@ void ArtificialChoosePlay::update()
 						{
 							playerDetector = (playerDetector + 1) % 2;
 							currentEntity->resetNbMoves();
-							std::cout << "after: " << currentEntity->getNbMoves() << '\n';
 							_m_isCharacterSelected = false;
 							_m_isAttack = false;
 							_m_isMoovement = false;
 						}
-
+						
 					}
-					_m_isCharacterSelected = false;
-
 
 				}
 			}
-			
-			else if (playerDetector == 1) {
+
+			else if (playerDetector == 1) { // AI / Robot
+
 				srand(time(NULL));
-
 				int nbPossibleMoves = currentEntity->getPossibleMoves(_world.getGrid()).size();
-				/*std::random_device rd;
-				std::minstd_rand gen(rd());
-				std::uniform_int_distribution<> dis(0, nbPossibleMoves);
-				*/
 				Position randomPos = currentEntity->getPossibleMoves(_world.getGrid())[rand() % nbPossibleMoves];
-
-				std::cout << "random pos: " << randomPos << '\n';
-
 				int pos_X_arrival = randomPos.getX() * 50 + (0.24 * x);
 				int pos_Y_arrival = randomPos.getY() * 50 + (0.04 * y);
-								_world.update();
 
-
-				while (currentSprite->getPosition().x != pos_X_arrival || currentSprite->getPosition().y != pos_Y_arrival)
+				while (currentSprite->getPosition().x != pos_X_arrival || currentSprite->getPosition().y != pos_Y_arrival) // 
 				{
 					if (currentSprite->getPosition().x < pos_X_arrival)
 					{
@@ -344,13 +332,25 @@ void ArtificialChoosePlay::update()
 				_world.update();
 
 
+				srand(time(NULL));
+
+				int nbPossibleActions = currentEntity->getPossibleActions(_world.getGrid()).size();
+				if (nbPossibleActions > 0) {
+
+					Position randomPos = currentEntity->getPossibleActions(_world.getGrid())[rand() % nbPossibleActions];
+					currentEntity->getFirstSkill()->activate(_world.getGrid(), dynamic_cast<Character*>(_world.getGrid()[randomPos.getX()][randomPos.getY()]));
+
+				}
+				_world.update();
+
+
+
 				playerDetector = (playerDetector + 1) % 2;
-				std::cout << "sss: " << currentEntity->getNbMoves() << '\n';
 				_m_isCharacterSelected = false;
+
 			}
 		}
 
-		
 		else if (!_m_isCharacterSelected)
 		{
 			if (playerDetector == 0)
@@ -359,7 +359,7 @@ void ArtificialChoosePlay::update()
 				{
 					if (_world.getGrid()[pos_grid_x][pos_grid_y])
 					{
-						if (dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'B' )
+						if (dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y])->getPlayer() == 'B')
 						{
 							currentEntity = dynamic_cast<Character*>(_world.getGrid()[pos_grid_x][pos_grid_y]);
 							currentSprite = _world[pos_grid_x][pos_grid_y];
@@ -372,18 +372,16 @@ void ArtificialChoosePlay::update()
 
 							_m_isCharacterSelected = true;
 						}
-
-
 					}
+					
 				}
 			}
 			else if (playerDetector == 1)
 			{
 				srand(time(NULL));
 				int nbPlayers = _world.getGrid().getRedEntities().size();
-				
+
 				currentEntity = dynamic_cast<Character*>(_world.getGrid().getRedEntities()[rand() % nbPlayers]);
-				std::cout << "auuugh" << currentEntity->getPlayer() << "tss " << currentEntity->getPosition() << playerDetector << '\n';
 				currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
 
 				_m_isCharacterSelected = true;
@@ -392,6 +390,7 @@ void ArtificialChoosePlay::update()
 		}
 	}
 }
+
 
 
 void ArtificialChoosePlay::draw()

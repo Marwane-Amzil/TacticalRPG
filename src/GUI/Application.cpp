@@ -2,7 +2,7 @@
 #include <GUI/ui/States/IntroState.hpp>
 #include <GUI/ui/States/MenuState.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
-#include <GUI/ui/States/ArtificialStates/ArtificialCharacterChoice.hpp>
+#include <GUI/ui/States/ArtificialStates/randomOne/ArtificialCharacterChoice.hpp>
 
 
 Application::Application()

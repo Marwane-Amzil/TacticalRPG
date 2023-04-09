@@ -7,6 +7,8 @@ using namespace ::healer;
 
 Healer::Healer(const int x, const int y, const char player)
 	: super(x, y, 60, player, 7, 25, 22, 48) {
+	setFirstSkill(new HealerTemp(2, 3, this));
+
 	_nbMooves = MOVES;
 }
 

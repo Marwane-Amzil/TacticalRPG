@@ -5,6 +5,7 @@
 
 using namespace ::grid;
 using namespace ::warrior;
+using namespace ::axeskill;
 
 Warrior::Warrior(const int x, const int y, const char player)
 	: super(x, y, 80, player, 100, 50, 25, 75)
@@ -22,7 +23,7 @@ std::vector<Position> Warrior::getPossibleMoves(const Grid& grid) const
 
 	checked_positions.emplace_back(getPosition());
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < _nbMooves; i++) {
 		std::cout << "rep n" << i << std::endl;
 		for (auto &pos: checked_positions) {
 			for (int x = -1; x < 2; x ++) {
@@ -87,11 +88,11 @@ std::vector<Position> Warrior::getPossibleActions(const Grid& grid) const
 {
 	std::vector <Position> positions;
 
-	for (int x = -1; x < 2; x++)
+	for (int x = axeskill::NEG_RANGE_X; x < axeskill::RANGE_X; x++)
 	{
-		for (int y = -1; y < 2; y++)
+		for (int y = axeskill::NEG_RANGE_Y; y < axeskill::RANGE_Y; y++)
 		{
-			if (abs(x) + abs(y) < 1 && x != 0 || y != 0)
+			if (abs(x) + abs(y) < 2 && x != 0 || y != 0)
 			{
 				if (getPosition().getX() + x < COLUMNS && getPosition().getY() + y < COLUMNS && getPosition().getX() + x >= 0 && getPosition().getY() + y >= 0)
 				{

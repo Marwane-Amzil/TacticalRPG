@@ -135,10 +135,10 @@
     <ClCompile Include="src\Skills\MagicalSkills\HealerTemp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.cpp">
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\randomeOne\ArtificialChoosePlay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.cpp">
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\randomeOne\ArtificialCharacterChoice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -275,10 +275,10 @@
     <ClInclude Include="include\Skills\MagicalSkills\HealerTemp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.hpp">
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\randomOne\ArtificialChoosePlay.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.hpp">
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\randomOne\ArtificialCharacterChoice.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

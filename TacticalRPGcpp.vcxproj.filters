@@ -141,6 +141,12 @@
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\randomeOne\ArtificialCharacterChoice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAICharacterChoice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAIChoosePlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Entities\Character.hpp">
@@ -279,6 +285,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GUI\ui\States\ArtificialStates\randomOne\ArtificialCharacterChoice.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAICharacterChoice.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAIChoosePlay.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

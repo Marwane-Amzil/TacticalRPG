@@ -2,7 +2,7 @@
 #include <GUI/ui/States/IntroState.hpp>
 #include <GUI/ui/States/MenuState.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
-#include <GUI/ui/States/ArtificialStates/randomOne/ArtificialCharacterChoice.hpp>
+#include <GUI/ui/States/ArtificialStates/attitudeAI/AttitudeAICharacterChoice.hpp>
 
 
 Application::Application()
@@ -15,7 +15,7 @@ Application::Application()
 void Application::run()
 {
 	// Initialize the engine
-	_machine.run(StateMachine::build<ArtificialCharacterChoice>(_machine, _window, _world, _textureManager, true));
+	_machine.run(StateMachine::build<AttitudeAICharacterChoice>(_machine, _window, _world, _textureManager, true));
 
 	// Main loop
 	while (_machine.running())

@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAICharacterChoice.cpp" />
+    <ClCompile Include="src\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAIChoosePlay.cpp" />
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\randomeOne\ArtificialChoosePlay.cpp" />
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\randomeOne\ArtificialCharacterChoice.cpp" />
     <ClCompile Include="src\Skills\MagicalSkills\HealerTemp.cpp" />
@@ -63,6 +65,8 @@
     <ClCompile Include="src\utils\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAICharacterChoice.hpp" />
+    <ClInclude Include="include\GUI\ui\States\ArtificialStates\attitudeAI\AttitudeAIChoosePlay.hpp" />
     <ClInclude Include="include\GUI\ui\States\ArtificialStates\randomOne\ArtificialChoosePlay.hpp" />
     <ClInclude Include="include\GUI\ui\States\ArtificialStates\randomOne\ArtificialCharacterChoice.hpp" />
     <ClInclude Include="include\Skills\MagicalSkills\HealerTemp.hpp" />

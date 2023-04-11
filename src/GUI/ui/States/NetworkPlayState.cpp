@@ -82,12 +82,12 @@ bool NetworkPlayState::sendMessage(SOCKET sockfd, const char* message) {
     return true;
 }
 
-bool NetworkPlayState::receiveMessage(SOCKET sockfd, char* buffer, int buffer_size) {
+char* NetworkPlayState::receiveMessage(SOCKET sockfd, char* buffer, int buffer_size) {
     int iResult = recv(sockfd, buffer, buffer_size - 1, 0);
     if (iResult > 0) {
         buffer[iResult] = '\0';
         std::cout << "Received: " << buffer << std::endl;
-        return true;
+        return buffer;
     }
     else if (iResult == 0) {
         std::cerr << "Connection closed" << std::endl;
@@ -98,5 +98,14 @@ bool NetworkPlayState::receiveMessage(SOCKET sockfd, char* buffer, int buffer_si
 
     closesocket(sockfd);
     WSACleanup();
-    return false;
+    char fail[5] = "fail";
+    return fail;
+}
+
+char* intToChar(int i) {
+    if (i < 10) {
+        char str = i + '0';
+        '0'+str
+    }
+
 }

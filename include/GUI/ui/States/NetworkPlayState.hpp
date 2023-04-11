@@ -53,5 +53,6 @@ public:
 	SOCKET createSocket();
 	bool connectSocket(SOCKET sockfd, const char* ip, const char* port);
 	bool sendMessage(SOCKET sockfd, const char* message);
-	bool receiveMessage(SOCKET sockfd, char* buffer, int buffer_size);
+	char* receiveMessage(SOCKET sockfd, char* buffer, int buffer_size);
+	char* intToChar(int i);
 };

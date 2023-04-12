@@ -101,11 +101,3 @@ char* NetworkPlayState::receiveMessage(SOCKET sockfd, char* buffer, int buffer_s
     char fail[5] = "fail";
     return fail;
 }
-
-char* intToChar(int i) {
-    if (i < 10) {
-        char str = i + '0';
-        '0'+str
-    }
-
-}

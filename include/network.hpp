@@ -39,17 +39,35 @@ namespace iut
 		};
 	}
 
+	namespace protocol
+	{
+		enum : uint32_t
+		{
+#ifdef _WIN32
+			TCP = IPPROTO_TCP
+#else // ^^^ _WIN32 / !_WIN32 vvv
+			TCP = 0 // 0 is the default, the kernel will decide which protocol to use
+#endif // !_WIN32
+		};
+	}
+
 #ifdef _WIN32
 #define BAD_SOCKET INVALID_SOCKET
 #else // ^^^ _WIN32 / !_WIN32 vvv
 #define BAD_SOCKET -1
 #endif // !_WIN32
+	
+#define MESSAGE_LEN 126
 
-	class i_socket
+#define LEAK_WARNING "This function returns a message received from a client. \
+			The buffer used to store the message is allocated with the **new** keyword. \
+			Do not discard the return value of this function, else, you'll get a memory leak !"
+
+	class SocketInitializer
 	{
 	public:
 
-		inline i_socket() noexcept(false)
+		inline SocketInitializer() noexcept(false)
 			: m_ip(LOCALHOST), m_port(port::DEFAULT)
 		{
 #ifdef _WIN32
@@ -62,7 +80,7 @@ namespace iut
 #endif // !_WIN32
 		}
 
-		inline i_socket(const char* _Ip, uint32_t _Port) noexcept(false)
+		inline SocketInitializer(const char* _Ip, uint32_t _Port) noexcept(false)
 			: m_ip(_Ip), m_port(_Port)
 		{
 #ifdef _WIN32
@@ -75,36 +93,36 @@ namespace iut
 #endif // !_WIN32
 		}
 
-		inline i_socket(const i_socket&) = delete;
+		inline SocketInitializer(const SocketInitializer&) = delete;
 
-		inline i_socket(i_socket&&) noexcept = delete;
+		inline SocketInitializer(SocketInitializer&&) noexcept = delete;
 
-		inline virtual ~i_socket() noexcept
+		inline virtual ~SocketInitializer() noexcept
 		{
 #ifdef _WIN32
 			WSACleanup();
 #endif // !_WIN32
 		}
 
-		inline i_socket& operator=(const i_socket&) = delete;
+		inline SocketInitializer& operator=(const SocketInitializer&) = delete;
 
-		inline i_socket& operator=(i_socket&&) noexcept = delete;
+		inline SocketInitializer& operator=(SocketInitializer&&) noexcept = delete;
 
 	protected:
 
 		const char* m_ip;
 		uint32_t m_port;
 
-	}; // class !i_socket
+	}; // class !SocketInitializer
 
-	class tcp_server final : public i_socket
+	class TcpServer final : public SocketInitializer
 	{
 	public:
 
-		inline tcp_server() noexcept(false)
+		inline TcpServer() noexcept(false)
 			: super()
 		{
-			m_listen_socket = socket(PF_INET, SOCK_STREAM, 0);
+			m_listen_socket = socket(PF_INET, SOCK_STREAM, protocol::TCP);
 
 			if (m_listen_socket == BAD_SOCKET)
 			{
@@ -122,7 +140,7 @@ namespace iut
 			m_local_address.sin_port = htons(m_port);
 		}
 
-		inline tcp_server(const char* _Ip, uint32_t _Port) noexcept(false)
+		inline TcpServer(const char* _Ip, uint32_t _Port) noexcept(false)
 			: super(_Ip, _Port)
 		{
 			m_listen_socket = socket(PF_INET, SOCK_STREAM, 6);
@@ -143,7 +161,7 @@ namespace iut
 			m_local_address.sin_port = htons(m_port);
 		}
 
-		inline virtual ~tcp_server() noexcept
+		inline virtual ~TcpServer() noexcept
 		{
 #ifdef _WIN32
 			closesocket(m_listen_socket);
@@ -179,17 +197,17 @@ namespace iut
 #endif // !_WIN32
 		}
 
-		[[nodiscard]] inline char* receive(size_t _Sender, size_t _Size) const noexcept(false)
+		[[nodiscard(LEAK_WARNING)]] inline char* receive(size_t _Sender) const noexcept(false)
 		{
-			char* buffer = new char[_Size];
+			char* buffer = new char[MESSAGE_LEN];
 
 #ifdef _WIN32
-			if (::recv(m_connection_sockets[_Sender], buffer, _Size, 0) == SOCKET_ERROR)
+			if (::recv(m_connection_sockets[_Sender], buffer, MESSAGE_LEN, 0) == SOCKET_ERROR)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
 #else // ^^^ _WIN32 / !_WIN32 vvv
-			if (::read(m_connection_sockets[_Sender], buffer, _Size) == -1)
+			if (::read(m_connection_sockets[_Sender], buffer, MESSAGE_LEN) == -1)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
@@ -276,7 +294,7 @@ namespace iut
 
 	private:
 
-		using super = i_socket;
+		using super = SocketInitializer;
 
 	private:
 
@@ -287,44 +305,47 @@ namespace iut
 		std::vector<sockaddr_in> m_remote_addresses;
 		bool m_is_running = false;
 
-	}; // class !tcp_server
+	}; // class !TcpServer
 
-	class client_socket final : public i_socket
+	class ClientSocket final : public SocketInitializer
 	{
 	public:
 
-		inline client_socket() noexcept(false)
+		inline ClientSocket() noexcept(false)
 			: super()
 		{
-			m_socket = socket(AF_INET, SOCK_STREAM, 6);
+			m_socket = socket(AF_INET, SOCK_STREAM, protocol::TCP);
 
 			if (m_socket == BAD_SOCKET)
 			{
 				throw std::runtime_error("Error while creating socket");
 			}
 
-			m_address_len = sizeof(m_local_address);
-			memset(&m_local_address, 0, m_address_len);
 #ifdef _WIN32
-			auto result = getaddrinfo(
-				m_ip,
-				std::to_string(m_port).c_str(),
-				nullptr,
-				&m_local_address
-			);
+			addrinfo hints;
+			ZeroMemory(&hints, sizeof(hints));
+			hints.ai_family = AF_INET;
+			hints.ai_socktype = SOCK_STREAM;
+			hints.ai_protocol = IPPROTO_TCP;
+
+			int result = getaddrinfo(iut::LOCALHOST, std::to_string(iut::port::DEFAULT).data(), &hints, &addr_info);
 
 			if (result != 0)
 			{
+				closesocket(m_socket);
+				WSACleanup();
 				throw std::runtime_error("Error while getting address info");
 			}
 #else // ^^^ _WIN32 / !_WIN32 vvv
-			m_local_address.sin_family = PF_INET;
-			m_local_address.sin_addr.s_addr = inet_addr(_Ip);
-			m_local_address.sin_port = htons(_Port);
+			m_address_len = sizeof(m_local_address);
+			memset(&m_local_address, 0, m_address_len);
+			m_local_address.sin_family = AF_INET;
+			m_local_address.sin_addr.s_addr = htonl(INADDR_ANY);
+			m_local_address.sin_port = htons(m_port);
 #endif // !_WIN32
 		}
 
-		inline client_socket(const char* _Ip, uint32_t _Port) noexcept(false)
+		inline ClientSocket(const char* _Ip, uint32_t _Port) noexcept(false)
 			: super(_Ip, _Port)
 		{
 			m_socket = socket(PF_INET, SOCK_STREAM, 0);
@@ -334,34 +355,35 @@ namespace iut
 				throw std::runtime_error("Error while creating socket");
 			}
 
-			m_address_len = sizeof(m_local_address);
-			memset(&m_local_address, 0, m_address_len);
 #ifdef _WIN32
-			auto result = getaddrinfo(
-				_Ip,
-				std::to_string(_Port).c_str(),
-				nullptr,
-				&m_local_address
-			);
-
+			addrinfo hints;
+			ZeroMemory(&hints, sizeof(hints));
+			hints.ai_family = AF_INET;
+			hints.ai_socktype = SOCK_STREAM;
+			hints.ai_protocol = IPPROTO_TCP;
+			
+			int result = getaddrinfo(_Ip, std::to_string(_Port).data(), &hints, &addr_info);
+			
 			if (result != 0)
 			{
+				closesocket(m_socket);
+				WSACleanup();
 				throw std::runtime_error("Error while getting address info");
 			}
 #else // ^^^ _WIN32 / !_WIN32 vvv
-			m_local_address.sin_family = PF_INET;
-			m_local_address.sin_addr.s_addr = inet_addr(_Ip);
-			m_local_address.sin_port = htons(_Port);
+			m_address_len = sizeof(m_local_address);
+			memset(&m_local_address, 0, m_address_len);
+			m_local_address.sin_family = AF_INET;
+			m_local_address.sin_addr.s_addr = htonl(INADDR_ANY);
+			m_local_address.sin_port = htons(m_port);
 #endif // !_WIN32
 		}
 
-		inline virtual ~client_socket() noexcept
+		inline virtual ~ClientSocket() noexcept
 		{
 #ifdef _WIN32
-			closesocket(m_socket);
-#else // ^^^ _WIN32 / !_WIN32 vvv
-			close(m_socket);
-#endif // !_WIN32
+			freeaddrinfo(addr_info);
+#endif // _WIN32
 		}
 
 		inline void send(const char* _Data) const noexcept(false)
@@ -381,48 +403,65 @@ namespace iut
 #endif // !_WIN32
 		}
 
-		[[nodiscard]] inline char* receive(size_t _Size) const noexcept(false)
+		[[nodiscard(LEAK_WARNING)]] inline char* receive() const noexcept(false)
 		{
-			char* buffer = new char[_Size];
-
+			char* buffer = new char[MESSAGE_LEN];
 #ifdef _WIN32
-			if (::recv(m_socket, buffer, _Size, 0) == SOCKET_ERROR)
+			size_t result = ::recv(m_socket, buffer, MESSAGE_LEN, 0); // returns the size if successful
+
+			if (result == SOCKET_ERROR)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
+
+			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
+			
 #else // ^^^ _WIN32 / !_WIN32 vvv
-			if (::read(m_socket, buffer, _Size) == -1)
+			size_t result = ::read(m_socket, buffer, MESSAGE_LEN); // returns the size if successful
+			
+			if (result == -1)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
 #endif // !_WIN32
+			
+			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
 
 			return buffer;
 		}
 
 		inline void connect() const noexcept(false)
 		{
-			if (::connect(m_socket, reinterpret_cast<const sockaddr*>(&m_local_address), m_address_len) < 0)
+#ifdef _WIN32
+			if (::connect(m_socket, addr_info->ai_addr, static_cast<int>(addr_info->ai_addrlen)) == SOCKET_ERROR)
+			{
+				throw std::runtime_error("Error while connecting to server");
+			}
+
+			freeaddrinfo(addr_info);
+#else // ^^^ _WIN32 / !_WIN32 vvv
+			if (::connect(m_socket, reinterpret_cast<const sockaddr*>(&m_local_address), m_address_len) == -1)
 			{
 				throw std::runtime_error("Error while connecting socket");
 			}
+#endif // !_WIN32
 		}
 
 	private:
 
-		using super = i_socket;
+		using super = SocketInitializer;
 
 	private:
 
 		socket_t m_socket;
 #ifdef _WIN32
-		addrinfo* m_local_address = nullptr;
+		addrinfo* addr_info;
 #else // ^^^ _WIN32 / !_WIN32 vvv
 		sockaddr_in m_local_address = {};
 #endif // !_WIN32
 		socklen_t m_address_len = 0;
 
-	}; // class !client_socket
+	}; // class !ClientSocket
 
 } // !namespace iut
 

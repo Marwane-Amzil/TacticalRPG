@@ -200,18 +200,26 @@ namespace iut
 		[[nodiscard(LEAK_WARNING)]] inline char* receive(size_t _Sender) const noexcept(false)
 		{
 			char* buffer = new char[MESSAGE_LEN];
-
 #ifdef _WIN32
-			if (::recv(m_connection_sockets[_Sender], buffer, MESSAGE_LEN, 0) == SOCKET_ERROR)
+			size_t result = ::recv(m_connection_sockets[_Sender], buffer, MESSAGE_LEN, 0); // returns the size if successful
+
+			if (result == SOCKET_ERROR)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
+
+			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
+
 #else // ^^^ _WIN32 / !_WIN32 vvv
-			if (::read(m_connection_sockets[_Sender], buffer, MESSAGE_LEN) == -1)
+			size_t result = ::read(m_socket, buffer, MESSAGE_LEN); // returns the size if successful
+
+			if (result == -1)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
 #endif // !_WIN32
+
+			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
 
 			return buffer;
 		}
@@ -438,7 +446,7 @@ namespace iut
 				throw std::runtime_error("Error while connecting to server");
 			}
 
-			freeaddrinfo(addr_info);
+			//freeaddrinfo(addr_info);
 #else // ^^^ _WIN32 / !_WIN32 vvv
 			if (::connect(m_socket, reinterpret_cast<const sockaddr*>(&m_local_address), m_address_len) == -1)
 			{

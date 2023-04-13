@@ -267,14 +267,16 @@ void AttitudeAIChoosePlay::update()
 			else if (playerDetector == 1) { // AI / Robot
 				while (canPlayIA) {
 					currentEntity = dynamic_cast<Character*>(_world.getGrid().getRedEntities()[nbRedPlayers]);
-					
+
+					std::cout << "pVAUUGh" << nbRedPlayers << std::endl;
+
 					int nbPossibleMoves;
 					Position randomPos;
 					int pos_X_arrival;
 					int pos_Y_arrival;
 					std::vector<Entity*> BluePlayers = _world.getGrid().getBlueEntities();
 
-					if (currentEntity->getClass() == "knight")
+					if (currentEntity->getClass() == "knight" || currentEntity->getClass() == "warrior")
 					{
 						// making a mean of the positions of the blue players and moving to the closest one
 						int meanX = 0;
@@ -312,7 +314,7 @@ void AttitudeAIChoosePlay::update()
 						pos_X_arrival = randomPos.getX() * 50 + (0.24 * x);
 						pos_Y_arrival = randomPos.getY() * 50 + (0.04 * y);
 					}
-					else if (currentEntity->getClass() == "archer")
+					else if (currentEntity->getClass() == "archer" ||currentEntity->getClass() == "mage")
 					{
 						// making a mean of the positions of the blue players and moving to the closest one
 						int meanX = 0;
@@ -363,10 +365,11 @@ void AttitudeAIChoosePlay::update()
 					}
 
 
-
 					srand(time(NULL));
 
 					currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
+
+					_is_moving = true;
 
 					while (currentSprite->getPosition().x != pos_X_arrival || currentSprite->getPosition().y != pos_Y_arrival) // 
 					{
@@ -425,6 +428,7 @@ void AttitudeAIChoosePlay::update()
 					}
 
 					currentSprite->stopAnimation();
+					_is_moving = false;
 
 					currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
 					_world.getGrid().move(currentEntity->getPosition().getX(), currentEntity->getPosition().getY(), randomPos.getX(), randomPos.getY());
@@ -435,19 +439,14 @@ void AttitudeAIChoosePlay::update()
 
 					int nbPossibleActions = currentEntity->getPossibleActions(_world.getGrid()).size();
 					if (nbPossibleActions > 0) {
-						std::cout << "pVAUUGh" << currentEntity->getHp() << std::endl;
 
 						Position randomPos = currentEntity->getPossibleActions(_world.getGrid())[rand() % nbPossibleActions];
-						for  (const Position &pos : currentEntity->getPossibleActions(_world.getGrid()))
-						{
-							std::cout << "AUUGGHHHH   " << pos << std::endl;
-						}
 						currentEntity->getFirstSkill()->activate(_world.getGrid(), dynamic_cast<Character*>(_world.getGrid()[randomPos.getX()][randomPos.getY()]));
-						std::cout << "pV" << dynamic_cast<Character*>(_world.getGrid()[randomPos.getX()][randomPos.getY()])->getHp() << std::endl;
 					}
 					_world.update();
 
 					nbRedPlayers -= 1;
+
 					if (nbRedPlayers < 0) {
 						playerDetector = (playerDetector + 1) % 2;
 						_m_isCharacterSelected = false;
@@ -489,8 +488,6 @@ void AttitudeAIChoosePlay::update()
 				srand(time(NULL));
 				int nbPlayers = _world.getGrid().getRedEntities().size();
 
-				currentEntity = dynamic_cast<Character*>(_world.getGrid().getRedEntities()[rand() % nbPlayers]);
-				currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
 
 				_m_isCharacterSelected = true;
 

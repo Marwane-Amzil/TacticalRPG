@@ -33,6 +33,7 @@ public:
 
 
 private:
+	bool canPlayIA = false;
 
 	int window_click_x;
 	int window_click_y;

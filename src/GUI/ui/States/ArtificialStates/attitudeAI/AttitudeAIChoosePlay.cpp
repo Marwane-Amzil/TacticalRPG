@@ -7,6 +7,7 @@
 #include <GUI/ui/States/MenuState.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
 #include <random>
+#include <algorithm>
 
 
 AttitudeAIChoosePlay::AttitudeAIChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
@@ -35,6 +36,7 @@ void AttitudeAIChoosePlay::resume()
 
 void AttitudeAIChoosePlay::update()
 {
+	int nbRedPlayers = _world.getGrid().getRedEntities().size()-1;
 	sf::Event event;
 	while (_window.pollEvent(event))
 	{
@@ -263,130 +265,197 @@ void AttitudeAIChoosePlay::update()
 			}
 
 			else if (playerDetector == 1) { // AI / Robot
-
-				int nbPossibleMoves;
-				Position randomPos;
-				int pos_X_arrival;
-				int pos_Y_arrival;
-				std::vector<Entity*> BluePlayers = _world.getGrid().getBlueEntities();
-
-				if (currentEntity->getClass() == "knight")
-				{
-					// making a mean of the positions of the blue players and moving to the closest one
-					int meanX = 0;
-					int meanY = 0;
-					for (int i = 0; i < BluePlayers.size(); i++)
-					{
-						meanX += BluePlayers[i]->getPosition().getX();
-						meanY += BluePlayers[i]->getPosition().getY();
-					}
-					meanX /= BluePlayers.size();
-					meanY /= BluePlayers.size();
+				while (canPlayIA) {
+					currentEntity = dynamic_cast<Character*>(_world.getGrid().getRedEntities()[nbRedPlayers]);
 					
-					std::cout << "meanX : " << meanX <<  " ; meanY" << meanY << std::endl;
+					int nbPossibleMoves;
+					Position randomPos;
+					int pos_X_arrival;
+					int pos_Y_arrival;
+					std::vector<Entity*> BluePlayers = _world.getGrid().getBlueEntities();
+
+					if (currentEntity->getClass() == "knight")
+					{
+						// making a mean of the positions of the blue players and moving to the closest one
+						int meanX = 0;
+						int meanY = 0;
+						for (int i = 0; i < BluePlayers.size(); i++)
+						{
+							meanX += BluePlayers[i]->getPosition().getX();
+							meanY += BluePlayers[i]->getPosition().getY();
+						}
+						meanX /= BluePlayers.size();
+						meanY /= BluePlayers.size();
+
+						std::cout << "meanX : " << meanX << " ; meanY" << meanY << std::endl;
+
+						// get the closest position in the possible moves to the mean
+						std::vector<Position> possibleMoves = currentEntity->getPossibleMoves(_world.getGrid());
+
+						int closestX = possibleMoves[0].getX();
+						int closestY = possibleMoves[0].getY();
+						int closestDistance = abs(meanX - possibleMoves[0].getX()) + abs(meanY - possibleMoves[0].getY());
+						for (int i = 1; i < possibleMoves.size(); i++)
+						{
+							int distance = abs(meanX - possibleMoves[i].getX()) + abs(meanY - possibleMoves[i].getY() );
+							if (distance < closestDistance)
+							{
+								closestDistance = distance;
+								closestX = possibleMoves[i].getX();
+								closestY = possibleMoves[i].getY();
+							}
+						}
+						if (std::find(possibleMoves.begin(), possibleMoves.end(), Position(closestX, closestY)) != possibleMoves.end())
+						{
+							randomPos = Position(closestX, closestY);
+						}
+						pos_X_arrival = randomPos.getX() * 50 + (0.24 * x);
+						pos_Y_arrival = randomPos.getY() * 50 + (0.04 * y);
+					}
+					else if (currentEntity->getClass() == "archer")
+					{
+						// making a mean of the positions of the blue players and moving to the closest one
+						int meanX = 0;
+						int meanY = 0;
+						for (int i = 0; i < BluePlayers.size(); i++)
+						{
+							meanX += BluePlayers[i]->getPosition().getX();
+							meanY += BluePlayers[i]->getPosition().getY();
+						}
+						meanX /= BluePlayers.size();
+						meanY /= BluePlayers.size();
+
+						std::cout << "meanX : " << meanX << " ; meanY" << meanY << std::endl;
+
+						// get the closest position in the possible moves to the mean
+						std::vector<Position> possibleMoves = currentEntity->getPossibleMoves(_world.getGrid());
+
+						int closestX = possibleMoves[0].getX();
+						int closestY = possibleMoves[0].getY();
+						int closestDistance = abs(meanX - possibleMoves[0].getX()) + abs(meanY - possibleMoves[0].getY());
+						for (int i = 1; i < possibleMoves.size(); i++)
+						{
+							int distance = abs(meanX - possibleMoves[i].getX()) + abs(meanY - possibleMoves[i].getY());
+							if ( distance > 6)
+							{ 
+								if (distance < closestDistance)
+								{
+									closestDistance = distance;
+									closestX = possibleMoves[i].getX();
+									closestY = possibleMoves[i].getY();
+								}
+							}
+							else {
+								if (distance > closestDistance)
+								{
+									closestDistance = distance;
+									closestX = possibleMoves[i].getX();
+									closestY = possibleMoves[i].getY();
+								}
+							}
+						}
+						if (std::find(possibleMoves.begin(), possibleMoves.end(), Position(closestX, closestY)) != possibleMoves.end())
+						{
+							randomPos = Position(closestX, closestY);
+						}
+						pos_X_arrival = randomPos.getX() * 50 + (0.24 * x);
+						pos_Y_arrival = randomPos.getY() * 50 + (0.04 * y);
+					}
+
+
+
+					srand(time(NULL));
+
+					currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
+
+					while (currentSprite->getPosition().x != pos_X_arrival || currentSprite->getPosition().y != pos_Y_arrival) // 
+					{
+						if (currentSprite->getPosition().x < pos_X_arrival)
+						{
+							currentSprite->setCurrentAnimation(7);
+						}
+						else if (currentSprite->getPosition().x > pos_X_arrival)
+						{
+							currentSprite->setCurrentAnimation(6);
+						}
+						else if (currentSprite->getPosition().y < pos_Y_arrival)
+						{
+							currentSprite->setCurrentAnimation(5);
+						}
+						else if (currentSprite->getPosition().y > pos_Y_arrival)
+						{
+							currentSprite->setCurrentAnimation(8);
+						}
+
+						currentSprite->loopCurrentAnimation(true);
+						currentSprite->playAnimation();
+
+						if (currentSprite->getPosition().x < pos_X_arrival)
+						{
+							while (currentSprite->getPosition().x != pos_X_arrival)
+							{
+								currentSprite->move(2.f, 0.f);
+								this->draw();
+							}
+						}
+						else if (currentSprite->getPosition().x > pos_X_arrival)
+						{
+							while (currentSprite->getPosition().x != pos_X_arrival)
+							{
+								currentSprite->move(-2.f, 0.f);
+								this->draw();
+							}
+						}
+						else if (currentSprite->getPosition().y < pos_Y_arrival)
+						{
+							while (currentSprite->getPosition().y != pos_Y_arrival)
+							{
+								currentSprite->move(0.f, 2.f);
+								this->draw();
+							}
+						}
+						else if (currentSprite->getPosition().y > pos_Y_arrival)
+						{
+							while (currentSprite->getPosition().y != pos_Y_arrival)
+							{
+								currentSprite->move(0.f, -2.f);
+								this->draw();
+							}
+						}
+					}
+
+					currentSprite->stopAnimation();
+
+					currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
+					_world.getGrid().move(currentEntity->getPosition().getX(), currentEntity->getPosition().getY(), randomPos.getX(), randomPos.getY());
+					_world.update();
+
+
+					srand(time(NULL));
+
+					int nbPossibleActions = currentEntity->getPossibleActions(_world.getGrid()).size();
+					if (nbPossibleActions > 0) {
+						std::cout << "pVAUUGh" << currentEntity->getHp() << std::endl;
+
+						Position randomPos = currentEntity->getPossibleActions(_world.getGrid())[rand() % nbPossibleActions];
+						for  (const Position &pos : currentEntity->getPossibleActions(_world.getGrid()))
+						{
+							std::cout << "AUUGGHHHH   " << pos << std::endl;
+						}
+						currentEntity->getFirstSkill()->activate(_world.getGrid(), dynamic_cast<Character*>(_world.getGrid()[randomPos.getX()][randomPos.getY()]));
+						std::cout << "pV" << dynamic_cast<Character*>(_world.getGrid()[randomPos.getX()][randomPos.getY()])->getHp() << std::endl;
+					}
+					_world.update();
+
+					nbRedPlayers -= 1;
+					if (nbRedPlayers < 0) {
+						playerDetector = (playerDetector + 1) % 2;
+						_m_isCharacterSelected = false;
+						canPlayIA = false;
+					}
 					
-					// get the closest position in the possible moves to the mean
-					std::vector<Position> possibleMoves = currentEntity->getPossibleMoves(_world.getGrid());
-					
-					int closestX = possibleMoves[0].getX();
-					int closestY = possibleMoves[0].getY();
-					int closestDistance = abs(meanX - possibleMoves[0].getX()) + abs(meanY - possibleMoves[0].getY());
-					for (int i = 1; i < possibleMoves.size(); i++)
-					{
-						int distance = abs(meanX - possibleMoves[i].getX()) + abs(meanY - possibleMoves[i].getY());
-						if (distance < closestDistance)
-						{
-							closestDistance = distance;
-							closestX = possibleMoves[i].getX();
-							closestY = possibleMoves[i].getY();
-						}
-					}
-					randomPos = Position(closestX, closestY);
-
-					pos_X_arrival = randomPos.getX() * 50 + (0.24 * x);
-					pos_Y_arrival = randomPos.getY() * 50 + (0.04 * y);
-				}
-
-				srand(time(NULL));
-				
-
-				while (currentSprite->getPosition().x != pos_X_arrival || currentSprite->getPosition().y != pos_Y_arrival) // 
-				{
-					if (currentSprite->getPosition().x < pos_X_arrival)
-					{
-						currentSprite->setCurrentAnimation(7);
-					}
-					else if (currentSprite->getPosition().x > pos_X_arrival)
-					{
-						currentSprite->setCurrentAnimation(6);
-					}
-					else if (currentSprite->getPosition().y < pos_Y_arrival)
-					{
-						currentSprite->setCurrentAnimation(5);
-					}
-					else if (currentSprite->getPosition().y > pos_Y_arrival)
-					{
-						currentSprite->setCurrentAnimation(8);
-					}
-
-					currentSprite->loopCurrentAnimation(true);
-					currentSprite->playAnimation();
-
-					if (currentSprite->getPosition().x < pos_X_arrival)
-					{
-						while (currentSprite->getPosition().x != pos_X_arrival)
-						{
-							currentSprite->move(2.f, 0.f);
-							this->draw();
-						}
-					}
-					else if (currentSprite->getPosition().x > pos_X_arrival)
-					{
-						while (currentSprite->getPosition().x != pos_X_arrival)
-						{
-							currentSprite->move(-2.f, 0.f);
-							this->draw();
-						}
-					}
-					else if (currentSprite->getPosition().y < pos_Y_arrival)
-					{
-						while (currentSprite->getPosition().y != pos_Y_arrival)
-						{
-							currentSprite->move(0.f, 2.f);
-							this->draw();
-						}
-					}
-					else if (currentSprite->getPosition().y > pos_Y_arrival)
-					{
-						while (currentSprite->getPosition().y != pos_Y_arrival)
-						{
-							currentSprite->move(0.f, -2.f);
-							this->draw();
-						}
-					}
-				}
-
-				currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
-				_world.getGrid().move(currentEntity->getPosition().getX(), currentEntity->getPosition().getY(), randomPos.getX(), randomPos.getY());
-				_world.update();
-
-
-				srand(time(NULL));
-
-				int nbPossibleActions = currentEntity->getPossibleActions(_world.getGrid()).size();
-				if (nbPossibleActions > 0) {
-
-					Position randomPos = currentEntity->getPossibleActions(_world.getGrid())[rand() % nbPossibleActions];
-					currentEntity->getFirstSkill()->activate(_world.getGrid(), dynamic_cast<Character*>(_world.getGrid()[randomPos.getX()][randomPos.getY()]));
 
 				}
-				_world.update();
-
-
-
-				playerDetector = (playerDetector + 1) % 2;
-				_m_isCharacterSelected = false;
-
 			}
 		}
 
@@ -424,6 +493,8 @@ void AttitudeAIChoosePlay::update()
 				currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];
 
 				_m_isCharacterSelected = true;
+
+				canPlayIA = true;
 
 			}
 		}

@@ -43,8 +43,8 @@ namespace warrior
 // -- Knight --
 namespace knight
 {
-    static constexpr int MOVES = 8;
-    static constexpr int NEG_MOVES = -8;
+    static constexpr int MOVES = 5;
+    static constexpr int NEG_MOVES = -5;
 }
 
 // -- Archer --

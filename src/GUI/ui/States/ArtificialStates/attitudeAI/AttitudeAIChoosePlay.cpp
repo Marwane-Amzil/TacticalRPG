@@ -364,7 +364,6 @@ void AttitudeAIChoosePlay::update()
 						pos_Y_arrival = randomPos.getY() * 50 + (0.04 * y);
 					}
 
-
 					srand(time(NULL));
 
 					currentSprite = _world[currentEntity->getPosition().getX()][currentEntity->getPosition().getY()];

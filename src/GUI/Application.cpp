@@ -6,7 +6,7 @@
 
 
 Application::Application()
-	: _machine(), _window(sf::VideoMode::getDesktopMode(), "SFML Window", sf::Style::Fullscreen), _world(_window)
+	: _machine(), _window(sf::VideoMode::getDesktopMode(), "SFML Window", sf::Style::Titlebar | sf::Style::Close), _world(_window), _client("172.19.140.30", iut::port::DEFAULT)
 {
 	_window.setVerticalSyncEnabled(true);
 	_textureManager.loadTextures();
@@ -15,7 +15,7 @@ Application::Application()
 void Application::run()
 {
 	// Initialize the engine
-	_machine.run(StateMachine::build<ArtificialCharacterChoice>(_machine, _window, _world, _textureManager, true));
+	_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, _client, true));
 
 	// Main loop
 	while (_machine.running())

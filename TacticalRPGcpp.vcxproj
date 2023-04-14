@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\ui\States\NetworkState.cpp" />
+    <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\ServerConnectionState.cpp" />
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.cpp" />
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.cpp" />
-    <ClCompile Include="src\GUI\ui\States\NetworkPlayState.cpp" />
     <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\NetworkCharacterChoice.cpp" />
-    <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\NetworkChoosePlay.cpp" />
     <ClCompile Include="src\Skills\MagicalSkills\HealerTemp.cpp" />
     <ClCompile Include="src\GUI\game\ZoneGraphic.cpp" />
     <ClCompile Include="src\Skills\PhysicalSkills\BowShot.cpp" />
@@ -68,9 +68,7 @@
   <ItemGroup>
     <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialChoosePlay.hpp" />
     <ClInclude Include="include\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.hpp" />
-    <ClInclude Include="include\GUI\ui\States\NetworkPlayState.hpp" />
     <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\NetworkCharacterChoice.hpp" />
-    <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\NetworkChoosePlay.hpp" />
     <ClInclude Include="include\network.hpp" />
     <ClInclude Include="include\Skills\MagicalSkills\HealerTemp.hpp" />
     <ClInclude Include="include\Skills\PhysicalSkills\BowShot.hpp" />
@@ -116,6 +114,8 @@
     <ClInclude Include="include\utils\SpriteFactory.hpp" />
     <ClInclude Include="include\utils\TextureManager.hpp" />
     <ClInclude Include="include\GUI\game\ZoneGraphic.hpp" />
+    <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\ServerConnectionState.hpp" />
+    <ClInclude Include="include\GUI\ui\States\NetworkState.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -198,7 +198,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);NOMINMAX</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -216,7 +216,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);NOMINMAX</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -243,6 +243,7 @@
       <EnablePREfast>true</EnablePREfast>
       <AdditionalIncludeDirectories>$(SolutionDir)include\; $(SolutionDir)include\third_party\</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <PreprocessorDefinitions>;NOMINMAX</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\win\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -259,6 +260,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)include\; $(SolutionDir)include\third_party\</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PreprocessorDefinitions>;NOMINMAX</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\win\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

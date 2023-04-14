@@ -3,7 +3,6 @@
 #ifndef __IUT_NETWORK_H__
 #define __IUT_NETWORK_H__
 
-
 #ifdef _WIN32
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -51,17 +50,19 @@ namespace iut
 		};
 	}
 
+	namespace sockmsg
+	{
+		static constexpr const char* DISCONNECT = "DISCONNECT";
+		static constexpr const char* IS_SERVER_ALIVE = "IS_SERVER_ALIVE";
+	}
+
 #ifdef _WIN32
 #define BAD_SOCKET INVALID_SOCKET
 #else // ^^^ _WIN32 / !_WIN32 vvv
 #define BAD_SOCKET -1
 #endif // !_WIN32
-	
-#define MESSAGE_LEN 126
 
-#define LEAK_WARNING "This function returns a message received from a client. \
-			The buffer used to store the message is allocated with the **new** keyword. \
-			Do not discard the return value of this function, else, you'll get a memory leak !"
+#define MESSAGE_LEN 126
 
 	class SocketInitializer
 	{
@@ -170,7 +171,7 @@ namespace iut
 #endif // !_WIN32
 		}
 
-		inline bool is_running() const noexcept
+		inline bool isRunning() const noexcept
 		{
 			return m_is_running;
 		}
@@ -182,7 +183,7 @@ namespace iut
 
 		inline void send(size_t _Index, const char* _Data) const noexcept(false)
 		{
-			size_t size = strlen(_Data);
+			int size = strlen(_Data);
 
 #ifdef _WIN32
 			if (::send(m_connection_sockets[_Index], _Data, size, 0) == SOCKET_ERROR)
@@ -197,21 +198,21 @@ namespace iut
 #endif // !_WIN32
 		}
 
-		[[nodiscard(LEAK_WARNING)]] inline char* receive(size_t _Sender) const noexcept(false)
+		inline std::string receive(size_t _Sender) const noexcept(false)
 		{
-			char* buffer = new char[MESSAGE_LEN];
+			std::string buffer;
+
+			buffer.resize(MESSAGE_LEN);
 #ifdef _WIN32
-			size_t result = ::recv(m_connection_sockets[_Sender], buffer, MESSAGE_LEN, 0); // returns the size if successful
+			int result = ::recv(m_connection_sockets[_Sender], buffer.data(), MESSAGE_LEN, 0); // returns the size if successful
 
 			if (result == SOCKET_ERROR)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
 
-			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
-
 #else // ^^^ _WIN32 / !_WIN32 vvv
-			size_t result = ::read(m_socket, buffer, MESSAGE_LEN); // returns the size if successful
+			int result = ::read(m_connection_sockets[_Sender], const_cast<char*>(buffer.data()), MESSAGE_LEN); // returns the size if successful
 
 			if (result == -1)
 			{
@@ -219,7 +220,7 @@ namespace iut
 			}
 #endif // !_WIN32
 
-			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
+			buffer.resize(result);
 
 			return buffer;
 		}
@@ -228,7 +229,6 @@ namespace iut
 		{
 			if (::bind(m_listen_socket, reinterpret_cast<const sockaddr*>(&m_local_address), m_address_len) < 0)
 			{
-				perror("Error while binding socket");
 				throw std::runtime_error("Error while binding socket");
 			}
 		}
@@ -256,13 +256,9 @@ namespace iut
 			}
 		}
 
-		inline void close(size_t _Index) const noexcept
+		inline void remove(size_t _Index) noexcept
 		{
-#ifdef _WIN32
-			closesocket(m_connection_sockets[_Index]);
-#else // ^^^ _WIN32 / !_WIN32 vvv
-			close(m_connection_sockets[_Index]);
-#endif // !_WIN32
+			m_connection_sockets.erase(m_connection_sockets.begin() + _Index);
 		}
 
 		inline void broadcast(const char* _Data) const noexcept(false)
@@ -287,17 +283,11 @@ namespace iut
 
 			for (size_t i = 0; i < m_connection_sockets.size(); ++i)
 			{
-				close(i);
+				remove(i);
 			}
 
 			m_connection_sockets.clear();
 			m_is_running = false;
-
-#ifdef _WIN32
-			closesocket(m_listen_socket);
-#else // ^^^ _WIN32 / !_WIN32 vvv
-			close(m_listen_socket);
-#endif // !_WIN32
 		}
 
 	private:
@@ -340,8 +330,6 @@ namespace iut
 
 			if (result != 0)
 			{
-				closesocket(m_socket);
-				WSACleanup();
 				throw std::runtime_error("Error while getting address info");
 			}
 #else // ^^^ _WIN32 / !_WIN32 vvv
@@ -369,13 +357,11 @@ namespace iut
 			hints.ai_family = AF_INET;
 			hints.ai_socktype = SOCK_STREAM;
 			hints.ai_protocol = IPPROTO_TCP;
-			
+
 			int result = getaddrinfo(_Ip, std::to_string(_Port).data(), &hints, &addr_info);
-			
+
 			if (result != 0)
 			{
-				closesocket(m_socket);
-				WSACleanup();
 				throw std::runtime_error("Error while getting address info");
 			}
 #else // ^^^ _WIN32 / !_WIN32 vvv
@@ -394,9 +380,14 @@ namespace iut
 #endif // _WIN32
 		}
 
+		inline bool isConnected() const noexcept
+		{
+			return m_is_connected;
+		}
+
 		inline void send(const char* _Data) const noexcept(false)
 		{
-			size_t size = strlen(_Data);
+			int size = strlen(_Data);
 
 #ifdef _WIN32
 			if (::send(m_socket, _Data, size, 0) == SOCKET_ERROR)
@@ -411,34 +402,34 @@ namespace iut
 #endif // !_WIN32
 		}
 
-		[[nodiscard(LEAK_WARNING)]] inline char* receive() const noexcept(false)
+		inline std::string receive() const noexcept(false)
 		{
-			char* buffer = new char[MESSAGE_LEN];
+			std::string buffer;
+
+			buffer.resize(MESSAGE_LEN);
 #ifdef _WIN32
-			size_t result = ::recv(m_socket, buffer, MESSAGE_LEN, 0); // returns the size if successful
+			int result = ::recv(m_socket, buffer.data(), MESSAGE_LEN, 0); // returns the size if successful
 
 			if (result == SOCKET_ERROR)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
 
-			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
-			
 #else // ^^^ _WIN32 / !_WIN32 vvv
-			size_t result = ::read(m_socket, buffer, MESSAGE_LEN); // returns the size if successful
-			
+			int result = ::read(m_socket, const_cast<char*>(buffer.data()), MESSAGE_LEN); // returns the size if successful
+
 			if (result == -1)
 			{
 				throw std::runtime_error("Error while receiving data");
 			}
 #endif // !_WIN32
-			
-			buffer[result] = '\0'; // null terminate the string, else you'll read hot garbage :)
+
+			buffer.resize(result);
 
 			return buffer;
 		}
 
-		inline void connect() const noexcept(false)
+		inline void connect() noexcept(false)
 		{
 #ifdef _WIN32
 			if (::connect(m_socket, addr_info->ai_addr, static_cast<int>(addr_info->ai_addrlen)) == SOCKET_ERROR)
@@ -453,6 +444,14 @@ namespace iut
 				throw std::runtime_error("Error while connecting socket");
 			}
 #endif // !_WIN32
+
+			m_is_connected = true;
+		}
+
+		inline void disconnect() noexcept(false)
+		{
+			send(sockmsg::DISCONNECT);
+			m_is_connected = false;
 		}
 
 	private:
@@ -468,6 +467,7 @@ namespace iut
 		sockaddr_in m_local_address = {};
 #endif // !_WIN32
 		socklen_t m_address_len = 0;
+		bool m_is_connected = false;
 
 	}; // class !ClientSocket
 

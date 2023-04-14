@@ -19,11 +19,16 @@ namespace sf
     class Sprite;
 }
 
+namespace iut
+{
+	class ClientSocket;
+}
+
 class MenuState final : public State
 {
 public:
 	
-    explicit MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
+    explicit MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace = true);
 
 	void pause() override;
 	void resume() override;
@@ -35,6 +40,7 @@ private:
     
     gui::World& _world;
 	utils::TextureManager& _texture_manager;
+	iut::ClientSocket& _client;
 	sf::Texture m_backgroundTexture;
 	// Constains the sprites of the menu
 	sf::Sprite m_background;

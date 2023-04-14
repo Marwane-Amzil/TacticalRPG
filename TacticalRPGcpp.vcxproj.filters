@@ -141,13 +141,13 @@
     <ClCompile Include="src\GUI\ui\States\ArtificialStates\ArtificialCharacterChoice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUI\ui\States\NetworkPlayState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\NetworkChoosePlay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\NetworkCharacterChoice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\ui\States\NetworkPlayStates\ServerConnectionState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\ui\States\NetworkState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -293,13 +293,13 @@
     <ClInclude Include="include\network.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GUI\ui\States\NetworkPlayState.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\NetworkChoosePlay.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\NetworkCharacterChoice.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\ui\States\NetworkPlayStates\ServerConnectionState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI\ui\States\NetworkState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include <GUI/ui/StateMachine.hpp>
 #include <GUI/game/World.hpp>
 #include <utils/TextureManager.hpp>
+#include <network.hpp>
 
 class Application
 {
@@ -18,4 +19,5 @@ private:
 	sf::RenderWindow _window;
 	gui::World _world;
 	utils::TextureManager _textureManager;
+	iut::ClientSocket _client;
 };

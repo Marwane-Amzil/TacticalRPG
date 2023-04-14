@@ -34,6 +34,7 @@ target_link_libraries(TacticalRPGcpp PUBLIC
 	sfml-window
 	sfml-system
 	sfml-audio
+	pthread
 )
 
 # set the project output directory

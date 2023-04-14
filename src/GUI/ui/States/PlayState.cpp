@@ -10,5 +10,5 @@
 #include <array>
 
 
-PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
-	: State(machine, window, replace), _world(world), _textureManager(texture_manager) {}
+PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace)
+	: State(machine, window, replace), _world(world), _textureManager(texture_manager), _client(client) {}

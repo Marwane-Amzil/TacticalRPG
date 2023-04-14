@@ -8,8 +8,8 @@
 
 
 
-ArtificialCharacterChoice::ArtificialCharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
-: super(machine, window, world, texture_manager, replace), _animationManager(), _spriteFactory(_world, texture_manager, _animationManager)
+ArtificialCharacterChoice::ArtificialCharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace)
+: super(machine, window, world, texture_manager, client, replace), _animationManager(), _spriteFactory(_world, texture_manager, _animationManager)
 {
 	_clock.restart();
 
@@ -70,7 +70,7 @@ void ArtificialCharacterChoice::update()
 			if (event.key.code == sf::Keyboard::Escape)
 			{
 				_world.clean();
-				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
+				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, _client, true));
 			}
 			
 		}
@@ -210,7 +210,7 @@ void ArtificialCharacterChoice::update()
 
 	if (count == 3)
 	{
-		_machine.run(StateMachine::build<ArtificialChoosePlay>(_machine, _window, _world, _textureManager, true));
+		_machine.run(StateMachine::build<ArtificialChoosePlay>(_machine, _window, _world, _textureManager, _client, true));
 	}
 
 	switch (color_looker) {

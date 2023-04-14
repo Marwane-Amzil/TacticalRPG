@@ -5,12 +5,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Event.hpp>
 #include <GUI/ui/States/PlayStates/CharacterChoice.hpp>
+#include <GUI/ui/States/NetworkPlayStates/ServerConnectionState.hpp>
 #include <GUI/ui/States/ArtificialStates/ArtificialCharacterChoice.hpp>
 
 #include <iostream>
 
-MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
-	: State(machine, window, replace), _world(world), _texture_manager(texture_manager)
+MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace)
+	: State(machine, window, replace), _world(world), _texture_manager(texture_manager), _client(client)
 {
     _winclose = new sf::RectangleShape();
     _font = new sf::Font();
@@ -28,7 +29,7 @@ MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, gui::World
     _mouse_coord = { 0, 0 };
 
     // The different containers are linked by the id. option[0] refeeres to coords[0] refeers to size[0]
-    _options = { "War Game", "Play", "Online", "VS Computer ", "Online" };
+    _options = { "War Game", "Play", "Online", "AI", "Quit" };
     _texts.resize(5);
     _coords = { {800,160},{310,308},{301,432},{300,545},{330,661} };
     _sizes = { 100,56,48,48,48 };
@@ -101,20 +102,23 @@ void MenuState::update()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !theselect) {
             theselect = true;
-            if (_pos == 1) {
-                _machine.run(StateMachine::build<CharacterChoice>(_machine, _window, _world, _texture_manager, true));
-            }
+            switch (_pos) {
+			    case 1:
+				    _machine.run(StateMachine::build<CharacterChoice>(_machine, _window, _world, _texture_manager, _client, true));
+				    break;
+                
+                case 2:
+				    _machine.run(StateMachine::build<ServerConnectionState>(_machine, _window, _world, _texture_manager, _client, true));
+				    break;
 
-            if (_pos == 4) {
-                _machine.quit();
-            }
+                case 3:
+				    _machine.run(StateMachine::build<ArtificialCharacterChoice>(_machine, _window, _world, _texture_manager, _client, true));
+				    break;
 
-            if (_pos == 3) {
-                _machine.run(StateMachine::build<ArtificialCharacterChoice>(_machine, _window, _world, _texture_manager, true));
+			    case 4:
+				    _machine.quit();
+				    break;
             }
-
-			
-            
         }
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {

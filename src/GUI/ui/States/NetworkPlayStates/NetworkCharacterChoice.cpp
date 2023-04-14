@@ -1,397 +1,223 @@
 ﻿#include <GUI/ui/States/NetworkPlayStates/NetworkCharacterChoice.hpp>
-#include <GUI/game/EntitySprite.hpp>
-#include <Entities.hpp>
-#include <iostream>
 #include <GUI/ui/StateMachine.hpp>
 #include <GUI/ui/States/MenuState.hpp>
-#include <GUI/ui/States/NetworkPlayStates/NetworkChoosePlay.hpp>
-#include <stdio.h>
-#include <string.h>
+//#include <GUI/ui/States/NetworkPlayStates/NetworkChoosePlay.hpp>
+#include <Entities.hpp>
+#include <network.hpp>
+#include <iostream>
 
-
-
-NetworkCharacterChoice::NetworkCharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
-	: super(machine, window, world, texture_manager, replace), _animationManager(), _spriteFactory(_world, texture_manager, _animationManager)
+NetworkCharacterChoice::NetworkCharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const char player, const bool replace)
+	: super(machine, window, world, texture_manager, client, replace), _animationManager(), _spriteFactory(_world, texture_manager, _animationManager), _send_thread(), _receive_thread(), _player(player), _is_ready(false)
 {
-
-
-	_clock.restart();
-
 	_animationManager.loadAnimations();
-	//_spriteFactory.createCharacter(new Healer(2, 2, 'Rs'));
-
-	float multiy = 0.83f;
-	float multyx = 0.1f;
 
 	auto [x, y] = _window.getSize();
 
-
-	//met les différentes textures dans m_characters_blue/red
-	for (auto characterName : _m_characterNames) {
-		m_characters_blue[nb].setTexture(_textureManager.getTextureAt('B', characterName));
-		m_characters_blue[nb].setPosition(multyx * x, multiy * y);
-		m_characters_blue[nb].setTextureRect(sf::IntRect(70, 650, 50, 50));
-		m_characters_blue[nb].setScale(2.8f, 2.8f);
-		multiy = multiy - 0.2f;
-		nb++;
+	float multiy = 0.83f;
+	float multyx = 0.1f;
+	
+	if (_player == 'B')
+	{
+		for (const std::string& characterName : _m_characterNames)
+		{
+			m_characters[nb].setTexture(_texture_manager.getTextureAt('B', characterName));
+			m_characters[nb].setPosition(multyx * x, multiy * y);
+			m_characters[nb].setTextureRect(sf::IntRect(70, 650, 50, 50));
+			m_characters[nb].setScale(2.8f, 2.8f);
+			multiy = multiy - 0.2f;
+			++nb;
+		}
+	}
+	else
+	{
+		multyx = 0.8f;
+		multiy = 0.83f;
+		
+		for (const std::string& characterName : _m_characterNames)
+		{
+			m_characters[nb].setTexture(_texture_manager.getTextureAt('R', characterName));
+			m_characters[nb].setPosition(multyx * x, multiy * y);
+			m_characters[nb].setTextureRect(sf::IntRect(70, 650, 50, 50));
+			m_characters[nb].setScale(2.8f, 2.8f);
+			multiy = multiy - 0.2f;
+			++nb;
+		}
 	}
 
-	multyx = 0.8f;
-	multiy = 0.83f;
 	nb = 0;
-	for (auto characterName : _m_characterNames) {
-
-		m_characters_red[nb].setTexture(_textureManager.getTextureAt('R', characterName));
-		m_characters_red[nb].setPosition(multyx * x, multiy * y);
-		m_characters_red[nb].setTextureRect(sf::IntRect(70, 650, 50, 50));
-		m_characters_red[nb].setScale(2.8f, 2.8f);
-		multiy = multiy - 0.2f;
-		nb++;
-
-	}
 }
 
-void NetworkCharacterChoice::pause()
-{
-	std::cout << "pause choice\n";
-}
+void NetworkCharacterChoice::pause() {}
 
-void NetworkCharacterChoice::resume()
-{
-	std::cout << "resume choice\n";
-}
+void NetworkCharacterChoice::resume() {}
 
 void NetworkCharacterChoice::update()
 {
-
-	SOCKET socket = createSocket();
-	connectSocket(socket, "192.168.43.19", "5000");
-
-
-	char player_color[2];
-
-	receiveMessage(socket, player_color, 2);
-
-	std::string str_color;
-
-	str_color.assign(player_color);
-
-
-	int color;
-
-	if (str_color.at(0) == '1') {
-		color = 1;
-	}
-	else {
-		color = 0;
-	}
-
 	sf::Event event;
+
 	while (_window.pollEvent(event))
 	{
-
 		if (event.type == sf::Event::Closed)
+		{
 			_window.close();
+		}
+
 		if (event.type == sf::Event::KeyPressed)
 		{
 			if (event.key.code == sf::Keyboard::Escape)
 			{
 				_world.clean();
-				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
+				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _texture_manager, _client, true));
 			}
-
 		}
 	}
 
-
-
-	auto [x, y] = _window.getSize();
-
-
-	bool click_looker = false;
-	// insert into ->j the id of the clicked character 
-	int j = 0;
-	while (!click_looker) {
-		j = (j + 1) % 5;
-		if (color == 0) {
-			click_looker = (sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_characters_blue[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y));
-		}
-		else if (color == 1) {
-			click_looker = (sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_characters_red[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y));
-
-		}
-		else {
-			click_looker = 1;
-		}
-
-	}
-
-	// 0 --> Blue 
-	if ((m_characters_blue[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) && (color == 0))
+	if (!_is_ready)
 	{
-
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (!_receive_thread.joinable())
 		{
-			click_looker = false;
-			while (!click_looker) {
-				int the_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
-				if (the_y <= 5) {
-					click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) && (sf::Mouse::isButtonPressed(sf::Mouse::Left)));
-				}
-			}
-			click_looker = false;
+			_receive_thread = std::thread(&NetworkCharacterChoice::_receiveCharacter, this);
+			_receive_thread.detach();
+		}
 
-			// 460 -> espace a gauche grille bords �crans
-			// 40 -> espace en haut grille bords �crans
+		auto [x, y] = _window.getSize();
+		bool click_looker = false;
+		int j = 0;
 
-			int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
-			int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
+		while (!click_looker)
+		{
+			j = (j + 1) % 5;
 
-			int pos_grille_x = pos_grid_x * 50 + (0.24 * x);
-			int pos_grille_y = pos_grid_y * 50 + (0.04 * y);
+			click_looker = (sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_characters[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y));
+		}
 
-			char str1;
-			char str2;
-
-
-			//creating message to give the choice made
-
-			if (pos_grid_x < 10) {
-				str1 = '0' + pos_grid_x + '/';
-			}
-			else {
-				str1 = pos_grid_x + '/';
-			}
-			if (pos_grid_x < 10) {
-				str2 = '0' + pos_grid_x + '/' + j;
-			}
-			else {
-				str2 = pos_grid_x + '/' + j;
-			}
-
-			strcat(&str1, &str2);
-
-			
-
-
-			
-			//sending the message
-
-			switch (j)
+		if (m_characters[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
-			case 0:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'B'));
-				break;
-			case 1:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'B'));
-				break;
-			case 2:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
-				break;
-			case 3:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'B'));
-				break;
-			default:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'B'));
-				break;
-			}
+				click_looker = false;
 
-			sendMessage(socket, &str1);
+				while (!click_looker)
+				{
+					int the_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 
+					if (_player == 'B')
+					{
+						if (the_y < 5)
+						{
+							click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) && (sf::Mouse::isButtonPressed(sf::Mouse::Left)));
+						}
+					}
+					else
+					{
+						if (the_y < 20 && the_y > 13)
+						{
+							click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) && (sf::Mouse::isButtonPressed(sf::Mouse::Left)));
+						}
+					}
+				}
 
+				click_looker = false;
 
-			//_CurrentCharacter->update(_clock.getElapsedTime());
-			//_clock.restart();
-			char received_message[8];
+				int pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
+				int pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
 
-			receiveMessage(socket, received_message, 8);
-			std::string strx;
-			char charx = received_message[0] + received_message[1];
+				if (!_send_thread.joinable())
+				{
+					_send_thread = std::thread(&NetworkCharacterChoice::_sendCharacter, this);
+					_send_thread.detach();
+				}
 
-			strx.assign(&charx);
-
-
-			std::string stry;
-			char chary = received_message[0] + received_message[1];
-
-			stry.assign(&chary);
-
-
-			pos_grid_x = atoi(strx.c_str());
-			pos_grid_y = atoi(stry.c_str());
-
-			j = received_message[6] - '0';
-
-			switch (j)
+				switch (j)
 				{
 				case 0:
-					_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'R'));
+					_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, _player));
+					_team += "W/" + std::to_string(pos_grid_x) + '/' + std::to_string(pos_grid_y);
 					break;
 				case 1:
-					_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'R'));
+					_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, _player));
+					_team += "A/" + std::to_string(pos_grid_x) + '/' + std::to_string(pos_grid_y);
 					break;
 				case 2:
-					_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'R'));
+					_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, _player));
+					_team += "K/" + std::to_string(pos_grid_x) + '/' + std::to_string(pos_grid_y);
 					break;
 				case 3:
-					_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'R'));
+					_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, _player));
+					_team += "H/" + std::to_string(pos_grid_x) + '/' + std::to_string(pos_grid_y);
 					break;
 				default:
-					_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'R'));
+					_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, _player));
+					_team += "M/" + std::to_string(pos_grid_x) + '/' + std::to_string(pos_grid_y);
 					break;
 				}
 
-
-
+				++_count;
+			}
 		}
 	}
 
-
-	// 1 --> Red
-	if (m_characters_red[j].getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y) && color == 1)
+	if (_is_ready)
 	{
-
-
-		char received_message[8];
-
-		receiveMessage(socket, received_message, 8);
-		std::string strx;
-		char charx = received_message[0] + received_message[1];
-
-		strx.assign(&charx);
-
-
-		std::string stry;
-		char chary = received_message[0] + received_message[1];
-
-		stry.assign(&chary);
-
-
-		int pos_grid_x = atoi(strx.c_str());
-		int pos_grid_y = atoi(stry.c_str());
-
-		j = received_message[6] - '0';
-
-
-		switch (j)
-		{
-		case 0:
-			_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'B'));
-			break;
-		case 1:
-			_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'B'));
-			break;
-		case 2:
-			_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'B'));
-			break;
-		case 3:
-			_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'B'));
-			break;
-		default:
-			_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'B'));
-			break;
-		}
-
-
-
-
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			bool click_looker = false;
-			while (!click_looker) {
-				int the_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
-				if (the_y <= 19 && the_y >= 14) {
-					click_looker = ((_world.getShape().getGlobalBounds().contains(sf::Mouse::getPosition(_window).x, sf::Mouse::getPosition(_window).y)) && sf::Mouse::isButtonPressed(sf::Mouse::Left));
-				}
-			}
-			click_looker = false;
-
-			// 460 -> espace � gauche grille bords �crans
-			// 40 -> espace en haut grille bords �crans
-
-			int pos_grille_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50) * 50 + (0.24 * x);
-			int pos_grille_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50) * 50 + (0.04 * y);
-
-			pos_grid_x = static_cast<int>(((sf::Mouse::getPosition(_window).x) - (0.24 * x)) / 50);
-			pos_grid_y = static_cast<int>(((sf::Mouse::getPosition(_window).y) - (0.04 * y)) / 50);
-
-
-
-
-			switch (j)
-			{
-			case 0:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Warrior(pos_grid_x, pos_grid_y, 'R'));
-				break;
-			case 1:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Archer(pos_grid_x, pos_grid_y, 'R'));
-				break;
-			case 2:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Knight(pos_grid_x, pos_grid_y, 'R'));
-				break;
-			case 3:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Healer(pos_grid_x, pos_grid_y, 'R'));
-				break;
-			default:
-				_CurrentCharacter = _spriteFactory.createCharacter(new Mage(pos_grid_x, pos_grid_y, 'R'));
-				break;
-			}
-
-
-
-			char str1;
-			char str2;
-
-
-			//creating message to give the choice made
-
-			if (pos_grid_x < 10) {
-				str1 = '0' + pos_grid_x + '/';
-			}
-			else {
-				str1 = pos_grid_x + '/';
-			}
-			if (pos_grid_x < 10) {
-				str2 = '0' + pos_grid_x + '/' + j;
-			}
-			else {
-				str2 = pos_grid_x + '/' + j;
-			}
-
-			strcat(&str1, &str2);
-
-			sendMessage(socket, &str1);
-
-			//_CurrentCharacter->update(_clock.getElapsedTime());
-			//_clock.restart();
-		}
+		_world.clean();
+		//_machine.run(StateMachine::build<NetworkChoosePlay>(_machine, _window, _world, _texture_manager, _client, _player, _team));
 	}
-
-	if (count == 3)
-	{
-		_machine.run(StateMachine::build<NetworkChoosePlay>(_machine, _window, _world, _textureManager, true));
-	}
-
-	count++;
-
-
-}// End Update()
-
-
+}
 
 void NetworkCharacterChoice::draw()
 {
 	_window.clear();
 	_window.draw(_world);
-	for (auto character : m_characters_blue)
+	
+	for (const auto& character : m_characters)
 	{
 		_window.draw(character);
-
 	}
-	for (auto character : m_characters_red)
-	{
-		_window.draw(character);
-
-	}
+	
 	_window.display();
+}
+
+void NetworkCharacterChoice::_sendCharacter()
+{
+	_client.send(_team.data());
+	_team.clear();
+	++_count;
+
+	if (_count == 5)
+	{
+		_is_ready = true;
+	}
+}
+
+void NetworkCharacterChoice::_receiveCharacter()
+{
+	std::string opponent_character = _client.receive();
+
+	char _opponent_character_type = opponent_character[0];
+	size_t index = opponent_character.find('/');
+	std::string _opponent_character_x = opponent_character.substr(index + 1, opponent_character.find('/', index + 1) - index - 1);
+	std::string _opponent_character_y = opponent_character.substr(opponent_character.find('/', index + 1) + 1, opponent_character.length() - opponent_character.find('/', index + 1) - 1);
+
+	switch (_opponent_character_type)
+	{
+	case 'W':
+		_spriteFactory.createCharacter(new Warrior(std::stoi(_opponent_character_x), std::stoi(_opponent_character_y), _player == 'B' ? 'R' : 'B'));
+		break;
+
+	case 'A':
+		_spriteFactory.createCharacter(new Archer(std::stoi(_opponent_character_x), std::stoi(_opponent_character_y), _player == 'B' ? 'R' : 'B'));
+		break;
+
+	case 'K':
+		_spriteFactory.createCharacter(new Knight(std::stoi(_opponent_character_x), std::stoi(_opponent_character_y), _player == 'B' ? 'R' : 'B'));
+		break;
+
+	case 'H':
+		_spriteFactory.createCharacter(new Healer(std::stoi(_opponent_character_x), std::stoi(_opponent_character_y), _player == 'B' ? 'R' : 'B'));
+		break;
+
+	case 'M':
+		_spriteFactory.createCharacter(new Mage(std::stoi(_opponent_character_x), std::stoi(_opponent_character_y), _player == 'B' ? 'R' : 'B'));
+		break;
+	}
 }

@@ -23,7 +23,7 @@ namespace sf
 class ArtificialChoosePlay : public PlayState
 {
 public:
-	explicit ArtificialChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
+	explicit ArtificialChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace = true);
 
 	void pause() override;
 	void resume() override;

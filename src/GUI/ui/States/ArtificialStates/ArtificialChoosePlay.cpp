@@ -9,8 +9,8 @@
 #include <random>
 
 
-ArtificialChoosePlay::ArtificialChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
-	: super(machine, window, world, texture_manager, replace), _animationManager(), _actions(window), _movements(window), _spriteFactory(_world, texture_manager, _animationManager)
+ArtificialChoosePlay::ArtificialChoosePlay(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace)
+	: super(machine, window, world, texture_manager, client, replace), _animationManager(), _actions(window), _movements(window), _spriteFactory(_world, texture_manager, _animationManager)
 {
 	for (auto& row : _world.getSprites())
 	{
@@ -46,7 +46,7 @@ void ArtificialChoosePlay::update()
 			if (event.key.code == sf::Keyboard::Escape)
 			{
 				_world.clean();
-				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, true));
+				_machine.run(StateMachine::build<MenuState>(_machine, _window, _world, _textureManager, _client, true));
 			}
 		}
 	}

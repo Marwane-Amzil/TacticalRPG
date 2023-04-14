@@ -15,11 +15,16 @@ namespace sf
 	class RenderWindow;
 }
 
+namespace iut
+{
+	class ClientSocket;
+}
+
 class IntroState final : public State
 {
 public:
 	
-	explicit IntroState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
+	explicit IntroState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace = true);
 
 	void pause() override;
 	void resume() override;
@@ -31,6 +36,7 @@ private:
 	
 	gui::World& _world;
 	utils::TextureManager& _texture_manager;
+	iut::ClientSocket& _client;
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_background;
 	sf::RectangleShape m_fader;

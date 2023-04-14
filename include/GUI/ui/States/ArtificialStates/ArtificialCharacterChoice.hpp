@@ -22,7 +22,7 @@ namespace sf
 class ArtificialCharacterChoice : public PlayState
 {
 public:
-	explicit ArtificialCharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
+	explicit ArtificialCharacterChoice(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace = true);
 
 	void pause() override;
 	void resume() override;

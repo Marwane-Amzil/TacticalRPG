@@ -6,8 +6,8 @@
 #include <iostream>
 #include <memory>
 
-IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace)
-	: State(machine, window, replace), _world(world), _texture_manager(texture_manager)
+IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace)
+	: State(machine, window, replace), _world(world), _texture_manager(texture_manager), _client(client)
 , m_alpha{ 0, 0, 0, 255 } // Start off opaque
 {
 	if (!m_backgroundTexture.loadFromFile("./assets/ui/menu/img/menu-Play.png"))
@@ -15,6 +15,7 @@ IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, gui::Wor
 		throw std::runtime_error{ "Was unable to load image 'img/intro.png'" };
 	}
 
+	m_backgroundTexture.setSmooth(true);
 	m_background.setTexture(m_backgroundTexture, true);
 
 	// Fill the fader surface with black
@@ -49,7 +50,7 @@ void IntroState::update()
                 switch (event.key.code)
                 {
                     case sf::Keyboard::Space:
-						m_next = StateMachine::build<MenuState>(_machine, _window, _world, _texture_manager, true);
+						m_next = StateMachine::build<MenuState>(_machine, _window, _world, _texture_manager, _client, true);
                         break;
 
                     case sf::Keyboard::Escape:
@@ -70,6 +71,10 @@ void IntroState::update()
 	if (m_alpha.a != 0)
 	{
 		m_alpha.a--;
+	}
+	else
+	{
+		m_next = StateMachine::build<MenuState>(_machine, _window, _world, _texture_manager, _client, true);
 	}
 
 	m_fader.setFillColor(m_alpha);

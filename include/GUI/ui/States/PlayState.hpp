@@ -14,6 +14,11 @@ namespace sf
 	class RenderWindow;
 }
 
+namespace iut
+{
+	class ClientSocket;
+}
+
 /* @brief PlayState class is the base class for all the states of the game. 
 *  @details This class will theorethically allow all the PlayState classes to communicate the World. 
 */
@@ -30,7 +35,7 @@ public:
 	*	@see gui::World
 	*	@see gui::EntitySprite
 	*/
-	explicit PlayState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, const bool replace = true);
+	explicit PlayState(StateMachine& machine, sf::RenderWindow& window, gui::World& world, utils::TextureManager& texture_manager, iut::ClientSocket& client, const bool replace = true);
 
 private:
 
@@ -42,5 +47,5 @@ protected:
 
 	gui::World& _world;
 	utils::TextureManager& _textureManager;
-	
+	iut::ClientSocket& _client;
 };
